@@ -1,0 +1,9 @@
+# 大容量データ・中間生成物は除外し、軽量な要約のみバージョン管理する
+results/**/*.npz
+results/**/*.parquet
+results/**/*.csv.gz
+results/**/*.tmp
+results/**/chunks/
+results/**/report.html
+results/**/*.sync-conflict-*
+.DS_Store
