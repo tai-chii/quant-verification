@@ -1,0 +1,11 @@
+/sessions/rcw-01xtf6yeahywkcrmf4x3nnoa/mnt/ワークスペース/作業層/市場/公表効果/kensho_anomaly_decay.py:78: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  g = s.groupby("wk").apply(lambda x: pd.Series(dict(s1=x.v[x.g].sum(), n1=x.g.sum(), s0=x.v[~x.g].sum(), n0=(~x.g).sum())))
+/sessions/rcw-01xtf6yeahywkcrmf4x3nnoa/mnt/ワークスペース/作業層/市場/公表効果/kensho_anomaly_decay.py:78: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  g = s.groupby("wk").apply(lambda x: pd.Series(dict(s1=x.v[x.g].sum(), n1=x.g.sum(), s0=x.v[~x.g].sum(), n0=(~x.g).sum())))
+   アノマリー                   公表前                   公表後     n前     n後    週前    週後  効果前bp       効果前_95  効果後bp      効果後_95      比   比_下  比_上   区間幅
+   A 五十日 2018-01-01〜2021-01-01 2023-02-01〜2026-07-01  596.0  679.0 155.0 178.0  4.979    2.01〜7.88 -0.288  -4.09〜3.90 -0.058 -1.08 0.93  2.01
+B フィキシング 2008-01-01〜2020-01-01 2020-02-01〜2026-07-01 2367.0 1326.0 622.0 335.0  2.438    1.69〜3.23  0.695  -0.17〜1.60  0.285 -0.07 0.70  0.77
+    C 週末 2013-01-01〜2014-06-01 2017-01-01〜2026-07-01   23.0  305.0  12.0 146.0 18.079 -37.08〜90.44 14.467 -9.63〜39.96  0.800 -6.97 5.62 12.59
+  平均（3本）                   NaN                   NaN    NaN    NaN   NaN   NaN    NaN          NaN    NaN         NaN  0.342 -2.22 2.02  4.24
+
+判定: 日中・曜日でも月次と同じ程度に減る（平均の比の区間が0.3を含む） / 副: 株の0.41を含む  平均の比 0.342（95% -2.22〜2.02）

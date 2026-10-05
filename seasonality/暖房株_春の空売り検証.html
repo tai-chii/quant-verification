@@ -1,0 +1,259 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>暖房株 春の空売り検証</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 検証レポート。判定→年ごとの損益→入る月の感度→比較表→学び→次の検証 */
+:root{
+  --bg:#f7f8f7; --surface:#fcfcfb; --fg:#0b0b0b; --fg2:#52514e; --muted:#7a7a74;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --past:rgba(60,64,72,.20); --past-hi:rgba(60,64,72,.55);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --pos:#2a78d6; --neg:#e34948; --mid:#f0efec;
+  --band:rgba(42,120,214,.07); --event:#9a988f;
+  --chip:#eef0ee; --chip-on:#0b0b0b; --chip-on-fg:#fcfcfb;
+  --f-body:"IBM Plex Sans JP","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121211; --surface:#1a1a19; --fg:#ffffff; --fg2:#c3c2b7; --muted:#8f8e86;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --past:rgba(220,222,215,.16); --past-hi:rgba(220,222,215,.5);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --pos:#3987e5; --neg:#e66767; --mid:#383835;
+  --band:rgba(57,135,229,.10); --event:#6f6e67;
+  --chip:#262624; --chip-on:#ffffff; --chip-on-fg:#1a1a19; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121211; --surface:#1a1a19; --fg:#ffffff; --fg2:#c3c2b7; --muted:#8f8e86;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --past:rgba(220,222,215,.16); --past-hi:rgba(220,222,215,.5);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --pos:#3987e5; --neg:#e66767; --mid:#383835;
+  --band:rgba(57,135,229,.10); --event:#6f6e67;
+  --chip:#262624; --chip-on:#ffffff; --chip-on-fg:#1a1a19; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-family:var(--f-num);font-size:12px;letter-spacing:.06em;color:var(--muted)}
+h1{font-size:clamp(22px,4vw,30px);line-height:1.25;margin:0;font-weight:700;text-wrap:balance}
+h2{font-size:18px;margin:0;font-weight:700}
+.lede{color:var(--fg2);margin:0;max-width:68ch}
+.panel{background:var(--surface);border:1px solid var(--ring);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.group{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.glabel{font-size:12px;color:var(--muted);margin-right:2px}
+button.chip{font:inherit;font-size:13px;border:0;background:var(--chip);color:var(--fg);padding:5px 11px;border-radius:999px;cursor:pointer}
+button.chip[aria-pressed="true"]{background:var(--chip-on);color:var(--chip-on-fg)}
+button.chip:focus-visible,button.yr:focus-visible{outline:2px solid var(--s1);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--fg2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:18px;height:0;border-top:2px solid}
+.chartbox{position:relative;width:100%}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--f-num);font-size:11px;fill:var(--muted);stroke:var(--surface);stroke-width:3px;paint-order:stroke;stroke-linejoin:round}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--ring);border-radius:8px;padding:8px 10px;font-size:12px;box-shadow:0 4px 16px rgba(0,0,0,.12);min-width:150px;z-index:2}
+.tip b{font-weight:700}
+.tip .row{display:flex;justify-content:space-between;gap:14px;font-family:var(--f-num)}
+.tip .k{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-body)}
+.years{display:flex;flex-wrap:wrap;gap:4px}
+button.yr{font-family:var(--f-num);font-size:12px;border:1px solid var(--ring);background:transparent;color:var(--fg2);padding:2px 7px;border-radius:6px;cursor:pointer}
+button.yr[aria-pressed="true"]{color:var(--fg);border-color:currentColor;font-weight:500}
+button.yr.off{opacity:.35}
+.note{font-size:12px;color:var(--muted);margin:0}
+.findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px}
+.finding{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:10px;background:var(--surface);border:1px solid var(--ring);min-width:0}
+.finding .big{font-family:var(--f-num);font-size:24px;font-weight:500}
+.finding p{margin:0;font-size:14px;color:var(--fg2)}
+.tag{font-size:11px;letter-spacing:.05em;color:var(--muted)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;font-family:var(--f-num);font-size:12px;font-variant-numeric:tabular-nums;width:100%}
+th,td{padding:4px 6px;text-align:right;white-space:nowrap}
+th{font-weight:500;color:var(--muted)}
+tbody th{text-align:left}
+.stat td,.stat th{border-top:1px solid var(--grid)}
+.heat td{border:2px solid var(--surface);border-radius:4px}
+details summary{cursor:pointer;font-weight:700}
+details[open] summary{margin-bottom:10px}
+.vhead{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;padding:4px 12px;border-radius:999px;background:color-mix(in oklab,var(--s2) 18%,var(--surface));color:var(--fg);border:1px solid color-mix(in oklab,var(--s2) 55%,transparent)}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--s2)}
+.vsub{font-size:13px;color:var(--fg2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.tile{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile .big{font-family:var(--f-num);font-size:24px;font-weight:500;font-variant-numeric:tabular-nums}
+.sq{width:10px;height:10px;border-radius:2px;display:inline-block}
+.learn{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+h3{margin:0;font-size:16px;text-wrap:balance}
+h3.sub{margin-top:8px}
+.plan{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px;max-width:75ch}
+table.stat tr.on th,table.stat tr.on td{background:color-mix(in oklab,var(--s1) 8%,transparent)}
+.ok{color:var(--fg);font-weight:700}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">バックテスト ・ 2005–2026（22回） ・ 週次終値（配当・分割調整済み） ・ 2026-09-30</div>
+  <h1>暖房株 春の空売り検証</h1>
+  <p class="lede">仮説：石油ストーブや暖房機器の会社の株は、暖房シーズンが終わる春に、相場全体より弱くなる。ルールは1つだけに固定した。毎年3月末の週の終値で空売りし、同時に日経平均を買ってヘッジし、5月末の週の終値で両方とも手じまう。手数料と貸株料として、1回あたり0.4%を差し引いている。</p>
+</header>
+
+<section class="verdict panel" aria-label="判定">
+  <div class="vhead"><span class="pill">判定：保留</span><span class="vsub">改善判定の基準（t値 2 以上、前半・後半の両方、追試）を全部は満たしていない</span></div>
+  <div class="tiles" id="tiles"></div>
+  <p class="note" id="tnote"></p>
+</section>
+
+<section class="panel" aria-label="年ごとの損益">
+  <div class="controls">
+    <div class="group" role="group" aria-label="対象" id="targets"><span class="glabel">対象</span></div>
+  </div>
+  <div class="controls">
+    <div class="group" role="group" aria-label="ヘッジ" id="hedges"><span class="glabel">ヘッジ</span></div>
+  </div>
+  <h2 id="ytitle"></h2>
+  <div class="legend"><span><i class="sq" style="background:var(--pos)"></i>利益</span><span><i class="sq" style="background:var(--neg)"></i>損失</span><span><i class="sw" style="border-color:var(--fg);border-top-style:dashed"></i>平均</span></div>
+  <div class="chartbox" id="ybox">
+    <svg id="ychart" viewBox="0 0 1000 300" role="img" aria-label="年ごとの損益の棒グラフ"></svg>
+    <div class="tip" id="ytip" hidden></div>
+  </div>
+  <p class="note" id="ynote"></p>
+</section>
+
+<section class="panel" aria-label="入る月を変えたとき">
+  <h2 id="ctitle">入る月をずらすと、どうなるか</h2>
+  <p class="note">同じやり方で、2か月の空売りを始める月だけを変えた場合の平均損益。検証しているのは3月末に入る枠（枠線で囲んだ棒）。この棒だけが突出していて両隣が低いなら、偶然の可能性が高くなる。</p>
+  <div class="chartbox" id="cbox">
+    <svg id="cchart" viewBox="0 0 1000 260" role="img" aria-label="入る月別の平均損益"></svg>
+    <div class="tip" id="ctip" hidden></div>
+  </div>
+</section>
+
+<section class="panel" aria-label="全対象の比較">
+  <h2 id="stitle">全対象の比較</h2>
+  <div class="scroll"><table class="stat" id="stats"></table></div>
+  <p class="note">95%範囲は、22年分の結果を年単位で入れ替えて1万回平均を取り直した範囲（ブートストラップ）。前半は2005〜15年、後半は2016〜26年。長府製作所とリンナイは、仮説を見つけた後に「追試」として加えた、発見に使っていない銘柄。ベータは日経平均が1%動いたときに株価が何%動くかの目安（月次、全期間）。</p>
+</section>
+
+<section class="learn" aria-label="わかったこと">
+  <div class="finding"><span class="tag">落とし穴</span><h3>1対1のヘッジは成績を水増しする</h3><p>コロナとダイニチのベータは約0.5しかない。株と同じ金額の日経平均を買うと、空売りの成績に「日経平均が4〜5月に上がりやすい分（平均 +2.2%）」が混ざる。1対1のヘッジでは平均 +4.2% だが、ベータ分だけヘッジすると +3.2% に下がる。2026年の +28.9% も大半は日経平均の上昇によるもの。</p></div>
+  <div class="finding"><span class="tag">追試</span><h3>長府は再現、リンナイは再現しない</h3><p>石油給湯機・暖房機の長府製作所は、平均 +3.4%、t値 3.4 で、前半・後半ともプラスだった。ガス機器や台所まわりが中心のリンナイは −1.1% で再現しない。「石油暖房の会社だけに効く」と説明したくなるが、これは結果を見た後の後付けなので、まだ仮説として扱う。</p></div>
+  <div class="finding"><span class="tag">安定性</span><h3>効き目は後半に偏っている</h3><p>コロナ＋ダイニチは、前半 +1.3%（t値 0.5）に対し、後半 +5.1%（t値 3.4）。ダイキンの11月とは逆に、最近になって強くなっている。入る月をずらすと、3月末の枠だけが突出しているのも気になる点だ。一方、6〜7月は逆に暖房株が相場より強い（22年中18年）。</p></div>
+</section>
+
+<section class="panel" aria-label="決算の前後で分解">
+  <h2>春の弱さは、決算の日に起きているのか</h2>
+  <p class="note">3月末〜5月末を4つの期間に分けて、日経平均のベータ分を除いた株価の動きを1日あたりに直した（2005〜2026年の平均）。3月決算のコロナとダイニチは、本決算を毎年5月7〜16日に発表している（決算プロに記録のある2009〜16年と、2024・2026年で確認）。長府は12月決算（本決算は2月、5月は第1四半期の発表だけ）なので、5月に本決算がない比較対象になる。</p>
+  <div class="legend" id="evleg"></div>
+  <div class="chartbox" id="wbox"><svg id="wchart" viewBox="0 0 1000 260" role="img" aria-label="期間別の1日あたりの動き"></svg><div class="tip" id="wtip" hidden></div></div>
+  <h3 class="sub">決算発表日を0日目としたときの平均の動き</h3>
+  <p class="note">発表日が確認できた年だけ（コロナ10年、ダイニチ8年）。発表当日の終値（発表は通常、取引終了後）を0%とし、そこからの累積で描いた。</p>
+  <div class="chartbox" id="pbox"><svg id="pchart" viewBox="0 0 1000 280" role="img" aria-label="決算発表日前後の平均累積リターン"></svg><div class="tip" id="ptip" hidden></div></div>
+  <div class="learn">
+    <div class="finding"><span class="tag">発表日そのもの</span><h3>決算の日には動いていない</h3><p>発表翌日の動きは、コロナ −0.6%、ダイニチ ±0.0% とほぼゼロ。春の弱さは、決算の内容に驚いて売られた結果ではない。</p></div>
+    <div class="finding"><span class="tag">時期</span><h3>4月から5月まで、じわじわ弱い</h3><p>弱さは期間全体に散らばっている。コロナは発表前の約3週間に下がり（−3.4%）、ダイニチは発表後の2週間に下がる（−4.1%）。形は違うが、どちらも決算の日の一撃ではない。</p></div>
+    <div class="finding"><span class="tag">比較対象</span><h3>5月に本決算がない長府も弱い</h3><p>12月決算で、5月は第1四半期の発表しかない長府も、4〜5月に同じくらいのペースで弱い。本決算が原因なら長府は弱くならないはずなので、「決算」より「暖房のオフシーズンに入ったこと」そのものに結びついた動きの可能性が高い。ただし何が売っているのか（誰の資金か）はまだ分からない。</p></div>
+  </div>
+</section>
+
+<section class="panel" aria-label="次の検証">
+  <h2>前向きテスト（2027年春）</h2>
+  <p class="note">過去データはもう使い切ったので、ルールを今のうちに固定して、2027年の結果だけで判定する。</p>
+  <ol class="plan">
+    <li><b>対象</b>：コロナ（5909）、ダイニチ工業（5951）、長府製作所（5946）を同じ金額ずつ。追加や入れ替えはしない。</li>
+    <li><b>入り</b>：2027年3月最終営業日の終値で空売り。日経平均は各銘柄のベータ分（0.4〜0.6倍）だけ買う。</li>
+    <li><b>手じまい</b>：2027年5月最終営業日の終値。途中の損切りは入れない（検証の条件を過去と揃えるため）。</li>
+    <li><b>判定</b>：まず紙の上で記録する。実際のお金を入れるかは、2027年と2028年の2回分の結果を見てから決める。</li>
+    <li><b>事前に確かめること</b>：3銘柄が制度信用で空売りできるか（貸借銘柄かどうか）と、逆日歩の実績。</li>
+  </ol>
+</section>
+</div>
+
+<script>
+const D={"years": {"basket|raw": {"2005": -9.07, "2006": 11.44, "2007": 3.81, "2008": -19.59, "2009": -14.57, "2010": 16.99, "2011": -1.42, "2012": 21.59, "2013": 5.85, "2014": 0.82, "2015": -3.04, "2016": 1.09, "2017": -3.42, "2018": 5.6, "2019": 6.68, "2020": -2.13, "2021": 5.69, "2022": 6.39, "2023": 0.28, "2024": 3.75, "2025": 3.18, "2026": 4.62}, "basket|one": {"2005": -13.91, "2006": 5.06, "2007": 4.93, "2008": -7.74, "2009": -4.18, "2010": 5.78, "2011": -1.56, "2012": 6.67, "2013": 16.95, "2014": 0.39, "2015": 3.58, "2016": 0.1, "2017": 0.7, "2018": 10.25, "2019": 3.83, "2020": 10.7, "2021": 5.6, "2022": 1.53, "2023": 10.53, "2024": -0.91, "2025": 5.46, "2026": 28.9}, "basket|beta": {"2005": -11.71, "2006": 7.97, "2007": 4.42, "2008": -13.13, "2009": -8.91, "2010": 10.88, "2011": -1.5, "2012": 13.46, "2013": 11.9, "2014": 0.59, "2015": 0.57, "2016": 0.55, "2017": -1.17, "2018": 8.14, "2019": 5.12, "2020": 4.86, "2021": 5.64, "2022": 3.75, "2023": 5.87, "2024": 1.21, "2025": 4.42, "2026": 17.85}, "chofu|raw": {"2005": 6.52, "2006": 9.6, "2007": 0.59, "2008": -7.92, "2009": 3.11, "2010": 11.15, "2011": 5.67, "2012": 10.65, "2013": 1.68, "2014": 0.1, "2015": -0.07, "2016": -3.62, "2017": -3.93, "2018": 1.14, "2019": 5.84, "2020": 8.35, "2021": 4.97, "2022": 10.14, "2023": -5.34, "2024": -4.29, "2025": 2.11, "2026": -0.5}, "chofu|one": {"2005": 1.68, "2006": 3.22, "2007": 1.71, "2008": 3.92, "2009": 13.5, "2010": -0.07, "2011": 5.53, "2012": -4.26, "2013": 12.78, "2014": -0.33, "2015": 6.55, "2016": -4.6, "2017": 0.18, "2018": 5.78, "2019": 2.98, "2020": 21.19, "2021": 4.87, "2022": 5.28, "2023": 4.91, "2024": -8.95, "2025": 4.38, "2026": 23.78}, "chofu|beta": {"2005": 4.55, "2006": 7.01, "2007": 1.05, "2008": -3.11, "2009": 7.33, "2010": 6.59, "2011": 5.61, "2012": 4.59, "2013": 6.19, "2014": -0.07, "2015": 2.62, "2016": -4.02, "2017": -2.26, "2018": 3.02, "2019": 4.68, "2020": 13.57, "2021": 4.93, "2022": 8.17, "2023": -1.18, "2024": -6.19, "2025": 3.03, "2026": 9.37}, "rinnai|raw": {"2005": 0.05, "2006": 5.27, "2007": -23.0, "2008": -14.13, "2009": -7.14, "2010": 5.96, "2011": -1.39, "2012": 13.86, "2013": -19.45, "2014": -2.11, "2015": -8.17, "2016": 5.72, "2017": -11.69, "2018": -4.26, "2019": 8.67, "2020": -17.43, "2021": 11.98, "2022": 7.81, "2023": 6.92, "2024": -8.61, "2025": -2.73, "2026": 7.92}, "rinnai|one": {"2005": -4.79, "2006": -1.11, "2007": -21.88, "2008": -2.29, "2009": 3.24, "2010": -5.25, "2011": -1.53, "2012": -1.05, "2013": -8.35, "2014": -2.54, "2015": -1.55, "2016": 4.73, "2017": -7.57, "2018": 0.39, "2019": 5.81, "2020": -4.59, "2021": 11.89, "2022": 2.95, "2023": 17.18, "2024": -13.27, "2025": -0.45, "2026": 32.2}, "rinnai|beta": {"2005": -2.16, "2006": 2.36, "2007": -22.49, "2008": -8.72, "2009": -2.39, "2010": 0.83, "2011": -1.45, "2012": 7.04, "2013": -14.38, "2014": -2.31, "2015": -5.14, "2016": 5.26, "2017": -9.81, "2018": -2.14, "2019": 7.36, "2020": -11.56, "2021": 11.94, "2022": 5.59, "2023": 11.61, "2024": -10.74, "2025": -1.69, "2026": 19.02}, "corona|raw": {"2005": 0.56, "2006": 13.55, "2007": 1.91, "2008": -32.15, "2009": -34.01, "2010": 20.68, "2011": 3.84, "2012": 23.93, "2013": 2.42, "2014": -3.16, "2015": -3.91, "2016": 4.4, "2017": -2.01, "2018": 5.5, "2019": 5.38, "2020": 8.66, "2021": 4.37, "2022": 4.32, "2023": 3.74, "2024": 4.28, "2025": 5.52, "2026": 4.44}, "corona|one": {"2005": -4.28, "2006": 7.17, "2007": 3.03, "2008": -20.31, "2009": -23.62, "2010": 9.47, "2011": 3.69, "2012": 9.01, "2013": 13.53, "2014": -3.59, "2015": 2.71, "2016": 3.41, "2017": 2.1, "2018": 10.15, "2019": 2.53, "2020": 21.5, "2021": 4.28, "2022": -0.54, "2023": 13.99, "2024": -0.38, "2025": 7.8, "2026": 28.72}, "corona|beta": {"2005": -1.93, "2006": 10.27, "2007": 2.49, "2008": -26.06, "2009": -28.67, "2010": 14.91, "2011": 3.76, "2012": 16.25, "2013": 8.13, "2014": -3.38, "2015": -0.5, "2016": 3.89, "2017": 0.11, "2018": 7.89, "2019": 3.91, "2020": 15.26, "2021": 4.32, "2022": 1.82, "2023": 9.01, "2024": 1.88, "2025": 6.69, "2026": 16.93}, "dainichi|raw": {"2005": -18.7, "2006": 9.34, "2007": 5.71, "2008": -7.02, "2009": 4.88, "2010": 13.31, "2011": -6.67, "2012": 19.25, "2013": 9.27, "2014": 4.8, "2015": -2.18, "2016": -2.22, "2017": -4.82, "2018": 5.71, "2019": 7.98, "2020": -12.92, "2021": 7.01, "2022": 8.46, "2023": -3.17, "2024": 3.21, "2025": 0.85, "2026": 4.81}, "dainichi|one": {"2005": -23.54, "2006": 2.95, "2007": 6.83, "2008": 4.83, "2009": 15.26, "2010": 2.09, "2011": -6.81, "2012": 4.33, "2013": 20.38, "2014": 4.37, "2015": 4.45, "2016": -3.21, "2017": -0.71, "2018": 10.36, "2019": 5.13, "2020": -0.09, "2021": 6.92, "2022": 3.6, "2023": 7.08, "2024": -1.45, "2025": 3.12, "2026": 29.08}, "dainichi|beta": {"2005": -21.49, "2006": 5.67, "2007": 6.35, "2008": -0.21, "2009": 10.85, "2010": 6.86, "2011": -6.75, "2012": 10.67, "2013": 15.66, "2014": 4.55, "2015": 1.63, "2016": -2.79, "2017": -2.45, "2018": 8.38, "2019": 6.34, "2020": -5.54, "2021": 6.96, "2022": 5.67, "2023": 2.72, "2024": 0.53, "2025": 2.16, "2026": 18.77}}, "curve": {"basket|raw": [[0, 1.8, 1.07], [1, -0.52, -0.35], [2, -0.38, -0.3], [3, 2.03, 1.04], [4, -1.68, -0.72], [5, -3.52, -3.09], [6, -1.88, -1.28], [7, -4.47, -1.59], [8, -2.74, -1.45], [9, -0.88, -0.44], [10, -3.09, -1.41], [11, -0.7, -0.37]], "basket|one": [[0, 2.24, 1.55], [1, 1.05, 0.54], [2, 1.43, 0.73], [3, 4.21, 2.29], [4, 0.71, 0.36], [5, -2.39, -2.21], [6, -2.55, -1.59], [7, -3.23, -0.99], [8, -1.26, -0.79], [9, 1.22, 0.71], [10, 1.85, 1.32], [11, 1.2, 1.08]], "basket|beta": [[0, 2.04, 1.81], [1, 0.33, 0.22], [2, 0.61, 0.41], [3, 3.22, 1.97], [4, -0.38, -0.19], [5, -2.9, -2.91], [6, -2.24, -1.59], [7, -3.8, -1.28], [8, -1.93, -1.49], [9, 0.26, 0.18], [10, -0.4, -0.25], [11, 0.33, 0.27]], "chofu|raw": [[0, -1.23, -0.74], [1, -5.43, -3.93], [2, -2.93, -1.71], [3, 2.54, 2.14], [4, 1.47, 1.14], [5, -1.78, -1.42], [6, 0.86, 0.48], [7, -1.15, -0.64], [8, -1.96, -0.94], [9, 1.48, 0.94], [10, -2.18, -1.46], [11, -0.67, -0.41]], "chofu|one": [[0, -0.78, -0.4], [1, -3.87, -1.65], [2, -1.11, -0.52], [3, 4.73, 2.9], [4, 3.86, 3.54], [5, -0.64, -0.66], [6, 0.19, 0.12], [7, 0.08, 0.04], [8, -0.49, -0.18], [9, 3.58, 1.72], [10, 2.76, 1.27], [11, 1.22, 0.95]], "chofu|beta": [[0, -1.05, -0.72], [1, -4.8, -2.92], [2, -2.19, -1.26], [3, 3.43, 3.36], [4, 2.44, 2.9], [5, -1.31, -1.26], [6, 0.59, 0.37], [7, -0.65, -0.39], [8, -1.36, -0.65], [9, 2.34, 1.65], [10, -0.17, -0.11], [11, 0.1, 0.08]], "rinnai|raw": [[0, 0.1, 0.06], [1, -3.89, -2.11], [2, -2.44, -1.69], [3, -2.09, -0.93], [4, -4.63, -2.15], [5, -0.74, -0.46], [6, -0.19, -0.11], [7, -3.62, -1.66], [8, -1.97, -1.32], [9, -1.89, -0.79], [10, -3.34, -1.56], [11, -0.16, -0.09]], "rinnai|one": [[0, 0.54, 0.26], [1, -2.32, -1.2], [2, -0.63, -0.32], [3, 0.1, 0.04], [4, -2.23, -1.08], [5, 0.39, 0.26], [6, -0.86, -0.48], [7, -2.39, -0.91], [8, -0.5, -0.24], [9, 0.21, 0.12], [10, 1.6, 0.68], [11, 1.73, 1.05]], "rinnai|beta": [[0, 0.3, 0.19], [1, -3.17, -1.88], [2, -1.61, -1.07], [3, -1.09, -0.53], [4, -3.53, -1.84], [5, -0.23, -0.15], [6, -0.5, -0.29], [7, -3.06, -1.35], [8, -1.3, -0.96], [9, -0.93, -0.51], [10, -1.08, -0.53], [11, 0.7, 0.47]], "corona|raw": [[0, -0.03, -0.02], [1, -0.23, -0.18], [2, 1.55, 1.34], [3, 1.92, 0.69], [4, -1.44, -0.57], [5, -1.82, -1.34], [6, -1.9, -1.11], [7, -4.48, -1.31], [8, -0.17, -0.05], [9, 1.18, 0.58], [10, -2.54, -1.76], [11, -1.73, -1.03]], "corona|one": [[0, 0.42, 0.28], [1, 1.34, 0.69], [2, 3.36, 2.18], [3, 4.11, 1.68], [4, 0.95, 0.41], [5, -0.69, -0.47], [6, -2.57, -1.33], [7, -3.24, -0.85], [8, 1.3, 0.56], [9, 3.27, 1.87], [10, 2.4, 1.4], [11, 0.16, 0.12]], "corona|beta": [[0, 0.2, 0.2], [1, 0.58, 0.41], [2, 2.48, 2.17], [3, 3.05, 1.25], [4, -0.21, -0.09], [5, -1.24, -0.93], [6, -2.24, -1.3], [7, -3.84, -1.08], [8, 0.59, 0.24], [9, 2.25, 1.49], [10, 0.0, 0.0], [11, -0.76, -0.62]], "dainichi|raw": [[0, 3.62, 1.41], [1, -0.81, -0.4], [2, -2.31, -1.16], [3, 2.13, 1.14], [4, -1.92, -0.77], [5, -5.22, -2.67], [6, -1.86, -1.14], [7, -4.46, -1.64], [8, -5.3, -3.55], [9, -2.93, -1.06], [10, -3.64, -1.08], [11, 0.34, 0.14]], "dainichi|one": [[0, 4.07, 1.81], [1, 0.75, 0.33], [2, -0.49, -0.18], [3, 4.32, 2.03], [4, 0.48, 0.24], [5, -4.09, -2.26], [6, -2.52, -1.55], [7, -3.22, -1.03], [8, -3.83, -1.75], [9, -0.84, -0.33], [10, 1.3, 0.59], [11, 2.23, 1.4]], "dainichi|beta": [[0, 3.88, 1.82], [1, 0.09, 0.04], [2, -1.26, -0.55], [3, 3.39, 1.9], [4, -0.54, -0.26], [5, -4.57, -2.53], [6, -2.24, -1.48], [7, -3.75, -1.31], [8, -4.46, -2.88], [9, -1.73, -0.72], [10, -0.8, -0.3], [11, 1.43, 0.78]]}, "stats": {"basket|raw": {"n": 22.0, "mean": 2.02, "med": 3.46, "win": 68.18, "t": 1.04, "worst": -19.59, "best": 21.59, "lo": -1.66, "hi": 5.76, "a": 1.16, "at": 0.3, "b": 2.88, "bt": 2.75}, "basket|one": {"n": 22.0, "mean": 4.21, "med": 4.38, "win": 77.27, "t": 2.29, "worst": -13.91, "best": 28.9, "lo": 0.87, "hi": 7.84, "a": 1.45, "at": 0.58, "b": 6.97, "bt": 2.74}, "basket|beta": {"n": 22.0, "mean": 3.22, "med": 4.42, "win": 77.27, "t": 1.97, "worst": -13.13, "best": 17.85, "lo": 0.09, "hi": 6.27, "a": 1.32, "at": 0.46, "b": 5.11, "bt": 3.39}, "chofu|raw": {"n": 22.0, "mean": 2.54, "med": 1.89, "win": 68.18, "t": 2.14, "worst": -7.92, "best": 11.15, "lo": 0.26, "hi": 4.83, "a": 3.73, "at": 2.17, "b": 1.35, "bt": 0.83}, "chofu|one": {"n": 22.0, "mean": 4.73, "med": 4.15, "win": 77.27, "t": 2.9, "worst": -8.95, "best": 23.78, "lo": 1.69, "hi": 8.01, "a": 4.02, "at": 2.47, "b": 5.44, "bt": 1.87}, "chofu|beta": {"n": 22.0, "mean": 3.43, "med": 4.57, "win": 72.73, "t": 3.36, "worst": -6.19, "best": 13.57, "lo": 1.45, "hi": 5.38, "a": 3.85, "at": 3.81, "b": 3.01, "bt": 1.65}, "rinnai|raw": {"n": 22.0, "mean": -2.09, "med": -1.75, "win": 45.45, "t": -0.93, "worst": -23.0, "best": 13.86, "lo": -6.56, "hi": 2.14, "a": -4.57, "at": -1.35, "b": 0.39, "bt": 0.13}, "rinnai|one": {"n": 22.0, "mean": 0.1, "med": -1.32, "win": 36.36, "t": 0.04, "worst": -21.88, "best": 32.2, "lo": -4.1, "hi": 4.74, "a": -4.28, "at": -2.17, "b": 4.48, "bt": 1.18}, "rinnai|beta": {"n": 22.0, "mean": -1.09, "med": -1.92, "win": 40.91, "t": -0.53, "worst": -22.49, "best": 19.02, "lo": -5.1, "hi": 2.89, "a": -4.44, "at": -1.8, "b": 2.26, "bt": 0.73}, "corona|raw": {"n": 22.0, "mean": 1.92, "med": 4.3, "win": 77.27, "t": 0.69, "worst": -34.01, "best": 23.93, "lo": -3.76, "hi": 6.94, "a": -0.58, "at": -0.1, "b": 4.42, "bt": 5.83}, "corona|one": {"n": 22.0, "mean": 4.11, "med": 3.55, "win": 72.73, "t": 1.68, "worst": -23.62, "best": 28.72, "lo": -0.52, "hi": 8.64, "a": -0.29, "at": -0.08, "b": 8.51, "bt": 2.99}, "corona|beta": {"n": 22.0, "mean": 3.04, "med": 3.9, "win": 77.27, "t": 1.25, "worst": -28.67, "best": 16.93, "lo": -1.85, "hi": 7.37, "a": -0.43, "at": -0.1, "b": 6.52, "bt": 3.97}, "dainichi|raw": {"n": 22.0, "mean": 2.13, "med": 4.8, "win": 63.64, "t": 1.14, "worst": -18.7, "best": 19.25, "lo": -1.49, "hi": 5.7, "a": 2.91, "at": 0.9, "b": 1.35, "bt": 0.68}, "dainichi|one": {"n": 22.0, "mean": 4.32, "med": 4.35, "win": 72.73, "t": 2.03, "worst": -23.54, "best": 29.08, "lo": 0.15, "hi": 8.34, "a": 3.19, "at": 0.94, "b": 5.44, "bt": 2.03}, "dainichi|beta": {"n": 22.0, "mean": 3.39, "med": 5.11, "win": 72.73, "t": 1.9, "worst": -21.49, "best": 18.77, "lo": -0.17, "hi": 6.68, "a": 3.07, "at": 1.01, "b": 3.7, "bt": 1.83}}, "beta": {"5909": 0.51, "5951": 0.58, "5946": 0.41, "5947": 0.46}};
+const TG=[['basket','コロナ＋ダイニチ'],['corona','コロナ'],['dainichi','ダイニチ'],['chofu','長府（追試）'],['rinnai','リンナイ（追試）']];
+const HG=[['beta','ベータ分だけ'],['one','1対1'],['raw','ヘッジなし']];
+const st={tg:'basket',hg:'beta'};
+const fmt=v=>(v>0?'+':v<0?'−':'±')+Math.abs(v).toFixed(1)+'%';
+const NS='http://www.w3.org/2000/svg';
+const mk=(svg,t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e};
+function bar(svg,x,w,y0,y1,fill,extra){const up=y1<y0;const top=Math.min(y0,y1),h=Math.max(1,Math.abs(y1-y0));const r=Math.min(4,h,w/2);
+  const d=up?`M${x},${y0}V${top+r}Q${x},${top} ${x+r},${top}H${x+w-r}Q${x+w},${top} ${x+w},${top+r}V${y0}Z`:`M${x},${y0}V${top+h-r}Q${x},${top+h} ${x+r},${top+h}H${x+w-r}Q${x+w},${top+h} ${x+w},${top+h-r}V${y0}Z`;
+  return mk(svg,'path',{d,fill,...(extra||{})})}
+function tipAt(tip,box,e,html){tip.innerHTML=html;tip.hidden=false;const bx=box.getBoundingClientRect();let lx=e.clientX-bx.left+14;if(lx+tip.offsetWidth>bx.width)lx=e.clientX-bx.left-tip.offsetWidth-14;tip.style.left=lx+'px';tip.style.top=(e.clientY-bx.top+14)+'px'}
+function chips(id,list,key){const g=document.getElementById(id);list.forEach(([k,l])=>{const b=document.createElement('button');b.className='chip';b.id=id+'-'+k;b.textContent=l;b.dataset.k=k;
+  b.onclick=()=>{st[key]=k;g.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));render()};b.setAttribute('aria-pressed',st[key]===k);g.appendChild(b)})}
+chips('targets',TG,'tg');chips('hedges',HG,'hg');
+const nameOf=k=>TG.find(t=>t[0]===k)[1],hname=k=>HG.find(t=>t[0]===k)[1];
+
+function tiles(){const s=D.stats['basket|beta'];
+  document.getElementById('tiles').innerHTML=[
+   ['平均損益（1回）',fmt(s.mean)],['勝った年',`${Math.round(s.win*s.n/100)} / ${s.n}年`],['t値',s.t.toFixed(2)],['95%範囲',`${fmt(s.lo)} 〜 ${fmt(s.hi)}`]]
+   .map(([k,v])=>`<div class="tile"><span class="tag">${k}</span><span class="big">${v}</span></div>`).join('');
+  document.getElementById('tnote').textContent='コロナ＋ダイニチ、ベータ分だけヘッジ、コスト控除後。95%範囲はかろうじて0より上だが、2026年を除くと t値は1.63に下がる。';}
+
+function yearly(){const svg=document.getElementById('ychart');svg.innerHTML='';const key=st.tg+'|'+st.hg;const ys=D.years[key];const Yr=Object.keys(ys).map(Number);const s=D.stats[key];
+  const W=1000,H=300,M={l:48,r:12,t:14,b:28};let lo=Math.min(-10,...Object.values(ys)),hi=Math.max(10,...Object.values(ys));const step=hi-lo>50?10:5;lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;
+  const y=v=>M.t+(hi-v)/(hi-lo)*(H-M.t-M.b);const cw=(W-M.l-M.r)/Yr.length;
+  for(let v=lo;v<=hi;v+=step){mk(svg,'line',{x1:M.l,x2:W-M.r,y1:y(v),y2:y(v),stroke:v===0?'var(--axis)':'var(--grid)'});const t=mk(svg,'text',{x:M.l-8,y:y(v)+4,'text-anchor':'end'});t.textContent=(v>0?'+':'')+v+'%'}
+  Yr.forEach((yr,i)=>{const v=ys[yr];const x=M.l+i*cw+cw*.18,w=cw*.64;bar(svg,x,w,y(0),y(v),v>=0?'var(--pos)':'var(--neg)');
+    if(i%2===0||Yr.length<12){const t=mk(svg,'text',{x:x+w/2,y:H-M.b+18,'text-anchor':'middle'});t.textContent="'"+String(yr).slice(2)}
+    const hit=mk(svg,'rect',{x:M.l+i*cw,y:M.t,width:cw,height:H-M.t-M.b,fill:'transparent'});
+    hit.addEventListener('mousemove',e=>tipAt(document.getElementById('ytip'),document.getElementById('ybox'),e,`<div><b>${yr}年</b></div><div class="row"><span class="k">3月末→5月末</span><span>${fmt(v)}</span></div>`));
+    hit.addEventListener('mouseleave',()=>document.getElementById('ytip').hidden=true)});
+  mk(svg,'line',{x1:M.l,x2:W-M.r,y1:y(s.mean),y2:y(s.mean),stroke:'var(--fg)','stroke-dasharray':'6 4','stroke-width':1.5});
+  const t=mk(svg,'text',{x:M.l+6,y:y(s.mean)-6,'text-anchor':'start'});t.textContent='平均 '+fmt(s.mean);t.style.fill='var(--fg)';
+  document.getElementById('ytitle').textContent=`${nameOf(st.tg)}：年ごとの損益（ヘッジ：${hname(st.hg)}）`;
+  document.getElementById('ynote').textContent=`平均 ${fmt(s.mean)}、中央値 ${fmt(s.med)}、勝った年 ${Math.round(s.win*s.n/100)}/${s.n}、t値 ${s.t.toFixed(2)}、最悪の年 ${fmt(s.worst)}、最良の年 ${fmt(s.best)}。`}
+
+function curve(){const svg=document.getElementById('cchart');svg.innerHTML='';const c=D.curve[st.tg+'|'+st.hg];
+  const W=1000,H=260,M={l:48,r:12,t:18,b:44};let lo=Math.min(-4,...c.map(x=>x[1])),hi=Math.max(4,...c.map(x=>x[1]));lo=Math.floor(lo/2)*2;hi=Math.ceil(hi/2)*2;
+  const y=v=>M.t+(hi-v)/(hi-lo)*(H-M.t-M.b);const cw=(W-M.l-M.r)/12;
+  for(let v=lo;v<=hi;v+=2){mk(svg,'line',{x1:M.l,x2:W-M.r,y1:y(v),y2:y(v),stroke:v===0?'var(--axis)':'var(--grid)'});const t=mk(svg,'text',{x:M.l-8,y:y(v)+4,'text-anchor':'end'});t.textContent=(v>0?'+':'')+v+'%'}
+  const lab=m=>((m-1)%12)+1;
+  c.forEach(([m0,mean,t],i)=>{const x=M.l+i*cw+cw*.2,w=cw*.6;const tested=m0===3;
+    bar(svg,x,w,y(0),y(mean),mean>=0?'var(--pos)':'var(--neg)',tested?{stroke:'var(--fg)','stroke-width':2}:{});
+    const a=mk(svg,'text',{x:x+w/2,y:H-M.b+18,'text-anchor':'middle'});a.textContent=`${lab(m0+1)}〜${lab(m0+2)}月`;
+    if(Math.abs(t)>=2||tested){const tt=mk(svg,'text',{x:x+w/2,y:mean>=0?y(mean)-6:y(mean)+14,'text-anchor':'middle'});tt.textContent=fmt(mean);tt.style.fill='var(--fg)'}
+    const hit=mk(svg,'rect',{x:M.l+i*cw,y:M.t,width:cw,height:H-M.t-M.b,fill:'transparent'});
+    hit.addEventListener('mousemove',e=>tipAt(document.getElementById('ctip'),document.getElementById('cbox'),e,`<div><b>${lab(m0+1)}〜${lab(m0+2)}月に空売り</b></div><div class="row"><span class="k">平均</span><span>${fmt(mean)}</span></div><div class="row"><span class="k">t値</span><span>${t.toFixed(2)}</span></div>`));
+    hit.addEventListener('mouseleave',()=>document.getElementById('ctip').hidden=true)});
+  const n=mk(svg,'text',{x:M.l,y:H-6});n.textContent='空売りしている2か月（前月末に入り、2か月後の月末に手じまう）';
+  document.getElementById('ctitle').textContent=`入る月をずらすと、どうなるか（${nameOf(st.tg)}、ヘッジ：${hname(st.hg)}）`}
+
+function table(){const T=document.getElementById('stats');
+  let h=`<thead><tr><th>対象</th><th>ベータ</th><th>平均</th><th>中央値</th><th>勝った年</th><th>t値</th><th>95%範囲</th><th>最悪の年</th><th>前半</th><th>後半</th></tr></thead><tbody>`;
+  TG.forEach(([k,l])=>{const s=D.stats[k+'|'+st.hg];const b=k==='basket'?`${D.beta['5909']}/${D.beta['5951']}`:D.beta[{corona:'5909',dainichi:'5951',chofu:'5946',rinnai:'5947'}[k]];
+    const ok=s.lo>0;h+=`<tr class="${k===st.tg?'on':''}"><th>${l}</th><td>${b}</td><td>${fmt(s.mean)}</td><td>${fmt(s.med)}</td><td>${Math.round(s.win*s.n/100)}/${s.n}</td><td style="${Math.abs(s.t)>=2?'font-weight:700;color:var(--fg)':''}">${s.t.toFixed(2)}</td><td>${ok?'<span class="ok">':''}${fmt(s.lo)}〜${fmt(s.hi)}${ok?'</span>':''}</td><td>${fmt(s.worst)}</td><td>${fmt(s.a)}（t ${s.at.toFixed(1)}）</td><td>${fmt(s.b)}（t ${s.bt.toFixed(1)}）</td></tr>`});
+  T.innerHTML=h+'</tbody>';document.getElementById('stitle').textContent=`全対象の比較（ヘッジ：${hname(st.hg)}）`}
+function render(){yearly();curve();table()}
+tiles();render();
+
+// ---------- 決算の前後 ----------
+const EV={"win": {"コロナ": [{"tot": -1.71, "pd": -0.078, "t": -1.41, "neg": 17}, {"tot": -2.0, "pd": -0.202, "t": -2.18, "neg": 14}, {"tot": 0.2, "pd": 0.026, "t": 0.14, "neg": 12}, {"tot": 1.04, "pd": 0.025, "t": 0.79, "neg": 5}], "ダイニチ": [{"tot": -1.41, "pd": -0.064, "t": -0.9, "neg": 14}, {"tot": -1.38, "pd": -0.139, "t": -1.03, "neg": 13}, {"tot": -1.09, "pd": -0.14, "t": -1.63, "neg": 16}, {"tot": 4.42, "pd": 0.104, "t": 2.5, "neg": 8}], "長府": [{"tot": -1.09, "pd": -0.05, "t": -1.06, "neg": 14}, {"tot": -1.18, "pd": -0.119, "t": -1.48, "neg": 14}, {"tot": -1.21, "pd": -0.155, "t": -1.93, "neg": 16}, {"tot": -0.12, "pd": -0.003, "t": -0.11, "neg": 10}]}, "path": {"コロナ": {"avg": [3.38, 3.51, 4.01, 3.99, 3.88, 3.32, 2.86, 2.43, 1.97, 1.64, 1.58, 1.31, 1.18, 0.57, 0.0, -0.6, -0.56, -0.42, -0.47, 0.23, 0.23, 0.04, -0.22, -0.18, 1.43, 1.07], "n": 10, "dates": ["2009-05-15", "2010-05-14", "2011-05-09", "2012-05-16", "2013-05-15", "2014-05-15", "2015-05-14", "2016-05-13", "2024-05-10", "2026-05-12"]}, "ダイニチ": {"avg": [-0.32, 0.08, 0.16, 0.53, 0.71, 0.75, -0.27, -1.0, -0.22, -0.05, 0.06, 0.81, 0.4, 0.29, 0.0, -0.02, -0.68, -1.14, -2.49, -2.89, -3.31, -3.86, -3.7, -3.88, -3.61, -4.12], "n": 8, "dates": ["2009-05-08", "2010-05-07", "2011-05-09", "2012-05-09", "2013-05-10", "2014-05-09", "2015-05-08", "2016-05-13"]}}};
+(function(){const names=['コロナ','ダイニチ','長府'];const cols={'コロナ':'var(--s1)','ダイニチ':'var(--s2)','長府':'var(--s3)'};
+ document.getElementById('evleg').innerHTML=names.map(n=>`<span><i class="sq" style="background:${cols[n]}"></i>${n}</span>`).join('');
+ const WL=['4/1〜5/6（決算前）','5/7〜5/20（決算発表の時期）','5/21〜5/31（決算後）','6/1〜7/31（夏）'];
+ const svg=document.getElementById('wchart');const W=1000,H=260,M={l:56,r:12,t:16,b:32};const vals=names.flatMap(n=>EV.win[n].map(o=>o.pd));
+ let lo=Math.min(-0.25,...vals),hi=Math.max(0.15,...vals);lo=Math.floor(lo/0.05)*0.05;hi=Math.ceil(hi/0.05)*0.05;const y=v=>M.t+(hi-v)/(hi-lo)*(H-M.t-M.b);
+ for(let v=lo;v<=hi+1e-9;v+=0.05){const vv=+v.toFixed(2);mk(svg,'line',{x1:M.l,x2:W-M.r,y1:y(vv),y2:y(vv),stroke:Math.abs(vv)<1e-9?'var(--axis)':'var(--grid)'});const t=mk(svg,'text',{x:M.l-8,y:y(vv)+4,'text-anchor':'end'});t.textContent=(vv>0?'+':'')+vv.toFixed(2)+'%'}
+ const gw=(W-M.l-M.r)/4;
+ WL.forEach((lab,gi)=>{const t=mk(svg,'text',{x:M.l+gi*gw+gw/2,y:H-M.b+20,'text-anchor':'middle'});t.textContent=lab;
+   names.forEach((n,i)=>{const o=EV.win[n][gi];const bw=gw*0.2;const x=M.l+gi*gw+gw*0.17+i*(bw+2);bar(svg,x,bw,y(0),y(o.pd),cols[n]);
+     const hit=mk(svg,'rect',{x,y:M.t,width:bw+2,height:H-M.t-M.b,fill:'transparent'});
+     hit.addEventListener('mousemove',e=>tipAt(document.getElementById('wtip'),document.getElementById('wbox'),e,`<div><b>${n}</b> ${lab}</div><div class="row"><span class="k">1日あたり</span><span>${o.pd>0?'+':''}${o.pd.toFixed(3)}%</span></div><div class="row"><span class="k">期間合計</span><span>${fmt(o.tot)}</span></div><div class="row"><span class="k">t値</span><span>${o.t.toFixed(2)}</span></div><div class="row"><span class="k">マイナスの年</span><span>${o.neg}/22</span></div>`));
+     hit.addEventListener('mouseleave',()=>document.getElementById('wtip').hidden=true)})});
+ const ps=document.getElementById('pchart');const PW=1000,PH=280,PM={l:56,r:70,t:16,b:32};const pn=['コロナ','ダイニチ'];const all=pn.flatMap(n=>EV.path[n].avg);
+ let a0=Math.floor(Math.min(...all)),a1=Math.ceil(Math.max(...all));const px=j=>PM.l+(j+15)/25*(PW-PM.l-PM.r),py=v=>PM.t+(a1-v)/(a1-a0)*(PH-PM.t-PM.b);
+ for(let v=a0;v<=a1;v+=1){mk(ps,'line',{x1:PM.l,x2:PW-PM.r,y1:py(v),y2:py(v),stroke:v===0?'var(--axis)':'var(--grid)'});const t=mk(ps,'text',{x:PM.l-8,y:py(v)+4,'text-anchor':'end'});t.textContent=(v>0?'+':'')+v+'%'}
+ for(let j=-15;j<=10;j+=5){const t=mk(ps,'text',{x:px(j),y:PH-PM.b+20,'text-anchor':'middle'});t.textContent=j===0?'発表翌日':(j>0?'+':'')+j+'日'}
+ mk(ps,'line',{x1:px(-0.5),x2:px(-0.5),y1:PM.t,y2:PH-PM.b,stroke:'var(--event)','stroke-dasharray':'2 4'});
+ const tl=mk(ps,'text',{x:px(-0.5)+4,y:PM.t+12});tl.textContent='決算発表';
+ pn.forEach(n=>{const a=EV.path[n].avg;const d=a.map((v,i)=>(i?'L':'M')+px(i-15).toFixed(1)+','+py(v).toFixed(1)).join('');mk(ps,'path',{d,fill:'none',stroke:cols[n],'stroke-width':2.2});
+   const t=mk(ps,'text',{x:px(10)+6,y:py(a[a.length-1])+4});t.textContent=`${n}（${EV.path[n].n}年）`;t.style.fill='var(--fg)';});
+ const hit=mk(ps,'rect',{x:PM.l,y:PM.t,width:PW-PM.l-PM.r,height:PH-PM.t-PM.b,fill:'transparent'});
+ hit.addEventListener('mousemove',e=>{const r=ps.getBoundingClientRect();const j=Math.round(((e.clientX-r.left)/r.width*PW-PM.l)/(PW-PM.l-PM.r)*25-15);if(j<-15||j>10)return;
+   tipAt(document.getElementById('ptip'),document.getElementById('pbox'),e,`<div><b>${j===0?'発表翌日':(j>0?'+':'')+j+'日'}</b></div>`+pn.map(n=>`<div class="row"><span class="k"><i class="sq" style="background:${cols[n]}"></i>${n}</span><span>${fmt(EV.path[n].avg[j+15])}</span></div>`).join(''))});
+ hit.addEventListener('mouseleave',()=>document.getElementById('ptip').hidden=true);
+})();
+</script>
