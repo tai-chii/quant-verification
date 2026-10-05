@@ -228,10 +228,21 @@ def main():
     ap.add_argument("--chunk", type=int, default=100)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--start-frac", type=float, default=0.0,
-                    help="複数PCで分担するとき、ジョブ一覧のどこから始めるか(0〜1)。他PCが済ませた分は飛ばす")
+                    help="同じ担当内で処理順をどこから始めるか(0〜1)。チャンクの所有権は変えない（優先度だけ）")
+    ap.add_argument("--pc-id", type=int, default=None,
+                    help="複数PCで厳密に分担するとき、自分の番号(0始まり)。--pc-countと併用必須。"
+                         "chunk_id %% pc-count == pc-id のチャンクだけをこのPCが担当する（他PCと重複しない）")
+    ap.add_argument("--pc-count", type=int, default=1,
+                    help="分担するPCの台数。例: 2台なら --pc-count 2 を両方に指定し、"
+                         "1台目は --pc-id 0、2台目は --pc-id 1 とする")
     ap.add_argument("--no-merge", action="store_true", help="最後の集計をしない（Windows側用）")
     ap.add_argument("--merge-only", action="store_true", help="計算せず、そろったチャンクを集計だけする")
     args = ap.parse_args()
+    if args.pc_count > 1:
+        if args.pc_id is None:
+            ap.error("--pc-count を2以上にする場合は --pc-id も指定してください（例: --pc-count 2 --pc-id 0）")
+        if not (0 <= args.pc_id < args.pc_count):
+            ap.error(f"--pc-id は 0〜{args.pc_count - 1} の範囲で指定してください")
 
     s = load_prices(args.data)
     s = s[s.index >= pd.Timestamp(args.start, tz="UTC")]
@@ -288,11 +299,20 @@ def main():
     chunk_files = lambda: [f for f in glob.glob(os.path.join(outdir, "chunks", "*.npz"))
                            if re.fullmatch(r"\d{6}\.npz", os.path.basename(f))]
     done0 = len(chunk_files())
+
+    # ---- 複数PC分担: chunk_id % pc_count == pc_id のチャンクだけを「自分の所有」とする。
+    #      他PCと重複しない固定割り当てなので、--start-frac（処理順）と違って衝突しない。
+    if args.pc_count > 1:
+        jobs_mine = [j for j in jobs if j[0] % args.pc_count == args.pc_id]
+        print(f"PC分担: {args.pc_count}台中 {args.pc_id}番目 → 担当チャンク {len(jobs_mine)}/{len(jobs)}", flush=True)
+    else:
+        jobs_mine = jobs
+
     print(f"組合せ: {total:,} 通り（MA期間 {len(periods)} 種 × {args.kinds} × 2本/3本）  "
           f"チャンク {len(jobs)}（済 {done0}）", flush=True)
     t0 = time.time(); done = 0
-    off = int(len(jobs) * args.start_frac) % max(len(jobs), 1)
-    order = jobs[off:] + jobs[:off]
+    off = int(len(jobs_mine) * args.start_frac) % max(len(jobs_mine), 1)
+    order = jobs_mine[off:] + jobs_mine[:off]
     todo = [] if args.merge_only else \
         [j for j in order if not os.path.exists(os.path.join(outdir, "chunks", f"{j[0]:06d}.npz"))]
     todo_n = sum(len(j[3]) for j in todo)
@@ -305,8 +325,14 @@ def main():
             print(f"\r  {done:,}/{todo_n:,}  経過 {el/60:5.1f}分  残り約 {eta/60:5.1f}分   ", end="", flush=True)
     files = sorted(chunk_files())
     if len(files) < len(jobs):
-        print(f"\nこのPCの担当分は終了。全体 {len(files)}/{len(jobs)} チャンク（残りは他PCが計算中か未同期）。"
-              f"\nそろったら Mac で: python3 bt.py --data ... --step {args.step} --merge-only")
+        mine_done = sum(1 for j in jobs_mine if os.path.exists(os.path.join(outdir, "chunks", f"{j[0]:06d}.npz")))
+        if args.pc_count > 1 and mine_done >= len(jobs_mine):
+            print(f"\nこのPCの担当分（{len(jobs_mine)}チャンク）は完了。全体 {len(files)}/{len(jobs)}"
+                  f"（残りは他PCの担当分。未同期なら待ってから再実行で反映されます）。"
+                  f"\n全PC分がそろったら: python3 bt.py --data ... --step {args.step} --merge-only")
+        else:
+            print(f"\nこのPCの担当分は終了。全体 {len(files)}/{len(jobs)} チャンク（残りは他PCが計算中か未同期）。"
+                  f"\nそろったら Mac で: python3 bt.py --data ... --step {args.step} --merge-only")
         return
     if args.no_merge:
         print("\n全チャンクそろいました（集計は Mac 側で行います）"); return
