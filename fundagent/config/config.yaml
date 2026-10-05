@@ -1,0 +1,66 @@
+# fundagent 全体設定
+
+paths:
+  db: data/fundagent.db
+  # Obsidian vault 側（知識層）の出力先
+  vault_dir: ~/ワークスペース/vault/40_市場/ファンダ
+  report_subdir: レポート
+
+llm:
+  provider: anthropic
+  # モデルIDは `python run.py models` で最新一覧を確認して書き換える
+  triage_model: claude-haiku-4-5        # 安い方。記事の選別だけ
+  extract_model: claude-sonnet-4-5      # 賢い方。シグナル抽出だけ
+  triage_batch_size: 15                 # 1リクエストに詰める記事数
+  extract_max_articles: 40              # 1サイクルで抽出にかける最大記事数
+  max_output_tokens: 8000
+  temperature: 0
+
+collect:
+  lookback_hours: 12        # このサイクルで拾う記事の時間窓
+  max_per_source: 60
+  timeout_sec: 20
+  user_agent: "fundagent/0.1 (personal research)"
+
+# 情報源tierごとの重み。集約スコアに掛かる
+tier_weights:
+  S: 1.0
+  A: 0.7
+  B: 0.4
+  C: 0.15
+
+aggregate:
+  # 同一方向のシグナルを束ねるときの設定
+  recency_half_life_hours: 6     # 古い記事の重みを半減させる時間
+  allow_off_universe: false      # universe外の銘柄を許すか
+  # 合成スコア -> Tier のしきい値（要検証。初期値は暫定）
+  tier_thresholds:
+    A: 0.30
+    B: 0.15
+    C: 0.06
+  min_independent_sources:
+    A: 2      # Tier Aには独立した2媒体以上を要求（同じ通信社の転載は1と数える）
+    B: 1
+    C: 1
+
+# 情報源の信頼度を実績から測る設定（run.py weights）
+reliability:
+  prior_strength: 30   # 「エッジなし」という事前分布の強さ。n がこれを超えるまで重みはほぼ動かない
+  weight_floor: 0.05   # 重みの下限。0にすると完全に無視され、実績の更新も止まる
+  weight_cap: 2.0      # 重みの上限。1ソースが結論を支配するのを防ぐ
+
+verify:
+  horizons_days: [1, 5, 20]
+  # 往復コスト（%）。エッジ判定に必ず含める
+  cost_pct:
+    jp_stock: 0.20
+    jp_index: 0.10
+    fx: 0.02
+  # エントリーは「シグナル確定時刻より後の、最初の取引可能な始値」
+  entry_rule: next_open
+  # ベースライン: 同期間の TOPIX(1306.T) / 対象自身の無条件ロング
+  baseline_symbol: "1306.T"
+
+report:
+  max_signals_per_tier: 8
+  include_rejected: true    # 却下された候補も残す（検証・記事素材のため）

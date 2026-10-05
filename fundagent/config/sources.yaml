@@ -1,0 +1,118 @@
+# 情報源定義
+# tier: 情報の信頼度ランク。S=一次情報, A=通信社/公共放送, B=経済メディア, C=参考
+# weight: 集約時の重み。tierに対応させる（config.yaml側で上書き可）
+#
+# 【重要】ここに載せるのは「配信を目的に公開されているフィード/API」だけ。
+# 有料記事の本文取得や、robots.txtで禁止されたページのスクレイピングは行わない。
+# 日経など有料媒体は「見出しを人間が読む」用であり、本システムは扱わない。
+
+sources:
+  # ---------- S: 一次情報（発表そのもの。最も信頼度が高い） ----------
+  - id: boj
+    name: 日本銀行 公表資料
+    tier: S
+    kind: rss
+    url: https://www.boj.or.jp/rss/whatsnew.xml
+    markets: [FX, JP]
+    note: 金融政策決定会合・総裁会見・審議委員発言。ドル円の最大ドライバ。
+
+  - id: fed
+    name: FRB Press Releases
+    tier: S
+    kind: rss
+    url: https://www.federalreserve.gov/feeds/press_all.xml
+    markets: [FX, US]
+    note: FOMC声明・議事要旨。英語。
+
+  - id: fed_speeches
+    name: FRB Speeches
+    tier: S
+    kind: rss
+    url: https://www.federalreserve.gov/feeds/speeches.xml
+    markets: [FX, US]
+
+  - id: tdnet
+    name: TDnet 適時開示
+    tier: S
+    kind: tdnet_api
+    url: https://webapi.yanoshin.jp/webapi/tdnet/list/recent.json
+    markets: [JP]
+    note: 決算・上方修正・自社株買い・業務提携など。個別銘柄シグナルの本命。
+
+  - id: mof
+    name: 財務省 新着
+    tier: S
+    kind: rss
+    url: https://www.mof.go.jp/rss/new.xml
+    markets: [FX, JP]
+    enabled: false
+    note: 為替介入・国債発行。URL変更されがちなので既定OFF。
+
+  # ---------- A: 通信社・公共放送 ----------
+  - id: nhk_econ
+    name: NHK 経済ニュース
+    tier: A
+    kind: rss
+    url: https://www.nhk.or.jp/rss/news/cat5.xml
+    markets: [JP, FX]
+
+  # ---------- B: 経済メディア ----------
+  - id: toyokeizai
+    name: 東洋経済オンライン
+    tier: B
+    kind: rss
+    url: https://toyokeizai.net/list/feed/rss
+    markets: [JP]
+
+  - id: zaikei
+    name: 財経新聞
+    tier: B
+    kind: rss
+    url: https://www.zaikei.co.jp/rss/
+    markets: [JP]
+    enabled: false
+
+  - id: diamond
+    name: ダイヤモンド・オンライン
+    tier: B
+    kind: rss
+    url: https://diamond.jp/list/feed/rss/dol
+    markets: [JP]
+    enabled: false
+
+  # ---------- C: 二次情報（発信者の相場観）----------
+  # role: opinion を付けると、triage/extract が「書き手が明示した方向だけを抜く」挙動に変わる。
+  # tier は初期値であって最終的な重みではない。`run.py weights` が実績で上書きする。
+  # ここに足すときの最低条件:
+  #   1) robots.txt で禁止されていない（collect が毎回自動で確認する）
+  #   2) 方向が明示されている（「押し目買い」「〇〇まで下落を想定」など）
+  #   3) 更新が定期的（月に数本では、重みが動くまで何年もかかる）
+  #   4) 後出しでない（相場が動いた後の解説記事は的中率が測れない）
+
+  # --- 例: RSSがあるブログ（推奨。壊れにくい） ---
+  # - id: example_blog
+  #   name: 例・FXブログ
+  #   tier: C
+  #   role: opinion
+  #   kind: rss
+  #   url: https://example.com/feed
+  #   markets: [FX]
+
+  # --- 例: RSSがないブログ（html_list。セレクタはサイトごとに要調整・壊れやすい） ---
+  # kissfx.com は 2026-09-13 時点で RSS が見つからず（/feed も robots.txt も 404）、
+  # 記事も「週間スケジュール」「スプレッド比較」など方向を示さないものが中心だった。
+  # 方向シグナル源としては条件2・3を満たしていないので既定OFF。
+  # 有効化する前に、実際の記事で方向が明示されているか自分の目で確認すること。
+  - id: kissfx
+    name: KISS FX
+    tier: C
+    role: opinion
+    kind: html_list
+    url: https://kissfx.com/
+    markets: [FX]
+    enabled: false
+    selectors:
+      item: article
+      title: h2
+      link: a[href]
+      date: time

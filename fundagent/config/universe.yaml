@@ -1,0 +1,85 @@
+# 監視ユニバース。LLMにはこのリストを渡し「この中から選べ」と指示する。
+# universe外の銘柄を出したい場合は config.yaml の allow_off_universe を true に。
+# yahoo列 = yfinanceで使うシンボル。
+
+fx:
+  - {symbol: USDJPY, yahoo: "JPY=X",    name: ドル円}
+  - {symbol: EURJPY, yahoo: "EURJPY=X", name: ユーロ円}
+  - {symbol: EURUSD, yahoo: "EURUSD=X", name: ユーロドル}
+  - {symbol: GBPJPY, yahoo: "GBPJPY=X", name: ポンド円}
+  - {symbol: AUDJPY, yahoo: "AUDJPY=X", name: 豪ドル円}
+
+jp_index:
+  - {symbol: "N225", yahoo: "^N225", name: 日経225}
+  - {symbol: "TOPIX", yahoo: "1306.T", name: TOPIX連動ETF}
+
+jp_stocks:
+  - {symbol: "7203", yahoo: "7203.T", name: トヨタ自動車, sector: 自動車}
+  - {symbol: "7267", yahoo: "7267.T", name: ホンダ, sector: 自動車}
+  - {symbol: "7201", yahoo: "7201.T", name: 日産自動車, sector: 自動車}
+  - {symbol: "6758", yahoo: "6758.T", name: ソニーグループ, sector: 電機}
+  - {symbol: "6501", yahoo: "6501.T", name: 日立製作所, sector: 電機}
+  - {symbol: "6502", yahoo: "6502.T", name: 東芝, sector: 電機}
+  - {symbol: "6752", yahoo: "6752.T", name: パナソニックHD, sector: 電機}
+  - {symbol: "6503", yahoo: "6503.T", name: 三菱電機, sector: 電機}
+  - {symbol: "6857", yahoo: "6857.T", name: アドバンテスト, sector: 半導体}
+  - {symbol: "8035", yahoo: "8035.T", name: 東京エレクトロン, sector: 半導体}
+  - {symbol: "6920", yahoo: "6920.T", name: レーザーテック, sector: 半導体}
+  - {symbol: "6963", yahoo: "6963.T", name: ローム, sector: 半導体}
+  - {symbol: "4063", yahoo: "4063.T", name: 信越化学工業, sector: 化学}
+  - {symbol: "4188", yahoo: "4188.T", name: 三菱ケミカルG, sector: 化学}
+  - {symbol: "4568", yahoo: "4568.T", name: 第一三共, sector: 医薬}
+  - {symbol: "4502", yahoo: "4502.T", name: 武田薬品工業, sector: 医薬}
+  - {symbol: "4519", yahoo: "4519.T", name: 中外製薬, sector: 医薬}
+  - {symbol: "8306", yahoo: "8306.T", name: 三菱UFJ, sector: 銀行}
+  - {symbol: "8316", yahoo: "8316.T", name: 三井住友FG, sector: 銀行}
+  - {symbol: "8411", yahoo: "8411.T", name: みずほFG, sector: 銀行}
+  - {symbol: "8766", yahoo: "8766.T", name: 東京海上HD, sector: 保険}
+  - {symbol: "8591", yahoo: "8591.T", name: オリックス, sector: その他金融}
+  - {symbol: "8604", yahoo: "8604.T", name: 野村HD, sector: 証券}
+  - {symbol: "8601", yahoo: "8601.T", name: 大和証券G, sector: 証券}
+  - {symbol: "8058", yahoo: "8058.T", name: 三菱商事, sector: 商社}
+  - {symbol: "8031", yahoo: "8031.T", name: 三井物産, sector: 商社}
+  - {symbol: "8053", yahoo: "8053.T", name: 住友商事, sector: 商社}
+  - {symbol: "8002", yahoo: "8002.T", name: 丸紅, sector: 商社}
+  - {symbol: "8001", yahoo: "8001.T", name: 伊藤忠商事, sector: 商社}
+  - {symbol: "9432", yahoo: "9432.T", name: NTT, sector: 通信}
+  - {symbol: "9433", yahoo: "9433.T", name: KDDI, sector: 通信}
+  - {symbol: "9434", yahoo: "9434.T", name: ソフトバンク, sector: 通信}
+  - {symbol: "9984", yahoo: "9984.T", name: ソフトバンクG, sector: 投資}
+  - {symbol: "6098", yahoo: "6098.T", name: リクルートHD, sector: サービス}
+  - {symbol: "4661", yahoo: "4661.T", name: オリエンタルランド, sector: サービス}
+  - {symbol: "9983", yahoo: "9983.T", name: ファーストリテイリング, sector: 小売}
+  - {symbol: "3382", yahoo: "3382.T", name: セブン&アイ, sector: 小売}
+  - {symbol: "2914", yahoo: "2914.T", name: JT, sector: 食品}
+  - {symbol: "2802", yahoo: "2802.T", name: 味の素, sector: 食品}
+  - {symbol: "4901", yahoo: "4901.T", name: 富士フイルムHD, sector: 化学}
+  - {symbol: "6301", yahoo: "6301.T", name: コマツ, sector: 機械}
+  - {symbol: "6367", yahoo: "6367.T", name: ダイキン工業, sector: 機械}
+  - {symbol: "6273", yahoo: "6273.T", name: SMC, sector: 機械}
+  - {symbol: "7011", yahoo: "7011.T", name: 三菱重工業, sector: 機械}
+  - {symbol: "7013", yahoo: "7013.T", name: IHI, sector: 機械}
+  - {symbol: "7012", yahoo: "7012.T", name: 川崎重工業, sector: 機械}
+  - {symbol: "5401", yahoo: "5401.T", name: 日本製鉄, sector: 鉄鋼}
+  - {symbol: "5411", yahoo: "5411.T", name: JFEHD, sector: 鉄鋼}
+  - {symbol: "9101", yahoo: "9101.T", name: 日本郵船, sector: 海運}
+  - {symbol: "9104", yahoo: "9104.T", name: 商船三井, sector: 海運}
+  - {symbol: "9107", yahoo: "9107.T", name: 川崎汽船, sector: 海運}
+  - {symbol: "9201", yahoo: "9201.T", name: 日本航空, sector: 空運}
+  - {symbol: "9202", yahoo: "9202.T", name: ANAHD, sector: 空運}
+  - {symbol: "9020", yahoo: "9020.T", name: JR東日本, sector: 鉄道}
+  - {symbol: "9022", yahoo: "9022.T", name: JR東海, sector: 鉄道}
+  - {symbol: "1605", yahoo: "1605.T", name: INPEX, sector: 鉱業}
+  - {symbol: "5020", yahoo: "5020.T", name: ENEOSHD, sector: 石油}
+  - {symbol: "9501", yahoo: "9501.T", name: 東京電力HD, sector: 電力}
+  - {symbol: "9531", yahoo: "9531.T", name: 東京ガス, sector: ガス}
+  - {symbol: "8801", yahoo: "8801.T", name: 三井不動産, sector: 不動産}
+  - {symbol: "8802", yahoo: "8802.T", name: 三菱地所, sector: 不動産}
+  - {symbol: "1928", yahoo: "1928.T", name: 積水ハウス, sector: 建設}
+  - {symbol: "1801", yahoo: "1801.T", name: 大成建設, sector: 建設}
+  - {symbol: "4755", yahoo: "4755.T", name: 楽天グループ, sector: ネット}
+  - {symbol: "4689", yahoo: "4689.T", name: LINEヤフー, sector: ネット}
+  - {symbol: "3659", yahoo: "3659.T", name: ネクソン, sector: ゲーム}
+  - {symbol: "7974", yahoo: "7974.T", name: 任天堂, sector: ゲーム}
+  - {symbol: "9766", yahoo: "9766.T", name: コナミG, sector: ゲーム}
+  - {symbol: "7832", yahoo: "7832.T", name: バンダイナムコHD, sector: ゲーム}

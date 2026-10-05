@@ -1,0 +1,11 @@
+data/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.bak
+# APIキーは環境変数のみ。ファイルに書かない
+.env
+
+research/output/zz.pkl
