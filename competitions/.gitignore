@@ -1,0 +1,24 @@
+# このリポジトリは kaggle-work/ と numerai/ のみを対象とする
+*
+!kaggle-work/
+!kaggle-work/**
+!numerai/
+!numerai/**
+!.gitignore
+!README.md
+
+# --- kaggle-work 内の除外（コンペデータ・他者の解法・バイナリキャッシュ） ---
+kaggle-work/*/data/
+kaggle-work/*/raw_solutions/
+kaggle-work/*/submissions/
+kaggle-work/*/notebooks/*.pkl
+
+# --- numerai 内の除外（大容量データ・モデル重み・third-party公式リポジトリ） ---
+numerai/cache/
+numerai/uploads/
+numerai/models/
+numerai/data/
+numerai/__pycache__/
+numerai/example-scripts/
+numerai/*.pkl
+numerai/*.pt
