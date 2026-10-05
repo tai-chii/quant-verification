@@ -1,0 +1,3 @@
+date,model,metric,eras,mean,std,spearman_mean,sharpe,positive,max_drawdown
+2026-10-03,baseline_small,numerai_corr・エンバーゴ12,640,0.01759697515032809,0.014434462546457218,0.018850560452201487,1.2190945865627034,0.88125,-0.07810403976862723
+2026-10-03,nn_trial_05,numerai_corr_approx・BMC_approx・エンバーゴ12,214,0.004342,0.012273,0.000466,0.002087,-1.1e-05,0.00043,0.9765,-0.003928,0.002605,0.5251,基準と区別できない,20,"[128, 64]",target,small
