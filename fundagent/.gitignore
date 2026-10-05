@@ -9,3 +9,5 @@ __pycache__/
 .env
 
 research/output/zz.pkl
+# 取引明細の生ダンプ（コードの理解には不要。要約は各検証のREADME/ログに記載）
+research/output/*.csv

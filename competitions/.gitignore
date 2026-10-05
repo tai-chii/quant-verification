@@ -22,3 +22,12 @@ numerai/__pycache__/
 numerai/example-scripts/
 numerai/*.pkl
 numerai/*.pt
+
+# --- 生データ・運用ログ（コードの理解に不要なもの） ---
+numerai/results/*_per_era.csv
+numerai/results/*_per_era.partial.csv
+numerai/results/*.partial.csv
+numerai/results/*.parquet
+numerai/results/*_log.txt
+numerai/results/*_status.txt
+kaggle-work/*/notebooks/*_log*.txt
