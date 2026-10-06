@@ -22,6 +22,7 @@ EURUSD H4  MAクロス 全パターン検証（ロング/ショート両方）
   途中で止めても同じコマンドで再実行すれば続きから再開します。
 """
 import argparse, os, sys, time, json, itertools, glob, re, tempfile
+import hashlib, subprocess
 import numpy as np
 import pandas as pd
 from multiprocessing import Pool
@@ -34,6 +35,30 @@ COLS = ["ma", "n_ma", "S", "M", "L",
         "trades_IS", "ev_IS", "sharpe_IS", "trades_OOS", "ev_OOS", "sharpe_OOS",
         "p_shift", "sharpe_dm", "sharpe_dm_IS", "sharpe_dm_OOS"]
 MA_KINDS = ["SMA", "EMA"]
+
+# ---------------------------------------------------------------- 再現性
+def _code_version():
+    """このスクリプトのgitコミットhash（短縮）。dirtyならサフィックスを付ける。取得できなければ'unknown'。"""
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        h = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"],
+                                     cwd=here, stderr=subprocess.DEVNULL).decode().strip()
+        dirty = subprocess.call(["git", "diff", "--quiet", "--", os.path.basename(__file__)],
+                                 cwd=here, stderr=subprocess.DEVNULL) != 0
+        return h + ("-dirty" if dirty else "")
+    except Exception:
+        return "unknown"
+
+def _file_sha256(path):
+    """データファイルのsha256（先頭16桁）。同じ結果が同じデータから出たことを後で確かめる用。"""
+    try:
+        h = hashlib.sha256()
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        return h.hexdigest()[:16]
+    except Exception:
+        return "unknown"
 
 # ---------------------------------------------------------------- データ
 def load_prices(path):
@@ -290,7 +315,10 @@ def main():
     meta = dict(start=str(s.index[0]), end=str(s.index[-1]), bars=len(s), split_bar=cfg["split"],
                 split_date=str(s.index[cfg["split"]]), periods=periods, kinds=args.kinds,
                 cost_pips=args.cost_pips, n_shifts=args.n_shifts, bpy=BPY,
-                bh_pips=float((s.values[-1] - s.values[0]) / PIP))
+                bh_pips=float((s.values[-1] - s.values[0]) / PIP),
+                # --- 再現性（2026-10-06 追加）: 同じ結果が同じコード・データ・シードから出たことを後で確かめる用 ---
+                seed=args.seed, code_version=_code_version(),
+                data_file=os.path.basename(args.data), data_sha256=_file_sha256(args.data))
     if not os.path.exists(os.path.join(outdir, "meta.json")):
         json.dump(meta, open(os.path.join(outdir, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
