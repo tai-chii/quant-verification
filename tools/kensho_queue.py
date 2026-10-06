@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""検証キューの機械的な操作（金融工学の標準手順H・G用）。判断は含まない。2026-10-05 作成。
+"""検証キューの機械的な操作（金融工学の標準手順H・G用）。判断は含まない。2026-10-05 作成、2026-10-07 書き込みガード追加。
 使い方（ワークスペース直下からでも、どこからでも）:
   python3 kensho_queue.py next              # 補充(c)→並べ直し→「実行中」が無ければ待ちの1位を実行中にして表示
   python3 kensho_queue.py show              # 待ちの表を表示するだけ
@@ -12,6 +12,10 @@
   python3 kensho_queue.py tag Q081=opus Q082=sonnet   # 担当をまとめて付け直す（Opus が行の文面だけ見て判断）
   python3 kensho_queue.py escalate Q081 "理由"   # Sonnet が怪しい結果を見つけたとき: Q081 を未確定で完了し、Opus の見直し行を最上位に足す
 担当（2026-10-05 追加）: 待ちの表の最後の列。既定は a・接続・見直し=opus、それ以外=sonnet。
+書き込みガード（2026-10-07 追加）: このプロセスが読み込んでから書き込むまでの間に、
+検証キュー.md / 入荷台帳.csv が他（別PC・別セッション）から更新されていたら、
+上書きせずにエラーで止まる。複数PCをSyncthingで同期している運用での事故防止。
+エラーになったら、もう一度同じコマンドを実行し直せば、他の変更を踏まえた上でやり直せる。
 """
 import os, re, sys, csv, datetime as dt, unicodedata as U
 HOME = os.path.expanduser('~')
@@ -38,7 +42,28 @@ def tanto(kind, tgt):
     return 'sonnet'
 DONE_HDR = '| ID | 種類 | 対象 | 完了日 | 結果 |'
 
+# ---------------------------------------------------- 書き込みガード
+def _mtime(path):
+    try: return os.path.getmtime(path)
+    except FileNotFoundError: return None
+def _check_unchanged(path, since):
+    """since（このプロセスが最後に読んだ時点のmtime）から変わっていたら中断。
+    他PC・別セッションが先に書き込んだ可能性があるので、黙って上書きしない。"""
+    now = _mtime(path)
+    if now != since:
+        raise SystemExit(
+            f'中断: {os.path.basename(path)} が読み込み後に他から更新されている（別PC・別セッションの可能性）。\n'
+            f'上書きを避けて何もしなかった。最新の内容を見てから、同じコマンドをもう一度実行してください。'
+        )
+def _atomic_write(path, content):
+    """一時ファイルに書いてからリネーム。Syncthingが書き込み途中のファイルを配ってしまう事故を防ぐ。"""
+    tmp = path + f'.tmp{os.getpid()}'
+    with open(tmp, 'w', encoding='utf-8', newline='') as f:
+        f.write(content)
+    os.replace(tmp, path)  # 同一ファイルシステム内でのrenameはアトミック
+
 def load():
+    mtime0 = _mtime(QP)
     L = open(QP, encoding='utf-8').read().split('\n')
     if WAIT_HDR not in L:  # 担当列がない古い形式なら列を足す
         i = L.index(OLD_HDR); L[i] = WAIT_HDR; L[i + 1] = L[i + 1] + '---|'
@@ -46,13 +71,14 @@ def load():
     while w1 < len(L) and L[w1].startswith('|'): w1 += 1
     d0 = L.index(DONE_HDR) + 2
     rows = [[c.strip() for c in l.split('|')[1:-1]] for l in L[w0:w1]]
-    return L, w0, w1, d0, rows
-def save(L, w0, w1, rows):
+    return L, w0, w1, d0, rows, mtime0
+def save(L, w0, w1, rows, mtime0):
+    _check_unchanged(QP, mtime0)
     for r in rows: r[8:] = [r[8] if len(r) > 8 and r[8] in ('opus', 'sonnet') else tanto(r[2], r[3])]
     out = ['| ' + ' | '.join(r) + ' |' for r in rows]
     L[w0:w1] = out; s = '\n'.join(L)
     s = re.sub(r'^更新日: .*$', f'更新日: {TODAY}', s, count=1, flags=re.M)
-    open(QP, 'w', encoding='utf-8').write(s)
+    _atomic_write(QP, s)
 def next_id():
     s = open(QP, encoding='utf-8').read(); n = max(int(x) for x in re.findall(r'\| Q(\d{3}) \|', s)); return f'Q{n + 1:03d}'
 def inv_rows():
@@ -93,11 +119,14 @@ def rerank(rows):
 def show(rows):
     for r in rows: print(' | '.join([r[0], r[1], r[6], (r[8] if len(r) > 8 else '?'), r[2], r[3][:70], r[4][:30], r[5]]))
 def to_done(qid, kind, tgt, res):
+    mtime0 = _mtime(QP)
     L = open(QP, encoding='utf-8').read().split('\n'); d0 = L.index(DONE_HDR) + 2
-    L.insert(d0, f'| {qid} | {kind} | {tgt} | {TODAY} | {res} |'); open(QP, 'w', encoding='utf-8').write('\n'.join(L))
+    L.insert(d0, f'| {qid} | {kind} | {tgt} | {TODAY} | {res} |')
+    _check_unchanged(QP, mtime0)
+    _atomic_write(QP, '\n'.join(L))
 
 cmd = sys.argv[1] if len(sys.argv) > 1 else 'show'
-L, w0, w1, d0, rows = load()
+L, w0, w1, d0, rows, mtime0 = load()
 if cmd == 'show': show(rows)
 elif cmd == 'next':
     run = [r for r in rows if r[6].startswith('実行中')]
@@ -105,42 +134,46 @@ elif cmd == 'next':
     added = refill(rows); rerank(rows)
     top = next((r for r in rows if r[6] == '待ち'), None)
     if top: top[6] = f'実行中（{NOW} 開始）'
-    save(L, w0, w1, rows)
+    save(L, w0, w1, rows, mtime0)
     if added: print('補充（c）: 入荷台帳ID', ', '.join(added))
     print('a・b・d の補充（アイデア候補の未着手・接続ログの保留・次に読むの優先）は判断を含むので、必要なら手で足す（add）')
     print('\n実行する行:' if top else '\n待ちの行がない（標準手順H の e: 新しい案を1つ提案して止まる）'); top and show([top])
     if top: print(f'担当: {top[8]}')
 elif cmd == 'done':
-    qid, res = sys.argv[2], sys.argv[3]; r = next(r for r in rows if r[1] == qid); rows.remove(r); rerank(rows); save(L, w0, w1, rows)
+    qid, res = sys.argv[2], sys.argv[3]; r = next(r for r in rows if r[1] == qid); rows.remove(r); rerank(rows); save(L, w0, w1, rows, mtime0)
     to_done(qid, r[2], r[3], res); print('完了へ移した:', qid)
 elif cmd == 'escalate':
     qid, why = sys.argv[2], sys.argv[3]; r = next(r for r in rows if r[1] == qid); rows.remove(r)
     nid = next_id_local(rows, open(QP, encoding='utf-8').read())
     rows.append(['0', nid, r[2].split('（')[0] + '（Opus見直し）', r[3], f'{qid} の見直し: {why}', '↑ 見直し', '待ち', TODAY, 'opus'])
-    rerank(rows); save(L, w0, w1, rows)
+    rerank(rows); save(L, w0, w1, rows, mtime0)
     to_done(qid, r[2], r[3], f'未確定・Opus見直しへ {nid}（{why}）'); print(f'{qid} を未確定で完了、見直し {nid}（opus）を最上位に足した')
 elif cmd == 'tag':
     for a in sys.argv[2:]:
         qid, t = a.split('=', 1)
         if t not in ('opus', 'sonnet'): raise SystemExit(f'担当は opus か sonnet: {a}')
         next(r for r in rows if r[1] == qid)[8:] = [t]
-    save(L, w0, w1, rows); print('担当を更新:', ' '.join(sys.argv[2:]))
+    save(L, w0, w1, rows, mtime0); print('担当を更新:', ' '.join(sys.argv[2:]))
 elif cmd == 'release':
     qid = sys.argv[2]; note = sys.argv[3] if len(sys.argv) > 3 else ''
     r = next(r for r in rows if r[1] == qid); r[6] = '待ち'
     if note: r[4] = (r[4] + f'（途中: {note}）')
-    save(L, w0, w1, rows); print('待ちに戻した:', qid)
+    save(L, w0, w1, rows, mtime0); print('待ちに戻した:', qid)
 elif cmd == 'add':
     kind, tgt, why = sys.argv[2], sys.argv[3], sys.argv[4] if len(sys.argv) > 4 else ''
-    qid = next_id(); rows.append(['0', qid, kind, tgt, why, '', '待ち', TODAY] + sys.argv[5:6]); rerank(rows); save(L, w0, w1, rows); print('足した:', qid)
+    qid = next_id(); rows.append(['0', qid, kind, tgt, why, '', '待ち', TODAY] + sys.argv[5:6]); rerank(rows); save(L, w0, w1, rows, mtime0); print('足した:', qid)
 elif cmd == 'inv':
-    iid = sys.argv[2]; kv = dict(a.split('=', 1) for a in sys.argv[3:]); inv, fn = inv_rows()
+    iid = sys.argv[2]; kv = dict(a.split('=', 1) for a in sys.argv[3:])
+    ip_mtime0 = _mtime(IP); inv, fn = inv_rows()
     for x in inv:
         if x['ID'] == iid:
             for k, v in kv.items():
                 if k not in fn: raise SystemExit(f'列がない: {k}')
                 x[k] = v
-    with open(IP, 'w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=fn); w.writeheader(); w.writerows(inv)
+    _check_unchanged(IP, ip_mtime0)
+    import io
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=fn); w.writeheader(); w.writerows(inv)
+    _atomic_write(IP, buf.getvalue())
     print('入荷台帳を更新:', iid, kv)
 else: print(__doc__)
