@@ -156,6 +156,56 @@ fig_to_b64(fig, f"前半/後半の再現性（境目 {meta['split_date'][:10]}�
 rep_df = pd.DataFrame(rep_rows).set_index("family")
 summary["reproducibility"] = rep_df.round(4).reset_index().to_dict("records")
 
+# ---------------- 6.5 walk-forward（期間をN分割し、どの区間でも崩れていないか）
+wf_cols = sorted([c for c in df.columns if c.startswith("sharpe_wf")])
+has_wf = len(wf_cols) >= 2
+if has_wf:
+    wf = df[wf_cols].values
+    df["wf_min"] = wf.min(axis=1)
+    df["wf_all_positive"] = (wf > 0).all(axis=1)
+
+    wf_rows = []
+    for fam, g in df.groupby("family"):
+        # 隣り合う区間どうしの順位相関の平均（時期によらず「良い設定は良いまま」かを見る）
+        # ※ pandas の DataFrame.corr を使う（Series.corr(method="spearman") は scipy 依存だが、
+        #    こちらは依存せずランクで計算できるため、他の箇所と同じ経路に揃える）
+        cm = g[wf_cols].corr(method="spearman").values
+        rhos = [cm[i, i + 1] for i in range(len(wf_cols) - 1)]
+        wf_rows.append(dict(
+            family=fam,
+            wf_pct_all_positive=g["wf_all_positive"].mean() * 100,
+            wf_min_sharpe_median=g["wf_min"].median(),
+            wf_min_sharpe_best=g["wf_min"].max(),
+            wf_adjacent_fold_spearman=float(np.nanmean(rhos)),
+        ))
+    wf_df = pd.DataFrame(wf_rows).set_index("family")
+    summary["walk_forward"] = dict(
+        n_folds=len(wf_cols),
+        by_family=wf_df.round(4).reset_index().to_dict("records"),
+    )
+
+    fig, axs = plt.subplots(1, len(fam_df), figsize=(4 * len(fam_df), 3.6), squeeze=False)
+    for a, fam in zip(axs[0], fam_df.index):
+        g = df[df.family == fam]
+        a.boxplot([g[c] for c in wf_cols], showfliers=False)
+        a.set_xticks(range(1, len(wf_cols) + 1))
+        a.set_xticklabels([str(i + 1) for i in range(len(wf_cols))])
+        a.axhline(0, c="k", lw=.8)
+        a.set_title(f"{fam}\n全区間プラス {wf_df.loc[fam,'wf_pct_all_positive']:.1f}%", fontsize=9)
+        a.set_xlabel("区間（古い→新しい）"); a.set_ylabel("シャープ")
+    fig_to_b64(fig, f"walk-forward：期間を{len(wf_cols)}分割した区間別シャープ",
+               "各箱はその区間だけのシャープの分布。IS/OOSの2分割より厳しく、"
+               "特定の区間だけで勝っている組合せ（外れ値頼み）を見分けられる。"
+               "wf_pct_all_positiveは全区間でプラスだった組合せの割合。")
+
+    # 全区間プラス（IS/OOSが両方プラスより厳しい条件）の上位
+    wf_robust = df[df["wf_all_positive"]].sort_values("wf_min", ascending=False).head(30)
+    wf_robust_cols = ["family", "S", "M", "L", "trades", "ev", "sharpe"] + wf_cols + ["wf_min"]
+    summary["wf_robust30"] = wf_robust[wf_robust_cols].round(3).to_dict("records")
+else:
+    wf_df = None
+    summary["walk_forward"] = None
+
 # ---------------- 7. 上位組合せ
 cols = ["family", "S", "M", "L", "trades", "ev", "winrate", "pf", "sharpe", "maxdd", "ev_long", "ev_short",
         "sharpe_IS", "sharpe_OOS", "p_shift"]
@@ -183,6 +233,7 @@ img{{max-width:100%}}.note{{color:#666;font-size:13px}}</style>
 <p class="note">reality_check_p：全組合せ中の最良シャープが「偶然の最良」を上回る確率の裏返し（小さいほど本物の可能性）。pct_p05：個別p値&lt;0.05の割合（偶然なら約5%）。</p>
 <h2>前半/後半の再現性</h2>{tbl(rep_df)}
 <p class="note">rho_dm / *_dm：各期間の平均騰落（トレンドの偏り）を差し引いた「タイミングだけ」の成績。ユーロドルが一方向に動いた期間では、売り（買い）に偏った組合せが前半・後半とも勝ってしまうため、こちらで再現性を見るのが本命。</p>
+{"<h2>walk-forward（" + str(len(wf_cols)) + "分割）</h2>" + tbl(wf_df) + "<p class='note'>IS/OOSの2分割より厳しい再現性チェック。wf_min_sharpe_median：組合せごとの「一番悪かった区間」のシャープの中央値（高いほど、どの時期でも崩れていない）。wf_adjacent_fold_spearman：隣り合う区間どうしの順位相関（高いほど「良い設定」が時期を超えて安定）。</p>" if has_wf else ""}
 <h2>パラメータと成績の順位相関（Spearman）</h2>{tbl(corr_df.pivot(index='feature', columns='family', values='rho_sharpe'))}
 <p class="note">値はシャープとの順位相関。期待値との相関は summary.json の param_correlation を参照。</p>
 <h2>3本MA：間隔の型別</h2>{tbl(spacing)}
@@ -191,5 +242,8 @@ for t, b, n in figs:
     html.append(f"<h2>{t}</h2><img src='data:image/png;base64,{b}'>" + (f"<p class='note'>{n}</p>" if n else ""))
 html.append(f"<h2>シャープ上位30</h2>{tbl(top.set_index('family'))}")
 html.append(f"<h2>前半・後半ともにプラスで、悪い方の半分が最も良い30組（頑健さ順）</h2>{tbl(rob.set_index('family'))}")
+if has_wf:
+    html.append(f"<h2>walk-forward: 全区間プラスで、最悪区間が最も良い30組（最も厳しい頑健さ順）</h2>"
+                f"{tbl(wf_robust.set_index('family'))}")
 open(os.path.join(d, "report.html"), "w").write("\n".join(html))
 print("出力:", os.path.join(d, "report.html"), "/ summary.json")

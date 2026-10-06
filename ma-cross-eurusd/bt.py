@@ -15,6 +15,8 @@ EURUSD H4  MAクロス 全パターン検証（ロング/ショート両方）
     場合のシャープを K 通り計算（FFTで全シフトを一括計算）
       - 組合せごとの p値
       - 全組合せ中の最大シャープの帰無分布（データスヌーピング補正）
+  ・walk-forward（N_FOLDS分割）: 期間をN_FOLDS個の連続区間に分け、区間ごとのシャープを計算
+    → 「たまたま前半後半で両方勝った」より厳しく、どの時期でも崩れていないかを見る（2026-10-06 追加）
 
 使い方
   python3 bt.py --data data/eurusd_h4.csv --budget-hours 3     # 予算に合わせて刻みを自動決定
@@ -29,11 +31,13 @@ from multiprocessing import Pool
 
 PIP = 1e-4
 BPY = 6 * 5 * 52            # H4の年間本数（年率換算用）
+N_FOLDS = 4                  # walk-forwardの分割数（固定。増やすならCOLSと合わせてここを変える）
 COLS = ["ma", "n_ma", "S", "M", "L",
         "trades", "ev", "winrate", "pf", "hold_bars", "total_pips", "sharpe", "maxdd", "exposure",
         "n_long", "ev_long", "n_short", "ev_short",
         "trades_IS", "ev_IS", "sharpe_IS", "trades_OOS", "ev_OOS", "sharpe_OOS",
-        "p_shift", "sharpe_dm", "sharpe_dm_IS", "sharpe_dm_OOS"]
+        "p_shift", "sharpe_dm", "sharpe_dm_IS", "sharpe_dm_OOS",
+        "sharpe_wf0", "sharpe_wf1", "sharpe_wf2", "sharpe_wf3"]  # walk-forward（2026-10-06 追加）
 MA_KINDS = ["SMA", "EMA"]
 
 # ---------------------------------------------------------------- 再現性
@@ -160,6 +164,8 @@ def eval_chunk(job):
         return np.where(s > 0, m / np.where(s > 0, s, 1) * np.sqrt(BPY), 0)
 
     sharpe = sh(pnl)
+    fold_idx = np.array_split(np.arange(pnl.shape[1]), N_FOLDS)   # walk-forward: 連続するN_FOLDS区間
+    sharpe_wf = np.stack([sh(pnl[:, idx]) for idx in fold_idx], axis=1)   # (n, N_FOLDS)
     eq = np.cumsum(pnl, 1)
     res[:, 10] = eq[:, -1]; res[:, 11] = sharpe
     res[:, 12] = (eq - np.maximum.accumulate(eq, 1)).min(1)
@@ -170,6 +176,7 @@ def eval_chunk(job):
     pdm = h * rdm[None, :] - cost
     res[:, 25] = sh(h * (r - r.mean())[None, :] - cost)
     res[:, 26] = sh(pdm[:, :split]); res[:, 27] = sh(pdm[:, split:])
+    res[:, 28:28 + N_FOLDS] = sharpe_wf
 
     # トレード単位
     cg = np.concatenate([np.zeros((n, 1)), np.cumsum(gross, 1)], 1)
@@ -318,7 +325,8 @@ def main():
                 bh_pips=float((s.values[-1] - s.values[0]) / PIP),
                 # --- 再現性（2026-10-06 追加）: 同じ結果が同じコード・データ・シードから出たことを後で確かめる用 ---
                 seed=args.seed, code_version=_code_version(),
-                data_file=os.path.basename(args.data), data_sha256=_file_sha256(args.data))
+                data_file=os.path.basename(args.data), data_sha256=_file_sha256(args.data),
+                n_folds=N_FOLDS)
     if not os.path.exists(os.path.join(outdir, "meta.json")):
         json.dump(meta, open(os.path.join(outdir, "meta.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
