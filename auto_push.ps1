@@ -1,4 +1,4 @@
-﻿Set-Location "C:\Users\gtaic\quant-verification"
+﻿Set-Location "$env:USERPROFILE\quant-verification"
 git fetch origin main *> $null
 git pull --rebase origin main *> $null
 git add -A
