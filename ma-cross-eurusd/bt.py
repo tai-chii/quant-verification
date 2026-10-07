@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 from multiprocessing import Pool
 
-PIP = 1e-4
+PIP = 1e-4  # 既定値（--pip-size省略時のみ使用。実際の計算は args.pip_size 経由で cfg["pip"] / G["pip"] を見る）
 BPY = 6 * 5 * 52            # H4の年間本数（年率換算用）
 N_FOLDS = 4                  # walk-forwardの分割数（固定。増やすならCOLSと合わせてここを変える）
 COLS = ["ma", "n_ma", "S", "M", "L",
@@ -130,7 +130,7 @@ def init_worker(cfg):
     G.update(cfg)
     px = G["px"]
     G["MA"] = {k: ma_matrix(px, G["periods"], k) for k in G["kinds"]}
-    r = np.zeros(len(px)); r[1:] = (px[1:] - px[:-1]) / PIP     # pips
+    r = np.zeros(len(px)); r[1:] = (px[1:] - px[:-1]) / G.get("pip", PIP)     # pips
     G["r"] = r
     T = len(r)
     G["Rf"] = np.fft.rfft(r); G["R2f"] = np.fft.rfft(r * r)
@@ -240,7 +240,7 @@ def make_cfg(s, args, periods, outdir):
     gap = 6 * 5 * 13                                   # 最低でも約3か月ずらす
     shifts = np.sort(rng.choice(np.arange(gap, T - gap), size=args.n_shifts, replace=False))
     return dict(px=px, periods=np.array(periods), kinds=args.kinds, cost=args.cost_pips,
-                split=split, shifts=shifts, outdir=outdir)
+                split=split, shifts=shifts, outdir=outdir, pip=getattr(args, "pip_size", PIP))
 
 def main():
     ap = argparse.ArgumentParser()
@@ -255,6 +255,8 @@ def main():
     ap.add_argument("--budget-hours", type=float, default=3.0)
     ap.add_argument("--kinds", nargs="+", default=["SMA", "EMA"], choices=MA_KINDS)
     ap.add_argument("--cost-pips", type=float, default=0.8, help="往復コスト(pips)")
+    ap.add_argument("--pip-size", type=float, default=PIP,
+                    help="1pipに相当する価格幅（既定 1e-4＝USD系クロス。円ペアなど小数点位置が違う銘柄は 1e-2 を指定）")
     ap.add_argument("--n-shifts", type=int, default=1000)
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 1))
     ap.add_argument("--chunk", type=int, default=100)
@@ -322,7 +324,8 @@ def main():
     meta = dict(start=str(s.index[0]), end=str(s.index[-1]), bars=len(s), split_bar=cfg["split"],
                 split_date=str(s.index[cfg["split"]]), periods=periods, kinds=args.kinds,
                 cost_pips=args.cost_pips, n_shifts=args.n_shifts, bpy=BPY,
-                bh_pips=float((s.values[-1] - s.values[0]) / PIP),
+                pip_size=args.pip_size,
+                bh_pips=float((s.values[-1] - s.values[0]) / args.pip_size),
                 # --- 再現性（2026-10-06 追加）: 同じ結果が同じコード・データ・シードから出たことを後で確かめる用 ---
                 seed=args.seed, code_version=_code_version(),
                 data_file=os.path.basename(args.data), data_sha256=_file_sha256(args.data),

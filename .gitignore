@@ -17,3 +17,4 @@ report-scoring/scores_blind.json
 # ma-cross-eurusd: バックテスト実行ごとのログ・中間結果（コードと要約以外は残さない方針）
 ma-cross-eurusd/run_*.log
 ma-cross-eurusd/results/
+ma-cross-eurusd/results_usdjpy/
