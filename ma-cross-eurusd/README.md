@@ -5,7 +5,7 @@ Mac（ターミナル）:
 ```bash
 cd ~/ワークスペース/作業層/市場/ma_cross_eurusd && ./run_all.sh
 ```
-Windows（win1・win2）: `作業層/夜間/yoru.bat` を実行（夜間キューに分担ジョブが入っている）
+Windows（win1・win2）: `作業層/夜間/task.bat` を実行（夜間キューに分担ジョブが入っている）
 
 - 3台が別々の位置から計算を始め、Syncthing で届いた他PCの分は飛ばす（速いPCが多く進む）
 - 全部そろうと Mac で集計し、report.html が開く。足りなければ少し待って `./run_all.sh` をもう一度
