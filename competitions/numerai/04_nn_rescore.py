@@ -12,7 +12,11 @@ from numerai_tools.scoring import numerai_corr, correlation_contribution
 SEED = 42
 torch.manual_seed(SEED)
 np.random.seed(SEED)
-DEVICE = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+DEVICE = torch.device(
+    "cuda" if torch.cuda.is_available()
+    else "mps" if torch.backends.mps.is_available()
+    else "cpu"
+)
 print(f"デバイス: {DEVICE}")
 
 HERE = os.path.dirname(os.path.abspath(__file__))

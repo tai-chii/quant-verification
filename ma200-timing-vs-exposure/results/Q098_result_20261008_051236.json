@@ -1,0 +1,4095 @@
+{
+  "queue_id": "Q098",
+  "run_at": "2026-10-08T05:12:36",
+  "params": {
+    "vol_win": 21,
+    "vol_target": 0.15,
+    "fast_days_max": 63,
+    "thresholds": [
+      0.15,
+      0.2
+    ],
+    "costs_one_way": [
+      0.0002,
+      0.001
+    ],
+    "min_group": 4,
+    "alpha_h1": 0.1,
+    "episode_mdd_window_main": "開始（最高値の日）〜局面終了日",
+    "ma_exec": "pos_s = sig_{s-2}（翌日終値約定）",
+    "vt_exec": "lev_t = min(1, 0.15/vol_{t-21..t-1})"
+  },
+  "data_check": {
+    "ken_french": {
+      "header_line_no": 5,
+      "header_line": ",Mkt-RF,SMB,HML,RF",
+      "daily_section_end_line_no": 26323,
+      "rows_in_daily_section": 26317,
+      "first_rows_raw": [
+        "19260701,    0.09,   -0.23,   -0.28,    0.01",
+        "19260702,    0.45,   -0.34,   -0.03,    0.01",
+        "19260706,    0.17,    0.29,   -0.38,    0.01"
+      ],
+      "last_rows_raw": [
+        "20260827,    0.72,    0.20,   -1.14,    0.01",
+        "20260828,   -0.34,   -0.51,    0.28,    0.01",
+        "20260831,   -0.33,   -0.02,   -0.39,    0.01"
+      ],
+      "unparseable_dates": 0,
+      "nan_values": {
+        "Mkt-RF": 0,
+        "SMB": 0,
+        "HML": 0,
+        "RF": 0
+      },
+      "missing_value_codes_-99.99": 0,
+      "duplicate_dates": 0,
+      "non_monotonic_dates": 0,
+      "file_date_range": [
+        "1926-07-01",
+        "2026-08-31"
+      ],
+      "rows_outside_1926-07-01_2025-12-31_excluded": 166,
+      "gaps_over_5_calendar_days": [
+        [
+          "1933-03-15",
+          12
+        ],
+        [
+          "2001-09-17",
+          7
+        ]
+      ],
+      "rows_used": 26151,
+      "used_range": [
+        "1926-07-01",
+        "2025-12-31"
+      ]
+    },
+    "spy": {
+      "columns": [
+        [
+          "Adj Close",
+          "SPY"
+        ],
+        [
+          "Close",
+          "SPY"
+        ],
+        [
+          "High",
+          "SPY"
+        ],
+        [
+          "Low",
+          "SPY"
+        ],
+        [
+          "Open",
+          "SPY"
+        ],
+        [
+          "Volume",
+          "SPY"
+        ]
+      ],
+      "rows_raw": 6538,
+      "unparseable_dates": 0,
+      "nan_values": {
+        "adj_close": 0,
+        "close": 0
+      },
+      "nonpositive_prices": 0,
+      "duplicate_dates": 0,
+      "non_monotonic_dates": 0,
+      "rows_outside_range_excluded": 0,
+      "gaps_over_5_calendar_days": [
+        [
+          "2001-09-17",
+          7
+        ]
+      ],
+      "rows_used": 6538,
+      "used_range": [
+        "2000-01-03",
+        "2025-12-30"
+      ],
+      "first_rows": [
+        [
+          "2000-01-03",
+          "90.90701293945312",
+          "145.4375"
+        ],
+        [
+          "2000-01-04",
+          "87.35198974609375",
+          "139.75"
+        ]
+      ],
+      "last_rows": [
+        [
+          "2025-12-29",
+          "682.51904296875",
+          "687.8499755859375"
+        ],
+        [
+          "2025-12-30",
+          "681.685546875",
+          "687.010009765625"
+        ]
+      ]
+    }
+  },
+  "ken_french": {
+    "eval_start_first_valid_day": "1927-03-05",
+    "vt_leverage_summary": {
+      "mean": 0.9089939749659649,
+      "frac_days_lev_eq_1": 0.6994219653179191,
+      "min": 0.1521691478170559
+    },
+    "ma200_mean_exposure": 0.7238150289017341,
+    "combined_mean_exposure": 0.691619947977247,
+    "by_threshold": {
+      "0.15": {
+        "n_episodes_detected": 20,
+        "n_fast": 6,
+        "n_long": 14,
+        "by_cost": {
+          "0.0002": {
+            "n_episodes_evaluated": 20,
+            "excluded": [],
+            "check_max_abs_diff_bh_mdd_vs_depth": 1.1102230246251565e-15,
+            "H1": {
+              "table_rows_speed_cols_shallower_rule": {
+                "急落": {
+                  "ma200": 5,
+                  "vol_target": 1,
+                  "tie": 0
+                },
+                "長期": {
+                  "ma200": 11,
+                  "vol_target": 3,
+                  "tie": 0
+                }
+              },
+              "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+              "a_b_c_d": [
+                1,
+                5,
+                3,
+                11
+              ],
+              "n_fast_episodes": 6,
+              "n_long_episodes": 14,
+              "p_two_sided": 0.9999999999999999,
+              "p_greater_a": 0.7933952528379773,
+              "p_less_a": 0.6573787409700722,
+              "odds_ratio_sample": 0.7333333333333333,
+              "frac_vt_shallower_fast": 0.16666666666666666,
+              "frac_vt_shallower_long": 0.21428571428571427,
+              "direction_matches_prediction": false,
+              "p_one_sided_predicted_direction": 0.7933952528379773,
+              "judgment": "棄却"
+            },
+            "H2": {
+              "combined_shallower_than_best_single": 14,
+              "n_non_tie": 15,
+              "ties": 5,
+              "frac": 0.9333333333333333,
+              "p_sign_test_one_sided": 0.00048828125,
+              "always_all_episodes": false,
+              "by_speed": {
+                "急落": {
+                  "wins": 4,
+                  "n": 5
+                },
+                "長期": {
+                  "wins": 10,
+                  "n": 10
+                }
+              },
+              "combined_shallower_than_ma200": 15,
+              "combined_shallower_than_vol_target": 19,
+              "n_episodes": 20,
+              "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・ただし全局面ではない"
+            },
+            "episodes": [
+              {
+                "start": "1929-09-03",
+                "trough": "1932-07-08",
+                "end": "1945-02-06",
+                "ongoing_at_data_end": false,
+                "depth": -0.8407399476860208,
+                "days_peak_to_trough": 845,
+                "days_peak_to_end": 4613,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.39749551291258733,
+                  "vol_target": -0.6608786520617309,
+                  "combined": -0.3164857222894124
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.19438251662407058,
+                  "vol_target": -0.6608786520617309,
+                  "combined": -0.15786332469834208
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5660091047040972,
+                  "vol_target": 0.792456888534157,
+                  "combined": 0.48905220066640515
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1946-05-29",
+                "trough": "1947-05-17",
+                "end": "1949-12-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.2827168121900683,
+                "days_peak_to_trough": 273,
+                "days_peak_to_end": 995,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.14440483581032137,
+                  "vol_target": -0.2640439484673215,
+                  "combined": -0.13996137541423082
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.10741553564196504,
+                  "vol_target": -0.2640439484673215,
+                  "combined": -0.10741553564196504
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5035175879396985,
+                  "vol_target": 0.956217583737891,
+                  "combined": 0.5010284021409094
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1957-07-15",
+                "trough": "1957-10-22",
+                "end": "1958-07-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.20651399827077377,
+                "days_peak_to_trough": 70,
+                "days_peak_to_end": 262,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.09274977775717497,
+                  "vol_target": -0.20067244989473176,
+                  "combined": -0.09262629588948501
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.08980679600984909,
+                  "vol_target": -0.20067244989473176,
+                  "combined": -0.0896829135857593
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3931297709923664,
+                  "vol_target": 0.9478756405242075,
+                  "combined": 0.39300035726576615
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1961-12-12",
+                "trough": "1962-06-26",
+                "end": "1963-05-31",
+                "ongoing_at_data_end": false,
+                "depth": -0.27704445895225727,
+                "days_peak_to_trough": 135,
+                "days_peak_to_end": 369,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06407733457506282,
+                  "vol_target": -0.2501663274785221,
+                  "combined": -0.06407733457506282
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06407733457506282,
+                  "vol_target": -0.2365617041915592,
+                  "combined": -0.06407733457506282
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5799457994579946,
+                  "vol_target": 0.9320368292088578,
+                  "combined": 0.5799457994579946
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1966-02-09",
+                "trough": "1966-10-07",
+                "end": "1967-03-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.20261105326955853,
+                "days_peak_to_trough": 167,
+                "days_peak_to_end": 270,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.2043085380269407,
+                  "combined": -0.06304493196744587
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.2043085380269407,
+                  "combined": -0.06304493196744587
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3888888888888889,
+                  "vol_target": 0.974728649272869,
+                  "combined": 0.3888888888888889
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1968-11-29",
+                "trough": "1970-05-26",
+                "end": "1971-04-27",
+                "ongoing_at_data_end": false,
+                "depth": -0.3681961176625176,
+                "days_peak_to_trough": 369,
+                "days_peak_to_end": 602,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12117541510537078,
+                  "vol_target": -0.3484791099741492,
+                  "combined": -0.12117541510537078
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12117541510537078,
+                  "vol_target": -0.3484791099741492,
+                  "combined": -0.12117541510537078
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.4186046511627907,
+                  "vol_target": 0.96597035833972,
+                  "combined": 0.4186046511627907
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1973-01-11",
+                "trough": "1974-10-03",
+                "end": "1976-12-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.48159482400007947,
+                "days_peak_to_trough": 436,
+                "days_peak_to_end": 1000,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.14351181650395517,
+                  "vol_target": -0.4108834279742237,
+                  "combined": -0.13755020217414804
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.10545932373702793,
+                  "vol_target": -0.4108834279742237,
+                  "combined": -0.10545932373702793
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.533,
+                  "vol_target": 0.9146168379993189,
+                  "combined": 0.5223406717675685
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1978-09-12",
+                "trough": "1978-11-14",
+                "end": "1979-06-12",
+                "ongoing_at_data_end": false,
+                "depth": -0.15159326218592228,
+                "days_peak_to_trough": 45,
+                "days_peak_to_end": 189,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.15159326218592217,
+                  "ma200": -0.16631497148038976,
+                  "vol_target": -0.15095166980654617,
+                  "combined": -0.16000630599233556
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.15159326218592217,
+                  "ma200": -0.1436016738188982,
+                  "vol_target": -0.15095166980654617,
+                  "combined": -0.14057918708175565
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.8042328042328042,
+                  "vol_target": 0.9653011026134444,
+                  "combined": 0.7992516494501063
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_not_shallower"
+              },
+              {
+                "start": "1980-02-13",
+                "trough": "1980-03-27",
+                "end": "1980-06-25",
+                "ongoing_at_data_end": false,
+                "depth": -0.18661378337182588,
+                "days_peak_to_trough": 30,
+                "days_peak_to_end": 92,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.18661378337182588,
+                  "ma200": -0.13800467338791234,
+                  "vol_target": -0.17195081470434792,
+                  "combined": -0.1342009874651241
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.18661378337182588,
+                  "ma200": -0.13800467338791234,
+                  "vol_target": -0.17195081470434792,
+                  "combined": -0.1342009874651241
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.6847826086956522,
+                  "vol_target": 0.8774966867703806,
+                  "combined": 0.6634238218685584
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1981-08-11",
+                "trough": "1982-08-12",
+                "end": "1982-10-07",
+                "ongoing_at_data_end": false,
+                "depth": -0.2016703370140589,
+                "days_peak_to_trough": 254,
+                "days_peak_to_end": 293,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06425776337193079,
+                  "vol_target": -0.20032024650304514,
+                  "combined": -0.06425776337193079
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06425776337193079,
+                  "vol_target": -0.20032024650304514,
+                  "combined": -0.06425776337193079
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1945392491467577,
+                  "vol_target": 0.952111111121488,
+                  "combined": 0.17278450767436282
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1987-08-25",
+                "trough": "1987-12-04",
+                "end": "1989-05-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.33114245552627064,
+                "days_peak_to_trough": 71,
+                "days_peak_to_end": 435,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29401968753673113,
+                  "vol_target": -0.2429495912750349,
+                  "combined": -0.2207526112072482
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29401968753673113,
+                  "vol_target": -0.2429495912750349,
+                  "combined": -0.2207526112072482
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.639080459770115,
+                  "vol_target": 0.8855322451854394,
+                  "combined": 0.6343897459262924
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1990-07-16",
+                "trough": "1990-10-11",
+                "end": "1991-02-11",
+                "ongoing_at_data_end": false,
+                "depth": -0.2079537754709596,
+                "days_peak_to_trough": 62,
+                "days_peak_to_end": 146,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.09948380189656203,
+                  "vol_target": -0.18274680912857744,
+                  "combined": -0.09948380189656203
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.09948380189656203,
+                  "vol_target": -0.18274680912857744,
+                  "combined": -0.09948380189656203
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1780821917808219,
+                  "vol_target": 0.8584075238008289,
+                  "combined": 0.1691374438244927
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1998-07-17",
+                "trough": "1998-10-08",
+                "end": "1998-12-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.2191990062283551,
+                "days_peak_to_trough": 58,
+                "days_peak_to_end": 111,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15098564902220046,
+                  "vol_target": -0.17168088763360578,
+                  "combined": -0.13311753300192386
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15098564902220046,
+                  "vol_target": -0.17168088763360578,
+                  "combined": -0.13311753300192386
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5945945945945946,
+                  "vol_target": 0.7004478542716558,
+                  "combined": 0.51516707494922
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2000-03-24",
+                "trough": "2002-10-09",
+                "end": "2006-10-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.4922560493880208,
+                "days_peak_to_trough": 637,
+                "days_peak_to_end": 1654,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.21730847717472335,
+                  "vol_target": -0.43755042233763486,
+                  "combined": -0.1482153130852295
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.21730847717472335,
+                  "vol_target": -0.4363815324147914,
+                  "combined": -0.1482153130852295
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5894800483675937,
+                  "vol_target": 0.8583044714457916,
+                  "combined": 0.560869289596535
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2007-10-09",
+                "trough": "2009-03-09",
+                "end": "2012-02-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.5456553593385383,
+                "days_peak_to_trough": 355,
+                "days_peak_to_end": 1105,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.20825555480619096,
+                  "vol_target": -0.32468693944870197,
+                  "combined": -0.16216847159047276
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.1542861054164112,
+                  "vol_target": -0.32468693944870197,
+                  "combined": -0.12687814591862656
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5194570135746607,
+                  "vol_target": 0.7281294316656145,
+                  "combined": 0.4649428997087511
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2015-06-23",
+                "trough": "2016-02-11",
+                "end": "2016-07-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.1552744530013982,
+                "days_peak_to_trough": 161,
+                "days_peak_to_end": 263,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.1552744530013972,
+                  "ma200": -0.14134023417885433,
+                  "vol_target": -0.13826840888264158,
+                  "combined": -0.13715335633347636
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.1552744530013972,
+                  "ma200": -0.12637120117612455,
+                  "vol_target": -0.13826840888264158,
+                  "combined": -0.1227485446949691
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5513307984790875,
+                  "vol_target": 0.880095676580566,
+                  "combined": 0.5435099258295528
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2018-09-20",
+                "trough": "2018-12-24",
+                "end": "2019-04-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.20446131952210567,
+                "days_peak_to_trough": 65,
+                "days_peak_to_end": 146,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.13617872022180866,
+                  "vol_target": -0.16019440515735373,
+                  "combined": -0.11410711234539839
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.12936029004704153,
+                  "vol_target": -0.16019440515735373,
+                  "combined": -0.10711446359015264
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5205479452054794,
+                  "vol_target": 0.819835544707505,
+                  "combined": 0.5022940979046964
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2020-02-19",
+                "trough": "2020-03-23",
+                "end": "2020-08-05",
+                "ongoing_at_data_end": false,
+                "depth": -0.3421628093489294,
+                "days_peak_to_trough": 23,
+                "days_peak_to_end": 117,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12732434185730102,
+                  "vol_target": -0.16606411518334296,
+                  "combined": -0.10879289542978954
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12732434185730102,
+                  "vol_target": -0.16606411518334296,
+                  "combined": -0.10879289542978954
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5299145299145299,
+                  "vol_target": 0.5031651185672114,
+                  "combined": 0.35874169101258324
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2021-11-08",
+                "trough": "2022-10-14",
+                "end": "2023-12-19",
+                "ongoing_at_data_end": false,
+                "depth": -0.25555942874444015,
+                "days_peak_to_trough": 235,
+                "days_peak_to_end": 531,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.218645698459358,
+                  "vol_target": -0.19339620937180857,
+                  "combined": -0.17874269920484542
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.13783855771608333,
+                  "vol_target": -0.19339620937180857,
+                  "combined": -0.11733830117180921
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5254237288135594,
+                  "vol_target": 0.7963990046570533,
+                  "combined": 0.49212109799007725
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2025-02-19",
+                "trough": "2025-04-08",
+                "end": "2025-06-26",
+                "ongoing_at_data_end": false,
+                "depth": -0.19557597035866303,
+                "days_peak_to_trough": 34,
+                "days_peak_to_end": 88,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.19557597035866325,
+                  "ma200": -0.1213338814805982,
+                  "vol_target": -0.15066131163975172,
+                  "combined": -0.11278829083243369
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.19557597035866325,
+                  "ma200": -0.11329258733256387,
+                  "vol_target": -0.15066131163975172,
+                  "combined": -0.10467002485610555
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5227272727272727,
+                  "vol_target": 0.7111464941002974,
+                  "combined": 0.4767160591906748
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              }
+            ]
+          },
+          "0.001": {
+            "n_episodes_evaluated": 20,
+            "excluded": [],
+            "check_max_abs_diff_bh_mdd_vs_depth": 1.1102230246251565e-15,
+            "H1": {
+              "table_rows_speed_cols_shallower_rule": {
+                "急落": {
+                  "ma200": 5,
+                  "vol_target": 1,
+                  "tie": 0
+                },
+                "長期": {
+                  "ma200": 11,
+                  "vol_target": 3,
+                  "tie": 0
+                }
+              },
+              "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+              "a_b_c_d": [
+                1,
+                5,
+                3,
+                11
+              ],
+              "n_fast_episodes": 6,
+              "n_long_episodes": 14,
+              "p_two_sided": 0.9999999999999999,
+              "p_greater_a": 0.7933952528379773,
+              "p_less_a": 0.6573787409700722,
+              "odds_ratio_sample": 0.7333333333333333,
+              "frac_vt_shallower_fast": 0.16666666666666666,
+              "frac_vt_shallower_long": 0.21428571428571427,
+              "direction_matches_prediction": false,
+              "p_one_sided_predicted_direction": 0.7933952528379773,
+              "judgment": "棄却"
+            },
+            "H2": {
+              "combined_shallower_than_best_single": 13,
+              "n_non_tie": 15,
+              "ties": 5,
+              "frac": 0.8666666666666667,
+              "p_sign_test_one_sided": 0.003692626953125,
+              "always_all_episodes": false,
+              "by_speed": {
+                "急落": {
+                  "wins": 4,
+                  "n": 5
+                },
+                "長期": {
+                  "wins": 9,
+                  "n": 10
+                }
+              },
+              "combined_shallower_than_ma200": 15,
+              "combined_shallower_than_vol_target": 18,
+              "n_episodes": 20,
+              "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・ただし全局面ではない"
+            },
+            "episodes": [
+              {
+                "start": "1929-09-03",
+                "trough": "1932-07-08",
+                "end": "1945-02-06",
+                "ongoing_at_data_end": false,
+                "depth": -0.8407399476860208,
+                "days_peak_to_trough": 845,
+                "days_peak_to_end": 4613,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.41085345745438795,
+                  "vol_target": -0.6651681225349042,
+                  "combined": -0.33940990909591806
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.20276058767074778,
+                  "vol_target": -0.6651681225349042,
+                  "combined": -0.16588400954200833
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5660091047040972,
+                  "vol_target": 0.792456888534157,
+                  "combined": 0.48905220066640515
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1946-05-29",
+                "trough": "1947-05-17",
+                "end": "1949-12-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.2827168121900683,
+                "days_peak_to_trough": 273,
+                "days_peak_to_end": 995,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.1552978446387645,
+                  "vol_target": -0.26579846663247375,
+                  "combined": -0.15113288833194705
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.10883561883269655,
+                  "vol_target": -0.26579846663247375,
+                  "combined": -0.10883561883269655
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5035175879396985,
+                  "vol_target": 0.956217583737891,
+                  "combined": 0.5010284021409094
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1957-07-15",
+                "trough": "1957-10-22",
+                "end": "1958-07-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.20651399827077377,
+                "days_peak_to_trough": 70,
+                "days_peak_to_end": 262,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.0985604283796011,
+                  "vol_target": -0.20108273859985948,
+                  "combined": -0.0983885989296629
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.09345504204779531,
+                  "vol_target": -0.20108273859985948,
+                  "combined": -0.09328223942588554
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3931297709923664,
+                  "vol_target": 0.9478756405242075,
+                  "combined": 0.39300035726576615
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1961-12-12",
+                "trough": "1962-06-26",
+                "end": "1963-05-31",
+                "ongoing_at_data_end": false,
+                "depth": -0.27704445895225727,
+                "days_peak_to_trough": 135,
+                "days_peak_to_end": 369,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06640581878517715,
+                  "vol_target": -0.25099344432549564,
+                  "combined": -0.06640581878517715
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06640581878517715,
+                  "vol_target": -0.2369640120710076,
+                  "combined": -0.06640581878517715
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5799457994579946,
+                  "vol_target": 0.9320368292088578,
+                  "combined": 0.5799457994579946
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1966-02-09",
+                "trough": "1966-10-07",
+                "end": "1967-03-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.20261105326955853,
+                "days_peak_to_trough": 167,
+                "days_peak_to_end": 270,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.20477131559780148,
+                  "combined": -0.06304493196744587
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.20477131559780148,
+                  "combined": -0.06304493196744587
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3888888888888889,
+                  "vol_target": 0.974728649272869,
+                  "combined": 0.3888888888888889
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1968-11-29",
+                "trough": "1970-05-26",
+                "end": "1971-04-27",
+                "ongoing_at_data_end": false,
+                "depth": -0.3681961176625176,
+                "days_peak_to_trough": 369,
+                "days_peak_to_end": 602,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12608061398978931,
+                  "vol_target": -0.348918549050262,
+                  "combined": -0.12608061398978931
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12608061398978931,
+                  "vol_target": -0.348918549050262,
+                  "combined": -0.12608061398978931
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.4186046511627907,
+                  "vol_target": 0.96597035833972,
+                  "combined": 0.4186046511627907
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1973-01-11",
+                "trough": "1974-10-03",
+                "end": "1976-12-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.48159482400007947,
+                "days_peak_to_trough": 436,
+                "days_peak_to_end": 1000,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.14351181650395473,
+                  "vol_target": -0.4131466277007465,
+                  "combined": -0.13771842547698343
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.11180825187238175,
+                  "vol_target": -0.4131466277007465,
+                  "combined": -0.11180825187238175
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.533,
+                  "vol_target": 0.9146168379993189,
+                  "combined": 0.5223406717675685
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1978-09-12",
+                "trough": "1978-11-14",
+                "end": "1979-06-12",
+                "ongoing_at_data_end": false,
+                "depth": -0.15159326218592228,
+                "days_peak_to_trough": 45,
+                "days_peak_to_end": 189,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.15159326218592217,
+                  "ma200": -0.1756074079941865,
+                  "vol_target": -0.15095166980654617,
+                  "combined": -0.16812443457410553
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.15159326218592217,
+                  "ma200": -0.1469433109829401,
+                  "vol_target": -0.15095166980654617,
+                  "combined": -0.1430034774984109
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.8042328042328042,
+                  "vol_target": 0.9653011026134444,
+                  "combined": 0.7992516494501063
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_not_shallower"
+              },
+              {
+                "start": "1980-02-13",
+                "trough": "1980-03-27",
+                "end": "1980-06-25",
+                "ongoing_at_data_end": false,
+                "depth": -0.18661378337182588,
+                "days_peak_to_trough": 30,
+                "days_peak_to_end": 92,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.18661378337182588,
+                  "ma200": -0.13800467338791234,
+                  "vol_target": -0.1722791762191339,
+                  "combined": -0.13430852018220563
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.18661378337182588,
+                  "ma200": -0.13800467338791234,
+                  "vol_target": -0.1722791762191339,
+                  "combined": -0.13430852018220563
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.6847826086956522,
+                  "vol_target": 0.8774966867703806,
+                  "combined": 0.6634238218685584
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1981-08-11",
+                "trough": "1982-08-12",
+                "end": "1982-10-07",
+                "ongoing_at_data_end": false,
+                "depth": -0.2016703370140589,
+                "days_peak_to_trough": 254,
+                "days_peak_to_end": 293,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06510068919133172,
+                  "vol_target": -0.20130849434688258,
+                  "combined": -0.06510068919133172
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06510068919133172,
+                  "vol_target": -0.20130849434688258,
+                  "combined": -0.06510068919133172
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1945392491467577,
+                  "vol_target": 0.952111111121488,
+                  "combined": 0.17278450767436282
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1987-08-25",
+                "trough": "1987-12-04",
+                "end": "1989-05-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.33114245552627064,
+                "days_peak_to_trough": 71,
+                "days_peak_to_end": 435,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29451387375545546,
+                  "vol_target": -0.24391766047189745,
+                  "combined": -0.2214387565994378
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29451387375545546,
+                  "vol_target": -0.24391766047189745,
+                  "combined": -0.2214387565994378
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.639080459770115,
+                  "vol_target": 0.8855322451854394,
+                  "combined": 0.6343897459262924
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1990-07-16",
+                "trough": "1990-10-11",
+                "end": "1991-02-11",
+                "ongoing_at_data_end": false,
+                "depth": -0.2079537754709596,
+                "days_peak_to_trough": 62,
+                "days_peak_to_end": 146,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.10011416323523448,
+                  "vol_target": -0.18360054193807407,
+                  "combined": -0.10011416323523448
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.10011416323523448,
+                  "vol_target": -0.18360054193807407,
+                  "combined": -0.10011416323523448
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1780821917808219,
+                  "vol_target": 0.8584075238008289,
+                  "combined": 0.1691374438244927
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1998-07-17",
+                "trough": "1998-10-08",
+                "end": "1998-12-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.2191990062283551,
+                "days_peak_to_trough": 58,
+                "days_peak_to_end": 111,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15166486050298267,
+                  "vol_target": -0.17238021399416414,
+                  "combined": -0.13383056235577417
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15166486050298267,
+                  "vol_target": -0.17238021399416414,
+                  "combined": -0.13383056235577417
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5945945945945946,
+                  "vol_target": 0.7004478542716558,
+                  "combined": 0.51516707494922
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2000-03-24",
+                "trough": "2002-10-09",
+                "end": "2006-10-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.4922560493880208,
+                "days_peak_to_trough": 637,
+                "days_peak_to_end": 1654,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.2376807922619304,
+                  "vol_target": -0.4434326517992261,
+                  "combined": -0.16717390527444087
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.2376807922619304,
+                  "vol_target": -0.4412583893357095,
+                  "combined": -0.16717390527444087
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5894800483675937,
+                  "vol_target": 0.8583044714457916,
+                  "combined": 0.560869289596535
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2007-10-09",
+                "trough": "2009-03-09",
+                "end": "2012-02-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.5456553593385383,
+                "days_peak_to_trough": 355,
+                "days_peak_to_end": 1105,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.21585685422748413,
+                  "vol_target": -0.3281585738280265,
+                  "combined": -0.1699454579855103
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.1626344402132116,
+                  "vol_target": -0.3281585738280265,
+                  "combined": -0.13366941975529345
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5194570135746607,
+                  "vol_target": 0.7281294316656145,
+                  "combined": 0.4649428997087511
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2015-06-23",
+                "trough": "2016-02-11",
+                "end": "2016-07-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.1552744530013982,
+                "days_peak_to_trough": 161,
+                "days_peak_to_end": 263,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.1552744530013972,
+                  "ma200": -0.15093393752136575,
+                  "vol_target": -0.13975684639949448,
+                  "combined": -0.14642149727311993
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.1552744530013972,
+                  "ma200": -0.13544105746374813,
+                  "vol_target": -0.13975684639949448,
+                  "combined": -0.13145242715252914
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5513307984790875,
+                  "vol_target": 0.880095676580566,
+                  "combined": 0.5435099258295528
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_not_shallower"
+              },
+              {
+                "start": "2018-09-20",
+                "trough": "2018-12-24",
+                "end": "2019-04-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.20446131952210567,
+                "days_peak_to_trough": 65,
+                "days_peak_to_end": 146,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.14446575958748709,
+                  "vol_target": -0.16105138993063683,
+                  "combined": -0.12160136423038115
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.13563184422025765,
+                  "vol_target": -0.16105138993063683,
+                  "combined": -0.11253135996808938
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5205479452054794,
+                  "vol_target": 0.819835544707505,
+                  "combined": 0.5022940979046964
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2020-02-19",
+                "trough": "2020-03-23",
+                "end": "2020-08-05",
+                "ongoing_at_data_end": false,
+                "depth": -0.3421628093489294,
+                "days_peak_to_trough": 23,
+                "days_peak_to_end": 117,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12802255220484993,
+                  "vol_target": -0.16664274092737374,
+                  "combined": -0.1095376819425582
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12802255220484993,
+                  "vol_target": -0.16664274092737374,
+                  "combined": -0.1095376819425582
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5299145299145299,
+                  "vol_target": 0.5031651185672114,
+                  "combined": 0.35874169101258324
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2021-11-08",
+                "trough": "2022-10-14",
+                "end": "2023-12-19",
+                "ongoing_at_data_end": false,
+                "depth": -0.25555942874444015,
+                "days_peak_to_trough": 235,
+                "days_peak_to_end": 531,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.2298709835687187,
+                  "vol_target": -0.19648183332706615,
+                  "combined": -0.18851160419951873
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.14407251765584972,
+                  "vol_target": -0.19648183332706615,
+                  "combined": -0.12240507829819602
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5254237288135594,
+                  "vol_target": 0.7963990046570533,
+                  "combined": 0.49212109799007725
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2025-02-19",
+                "trough": "2025-04-08",
+                "end": "2025-06-26",
+                "ongoing_at_data_end": false,
+                "depth": -0.19557597035866303,
+                "days_peak_to_trough": 34,
+                "days_peak_to_end": 88,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.19557597035866325,
+                  "ma200": -0.12415034111595391,
+                  "vol_target": -0.15113387983749849,
+                  "combined": -0.1151447656884691
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.19557597035866325,
+                  "ma200": -0.11542773023687647,
+                  "vol_target": -0.15113387983749849,
+                  "combined": -0.10630442318259148
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5227272727272727,
+                  "vol_target": 0.7111464941002974,
+                  "combined": 0.4767160591906748
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              }
+            ]
+          }
+        }
+      },
+      "0.2": {
+        "n_episodes_detected": 16,
+        "n_fast": 3,
+        "n_long": 13,
+        "by_cost": {
+          "0.0002": {
+            "n_episodes_evaluated": 16,
+            "excluded": [],
+            "check_max_abs_diff_bh_mdd_vs_depth": 1.1102230246251565e-15,
+            "H1": {
+              "table_rows_speed_cols_shallower_rule": {
+                "急落": {
+                  "ma200": 3,
+                  "vol_target": 0,
+                  "tie": 0
+                },
+                "長期": {
+                  "ma200": 11,
+                  "vol_target": 2,
+                  "tie": 0
+                }
+              },
+              "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+              "a_b_c_d": [
+                0,
+                3,
+                2,
+                11
+              ],
+              "n_fast_episodes": 3,
+              "n_long_episodes": 13,
+              "p_two_sided": 1.0,
+              "p_greater_a": 1.0,
+              "p_less_a": 0.65,
+              "odds_ratio_sample": 0.0,
+              "frac_vt_shallower_fast": 0.0,
+              "frac_vt_shallower_long": 0.15384615384615385,
+              "direction_matches_prediction": false,
+              "p_one_sided_predicted_direction": 1.0,
+              "judgment": "未確定（急落3・長期13局面。どちらかが4未満）"
+            },
+            "H2": {
+              "combined_shallower_than_best_single": 11,
+              "n_non_tie": 11,
+              "ties": 5,
+              "frac": 1.0,
+              "p_sign_test_one_sided": 0.00048828125,
+              "always_all_episodes": true,
+              "by_speed": {
+                "急落": {
+                  "wins": 2,
+                  "n": 2
+                },
+                "長期": {
+                  "wins": 9,
+                  "n": 9
+                }
+              },
+              "combined_shallower_than_ma200": 11,
+              "combined_shallower_than_vol_target": 16,
+              "n_episodes": 16,
+              "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・全局面で勝ち"
+            },
+            "episodes": [
+              {
+                "start": "1929-09-03",
+                "trough": "1932-07-08",
+                "end": "1945-02-06",
+                "ongoing_at_data_end": false,
+                "depth": -0.8407399476860208,
+                "days_peak_to_trough": 845,
+                "days_peak_to_end": 4613,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.39749551291258733,
+                  "vol_target": -0.6608786520617309,
+                  "combined": -0.3164857222894124
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.19438251662407058,
+                  "vol_target": -0.6608786520617309,
+                  "combined": -0.15786332469834208
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5660091047040972,
+                  "vol_target": 0.792456888534157,
+                  "combined": 0.48905220066640515
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1946-05-29",
+                "trough": "1947-05-17",
+                "end": "1949-12-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.2827168121900683,
+                "days_peak_to_trough": 273,
+                "days_peak_to_end": 995,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.14440483581032137,
+                  "vol_target": -0.2640439484673215,
+                  "combined": -0.13996137541423082
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.10741553564196504,
+                  "vol_target": -0.2640439484673215,
+                  "combined": -0.10741553564196504
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5035175879396985,
+                  "vol_target": 0.956217583737891,
+                  "combined": 0.5010284021409094
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1957-07-15",
+                "trough": "1957-10-22",
+                "end": "1958-07-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.20651399827077377,
+                "days_peak_to_trough": 70,
+                "days_peak_to_end": 262,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.09274977775717497,
+                  "vol_target": -0.20067244989473176,
+                  "combined": -0.09262629588948501
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.08980679600984909,
+                  "vol_target": -0.20067244989473176,
+                  "combined": -0.0896829135857593
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3931297709923664,
+                  "vol_target": 0.9478756405242075,
+                  "combined": 0.39300035726576615
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1961-12-12",
+                "trough": "1962-06-26",
+                "end": "1963-05-31",
+                "ongoing_at_data_end": false,
+                "depth": -0.27704445895225727,
+                "days_peak_to_trough": 135,
+                "days_peak_to_end": 369,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06407733457506282,
+                  "vol_target": -0.2501663274785221,
+                  "combined": -0.06407733457506282
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06407733457506282,
+                  "vol_target": -0.2365617041915592,
+                  "combined": -0.06407733457506282
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5799457994579946,
+                  "vol_target": 0.9320368292088578,
+                  "combined": 0.5799457994579946
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1966-02-09",
+                "trough": "1966-10-07",
+                "end": "1967-03-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.20261105326955853,
+                "days_peak_to_trough": 167,
+                "days_peak_to_end": 270,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.2043085380269407,
+                  "combined": -0.06304493196744587
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.2043085380269407,
+                  "combined": -0.06304493196744587
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3888888888888889,
+                  "vol_target": 0.974728649272869,
+                  "combined": 0.3888888888888889
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1968-11-29",
+                "trough": "1970-05-26",
+                "end": "1971-04-27",
+                "ongoing_at_data_end": false,
+                "depth": -0.3681961176625176,
+                "days_peak_to_trough": 369,
+                "days_peak_to_end": 602,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12117541510537078,
+                  "vol_target": -0.3484791099741492,
+                  "combined": -0.12117541510537078
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12117541510537078,
+                  "vol_target": -0.3484791099741492,
+                  "combined": -0.12117541510537078
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.4186046511627907,
+                  "vol_target": 0.96597035833972,
+                  "combined": 0.4186046511627907
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1973-01-11",
+                "trough": "1974-10-03",
+                "end": "1976-12-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.48159482400007947,
+                "days_peak_to_trough": 436,
+                "days_peak_to_end": 1000,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.14351181650395517,
+                  "vol_target": -0.4108834279742237,
+                  "combined": -0.13755020217414804
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.10545932373702793,
+                  "vol_target": -0.4108834279742237,
+                  "combined": -0.10545932373702793
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.533,
+                  "vol_target": 0.9146168379993189,
+                  "combined": 0.5223406717675685
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1981-08-11",
+                "trough": "1982-08-12",
+                "end": "1982-10-07",
+                "ongoing_at_data_end": false,
+                "depth": -0.2016703370140589,
+                "days_peak_to_trough": 254,
+                "days_peak_to_end": 293,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06425776337193079,
+                  "vol_target": -0.20032024650304514,
+                  "combined": -0.06425776337193079
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06425776337193079,
+                  "vol_target": -0.20032024650304514,
+                  "combined": -0.06425776337193079
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1945392491467577,
+                  "vol_target": 0.952111111121488,
+                  "combined": 0.17278450767436282
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1987-08-25",
+                "trough": "1987-12-04",
+                "end": "1989-05-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.33114245552627064,
+                "days_peak_to_trough": 71,
+                "days_peak_to_end": 435,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29401968753673113,
+                  "vol_target": -0.2429495912750349,
+                  "combined": -0.2207526112072482
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29401968753673113,
+                  "vol_target": -0.2429495912750349,
+                  "combined": -0.2207526112072482
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.639080459770115,
+                  "vol_target": 0.8855322451854394,
+                  "combined": 0.6343897459262924
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1990-07-16",
+                "trough": "1990-10-11",
+                "end": "1991-02-11",
+                "ongoing_at_data_end": false,
+                "depth": -0.2079537754709596,
+                "days_peak_to_trough": 62,
+                "days_peak_to_end": 146,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.09948380189656203,
+                  "vol_target": -0.18274680912857744,
+                  "combined": -0.09948380189656203
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.09948380189656203,
+                  "vol_target": -0.18274680912857744,
+                  "combined": -0.09948380189656203
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1780821917808219,
+                  "vol_target": 0.8584075238008289,
+                  "combined": 0.1691374438244927
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1998-07-17",
+                "trough": "1998-10-08",
+                "end": "1998-12-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.2191990062283551,
+                "days_peak_to_trough": 58,
+                "days_peak_to_end": 111,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15098564902220046,
+                  "vol_target": -0.17168088763360578,
+                  "combined": -0.13311753300192386
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15098564902220046,
+                  "vol_target": -0.17168088763360578,
+                  "combined": -0.13311753300192386
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5945945945945946,
+                  "vol_target": 0.7004478542716558,
+                  "combined": 0.51516707494922
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2000-03-24",
+                "trough": "2002-10-09",
+                "end": "2006-10-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.4922560493880208,
+                "days_peak_to_trough": 637,
+                "days_peak_to_end": 1654,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.21730847717472335,
+                  "vol_target": -0.43755042233763486,
+                  "combined": -0.1482153130852295
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.21730847717472335,
+                  "vol_target": -0.4363815324147914,
+                  "combined": -0.1482153130852295
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5894800483675937,
+                  "vol_target": 0.8583044714457916,
+                  "combined": 0.560869289596535
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2007-10-09",
+                "trough": "2009-03-09",
+                "end": "2012-02-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.5456553593385383,
+                "days_peak_to_trough": 355,
+                "days_peak_to_end": 1105,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.20825555480619096,
+                  "vol_target": -0.32468693944870197,
+                  "combined": -0.16216847159047276
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.1542861054164112,
+                  "vol_target": -0.32468693944870197,
+                  "combined": -0.12687814591862656
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5194570135746607,
+                  "vol_target": 0.7281294316656145,
+                  "combined": 0.4649428997087511
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2018-09-20",
+                "trough": "2018-12-24",
+                "end": "2019-04-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.20446131952210567,
+                "days_peak_to_trough": 65,
+                "days_peak_to_end": 146,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.13617872022180866,
+                  "vol_target": -0.16019440515735373,
+                  "combined": -0.11410711234539839
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.12936029004704153,
+                  "vol_target": -0.16019440515735373,
+                  "combined": -0.10711446359015264
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5205479452054794,
+                  "vol_target": 0.819835544707505,
+                  "combined": 0.5022940979046964
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2020-02-19",
+                "trough": "2020-03-23",
+                "end": "2020-08-05",
+                "ongoing_at_data_end": false,
+                "depth": -0.3421628093489294,
+                "days_peak_to_trough": 23,
+                "days_peak_to_end": 117,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12732434185730102,
+                  "vol_target": -0.16606411518334296,
+                  "combined": -0.10879289542978954
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12732434185730102,
+                  "vol_target": -0.16606411518334296,
+                  "combined": -0.10879289542978954
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5299145299145299,
+                  "vol_target": 0.5031651185672114,
+                  "combined": 0.35874169101258324
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2021-11-08",
+                "trough": "2022-10-14",
+                "end": "2023-12-19",
+                "ongoing_at_data_end": false,
+                "depth": -0.25555942874444015,
+                "days_peak_to_trough": 235,
+                "days_peak_to_end": 531,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.218645698459358,
+                  "vol_target": -0.19339620937180857,
+                  "combined": -0.17874269920484542
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.13783855771608333,
+                  "vol_target": -0.19339620937180857,
+                  "combined": -0.11733830117180921
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5254237288135594,
+                  "vol_target": 0.7963990046570533,
+                  "combined": 0.49212109799007725
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              }
+            ]
+          },
+          "0.001": {
+            "n_episodes_evaluated": 16,
+            "excluded": [],
+            "check_max_abs_diff_bh_mdd_vs_depth": 1.1102230246251565e-15,
+            "H1": {
+              "table_rows_speed_cols_shallower_rule": {
+                "急落": {
+                  "ma200": 3,
+                  "vol_target": 0,
+                  "tie": 0
+                },
+                "長期": {
+                  "ma200": 11,
+                  "vol_target": 2,
+                  "tie": 0
+                }
+              },
+              "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+              "a_b_c_d": [
+                0,
+                3,
+                2,
+                11
+              ],
+              "n_fast_episodes": 3,
+              "n_long_episodes": 13,
+              "p_two_sided": 1.0,
+              "p_greater_a": 1.0,
+              "p_less_a": 0.65,
+              "odds_ratio_sample": 0.0,
+              "frac_vt_shallower_fast": 0.0,
+              "frac_vt_shallower_long": 0.15384615384615385,
+              "direction_matches_prediction": false,
+              "p_one_sided_predicted_direction": 1.0,
+              "judgment": "未確定（急落3・長期13局面。どちらかが4未満）"
+            },
+            "H2": {
+              "combined_shallower_than_best_single": 11,
+              "n_non_tie": 11,
+              "ties": 5,
+              "frac": 1.0,
+              "p_sign_test_one_sided": 0.00048828125,
+              "always_all_episodes": true,
+              "by_speed": {
+                "急落": {
+                  "wins": 2,
+                  "n": 2
+                },
+                "長期": {
+                  "wins": 9,
+                  "n": 9
+                }
+              },
+              "combined_shallower_than_ma200": 11,
+              "combined_shallower_than_vol_target": 16,
+              "n_episodes": 16,
+              "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・全局面で勝ち"
+            },
+            "episodes": [
+              {
+                "start": "1929-09-03",
+                "trough": "1932-07-08",
+                "end": "1945-02-06",
+                "ongoing_at_data_end": false,
+                "depth": -0.8407399476860208,
+                "days_peak_to_trough": 845,
+                "days_peak_to_end": 4613,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.41085345745438795,
+                  "vol_target": -0.6651681225349042,
+                  "combined": -0.33940990909591806
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.8407399476860209,
+                  "ma200": -0.20276058767074778,
+                  "vol_target": -0.6651681225349042,
+                  "combined": -0.16588400954200833
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5660091047040972,
+                  "vol_target": 0.792456888534157,
+                  "combined": 0.48905220066640515
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1946-05-29",
+                "trough": "1947-05-17",
+                "end": "1949-12-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.2827168121900683,
+                "days_peak_to_trough": 273,
+                "days_peak_to_end": 995,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.1552978446387645,
+                  "vol_target": -0.26579846663247375,
+                  "combined": -0.15113288833194705
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2827168121900685,
+                  "ma200": -0.10883561883269655,
+                  "vol_target": -0.26579846663247375,
+                  "combined": -0.10883561883269655
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5035175879396985,
+                  "vol_target": 0.956217583737891,
+                  "combined": 0.5010284021409094
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1957-07-15",
+                "trough": "1957-10-22",
+                "end": "1958-07-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.20651399827077377,
+                "days_peak_to_trough": 70,
+                "days_peak_to_end": 262,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.0985604283796011,
+                  "vol_target": -0.20108273859985948,
+                  "combined": -0.0983885989296629
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20651399827077344,
+                  "ma200": -0.09345504204779531,
+                  "vol_target": -0.20108273859985948,
+                  "combined": -0.09328223942588554
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3931297709923664,
+                  "vol_target": 0.9478756405242075,
+                  "combined": 0.39300035726576615
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1961-12-12",
+                "trough": "1962-06-26",
+                "end": "1963-05-31",
+                "ongoing_at_data_end": false,
+                "depth": -0.27704445895225727,
+                "days_peak_to_trough": 135,
+                "days_peak_to_end": 369,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06640581878517715,
+                  "vol_target": -0.25099344432549564,
+                  "combined": -0.06640581878517715
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.27704445895225804,
+                  "ma200": -0.06640581878517715,
+                  "vol_target": -0.2369640120710076,
+                  "combined": -0.06640581878517715
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5799457994579946,
+                  "vol_target": 0.9320368292088578,
+                  "combined": 0.5799457994579946
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1966-02-09",
+                "trough": "1966-10-07",
+                "end": "1967-03-08",
+                "ongoing_at_data_end": false,
+                "depth": -0.20261105326955853,
+                "days_peak_to_trough": 167,
+                "days_peak_to_end": 270,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.20477131559780148,
+                  "combined": -0.06304493196744587
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20261105326955775,
+                  "ma200": -0.06304493196744587,
+                  "vol_target": -0.20477131559780148,
+                  "combined": -0.06304493196744587
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.3888888888888889,
+                  "vol_target": 0.974728649272869,
+                  "combined": 0.3888888888888889
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1968-11-29",
+                "trough": "1970-05-26",
+                "end": "1971-04-27",
+                "ongoing_at_data_end": false,
+                "depth": -0.3681961176625176,
+                "days_peak_to_trough": 369,
+                "days_peak_to_end": 602,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12608061398978931,
+                  "vol_target": -0.348918549050262,
+                  "combined": -0.12608061398978931
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3681961176625175,
+                  "ma200": -0.12608061398978931,
+                  "vol_target": -0.348918549050262,
+                  "combined": -0.12608061398978931
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.4186046511627907,
+                  "vol_target": 0.96597035833972,
+                  "combined": 0.4186046511627907
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1973-01-11",
+                "trough": "1974-10-03",
+                "end": "1976-12-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.48159482400007947,
+                "days_peak_to_trough": 436,
+                "days_peak_to_end": 1000,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.14351181650395473,
+                  "vol_target": -0.4131466277007465,
+                  "combined": -0.13771842547698343
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.48159482400007836,
+                  "ma200": -0.11180825187238175,
+                  "vol_target": -0.4131466277007465,
+                  "combined": -0.11180825187238175
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.533,
+                  "vol_target": 0.9146168379993189,
+                  "combined": 0.5223406717675685
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1981-08-11",
+                "trough": "1982-08-12",
+                "end": "1982-10-07",
+                "ongoing_at_data_end": false,
+                "depth": -0.2016703370140589,
+                "days_peak_to_trough": 254,
+                "days_peak_to_end": 293,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06510068919133172,
+                  "vol_target": -0.20130849434688258,
+                  "combined": -0.06510068919133172
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20167033701405945,
+                  "ma200": -0.06510068919133172,
+                  "vol_target": -0.20130849434688258,
+                  "combined": -0.06510068919133172
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1945392491467577,
+                  "vol_target": 0.952111111121488,
+                  "combined": 0.17278450767436282
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1987-08-25",
+                "trough": "1987-12-04",
+                "end": "1989-05-15",
+                "ongoing_at_data_end": false,
+                "depth": -0.33114245552627064,
+                "days_peak_to_trough": 71,
+                "days_peak_to_end": 435,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29451387375545546,
+                  "vol_target": -0.24391766047189745,
+                  "combined": -0.2214387565994378
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.33114245552627086,
+                  "ma200": -0.29451387375545546,
+                  "vol_target": -0.24391766047189745,
+                  "combined": -0.2214387565994378
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.639080459770115,
+                  "vol_target": 0.8855322451854394,
+                  "combined": 0.6343897459262924
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "1990-07-16",
+                "trough": "1990-10-11",
+                "end": "1991-02-11",
+                "ongoing_at_data_end": false,
+                "depth": -0.2079537754709596,
+                "days_peak_to_trough": 62,
+                "days_peak_to_end": 146,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.10011416323523448,
+                  "vol_target": -0.18360054193807407,
+                  "combined": -0.10011416323523448
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.2079537754709596,
+                  "ma200": -0.10011416323523448,
+                  "vol_target": -0.18360054193807407,
+                  "combined": -0.10011416323523448
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.1780821917808219,
+                  "vol_target": 0.8584075238008289,
+                  "combined": 0.1691374438244927
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "tie"
+              },
+              {
+                "start": "1998-07-17",
+                "trough": "1998-10-08",
+                "end": "1998-12-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.2191990062283551,
+                "days_peak_to_trough": 58,
+                "days_peak_to_end": 111,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15166486050298267,
+                  "vol_target": -0.17238021399416414,
+                  "combined": -0.13383056235577417
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.21919900622835475,
+                  "ma200": -0.15166486050298267,
+                  "vol_target": -0.17238021399416414,
+                  "combined": -0.13383056235577417
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5945945945945946,
+                  "vol_target": 0.7004478542716558,
+                  "combined": 0.51516707494922
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2000-03-24",
+                "trough": "2002-10-09",
+                "end": "2006-10-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.4922560493880208,
+                "days_peak_to_trough": 637,
+                "days_peak_to_end": 1654,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.2376807922619304,
+                  "vol_target": -0.4434326517992261,
+                  "combined": -0.16717390527444087
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.4922560493880205,
+                  "ma200": -0.2376807922619304,
+                  "vol_target": -0.4412583893357095,
+                  "combined": -0.16717390527444087
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5894800483675937,
+                  "vol_target": 0.8583044714457916,
+                  "combined": 0.560869289596535
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2007-10-09",
+                "trough": "2009-03-09",
+                "end": "2012-02-28",
+                "ongoing_at_data_end": false,
+                "depth": -0.5456553593385383,
+                "days_peak_to_trough": 355,
+                "days_peak_to_end": 1105,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.21585685422748413,
+                  "vol_target": -0.3281585738280265,
+                  "combined": -0.1699454579855103
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.5456553593385394,
+                  "ma200": -0.1626344402132116,
+                  "vol_target": -0.3281585738280265,
+                  "combined": -0.13366941975529345
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5194570135746607,
+                  "vol_target": 0.7281294316656145,
+                  "combined": 0.4649428997087511
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2018-09-20",
+                "trough": "2018-12-24",
+                "end": "2019-04-23",
+                "ongoing_at_data_end": false,
+                "depth": -0.20446131952210567,
+                "days_peak_to_trough": 65,
+                "days_peak_to_end": 146,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.14446575958748709,
+                  "vol_target": -0.16105138993063683,
+                  "combined": -0.12160136423038115
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.20446131952210633,
+                  "ma200": -0.13563184422025765,
+                  "vol_target": -0.16105138993063683,
+                  "combined": -0.11253135996808938
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5205479452054794,
+                  "vol_target": 0.819835544707505,
+                  "combined": 0.5022940979046964
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2020-02-19",
+                "trough": "2020-03-23",
+                "end": "2020-08-05",
+                "ongoing_at_data_end": false,
+                "depth": -0.3421628093489294,
+                "days_peak_to_trough": 23,
+                "days_peak_to_end": 117,
+                "speed": "急落",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12802255220484993,
+                  "vol_target": -0.16664274092737374,
+                  "combined": -0.1095376819425582
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.3421628093489294,
+                  "ma200": -0.12802255220484993,
+                  "vol_target": -0.16664274092737374,
+                  "combined": -0.1095376819425582
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5299145299145299,
+                  "vol_target": 0.5031651185672114,
+                  "combined": 0.35874169101258324
+                },
+                "h1_shallower": "ma200",
+                "h2_combined_vs_best_single": "combined_shallower"
+              },
+              {
+                "start": "2021-11-08",
+                "trough": "2022-10-14",
+                "end": "2023-12-19",
+                "ongoing_at_data_end": false,
+                "depth": -0.25555942874444015,
+                "days_peak_to_trough": 235,
+                "days_peak_to_end": 531,
+                "speed": "長期",
+                "mdd_start_to_end": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.2298709835687187,
+                  "vol_target": -0.19648183332706615,
+                  "combined": -0.18851160419951873
+                },
+                "mdd_start_to_trough_reference": {
+                  "buy_and_hold": -0.25555942874444015,
+                  "ma200": -0.14407251765584972,
+                  "vol_target": -0.19648183332706615,
+                  "combined": -0.12240507829819602
+                },
+                "mean_exposure_in_episode": {
+                  "ma200": 0.5254237288135594,
+                  "vol_target": 0.7963990046570533,
+                  "combined": 0.49212109799007725
+                },
+                "h1_shallower": "vol_target",
+                "h2_combined_vs_best_single": "combined_shallower"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "spy_episode_detection_check": {
+    "note": "局面検出ロジックの妥当性確認（ブログの6回の厳密な再現ではない。ブログは原文の逐語引用がなく正確な日付・分類基準が確認できないため数値再現は不可能）。SPYはキャッシュ0%、主は Close（配当なし）、Adj Close は参考。",
+    "blog_n_episodes_for_comparison_only": 6,
+    "close": {
+      "eval_start_first_valid_day": "2000-10-18",
+      "vt_leverage_summary": {
+        "mean": 0.8692877081741532,
+        "frac_days_lev_eq_1": 0.5785071800536532,
+        "min": 0.15873755321483843
+      },
+      "ma200_mean_exposure": 0.7102729998421966,
+      "combined_mean_exposure": 0.6824003763472588,
+      "by_threshold": {
+        "0.15": {
+          "n_episodes_detected": 6,
+          "n_fast": 2,
+          "n_long": 4,
+          "by_cost": {
+            "0.0002": {
+              "n_episodes_evaluated": 5,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 6.661338147750939e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 2,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 2,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  2,
+                  1,
+                  2
+                ],
+                "n_fast_episodes": 2,
+                "n_long_episodes": 3,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.6,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.3333333333333333,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落2・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 4,
+                "n_non_tie": 5,
+                "ties": 0,
+                "frac": 0.8,
+                "p_sign_test_one_sided": 0.1875,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 2,
+                    "n": 2
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 5,
+                "combined_shallower_than_vol_target": 4,
+                "n_episodes": 5,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2013-03-14",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5647366917817163,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1366,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.21984556958969437,
+                    "vol_target": -0.3560049070334297,
+                    "combined": -0.17731990268014708
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.13272901789216163,
+                    "vol_target": -0.3560049070334297,
+                    "combined": -0.11034665559571333
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5885797950219619,
+                    "vol_target": 0.7862651971633756,
+                    "combined": 0.5489705893004203
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-29",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.20178483869435315,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 150,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10677387501331903,
+                    "vol_target": -0.16127827562419617,
+                    "combined": -0.09569074664598398
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10460863128545961,
+                    "vol_target": -0.16127827562419617,
+                    "combined": -0.09349863662580382
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.48,
+                    "vol_target": 0.8354947198523894,
+                    "combined": 0.4696243770312632
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-18",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3410474689324394,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 126,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12454702083798397,
+                    "vol_target": -0.1645352210419867,
+                    "combined": -0.10752489385146735
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12454702083798397,
+                    "vol_target": -0.1645352210419867,
+                    "combined": -0.10752489385146735
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5079365079365079,
+                    "vol_target": 0.5531328553513899,
+                    "combined": 0.38230268933494727
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2024-01-19",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.25360573583036916,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 513,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.22735246669685316,
+                    "vol_target": -0.19168556561882755,
+                    "combined": -0.19402230852621105
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.1436667256450741,
+                    "vol_target": -0.19168556561882755,
+                    "combined": -0.12601612201454937
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5341130604288499,
+                    "vol_target": 0.8164666308120322,
+                    "combined": 0.5063169250793575
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                },
+                {
+                  "start": "2025-02-19",
+                  "trough": "2025-04-08",
+                  "end": "2025-06-27",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.189989041295049,
+                  "days_peak_to_trough": 34,
+                  "days_peak_to_end": 89,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.18998904129504945,
+                    "ma200": -0.11870052026089728,
+                    "vol_target": -0.15076562264434945,
+                    "combined": -0.11431998153139022
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.18998904129504945,
+                    "ma200": -0.10675839060471948,
+                    "vol_target": -0.15076562264434945,
+                    "combined": -0.1010648745001611
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5280898876404494,
+                    "vol_target": 0.7253718403837955,
+                    "combined": 0.4896693979557379
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                }
+              ]
+            },
+            "0.001": {
+              "n_episodes_evaluated": 5,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 6.661338147750939e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 2,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 2,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  2,
+                  1,
+                  2
+                ],
+                "n_fast_episodes": 2,
+                "n_long_episodes": 3,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.6,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.3333333333333333,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落2・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 4,
+                "n_non_tie": 5,
+                "ties": 0,
+                "frac": 0.8,
+                "p_sign_test_one_sided": 0.1875,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 2,
+                    "n": 2
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 5,
+                "combined_shallower_than_vol_target": 4,
+                "n_episodes": 5,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2013-03-14",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5647366917817163,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1366,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.22919865700787312,
+                    "vol_target": -0.35965872204380567,
+                    "combined": -0.18489345704736926
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.1403678645510481,
+                    "vol_target": -0.35965872204380567,
+                    "combined": -0.11621468788554357
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5885797950219619,
+                    "vol_target": 0.7862651971633756,
+                    "combined": 0.5489705893004203
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-29",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.20178483869435315,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 150,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.11249576745493994,
+                    "vol_target": -0.16214790052610473,
+                    "combined": -0.10039449749031693
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10963037164359168,
+                    "vol_target": -0.16214790052610473,
+                    "combined": -0.09749003152358571
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.48,
+                    "vol_target": 0.8354947198523894,
+                    "combined": 0.4696243770312632
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-18",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3410474689324394,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 126,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.1264969060979333,
+                    "vol_target": -0.16511800774345053,
+                    "combined": -0.10965042858819518
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12524752332181033,
+                    "vol_target": -0.16511800774345053,
+                    "combined": -0.10827461193858068
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5079365079365079,
+                    "vol_target": 0.5531328553513899,
+                    "combined": 0.38230268933494727
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2024-01-19",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.25360573583036916,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 513,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.23964344451767883,
+                    "vol_target": -0.19452298440102422,
+                    "combined": -0.204686067266299
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.1511791073105725,
+                    "vol_target": -0.19452298440102422,
+                    "combined": -0.1321620313036721
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5341130604288499,
+                    "vol_target": 0.8164666308120322,
+                    "combined": 0.5063169250793575
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                },
+                {
+                  "start": "2025-02-19",
+                  "trough": "2025-04-08",
+                  "end": "2025-06-27",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.189989041295049,
+                  "days_peak_to_trough": 34,
+                  "days_peak_to_end": 89,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.18998904129504945,
+                    "ma200": -0.12152546253439456,
+                    "vol_target": -0.1512286831304258,
+                    "combined": -0.11673979657595757
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.18998904129504945,
+                    "ma200": -0.10890950779582342,
+                    "vol_target": -0.1512286831304258,
+                    "combined": -0.10282729067321106
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5280898876404494,
+                    "vol_target": 0.7253718403837955,
+                    "combined": 0.4896693979557379
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                }
+              ]
+            }
+          }
+        },
+        "0.2": {
+          "n_episodes_detected": 5,
+          "n_fast": 1,
+          "n_long": 4,
+          "by_cost": {
+            "0.0002": {
+              "n_episodes_evaluated": 4,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 6.661338147750939e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 1,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 2,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  1,
+                  1,
+                  2
+                ],
+                "n_fast_episodes": 1,
+                "n_long_episodes": 3,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.75,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.3333333333333333,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落1・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 3,
+                "n_non_tie": 4,
+                "ties": 0,
+                "frac": 0.75,
+                "p_sign_test_one_sided": 0.3125,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 1,
+                    "n": 1
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 4,
+                "combined_shallower_than_vol_target": 3,
+                "n_episodes": 4,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2013-03-14",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5647366917817163,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1366,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.21984556958969437,
+                    "vol_target": -0.3560049070334297,
+                    "combined": -0.17731990268014708
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.13272901789216163,
+                    "vol_target": -0.3560049070334297,
+                    "combined": -0.11034665559571333
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5885797950219619,
+                    "vol_target": 0.7862651971633756,
+                    "combined": 0.5489705893004203
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-29",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.20178483869435315,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 150,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10677387501331903,
+                    "vol_target": -0.16127827562419617,
+                    "combined": -0.09569074664598398
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10460863128545961,
+                    "vol_target": -0.16127827562419617,
+                    "combined": -0.09349863662580382
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.48,
+                    "vol_target": 0.8354947198523894,
+                    "combined": 0.4696243770312632
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-18",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3410474689324394,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 126,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12454702083798397,
+                    "vol_target": -0.1645352210419867,
+                    "combined": -0.10752489385146735
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12454702083798397,
+                    "vol_target": -0.1645352210419867,
+                    "combined": -0.10752489385146735
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5079365079365079,
+                    "vol_target": 0.5531328553513899,
+                    "combined": 0.38230268933494727
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2024-01-19",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.25360573583036916,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 513,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.22735246669685316,
+                    "vol_target": -0.19168556561882755,
+                    "combined": -0.19402230852621105
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.1436667256450741,
+                    "vol_target": -0.19168556561882755,
+                    "combined": -0.12601612201454937
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5341130604288499,
+                    "vol_target": 0.8164666308120322,
+                    "combined": 0.5063169250793575
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                }
+              ]
+            },
+            "0.001": {
+              "n_episodes_evaluated": 4,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 6.661338147750939e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 1,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 2,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  1,
+                  1,
+                  2
+                ],
+                "n_fast_episodes": 1,
+                "n_long_episodes": 3,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.75,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.3333333333333333,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落1・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 3,
+                "n_non_tie": 4,
+                "ties": 0,
+                "frac": 0.75,
+                "p_sign_test_one_sided": 0.3125,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 1,
+                    "n": 1
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 4,
+                "combined_shallower_than_vol_target": 3,
+                "n_episodes": 4,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2013-03-14",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5647366917817163,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1366,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.22919865700787312,
+                    "vol_target": -0.35965872204380567,
+                    "combined": -0.18489345704736926
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5647366917817165,
+                    "ma200": -0.1403678645510481,
+                    "vol_target": -0.35965872204380567,
+                    "combined": -0.11621468788554357
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5885797950219619,
+                    "vol_target": 0.7862651971633756,
+                    "combined": 0.5489705893004203
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-29",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.20178483869435315,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 150,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.11249576745493994,
+                    "vol_target": -0.16214790052610473,
+                    "combined": -0.10039449749031693
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.20178483869435282,
+                    "ma200": -0.10963037164359168,
+                    "vol_target": -0.16214790052610473,
+                    "combined": -0.09749003152358571
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.48,
+                    "vol_target": 0.8354947198523894,
+                    "combined": 0.4696243770312632
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-18",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3410474689324394,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 126,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.1264969060979333,
+                    "vol_target": -0.16511800774345053,
+                    "combined": -0.10965042858819518
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3410474689324394,
+                    "ma200": -0.12524752332181033,
+                    "vol_target": -0.16511800774345053,
+                    "combined": -0.10827461193858068
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5079365079365079,
+                    "vol_target": 0.5531328553513899,
+                    "combined": 0.38230268933494727
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2024-01-19",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.25360573583036916,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 513,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.23964344451767883,
+                    "vol_target": -0.19452298440102422,
+                    "combined": -0.204686067266299
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2536057358303698,
+                    "ma200": -0.1511791073105725,
+                    "vol_target": -0.19452298440102422,
+                    "combined": -0.1321620313036721
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5341130604288499,
+                    "vol_target": 0.8164666308120322,
+                    "combined": 0.5063169250793575
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "adj_close": {
+      "eval_start_first_valid_day": "2000-10-18",
+      "vt_leverage_summary": {
+        "mean": 0.869828128821525,
+        "frac_days_lev_eq_1": 0.5800852138235758,
+        "min": 0.15873765317053148
+      },
+      "ma200_mean_exposure": 0.7333122928830677,
+      "combined_mean_exposure": 0.7023712260656074,
+      "by_threshold": {
+        "0.15": {
+          "n_episodes_detected": 6,
+          "n_fast": 2,
+          "n_long": 4,
+          "by_cost": {
+            "0.0002": {
+              "n_episodes_evaluated": 5,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 9.992007221626409e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 2,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 2,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  2,
+                  1,
+                  2
+                ],
+                "n_fast_episodes": 2,
+                "n_long_episodes": 3,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.6,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.3333333333333333,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落2・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 4,
+                "n_non_tie": 5,
+                "ties": 0,
+                "frac": 0.8,
+                "p_sign_test_one_sided": 0.1875,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 2,
+                    "n": 2
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 5,
+                "combined_shallower_than_vol_target": 4,
+                "n_episodes": 5,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2012-08-16",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5518943073715546,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1224,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.21525534080491693,
+                    "vol_target": -0.34520638027292216,
+                    "combined": -0.17580760283283703
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.15468609174393333,
+                    "vol_target": -0.34520638027292216,
+                    "combined": -0.13149858060848152
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5735294117647058,
+                    "vol_target": 0.7615584110898312,
+                    "combined": 0.5216680828504137
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-12",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.19348927005236527,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 140,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.19348927005236538,
+                    "ma200": -0.15304946667332597,
+                    "vol_target": -0.15461001329727586,
+                    "combined": -0.13252128629581883
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.19348927005236538,
+                    "ma200": -0.14239716672183023,
+                    "vol_target": -0.15461001329727586,
+                    "combined": -0.12161079849717626
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5285714285714286,
+                    "vol_target": 0.8252876642804202,
+                    "combined": 0.5076011273708854
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-10",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3371728189633807,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 120,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.12454712073545438,
+                    "vol_target": -0.16366035604887263,
+                    "combined": -0.10752480765575678
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.12454712073545438,
+                    "vol_target": -0.16366035604887263,
+                    "combined": -0.10752480765575678
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5083333333333333,
+                    "vol_target": 0.5319618298974145,
+                    "combined": 0.36636945552211775
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2023-12-13",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.24496392325498617,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 489,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.237426934033255,
+                    "vol_target": -0.1874141019439164,
+                    "combined": -0.20508415221660148
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.14214429980784515,
+                    "vol_target": -0.1874141019439164,
+                    "combined": -0.1263557126564917
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5501022494887525,
+                    "vol_target": 0.809000718307636,
+                    "combined": 0.5156085633002333
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                },
+                {
+                  "start": "2025-02-19",
+                  "trough": "2025-04-08",
+                  "end": "2025-06-26",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.18755237333914387,
+                  "days_peak_to_trough": 34,
+                  "days_peak_to_end": 88,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.18755237333914332,
+                    "ma200": -0.11870044231475496,
+                    "vol_target": -0.14882520175892155,
+                    "combined": -0.11431570876572084
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.18755237333914332,
+                    "ma200": -0.10675835827336977,
+                    "vol_target": -0.14882520175892155,
+                    "combined": -0.10106053760373424
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5227272727272727,
+                    "vol_target": 0.7221478169888571,
+                    "combined": 0.4838620952841795
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                }
+              ]
+            },
+            "0.001": {
+              "n_episodes_evaluated": 5,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 9.992007221626409e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 2,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 1,
+                    "vol_target": 2,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  2,
+                  2,
+                  1
+                ],
+                "n_fast_episodes": 2,
+                "n_long_episodes": 3,
+                "p_two_sided": 0.4,
+                "p_greater_a": 0.9999999999999999,
+                "p_less_a": 0.3,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.6666666666666666,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 0.9999999999999999,
+                "judgment": "未確定（急落2・長期3局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 4,
+                "n_non_tie": 5,
+                "ties": 0,
+                "frac": 0.8,
+                "p_sign_test_one_sided": 0.1875,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 2,
+                    "n": 2
+                  },
+                  "長期": {
+                    "wins": 2,
+                    "n": 3
+                  }
+                },
+                "combined_shallower_than_ma200": 5,
+                "combined_shallower_than_vol_target": 4,
+                "n_episodes": 5,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2012-08-16",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5518943073715546,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1224,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.22278994624678106,
+                    "vol_target": -0.3489060146259244,
+                    "combined": -0.1834854603931666
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.16345147919611136,
+                    "vol_target": -0.3489060146259244,
+                    "combined": -0.13872812510333665
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5735294117647058,
+                    "vol_target": 0.7615584110898312,
+                    "combined": 0.5216680828504137
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2018-09-20",
+                  "trough": "2018-12-24",
+                  "end": "2019-04-12",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.19348927005236527,
+                  "days_peak_to_trough": 65,
+                  "days_peak_to_end": 140,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.19348927005236538,
+                    "ma200": -0.16115377938215192,
+                    "vol_target": -0.15547228024458926,
+                    "combined": -0.13984191187744688
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.19348927005236538,
+                    "ma200": -0.1485587657271128,
+                    "vol_target": -0.15547228024458926,
+                    "combined": -0.12692690719707023
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5285714285714286,
+                    "vol_target": 0.8252876642804202,
+                    "combined": 0.5076011273708854
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-10",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3371728189633807,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 120,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.1252476231393468,
+                    "vol_target": -0.16424335606232365,
+                    "combined": -0.10827452652215397
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.1252476231393468,
+                    "vol_target": -0.16424335606232365,
+                    "combined": -0.10827452652215397
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5083333333333333,
+                    "vol_target": 0.5319618298974145,
+                    "combined": 0.36636945552211775
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2023-12-13",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.24496392325498617,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 489,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.24895325745250896,
+                    "vol_target": -0.19021906809766742,
+                    "combined": -0.21582303069476094
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.14830649796737438,
+                    "vol_target": -0.19021906809766742,
+                    "combined": -0.1320153379022898
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5501022494887525,
+                    "vol_target": 0.809000718307636,
+                    "combined": 0.5156085633002333
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                },
+                {
+                  "start": "2025-02-19",
+                  "trough": "2025-04-08",
+                  "end": "2025-06-26",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.18755237333914387,
+                  "days_peak_to_trough": 34,
+                  "days_peak_to_end": 88,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.18755237333914332,
+                    "ma200": -0.1215253848436173,
+                    "vol_target": -0.14929086846320483,
+                    "combined": -0.11673513499114418
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.18755237333914332,
+                    "ma200": -0.10890947551039842,
+                    "vol_target": -0.14929086846320483,
+                    "combined": -0.10282255420487907
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5227272727272727,
+                    "vol_target": 0.7221478169888571,
+                    "combined": 0.4838620952841795
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                }
+              ]
+            }
+          }
+        },
+        "0.2": {
+          "n_episodes_detected": 4,
+          "n_fast": 1,
+          "n_long": 3,
+          "by_cost": {
+            "0.0002": {
+              "n_episodes_evaluated": 3,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 9.992007221626409e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 1,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 1,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  1,
+                  1,
+                  1
+                ],
+                "n_fast_episodes": 1,
+                "n_long_episodes": 2,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.6666666666666666,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.5,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落1・長期2局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 2,
+                "n_non_tie": 3,
+                "ties": 0,
+                "frac": 0.6666666666666666,
+                "p_sign_test_one_sided": 0.5,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 1,
+                    "n": 1
+                  },
+                  "長期": {
+                    "wins": 1,
+                    "n": 2
+                  }
+                },
+                "combined_shallower_than_ma200": 3,
+                "combined_shallower_than_vol_target": 2,
+                "n_episodes": 3,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2012-08-16",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5518943073715546,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1224,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.21525534080491693,
+                    "vol_target": -0.34520638027292216,
+                    "combined": -0.17580760283283703
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.15468609174393333,
+                    "vol_target": -0.34520638027292216,
+                    "combined": -0.13149858060848152
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5735294117647058,
+                    "vol_target": 0.7615584110898312,
+                    "combined": 0.5216680828504137
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-10",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3371728189633807,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 120,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.12454712073545438,
+                    "vol_target": -0.16366035604887263,
+                    "combined": -0.10752480765575678
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.12454712073545438,
+                    "vol_target": -0.16366035604887263,
+                    "combined": -0.10752480765575678
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5083333333333333,
+                    "vol_target": 0.5319618298974145,
+                    "combined": 0.36636945552211775
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2023-12-13",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.24496392325498617,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 489,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.237426934033255,
+                    "vol_target": -0.1874141019439164,
+                    "combined": -0.20508415221660148
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.14214429980784515,
+                    "vol_target": -0.1874141019439164,
+                    "combined": -0.1263557126564917
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5501022494887525,
+                    "vol_target": 0.809000718307636,
+                    "combined": 0.5156085633002333
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                }
+              ]
+            },
+            "0.001": {
+              "n_episodes_evaluated": 3,
+              "excluded": [
+                {
+                  "start": "2000-03-24",
+                  "reason": "局面の窓が3ルールの評価期間外（ウォームアップ前）"
+                }
+              ],
+              "check_max_abs_diff_bh_mdd_vs_depth": 9.992007221626409e-16,
+              "H1": {
+                "table_rows_speed_cols_shallower_rule": {
+                  "急落": {
+                    "ma200": 1,
+                    "vol_target": 0,
+                    "tie": 0
+                  },
+                  "長期": {
+                    "ma200": 1,
+                    "vol_target": 1,
+                    "tie": 0
+                  }
+                },
+                "fisher_layout": "[[急落&VT浅い a, 急落&200日線浅い b],[長期&VT浅い c, 長期&200日線浅い d]]",
+                "a_b_c_d": [
+                  0,
+                  1,
+                  1,
+                  1
+                ],
+                "n_fast_episodes": 1,
+                "n_long_episodes": 2,
+                "p_two_sided": 1.0,
+                "p_greater_a": 1.0,
+                "p_less_a": 0.6666666666666666,
+                "odds_ratio_sample": 0.0,
+                "frac_vt_shallower_fast": 0.0,
+                "frac_vt_shallower_long": 0.5,
+                "direction_matches_prediction": false,
+                "p_one_sided_predicted_direction": 1.0,
+                "judgment": "未確定（急落1・長期2局面。どちらかが4未満）"
+              },
+              "H2": {
+                "combined_shallower_than_best_single": 2,
+                "n_non_tie": 3,
+                "ties": 0,
+                "frac": 0.6666666666666666,
+                "p_sign_test_one_sided": 0.5,
+                "always_all_episodes": false,
+                "by_speed": {
+                  "急落": {
+                    "wins": 1,
+                    "n": 1
+                  },
+                  "長期": {
+                    "wins": 1,
+                    "n": 2
+                  }
+                },
+                "combined_shallower_than_ma200": 3,
+                "combined_shallower_than_vol_target": 2,
+                "n_episodes": 3,
+                "judgment": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p>=0.10・ただし全局面ではない"
+              },
+              "episodes": [
+                {
+                  "start": "2007-10-09",
+                  "trough": "2009-03-09",
+                  "end": "2012-08-16",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.5518943073715546,
+                  "days_peak_to_trough": 355,
+                  "days_peak_to_end": 1224,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.22278994624678106,
+                    "vol_target": -0.3489060146259244,
+                    "combined": -0.1834854603931666
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.5518943073715536,
+                    "ma200": -0.16345147919611136,
+                    "vol_target": -0.3489060146259244,
+                    "combined": -0.13872812510333665
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5735294117647058,
+                    "vol_target": 0.7615584110898312,
+                    "combined": 0.5216680828504137
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2020-02-19",
+                  "trough": "2020-03-23",
+                  "end": "2020-08-10",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.3371728189633807,
+                  "days_peak_to_trough": 23,
+                  "days_peak_to_end": 120,
+                  "speed": "急落",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.1252476231393468,
+                    "vol_target": -0.16424335606232365,
+                    "combined": -0.10827452652215397
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.3371728189633808,
+                    "ma200": -0.1252476231393468,
+                    "vol_target": -0.16424335606232365,
+                    "combined": -0.10827452652215397
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5083333333333333,
+                    "vol_target": 0.5319618298974145,
+                    "combined": 0.36636945552211775
+                  },
+                  "h1_shallower": "ma200",
+                  "h2_combined_vs_best_single": "combined_shallower"
+                },
+                {
+                  "start": "2022-01-03",
+                  "trough": "2022-10-12",
+                  "end": "2023-12-13",
+                  "ongoing_at_data_end": false,
+                  "depth": -0.24496392325498617,
+                  "days_peak_to_trough": 195,
+                  "days_peak_to_end": 489,
+                  "speed": "長期",
+                  "mdd_start_to_end": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.24895325745250896,
+                    "vol_target": -0.19021906809766742,
+                    "combined": -0.21582303069476094
+                  },
+                  "mdd_start_to_trough_reference": {
+                    "buy_and_hold": -0.2449639232549865,
+                    "ma200": -0.14830649796737438,
+                    "vol_target": -0.19021906809766742,
+                    "combined": -0.1320153379022898
+                  },
+                  "mean_exposure_in_episode": {
+                    "ma200": 0.5501022494887525,
+                    "vol_target": 0.809000718307636,
+                    "combined": 0.5156085633002333
+                  },
+                  "h1_shallower": "vol_target",
+                  "h2_combined_vs_best_single": "combined_not_shallower"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "judgment_main_thr0.15_cost0.0002": {
+    "H1": "棄却",
+    "H2": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・ただし全局面ではない"
+  },
+  "judgment_sensitivity": {
+    "thr0.15_cost0.0002": {
+      "H1": "棄却",
+      "H2": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・ただし全局面ではない"
+    },
+    "thr0.15_cost0.001": {
+      "H1": "棄却",
+      "H2": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・ただし全局面ではない"
+    },
+    "thr0.2_cost0.0002": {
+      "H1": "未確定（急落3・長期13局面。どちらかが4未満）",
+      "H2": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・全局面で勝ち"
+    },
+    "thr0.2_cost0.001": {
+      "H1": "未確定（急落3・長期13局面。どちらかが4未満）",
+      "H2": "過半数に届いた（「常に有利」の棄却なし）・符号検定 p<0.10・全局面で勝ち"
+    }
+  },
+  "novelty_note": "構図（トレンドは長い下落・速い道具は急落に強い）はHarvey et al. 2019・AQR 2022と同じ向きで既出。H1が支持されても新規性は小さい（VTを急落側の道具として検定・併用の検定・標本数の拡大のみ）。ブログの数値は比較対象としてのみ言及し根拠には使わない。",
+  "elapsed_sec": 0.070136
+}
