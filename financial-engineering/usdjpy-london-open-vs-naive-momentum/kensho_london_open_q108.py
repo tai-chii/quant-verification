@@ -4,9 +4,9 @@
 ================================================================================
 
 【出典】
-- 計画: vault/45_金融工学/文献/アイデア候補.md 2026-10-08 の行
+- 計画: 検証/学問/金融工学/知識/文献/アイデア候補.md 2026-10-08 の行
   「USDJPYの日中順張りの効きはロンドン開始30分の時刻条件の中だけにあるのか（矛盾の解消）」（測る前の事前登録）。
-- Seeck (2026) SSRN WP 7008318（vault/45_金融工学/文献/PDF/Seeck_2026_SSRN_Intraday_momentum_spot_FX_JPY_amplification.pdf）
+- Seeck (2026) SSRN WP 7008318（検証/学問/金融工学/知識/文献/PDF/Seeck_2026_SSRN_Intraday_momentum_spot_FX_JPY_amplification.pdf）
   p4 3.2: "r1 = log(P_t1/P_t0), Signal = sign(r1) ... r_trade = sign(r1) × log(P_t2/P_t1), where P_t0 denotes the
   London Open price, P_t1 the price 30 minutes after London Open, and P_t2 the price at the selected intraday exit
   within the London-New York session."  p4 3.4: 出口時刻は IS(2012–2018) で選択（値は本文に無い）。
@@ -31,7 +31,7 @@
     計画の終わり（2026-09）はデータが無いので末尾までに短縮。約18.5か月・約380営業日。
   * 2019–2020 は手元に無いため測らない（再現期間は計画より2年短い）。
 - 頻度: Seeck は M5、手元は M15。ロンドン開始30分＝M15の2本でちょうど作れるので近似の誤差は出口の位置だけ。
-- コスト: CSV は BID のみ（スプレッド列なし）→ vault/45_金融工学/CLAUDE.md「コストの扱い: 2段階」に従う。
+- コスト: CSV は BID のみ（スプレッド列なし）→ 検証/学問/金融工学/CLAUDE.md「コストの扱い: 2段階」に従う。
   * 段階1: 往復 0 pips（粗利）と 往復 2 pips（片道1pip、保守的）の2本。
   * 段階2: 新規期間の主仕様で粗利の平均が 4 pips（保守的コストの2倍）を超えたときだけ、往復 0.5 / 1.0 pips の感度を出す。
   * 参考（判定に使わない）: Seeck の USDJPY 往復 1.47 pips での成績と Sortino（Seeck 表2 との比較用）。
@@ -109,7 +109,7 @@ def _p(*parts):
     return os.path.join(WS, *[unicodedata.normalize("NFD", x) for x in parts])
 
 
-CSV = _p("vault", "40_市場", "FX", "システムトレード", "data_USDJPY_M15_dukascopy.csv")
+CSV = _p("検証", "学問", "金融工学", "作業", "FX", "システムトレード", "data_USDJPY_M15_dukascopy.csv")
 OUT = os.path.join(HERE, "results")
 PIP = 0.01
 NW_L = 5

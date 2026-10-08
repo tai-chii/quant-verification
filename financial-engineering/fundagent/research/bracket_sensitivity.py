@@ -8,7 +8,7 @@ bracket_daytrade.py の続き。器の細部が結論をどれだけ動かすか
 import os
 import pandas as pd, numpy as np
 
-CSV = os.path.expanduser("~/mnt/ワークスペース/vault/40_市場/FX/システムトレード/data_USDJPY_M15_dukascopy.csv")
+CSV = os.path.expanduser("~/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード/data_USDJPY_M15_dukascopy.csv")
 ENTRY_JST, EXIT_JST = 9, 23
 COST = 0.003
 

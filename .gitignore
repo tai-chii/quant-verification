@@ -6,15 +6,15 @@ __pycache__/
 *.pyc
 
 # ブートストラップ等の生サンプル・運用ログ
-kensho-anomaly-decay/output/*_boot.csv
-kensho-anomaly-decay/output/*.log
+financial-engineering/kensho-anomaly-decay/output/*_boot.csv
+financial-engineering/kensho-anomaly-decay/output/*.log
 
 # 採点実験のブラインド台帳・抜粋データ（結果の要約のみ残す）
-report-scoring/excerpts*.json
-report-scoring/labels.csv
-report-scoring/key_map.json
-report-scoring/scores_blind.json
+financial-engineering/report-scoring/excerpts*.json
+financial-engineering/report-scoring/labels.csv
+financial-engineering/report-scoring/key_map.json
+financial-engineering/report-scoring/scores_blind.json
 # ma-cross-eurusd: バックテスト実行ごとのログ・中間結果（コードと要約以外は残さない方針）
-ma-cross-eurusd/run_*.log
-ma-cross-eurusd/results/
-ma-cross-eurusd/results_usdjpy/
+financial-engineering/ma-cross-eurusd/run_*.log
+financial-engineering/ma-cross-eurusd/results/
+financial-engineering/ma-cross-eurusd/results_usdjpy/

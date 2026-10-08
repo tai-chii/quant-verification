@@ -17,7 +17,7 @@
 import os, sys
 import pandas as pd, numpy as np
 
-CSV = os.path.expanduser("~/mnt/ワークスペース/vault/40_市場/FX/システムトレード/data_USDJPY_M15_dukascopy.csv")
+CSV = os.path.expanduser("~/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード/data_USDJPY_M15_dukascopy.csv")
 BRACKET = 0.50      # 円
 COST = 0.003        # 円（往復）
 ENTRY_JST = 9       # 朝の定時

@@ -6,7 +6,7 @@ kensho_anomaly_decay.py (2026-10-05) 為替の日中・曜日のアノマリー�
 === 事前に固定した計画（3つの比を計算する前に書いた。各アノマリーの期間別の値は Q051・Q056・五十日の追試で既知） ===
 出どころ: アイデア候補 2026-10-05「為替の日中・曜日のアノマリーは公表後にどれだけ減ったか」。比べる相手は
           株の人気8因子（Arnott ほか 2019 の引用: 年5.8%→2.4%＝比 約0.41）と、月次の通貨戦略（Bartram ほか 2018、未読・アイデア候補の記載で比 約0.3）。
-データ  : Dukascopy H1（vault/40_市場/FX/システムトレード/data_*_H1_dukascopy.csv を読むだけ。書き換えない）。
+データ  : Dukascopy H1（検証/学問/金融工学/作業/FX/システムトレード/data_*_H1_dukascopy.csv を読むだけ。書き換えない）。
 効果の定義（各追試のスクリプトと同じ。1つの数にする）:
   A 五十日  : USDJPY、日本の営業日の火〜金、JST 3:00→10:00 の対数リターン（bp）の「五十日の平均 − 対照の平均」（kensho_gotobi.py と同じ日の定義）
   B フィキシング: ドル建て6通貨の等しい重みの外貨ポートフォリオで、日ごとの「post-T − pre-T」（東京のV字の往復の大きさ、bp）の平均（kensho_fix_vshape.py と同じ窓）
@@ -34,7 +34,7 @@ import os, sys, math, importlib.util, datetime as dt
 import numpy as np, pandas as pd, jpholiday
 
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "output")
-SYS = os.environ["FX_SYS_DIR"]   # vault/40_市場/FX/システムトレード（NFD の名前のため実行時に渡す）
+SYS = os.environ["FX_SYS_DIR"]   # 検証/学問/金融工学/作業/FX/システムトレード（NFD の名前のため実行時に渡す）
 B = 2000; SEED = 20261005
 
 def load(name):

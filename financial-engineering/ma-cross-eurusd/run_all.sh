@@ -3,10 +3,10 @@
 # 使い方:  ./run_all.sh
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"
-WS="$(cd "$HERE/../../.." && pwd)"                      # ~/ワークスペース
+WS="$(cd "$HERE/../../../.." && pwd)"                      # ~/ワークスペース
 cd "$WS"
-DATA="vault/40_市場/FX/システムトレード/data_EURUSD_H4_dukascopy.csv"
-OUT="作業層/市場/ma_cross_eurusd/results"
+DATA="検証/学問/金融工学/作業/FX/システムトレード/data_EURUSD_H4_dukascopy.csv"
+OUT="検証/verification-lab/financial-engineering/ma-cross-eurusd/results"
 caffeinate -i python3 "$HERE/bt.py" --data "$DATA" --out "$OUT" --step 2 --max-period 500 --start-frac 0.0 "$@"
 D="$OUT/step2_p5-500_SMA-EMA"
 if [ -f "$D/null_max.npz" ]; then

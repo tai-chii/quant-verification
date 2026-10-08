@@ -1,24 +1,18 @@
 # -*- coding: utf-8 -*-
-"""持ちっぱなし＋1銘柄1ポジション制。
+"""定時ごとに建玉を「追加してよい」ルール（積み増し／ピラミッディング）。
 
-ルール:
-- 定時(既定9:00 JST)にポジションを取る。ただし **そのペアで建玉があるなら何もしない**
-- 決済は TP/SL に触れたときのみ。**時間切れなし**
-- 決済した次の定時から、また入れるようになる
+前提の違い:
+- [[持ちっぱなし1銘柄1ポジション]] … 建玉があれば新規を取らない
+- 本スクリプト                     … 定時が来たら建玉の有無に関係なく1単位追加する
 
-24時間ロール版との違い:
-- 強制的に毎日建て替えないので、スプレッドを毎日払わない
-- 建玉が続く限りスワップが積み上がる（キャリーには有利）
-- 対称ブラケットなので価格部分の期待値はほぼゼロ。**スワップだけが残る構造**
-- 代わりに、含み損のポジションが次のエントリーを塞ぐ（機会損失）
-
-評価は日次マークトゥマーケット（建玉期間中の値洗い＋スワップ）で行い、
-24時間ロール版とSharpe/DDを直接比較できるようにする。決定的。
+各ポジションは自分のTP/SL（建てた時点のATR基準）を持ち、独立に決済される。
+同時建玉数＝実質レバレッジになるので、その分布を必ず出す。
+決定的・先読みなし。
 """
 import os
 import pandas as pd, numpy as np
 
-DIR = os.path.expanduser("~/mnt/ワークスペース/vault/40_市場/FX/システムトレード")
+DIR = os.path.expanduser("~/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード")
 ENTRY_JST = 9
 MARKUP = 0.7
 COST_PCT = 0.002/100
@@ -71,79 +65,75 @@ def prep(pair):
     tr = pd.concat([d.h-d.l,(d.h-pc).abs(),(d.l-pc).abs()],axis=1).max(axis=1)
     df["atr"] = df["day"].map(tr.rolling(20).mean().shift(1))
     days = pd.DatetimeIndex(sorted(df["day"].unique()))
-    rb = rate_steps(pair[:3], days); rq = rate_steps(pair[3:], days)
-    df["diff"] = df["day"].map(rb - rq)
+    df["diff"] = df["day"].map(rate_steps(pair[:3], days) - rate_steps(pair[3:], days))
     return df
 
 
-def simulate(pair, k, entry_h=ENTRY_JST, markup=MARKUP):
+def simulate(pair, k, cap=None, entry_h=ENTRY_JST, markup=MARKUP):
+    """cap: 同時建玉数の上限。Noneなら無制限。"""
     df = prep(pair)
-    if df is None: return None, None
-    jst = df.jst.values; hh = df.jst.dt.hour.values; day = df.day.values
+    if df is None: return None, None, None
+    hh = df.jst.dt.hour.values; day = df.day.values
     op, hi, lo, cl = df.open.values, df.high.values, df.low.values, df.close.values
     atr, dif = df.atr.values, df["diff"].values
 
-    pnl = {}            # day -> 収益率(%)
-    trades = []
-    pos = 0; entry = tp = sl = np.nan; ent_i = 0; prev = np.nan
+    pnl = {}; nopen = {}; closed = []
+    book = []          # [dir, entry, tp, sl, prev]
     for i in range(len(df)):
         d = day[i]
-        if pos == 0:
-            if hh[i] == entry_h and np.isfinite(atr[i]) and np.isfinite(dif[i]) and dif[i] != 0:
+        # --- 既存建玉の値洗い＆決済判定 ---
+        still = []
+        tot = 0.0
+        for pos, entry, tp, sl, prev in book:
+            htp = hi[i] >= tp if pos > 0 else lo[i] <= tp
+            hsl = lo[i] <= sl if pos > 0 else hi[i] >= sl
+            px = cl[i]; done = False
+            if hsl:  px = sl; done = True        # 同足両触れはSL優先（保守的）
+            elif htp: px = tp; done = True
+            tot += pos*(px-prev)/entry*100
+            tot += max(0.0, abs(dif[i])-markup)/365/24     # スワップ1時間ぶん
+            if done: closed.append({"day": d, "why": "sl" if hsl else "tp"})
+            else:    still.append([pos, entry, tp, sl, px])
+        book = still
+        if tot: pnl[d] = pnl.get(d, 0.0) + tot
+        # --- 定時なら1単位追加 ---
+        if hh[i] == entry_h and np.isfinite(atr[i]) and np.isfinite(dif[i]) and dif[i] != 0:
+            if cap is None or len(book) < cap:
                 pos = 1 if dif[i] > 0 else -1
-                entry = op[i]; W = atr[i]*k
-                tp, sl = entry + pos*W, entry - pos*W
-                ent_i = i; prev = entry
-                pnl[d] = pnl.get(d, 0.0) - COST_PCT*100          # 建てるとき1回だけコスト
-            continue
-        # 建玉あり: 値洗い
-        htp = hi[i] >= tp if pos > 0 else lo[i] <= tp
-        hsl = lo[i] <= sl if pos > 0 else hi[i] >= sl
-        px = cl[i]; closed = False
-        if hsl:  px = sl; closed = True                           # 同足両触れはSL優先（保守的）
-        elif htp: px = tp; closed = True
-        pnl[d] = pnl.get(d, 0.0) + pos*(px-prev)/entry*100
-        # スワップ（1時間ぶん）
-        pnl[d] = pnl.get(d, 0.0) + max(0.0, abs(dif[i])-markup)/365/24
-        prev = px
-        if closed:
-            hold_h = (jst[i]-jst[ent_i]) / np.timedelta64(1,'h')
-            trades.append({"entry_day": day[ent_i], "exit_day": d, "hold_days": hold_h/24,
-                           "why": "sl" if hsl else "tp", "dir": pos})
-            pos = 0
-    s = pd.Series(pnl).sort_index()
-    s.index = pd.DatetimeIndex(s.index)
-    return s, pd.DataFrame(trades)
+                W = atr[i]*k
+                book.append([pos, op[i], op[i]+pos*W, op[i]-pos*W, op[i]])
+                pnl[d] = pnl.get(d, 0.0) - COST_PCT*100
+        nopen[d] = max(nopen.get(d, 0), len(book))
+    s = pd.Series(pnl).sort_index(); s.index = pd.DatetimeIndex(s.index)
+    no = pd.Series(nopen).sort_index(); no.index = pd.DatetimeIndex(no.index)
+    return s, no, pd.DataFrame(closed)
 
 
 def stats(r_pct):
     r = r_pct/100
     eq = (1+r).cumprod(); n = len(r)
-    ann = (eq.iloc[-1]**(250/n)-1)*100
+    ann = (eq.iloc[-1]**(250/n)-1)*100 if eq.iloc[-1] > 0 else float("nan")
     vol = r.std()*np.sqrt(250)*100
-    return {"n":n, "ann":ann, "vol":vol, "sharpe":ann/vol if vol else np.nan,
-            "mdd":(eq/eq.cummax()-1).min()*100, "worst":r.min()*100, "skew":r.skew()}
+    return {"n":n,"ann":ann,"vol":vol,"sharpe":ann/vol if vol else np.nan,
+            "mdd":(eq/eq.cummax()-1).min()*100,"worst":r.min()*100,"skew":r.skew()}
 
 
 if __name__ == "__main__":
     for k in (0.5, 1.0, 2.0, 3.0):
-        print(f"\n## ブラケット {k}×ATR20（持ちっぱなし・1銘柄1ポジション）\n")
-        print("| ペア | 取引回数 | 平均保有 | 最長保有 | TP率 | 建玉率 | 年率 | Sharpe | 最大DD | 最悪日 |")
-        print("|---|---|---|---|---|---|---|---|---|---|")
-        cols = []
+        print(f"\n## ブラケット {k}×ATR20 ／ 定時ごとに1単位追加（上限なし）\n")
+        print("| ペア | 同時建玉 平均 | 最大 | 年率 | ボラ | Sharpe | 最大DD | 最悪日 | 歪度 |")
+        print("|---|---|---|---|---|---|---|---|---|")
+        cols = []; mx = 0
         for p in PAIRS:
-            s, tr = simulate(p, k)
+            s, no, tr = simulate(p, k)
             if s is None or len(s) < 200: continue
-            st = stats(s); cols.append(s.rename(p))
-            expo = tr.hold_days.sum()/ (len(s)) *100 if len(tr) else 0
-            print(f'| {p} | {len(tr)} | {tr.hold_days.mean():.1f}日 | {tr.hold_days.max():.0f}日 | '
-                  f'{(tr.why=="tp").mean()*100:.0f}% | {min(expo,100):.0f}% | {st["ann"]:+.2f}% | '
-                  f'{st["sharpe"]:+.2f} | {st["mdd"]:.1f}% | {st["worst"]:.2f}% |')
+            st = stats(s); cols.append(s.rename(p)); mx = max(mx, no.max())
+            print(f'| {p} | {no.mean():.1f} | **{no.max()}** | {st["ann"]:+.2f}% | {st["vol"]:.1f}% | '
+                  f'{st["sharpe"]:+.2f} | {st["mdd"]:.1f}% | {st["worst"]:.2f}% | {st["skew"]:+.2f} |')
         pf = pd.concat(cols, axis=1).fillna(0).mean(axis=1)
         st = stats(pf); h = len(pf)//2
         print(f'\n**8ペア分散: 年率 {st["ann"]:+.2f}% / ボラ {st["vol"]:.1f}% / Sharpe {st["sharpe"]:+.2f} / '
-              f'最大DD {st["mdd"]:.1f}% / 歪度 {st["skew"]:+.2f}**')
+              f'最大DD {st["mdd"]:.1f}% / 最悪日 {st["worst"]:.2f}% / 歪度 {st["skew"]:+.2f}**')
         print(f'前半 年率{stats(pf.iloc[:h])["ann"]:+.2f}%  後半 年率{stats(pf.iloc[h:])["ann"]:+.2f}%')
         y = (1+pf/100).groupby(pf.index.year).prod()-1
         print("年次: " + "  ".join(f"{a}:{b*100:+.2f}%" for a,b in y.items()))
-        pf.to_csv(f"output/holduntilhit_k{k}.csv")

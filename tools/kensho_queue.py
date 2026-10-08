@@ -28,10 +28,10 @@ def _find(base, rel):
     return cur
 def _root():
     for b in [os.path.join(HOME, 'ワークスペース'), *[os.path.join(HOME, 'mnt', x) for x in (os.listdir(os.path.join(HOME, 'mnt')) if os.path.isdir(os.path.join(HOME, 'mnt')) else [])]]:
-        try: return _find(b, 'vault/45_金融工学')
+        try: return _find(b, '検証')
         except (SystemExit, FileNotFoundError): pass
-    raise SystemExit('vault/45_金融工学 が見つからない')
-R = _root(); QP = _find(R, '検証キュー.md'); IP = _find(R, '文献/入荷台帳.csv')
+    raise SystemExit('検証 が見つからない')
+R = _root(); QP = _find(R, '_基盤/知識/検証キュー.md'); IP = _find(R, '学問/金融工学/知識/文献/入荷台帳.csv')
 from zoneinfo import ZoneInfo
 _JST = dt.datetime.now(ZoneInfo('Asia/Tokyo')); TODAY = _JST.date().isoformat(); NOW = _JST.strftime('%Y-%m-%d %H:%M')
 OLD_HDR = '| 順位 | ID | 種類 | 対象 | 優先の根拠 | 手動 | 状態 | 追加日 |'

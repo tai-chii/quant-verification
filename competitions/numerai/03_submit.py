@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 03_submit.py  今のラウンドの live データを取得し、予測して提出する
-使い方: python3 ~/ワークスペース/作業層/検証/numerai/03_submit.py <モデル名> [small|medium]
+使い方: python3 ~/ワークスペース/検証/verification-lab/competitions/numerai/03_submit.py <モデル名> [small|medium]
 準備（1回だけ）:
   1. numer.ai でモデルを作る（Models → 新規。名前は半角英数）
   2. Account → API Keys で「Upload submissions」「View user info」にチェックしたキーを作る

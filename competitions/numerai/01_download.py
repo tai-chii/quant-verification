@@ -3,7 +3,7 @@
 01_download.py  Numerai の最新データを取得する（キー不要）
 使い方（Mac のターミナル）:
     pip install numerapi lightgbm pyarrow pandas
-    python3 ~/ワークスペース/作業層/検証/numerai/01_download.py
+    python3 ~/ワークスペース/検証/verification-lab/competitions/numerai/01_download.py
 - 最新のデータ版（vX.Y/）を自動で選び、features.json・train.parquet・validation.parquet・validation_benchmark_models.parquet（BMC の計算用）を data/ に保存する。
 - 既にあるファイルは取り直さない。成功／失敗を最後に表示する。
 """

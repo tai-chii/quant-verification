@@ -13,7 +13,7 @@
 import os, glob
 import pandas as pd, numpy as np
 
-DIR = os.path.expanduser("~/mnt/ワークスペース/vault/40_市場/FX/システムトレード")
+DIR = os.path.expanduser("~/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード")
 ENTRY_JST, EXIT_JST = 9, 23
 COST_PCT = 0.002 / 100        # 往復コスト（価格比）
 ATR_K = 0.5

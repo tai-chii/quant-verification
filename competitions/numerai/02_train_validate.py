@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 02_train_validate.py  ベースラインのモデルを学習し、検証期間で採点する
-使い方: python3 ~/ワークスペース/作業層/検証/numerai/02_train_validate.py [small|medium]
+使い方: python3 ~/ワークスペース/検証/verification-lab/competitions/numerai/02_train_validate.py [small|medium]
 
 === 事前に固定した設定（2026-10-03・結果を見る前） ===
 - モデル: Numerai 公式の例と同じ LightGBM（n_estimators=2000, learning_rate=0.01, max_depth=5, num_leaves=31, colsample_bytree=0.1）

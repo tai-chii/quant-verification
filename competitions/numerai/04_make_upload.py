@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 04_make_upload.py  Numerai の「Model Uploads」用の .pkl を作る（毎日 Numerai 側で自動実行される）
-使い方: python3 ~/ワークスペース/作業層/検証/numerai/04_make_upload.py [small|medium|xerxes60|fn|xerxes60_medium]
+使い方: python3 ~/ワークスペース/検証/verification-lab/competitions/numerai/04_make_upload.py [small|medium|xerxes60|fn|xerxes60_medium]
   xerxes60_medium = 08 で学習した target_xerxes_60・medium 780本のモデル（models/xerxes60_medium_seg*.txt の8本の
     生スコアを合計する。09 で「保留」→ live で small と比べるための別枠用。2026-10-04 追加）
     自己確認は results/upload_check_era1226.parquet（1エラ分）で行い、3.10 で計算した予測と一致するか確かめる

@@ -16,7 +16,7 @@ lot = 口座 × リスク% ÷ (k × 値幅_n)
 import os
 import pandas as pd, numpy as np
 
-DIR = os.path.expanduser("~/mnt/ワークスペース/vault/40_市場/FX/システムトレード")
+DIR = os.path.expanduser("~/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード")
 ENTRY_JST = 9; MARKUP = 0.7; COST_PCT = 0.002/100
 PAIRS = ["USDJPY","EURJPY","GBPJPY","EURUSD","GBPUSD","AUDUSD","USDCAD","USDCHF"]
 RISK = 1.0      # 1回あたりリスク(%)

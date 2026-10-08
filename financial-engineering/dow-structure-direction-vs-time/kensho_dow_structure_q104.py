@@ -7,7 +7,7 @@
 - ブログ hiro_algo (Zenn 2026) https://zenn.dev/hiro_algo/articles/fx-dow-theory-test
   USDJPY 1時間足 2023-01〜2026-08: 上昇構造確定 517件 → 24h後 平均 +12.19pips（普通に買うより +9.18）、
   下降構造確定 516件 → 売りの向きに調整して −9.06pips（＝価格は +9.06pips 上がった）。
-- 計画: vault/45_金融工学/文献/アイデア候補.md 2026-10-08 の3件目の行（測る前の事前登録。下に要点を転記）。
+- 計画: 検証/学問/金融工学/知識/文献/アイデア候補.md 2026-10-08 の3件目の行（測る前の事前登録。下に要点を転記）。
   出典はブログなので、結果は論文の出口の根拠には使わない。
 
 【仮説（測る前に固定・アイデア候補.mdより）】
@@ -71,7 +71,7 @@ import pandas as pd
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WS = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))  # ワークスペース
-DATA_DIR = os.path.join(WS, "vault", "40_市場", "FX", "システムトレード")
+DATA_DIR = os.path.join(WS, "検証", "学問", "金融工学", "作業", "FX", "システムトレード")
 PAIRS = ["USDJPY", "EURJPY", "GBPJPY", "EURUSD", "GBPUSD", "AUDUSD", "USDCAD", "USDCHF"]
 PERIODS = {"前半2015-2020": ("2015-01-01", "2021-01-01"), "後半2021-2026": ("2021-01-01", "2026-07-01")}
 H = 24
