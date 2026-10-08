@@ -1,17 +1,17 @@
-# このリポジトリは kaggle-work/ と numerai/ のみを対象とする
+# このリポジトリは kaggle/ と numerai/ のみを対象とする
 *
-!kaggle-work/
-!kaggle-work/**
+!kaggle/
+!kaggle/**
 !numerai/
 !numerai/**
 !.gitignore
 !README.md
 
-# --- kaggle-work 内の除外（コンペデータ・他者の解法・バイナリキャッシュ） ---
-kaggle-work/*/data/
-kaggle-work/*/raw_solutions/
-kaggle-work/*/submissions/
-kaggle-work/*/notebooks/*.pkl
+# --- kaggle 内の除外（コンペデータ・他者の解法・バイナリキャッシュ） ---
+kaggle/*/data/
+kaggle/*/raw_solutions/
+kaggle/*/submissions/
+kaggle/*/notebooks/*.pkl
 
 # --- numerai 内の除外（大容量データ・モデル重み・third-party公式リポジトリ） ---
 numerai/cache/
@@ -30,4 +30,4 @@ numerai/results/*.partial.csv
 numerai/results/*.parquet
 numerai/results/*_log.txt
 numerai/results/*_status.txt
-kaggle-work/*/notebooks/*_log*.txt
+kaggle/*/notebooks/*_log*.txt

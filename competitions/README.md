@@ -4,7 +4,7 @@
 
 | ディレクトリ | 内容 |
 | :--- | :--- |
-| [kaggle-work](./kaggle-work) | Kaggleコンペ（Hull Tactical Market Prediction 等）の自作Notebook・実験スクリプト |
+| [kaggle](./kaggle) | Kaggleコンペ（Hull Tactical Market Prediction 等）の自作Notebook・実験スクリプト |
 | [numerai](./numerai) | Numerai トーナメントのモデル学習・アンサンブル・提出パイプライン |
 
 ## 注記
