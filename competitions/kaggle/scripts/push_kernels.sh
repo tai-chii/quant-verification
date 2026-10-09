@@ -8,6 +8,7 @@ dry=0; [ "${1:-}" = "--dry-run" ] && dry=1
 found=0
 for d in "$root"/*/kernels/*/; do
   [ -f "$d/kernel-metadata.json" ] || continue
+  [ -f "$d/SKIP" ] && { echo "skip: $d"; continue; }  # 実行済みカーネルは再pushしない
   found=1
   src="$d/$(tr -d '\r\n' < "$d/SOURCE")"
   [ -f "$src" ] || { echo "ERROR: SOURCE が見つからない: $src" >&2; exit 1; }
