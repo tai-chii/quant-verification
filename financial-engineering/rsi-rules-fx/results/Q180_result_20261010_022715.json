@@ -1,0 +1,161 @@
+{
+ "qid": "Q180",
+ "smoke": false,
+ "generated": "20261010_022715",
+ "question": "RSI の族は先進国通貨の日足で2016年以降も補正後に残るか",
+ "settings": {
+  "NS": [
+   2,
+   7,
+   14,
+   21
+  ],
+  "THR": [
+   [
+    20,
+    80
+   ],
+   [
+    30,
+    70
+   ]
+  ],
+  "HOLDS": [
+   1,
+   5,
+   10
+  ],
+  "cost_oneway_bp": 1.0,
+  "n_rules": 48,
+  "B": 500,
+  "alpha": 0.1
+ },
+ "missing": [],
+ "per_symbol": {
+  "EURUSD": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI7_30-70_h5_contra",
+    "best_mean_bp": 0.8557,
+    "best_t": 1.4039,
+    "stat": 44.7566,
+    "rc_p": 0.508,
+    "n_rules_t_ge_2": 6
+   },
+   "ref_2008-2015": {
+    "n_days": 2088,
+    "best_rule": "RSI7_30-70_h5_trend",
+    "best_mean_bp": 1.14,
+    "best_t": 0.9988,
+    "stat": 52.0932,
+    "rc_p": 0.772,
+    "n_rules_t_ge_2": 0
+   }
+  },
+  "GBPUSD": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI7_30-70_h5_contra",
+    "best_mean_bp": 1.5085,
+    "best_t": 1.8495,
+    "stat": 78.9054,
+    "rc_p": 0.282,
+    "n_rules_t_ge_2": 3
+   },
+   "ref_2008-2015": {
+    "n_days": 2088,
+    "best_rule": "RSI7_30-70_h10_contra",
+    "best_mean_bp": 0.8581,
+    "best_t": 0.7187,
+    "stat": 39.211,
+    "rc_p": 0.88,
+    "n_rules_t_ge_2": 0
+   }
+  },
+  "AUDUSD": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI2_20-80_h10_contra",
+    "best_mean_bp": 1.4555,
+    "best_t": 1.2195,
+    "stat": 76.1327,
+    "rc_p": 0.384,
+    "n_rules_t_ge_2": 2
+   },
+   "ref_2008-2015": {
+    "n_days": 2086,
+    "best_rule": "RSI14_30-70_h10_trend",
+    "best_mean_bp": 1.2648,
+    "best_t": 0.9133,
+    "stat": 57.7647,
+    "rc_p": 0.93,
+    "n_rules_t_ge_2": 0
+   }
+  },
+  "USDJPY": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI7_30-70_h10_trend",
+    "best_mean_bp": 0.4292,
+    "best_t": 0.4502,
+    "stat": 22.4513,
+    "rc_p": 0.982,
+    "n_rules_t_ge_2": 0
+   },
+   "ref_2008-2015": {
+    "n_days": 2065,
+    "best_rule": "RSI2_20-80_h1_contra",
+    "best_mean_bp": 1.024,
+    "best_t": 0.9699,
+    "stat": 46.5328,
+    "rc_p": 0.836,
+    "n_rules_t_ge_2": 0
+   }
+  },
+  "USDCHF": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI7_30-70_h5_contra",
+    "best_mean_bp": 1.4172,
+    "best_t": 2.1117,
+    "stat": 74.1296,
+    "rc_p": 0.154,
+    "n_rules_t_ge_2": 2
+   },
+   "ref_2008-2015": {
+    "n_days": 2088,
+    "best_rule": "RSI14_30-70_h10_contra",
+    "best_mean_bp": 1.5587,
+    "best_t": 1.2485,
+    "stat": 71.2235,
+    "rc_p": 0.742,
+    "n_rules_t_ge_2": 0
+   }
+  },
+  "USDCAD": {
+   "2016-2026": {
+    "n_days": 2736,
+    "best_rule": "RSI2_30-70_h5_contra",
+    "best_mean_bp": 1.1806,
+    "best_t": 1.4506,
+    "stat": 61.7519,
+    "rc_p": 0.186,
+    "n_rules_t_ge_2": 4
+   },
+   "ref_2008-2015": {
+    "n_days": 2088,
+    "best_rule": "RSI14_30-70_h10_trend",
+    "best_mean_bp": 0.9576,
+    "best_t": 1.2552,
+    "stat": 43.7572,
+    "rc_p": 0.804,
+    "n_rules_t_ge_2": 0
+   }
+  }
+ },
+ "n_significant_2016": 0,
+ "n_significant_ref": 0,
+ "machine_verdict": "支持: RSI の族も残らない",
+ "note": "Reality Check を年内並べ替えで実装（Step-SPA ではない）。",
+ "multiple_comparisons": "48 本×6 通貨を RC で補正。判定は有意な通貨の数 1 本。"
+}
