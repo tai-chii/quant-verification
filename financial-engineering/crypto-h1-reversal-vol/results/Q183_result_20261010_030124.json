@@ -1,0 +1,64 @@
+{
+ "qid": "Q183",
+ "smoke": false,
+ "generated": "20261010_030124",
+ "question": "暗号資産の1時間足の逆張りの見返りは直前のボラで予測できるか",
+ "settings": {
+  "VOL_WIN": 24,
+  "split": 2022,
+  "costs_rt_bp": [
+   5.0,
+   30.0
+  ],
+  "B": 300
+ },
+ "missing": [],
+ "n_syms": 11,
+ "summary": {
+  "all": {
+   "n_months": 113,
+   "rho_mean": 0.0282,
+   "rho_t": 12.151,
+   "top_gross": 6.1499,
+   "top_minus_rest": 4.3054,
+   "top_minus_rest_t": 4.176,
+   "rho_z": 14.8055,
+   "diff_z": 6.1924,
+   "top_net_after_cost": {
+    "5.0": 1.1499,
+    "30.0": -23.8501
+   }
+  },
+  "pre": {
+   "n_months": 56,
+   "rho_mean": 0.0337,
+   "rho_t": 11.5461,
+   "top_gross": 9.3459,
+   "top_minus_rest": 6.9962,
+   "top_minus_rest_t": 4.0782,
+   "rho_z": 10.0002,
+   "diff_z": 5.3348,
+   "top_net_after_cost": {
+    "5.0": 4.3459,
+    "30.0": -20.6541
+   }
+  },
+  "post": {
+   "n_months": 57,
+   "rho_mean": 0.0227,
+   "rho_t": 7.9675,
+   "top_gross": 3.01,
+   "top_minus_rest": 1.6618,
+   "top_minus_rest_t": 2.6116,
+   "rho_z": 14.066,
+   "diff_z": 4.3965,
+   "top_net_after_cost": {
+    "5.0": -1.99,
+    "30.0": -26.99
+   }
+  }
+ },
+ "machine_verdict": "支持: ボラは逆張りの見返りを予測する",
+ "note": "H1（Farag は 5 分足）。コストは仮置き。",
+ "multiple_comparisons": "判定は前後半の (a) z と (b) t の 4 本。"
+}
