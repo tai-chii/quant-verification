@@ -1,0 +1,148 @@
+{
+ "qid": "Q179",
+ "smoke": false,
+ "generated": "20261010_022154",
+ "question": "五十日の仲値前の円安はクロス円でも出て2021年以降に消えたか",
+ "settings": {
+  "periods": {
+   "2008-2016": [
+    2008,
+    2017
+   ],
+   "2017-2022": [
+    2017,
+    2023
+   ],
+   "2023-2026": [
+    2023,
+    9999
+   ]
+  },
+  "window_utc": [
+   18,
+   1,
+   7
+  ],
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "USDJPY": {
+   "2008-2016": {
+    "n_gotobi": 457,
+    "n_other": 1868,
+    "pre_mean_gotobi": 5.6679,
+    "pre_mean_other": 1.4317,
+    "diff_bp": 4.2362,
+    "t": 2.7711,
+    "z": 2.992,
+    "pct": 0.998,
+    "post_mean_gotobi": -4.1432,
+    "post_mean_other": -2.6
+   },
+   "2017-2022": {
+    "n_gotobi": 309,
+    "n_other": 1256,
+    "pre_mean_gotobi": 4.2118,
+    "pre_mean_other": 0.7594,
+    "diff_bp": 3.4524,
+    "t": 2.573,
+    "z": 2.4632,
+    "pct": 0.996,
+    "post_mean_gotobi": -2.3475,
+    "post_mean_other": 0.2289
+   },
+   "2023-2026": {
+    "n_gotobi": 181,
+    "n_other": 731,
+    "pre_mean_gotobi": 1.0487,
+    "pre_mean_other": -1.0559,
+    "diff_bp": 2.1046,
+    "t": 1.0008,
+    "z": 0.8953,
+    "pct": 0.818,
+    "post_mean_gotobi": 0.2185,
+    "post_mean_other": 1.101
+   }
+  },
+  "EURJPY": {
+   "2008-2016": {
+    "n_gotobi": 461,
+    "n_other": 1887,
+    "pre_mean_gotobi": 1.3209,
+    "pre_mean_other": -0.079,
+    "diff_bp": 1.3998,
+    "t": 0.7014,
+    "z": 0.7155,
+    "pct": 0.78,
+    "post_mean_gotobi": -3.4126,
+    "post_mean_other": 0.1039
+   },
+   "2017-2022": {
+    "n_gotobi": 309,
+    "n_other": 1256,
+    "pre_mean_gotobi": 4.7631,
+    "pre_mean_other": 0.9849,
+    "diff_bp": 3.7782,
+    "t": 3.2042,
+    "z": 2.717,
+    "pct": 0.998,
+    "post_mean_gotobi": -1.451,
+    "post_mean_other": 0.521
+   },
+   "2023-2026": {
+    "n_gotobi": 168,
+    "n_other": 679,
+    "pre_mean_gotobi": 1.9488,
+    "pre_mean_other": 0.3128,
+    "diff_bp": 1.6359,
+    "t": 0.8027,
+    "z": 0.6655,
+    "pct": 0.752,
+    "post_mean_gotobi": -1.5711,
+    "post_mean_other": 1.2263
+   }
+  },
+  "GBPJPY": {
+   "2008-2016": {
+    "n_gotobi": 461,
+    "n_other": 1887,
+    "pre_mean_gotobi": 3.1509,
+    "pre_mean_other": 0.3521,
+    "diff_bp": 2.7988,
+    "t": 1.3859,
+    "z": 1.4292,
+    "pct": 0.93,
+    "post_mean_gotobi": -5.1007,
+    "post_mean_other": -1.5813
+   },
+   "2017-2022": {
+    "n_gotobi": 309,
+    "n_other": 1256,
+    "pre_mean_gotobi": 4.7806,
+    "pre_mean_other": 0.4669,
+    "diff_bp": 4.3137,
+    "t": 2.9984,
+    "z": 2.3654,
+    "pct": 0.992,
+    "post_mean_gotobi": -0.2509,
+    "post_mean_other": 0.1789
+   },
+   "2023-2026": {
+    "n_gotobi": 181,
+    "n_other": 731,
+    "pre_mean_gotobi": 0.6418,
+    "pre_mean_other": -0.4581,
+    "diff_bp": 1.0999,
+    "t": 0.5836,
+    "z": 0.5914,
+    "pct": 0.744,
+    "post_mean_gotobi": -1.0365,
+    "post_mean_other": 0.7897
+   }
+  }
+ },
+ "machine_verdict": "対立を支持: ドル固有",
+ "note": "仲値前の窓は H1 で 18:00→01:00 UTC に近似。祝日は考えない。",
+ "multiple_comparisons": "判定はクロス円2×期間2の z 4 本。"
+}
