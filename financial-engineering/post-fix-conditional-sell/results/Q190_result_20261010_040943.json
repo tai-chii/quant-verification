@@ -1,0 +1,126 @@
+{
+ "qid": "Q190",
+ "smoke": false,
+ "generated": "20261010_040943",
+ "question": "仲値後のドル円の売りは仲値前に上がった五十日だけ効くか",
+ "settings": {
+  "periods": {
+   "2008-2016": [
+    2008,
+    2017
+   ],
+   "2017-2022": [
+    2017,
+    2023
+   ],
+   "2023-2026": [
+    2023,
+    9999
+   ]
+  },
+  "window_utc": [
+   18,
+   1,
+   7
+  ],
+  "B": 500
+ },
+ "summary": {
+  "2008-2016": {
+   "cells": {
+    "gotobi_up": {
+     "n": 283,
+     "sell_gross": 6.2346,
+     "sell_net": 4.1359,
+     "sell_net_t": 2.488
+    },
+    "gotobi_down": {
+     "n": 174,
+     "sell_gross": 0.7417,
+     "sell_net": -1.3411,
+     "sell_net_t": -0.3683
+    },
+    "other_up": {
+     "n": 1007,
+     "sell_gross": 2.8668,
+     "sell_net": 0.7612,
+     "sell_net_t": 0.7102
+    },
+    "other_down": {
+     "n": 861,
+     "sell_gross": 2.288,
+     "sell_net": 0.2072,
+     "sell_net_t": 0.1811
+    }
+   },
+   "D_gotobi_up_minus_others": 3.7874,
+   "z": 1.5145,
+   "pct": 0.936
+  },
+  "2017-2022": {
+   "cells": {
+    "gotobi_up": {
+     "n": 197,
+     "sell_gross": 4.2668,
+     "sell_net": 2.4983,
+     "sell_net_t": 1.3206
+    },
+    "gotobi_down": {
+     "n": 112,
+     "sell_gross": -1.0284,
+     "sell_net": -2.8156,
+     "sell_net_t": -1.5889
+    },
+    "other_up": {
+     "n": 688,
+     "sell_gross": -0.1198,
+     "sell_net": -1.8918,
+     "sell_net_t": -2.5587
+    },
+    "other_down": {
+     "n": 568,
+     "sell_gross": -0.3612,
+     "sell_net": -2.1434,
+     "sell_net_t": -2.4807
+    }
+   },
+   "D_gotobi_up_minus_others": 4.5702,
+   "z": 2.334,
+   "pct": 0.988
+  },
+  "2023-2026": {
+   "cells": {
+    "gotobi_up": {
+     "n": 102,
+     "sell_gross": 1.7831,
+     "sell_net": 0.4331,
+     "sell_net_t": 0.1605
+    },
+    "gotobi_down": {
+     "n": 79,
+     "sell_gross": -2.8029,
+     "sell_net": -4.1458,
+     "sell_net_t": -1.1507
+    },
+    "other_up": {
+     "n": 371,
+     "sell_gross": -1.5753,
+     "sell_net": -2.9158,
+     "sell_net_t": -2.184
+    },
+    "other_down": {
+     "n": 360,
+     "sell_gross": -0.6122,
+     "sell_net": -1.9698,
+     "sell_net_t": -1.4878
+    }
+   },
+   "D_gotobi_up_minus_others": 3.0485,
+   "z": 0.9917,
+   "pct": 0.844
+  }
+ },
+ "machine_verdict": "H1: 棄却: 2008–2016／2017–2022 のどちらかで z<2／H2: —（H1 が棄却）",
+ "note": "仲値の窓は H1 で近似（18:00→01:00→07:00 UTC）。祝日は考えない。",
+ "multiple_comparisons": "判定は期間 3 の z 3 本。"
+}
