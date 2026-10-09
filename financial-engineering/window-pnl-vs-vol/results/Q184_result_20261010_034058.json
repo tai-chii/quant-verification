@@ -1,0 +1,80 @@
+{
+ "qid": "Q184",
+ "smoke": false,
+ "generated": "20261010_034058",
+ "question": "2か月窓の順張り成績はその窓の実現ボラとドリフトで説明できるか",
+ "settings": {
+  "W": 42,
+  "STEP": 21,
+  "L": 20,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all": {
+   "n_windows": 3122,
+   "rho_mean": {
+    "sigma": 0.016,
+    "abs_mu": 0.4857,
+    "trend": 0.5089
+   },
+   "rho_t_over_syms": {
+    "sigma": 0.5695,
+    "abs_mu": 25.4342,
+    "trend": 30.5855
+   },
+   "r2": {
+    "sigma+abs_mu": 0.4112,
+    "sigma": 0.028,
+    "abs_mu": 0.3141,
+    "trend": 0.2096
+   },
+   "null_r2_mean": 0.3942,
+   "r2_minus_null_z": 0.4305
+  },
+  "pre": {
+   "n_windows": 1360,
+   "rho_mean": {
+    "sigma": 0.0036,
+    "abs_mu": 0.4631,
+    "trend": 0.4988
+   },
+   "rho_t_over_syms": {
+    "sigma": 0.0971,
+    "abs_mu": 16.1991,
+    "trend": 23.5964
+   },
+   "r2": {
+    "sigma+abs_mu": 0.339,
+    "sigma": 0.0017,
+    "abs_mu": 0.2384,
+    "trend": 0.2431
+   },
+   "null_r2_mean": 0.3743,
+   "r2_minus_null_z": -0.9211
+  },
+  "post": {
+   "n_windows": 1762,
+   "rho_mean": {
+    "sigma": -0.0085,
+    "abs_mu": 0.4776,
+    "trend": 0.494
+   },
+   "rho_t_over_syms": {
+    "sigma": -0.2693,
+    "abs_mu": 17.477,
+    "trend": 20.8978
+   },
+   "r2": {
+    "sigma+abs_mu": 0.4363,
+    "sigma": 0.0413,
+    "abs_mu": 0.3411,
+    "trend": 0.2056
+   },
+   "null_r2_mean": 0.4037,
+   "r2_minus_null_z": 0.6434
+  }
+ },
+ "machine_verdict": "未確定",
+ "multiple_comparisons": "判定は all の R²（σ+|μ|）と z の 2 本。"
+}
