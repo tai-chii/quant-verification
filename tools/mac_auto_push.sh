@@ -15,6 +15,8 @@ REPO="$HOME/ワークスペース/検証/verification-lab"
 PENDING="$REPO/.lab_pending"
 
 cd "$REPO" || exit 1
+# 大きめのプッシュで HTTP 400（RPC failed）になるのを防ぐ
+[ "$(git config --get http.postBuffer)" = "524288000" ] || git config http.postBuffer 524288000
 [ -d "$PENDING" ] || exit 0
 setopt null_glob
 files=("$PENDING"/*.txt)
