@@ -1,0 +1,27 @@
+name: kaggle-push
+# kernels/<名前>/ または Kaggle 用スクリプトを変更して push すると、Kaggle の Kernel を更新する。
+# 提出（competitions submit）はここでは行わない（1日の提出回数に上限があるため）。
+on:
+  push:
+    branches: [main]
+    paths:
+      - "competitions/kaggle/*/kernels/**"
+      - "competitions/kaggle/*/notebooks/kaggle_*.py"
+      - "competitions/kaggle/scripts/push_kernels.sh"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install kaggle
+      - name: Push kernels to Kaggle
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: bash competitions/kaggle/scripts/push_kernels.sh
