@@ -1,0 +1,103 @@
+{
+ "qid": "Q181",
+ "smoke": false,
+ "generated": "20261010_023114",
+ "question": "月替わり効果の窓は2017年以降に前倒しされたか",
+ "settings": {
+  "C_WIN": [
+   -1,
+   1,
+   2,
+   3
+  ],
+  "S_WIN": [
+   -4,
+   -3,
+   -2
+  ],
+  "split": 2017,
+  "B": 1000
+ },
+ "missing": [],
+ "per_series": {
+  "SPX": {
+   "n_pre": 2266,
+   "n_post": 2392,
+   "pre": {
+    "S_minus_C": 14.188,
+    "C_minus_O": 3.454,
+    "S_minus_O": 17.6421,
+    "mean_C": 3.11,
+    "mean_S": 17.2981,
+    "mean_O": -0.344
+   },
+   "post": {
+    "S_minus_C": 4.0226,
+    "C_minus_O": 2.5544,
+    "S_minus_O": 6.577,
+    "mean_C": 6.8845,
+    "mean_S": 10.9071,
+    "mean_O": 4.3301
+   },
+   "did_S_minus_C": -10.1654,
+   "z_pre_SC": 1.5062,
+   "z_post_SC": 0.4984,
+   "z_post_CO": 0.4175,
+   "z_did": -0.8068
+  },
+  "US500": {
+   "n_pre": 1282,
+   "n_post": 2463,
+   "pre": {
+    "S_minus_C": 2.9323,
+    "C_minus_O": -0.1757,
+    "S_minus_O": 2.7566,
+    "mean_C": 4.7235,
+    "mean_S": 7.6558,
+    "mean_O": 4.8992
+   },
+   "post": {
+    "S_minus_C": 3.3093,
+    "C_minus_O": -0.6275,
+    "S_minus_O": 2.6817,
+    "mean_C": 4.6427,
+    "mean_S": 7.952,
+    "mean_O": 5.2702
+   },
+   "did_S_minus_C": 0.377,
+   "z_pre_SC": -0.0282,
+   "z_post_SC": 0.4458,
+   "z_post_CO": -0.0501,
+   "z_did": 0.3059
+  },
+  "USTECH": {
+   "n_pre": 1261,
+   "n_post": 2463,
+   "pre": {
+    "S_minus_C": 6.4597,
+    "C_minus_O": -0.5078,
+    "S_minus_O": 5.9519,
+    "mean_C": 5.1726,
+    "mean_S": 11.6323,
+    "mean_O": 5.6804
+   },
+   "post": {
+    "S_minus_C": 2.5034,
+    "C_minus_O": -0.8215,
+    "S_minus_O": 1.682,
+    "mean_C": 7.521,
+    "mean_S": 10.0244,
+    "mean_O": 8.3425
+   },
+   "did_S_minus_C": -3.9562,
+   "z_pre_SC": 0.3365,
+   "z_post_SC": 0.2602,
+   "z_post_CO": -0.1088,
+   "z_did": -0.0592
+  }
+ },
+ "machine_verdict": "棄却: 古典窓と前倒し窓の差は見えない",
+ "classic_window_still_significant_post": [],
+ "note": "価格のみ（配当なし）。SPX と US500 は同じ指数の別データ源。",
+ "multiple_comparisons": "判定は系列 3×（後半 S−C の z・DiD の z）。"
+}
