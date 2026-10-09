@@ -1,0 +1,338 @@
+{
+ "qid": "Q182",
+ "smoke": false,
+ "generated": "20261010_023635",
+ "question": "複数の順張り指標が一致したときだけ売買すると的中率と純損益は上がるか",
+ "settings": {
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 19,
+   "best_single": "TSMOM20",
+   "hit": {
+    "SMA200": 0.51,
+    "TSMOM20": 0.505,
+    "DONCH55_20": 0.5068,
+    "MAJ2of3": 0.5105,
+    "ALL3": 0.5066
+   },
+   "pnl_held": {
+    "SMA200": 1.0001,
+    "TSMOM20": 1.3482,
+    "DONCH55_20": 0.9936,
+    "MAJ2of3": 2.1124,
+    "ALL3": 0.4593
+   },
+   "pnl_cal": {
+    "SMA200": 0.8574,
+    "TSMOM20": 1.2907,
+    "DONCH55_20": 0.9042,
+    "MAJ2of3": 1.251,
+    "ALL3": 0.6088
+   },
+   "frac_held": {
+    "SMA200": 0.9422,
+    "TSMOM20": 0.9945,
+    "DONCH55_20": 0.608,
+    "MAJ2of3": 0.6392,
+    "ALL3": 0.4373
+   },
+   "diff_all3_minus_best_single_held": -0.8889,
+   "diff_t": -1.0309,
+   "diff_z": -4.4656,
+   "hit_diff_all3_minus_best": 0.0017
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "best_single": "SMA200",
+   "hit": {
+    "SMA200": 0.5113,
+    "TSMOM20": 0.5061,
+    "DONCH55_20": 0.5094,
+    "MAJ2of3": 0.5133,
+    "ALL3": 0.5081
+   },
+   "pnl_held": {
+    "SMA200": 1.336,
+    "TSMOM20": 1.0422,
+    "DONCH55_20": 0.6546,
+    "MAJ2of3": 1.8888,
+    "ALL3": 0.0934
+   },
+   "pnl_cal": {
+    "SMA200": 1.016,
+    "TSMOM20": 0.9705,
+    "DONCH55_20": 0.6248,
+    "MAJ2of3": 1.1688,
+    "ALL3": 0.3371
+   },
+   "frac_held": {
+    "SMA200": 0.8853,
+    "TSMOM20": 0.9892,
+    "DONCH55_20": 0.5955,
+    "MAJ2of3": 0.6194,
+    "ALL3": 0.4116
+   },
+   "diff_all3_minus_best_single_held": -1.2426,
+   "diff_t": -1.3694,
+   "diff_z": -1.5052,
+   "hit_diff_all3_minus_best": -0.0032
+  },
+  "all15_post": {
+   "n_years": 10,
+   "best_single": "TSMOM20",
+   "hit": {
+    "SMA200": 0.5089,
+    "TSMOM20": 0.5039,
+    "DONCH55_20": 0.5045,
+    "MAJ2of3": 0.5079,
+    "ALL3": 0.5053
+   },
+   "pnl_held": {
+    "SMA200": 0.6978,
+    "TSMOM20": 1.6235,
+    "DONCH55_20": 1.2987,
+    "MAJ2of3": 2.3137,
+    "ALL3": 0.7886
+   },
+   "pnl_cal": {
+    "SMA200": 0.7147,
+    "TSMOM20": 1.5788,
+    "DONCH55_20": 1.1557,
+    "MAJ2of3": 1.3251,
+    "ALL3": 0.8532
+   },
+   "frac_held": {
+    "SMA200": 0.9933,
+    "TSMOM20": 0.9992,
+    "DONCH55_20": 0.6193,
+    "MAJ2of3": 0.657,
+    "ALL3": 0.4605
+   },
+   "diff_all3_minus_best_single_held": -0.8349,
+   "diff_t": -0.6038,
+   "diff_z": -3.2064,
+   "hit_diff_all3_minus_best": 0.0014
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "best_single": "SMA200",
+   "hit": {
+    "SMA200": 0.5055,
+    "TSMOM20": 0.4999,
+    "DONCH55_20": 0.4989,
+    "MAJ2of3": 0.504,
+    "ALL3": 0.4996
+   },
+   "pnl_held": {
+    "SMA200": 0.4524,
+    "TSMOM20": 0.1487,
+    "DONCH55_20": -0.5077,
+    "MAJ2of3": 0.4022,
+    "ALL3": -0.3677
+   },
+   "pnl_cal": {
+    "SMA200": 0.0016,
+    "TSMOM20": 0.1099,
+    "DONCH55_20": -0.0746,
+    "MAJ2of3": 0.1262,
+    "ALL3": -0.1261
+   },
+   "frac_held": {
+    "SMA200": 0.9593,
+    "TSMOM20": 0.9956,
+    "DONCH55_20": 0.601,
+    "MAJ2of3": 0.6401,
+    "ALL3": 0.4326
+   },
+   "diff_all3_minus_best_single_held": -0.8201,
+   "diff_t": -1.2485,
+   "diff_z": -2.8532,
+   "hit_diff_all3_minus_best": -0.0059
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "best_single": "SMA200",
+   "hit": {
+    "SMA200": 0.5104,
+    "TSMOM20": 0.5022,
+    "DONCH55_20": 0.5083,
+    "MAJ2of3": 0.5096,
+    "ALL3": 0.507
+   },
+   "pnl_held": {
+    "SMA200": 1.6177,
+    "TSMOM20": 0.7672,
+    "DONCH55_20": 0.7257,
+    "MAJ2of3": 1.6216,
+    "ALL3": 1.3546
+   },
+   "pnl_cal": {
+    "SMA200": 0.666,
+    "TSMOM20": 0.6851,
+    "DONCH55_20": 0.6718,
+    "MAJ2of3": 0.7917,
+    "ALL3": 0.4069
+   },
+   "frac_held": {
+    "SMA200": 0.9141,
+    "TSMOM20": 0.9907,
+    "DONCH55_20": 0.5973,
+    "MAJ2of3": 0.6282,
+    "ALL3": 0.4204
+   },
+   "diff_all3_minus_best_single_held": -0.2631,
+   "diff_t": -0.2005,
+   "diff_z": -0.9419,
+   "hit_diff_all3_minus_best": -0.0034
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "best_single": "TSMOM20",
+   "hit": {
+    "SMA200": 0.5011,
+    "TSMOM20": 0.4979,
+    "DONCH55_20": 0.4904,
+    "MAJ2of3": 0.499,
+    "ALL3": 0.4929
+   },
+   "pnl_held": {
+    "SMA200": -0.5963,
+    "TSMOM20": -0.4079,
+    "DONCH55_20": -1.6178,
+    "MAJ2of3": -0.6952,
+    "ALL3": -1.9178
+   },
+   "pnl_cal": {
+    "SMA200": -0.5963,
+    "TSMOM20": -0.4078,
+    "DONCH55_20": -0.7463,
+    "MAJ2of3": -0.4728,
+    "ALL3": -0.6059
+   },
+   "frac_held": {
+    "SMA200": 1.0,
+    "TSMOM20": 0.9999,
+    "DONCH55_20": 0.6043,
+    "MAJ2of3": 0.6508,
+    "ALL3": 0.4435
+   },
+   "diff_all3_minus_best_single_held": -1.5099,
+   "diff_t": -4.2075,
+   "diff_z": -6.0397,
+   "hit_diff_all3_minus_best": -0.005
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "best_single": "TSMOM20",
+   "hit": {
+    "SMA200": 0.5149,
+    "TSMOM20": 0.5124,
+    "DONCH55_20": 0.5174,
+    "MAJ2of3": 0.5197,
+    "ALL3": 0.5158
+   },
+   "pnl_held": {
+    "SMA200": 0.8923,
+    "TSMOM20": 2.707,
+    "DONCH55_20": 2.568,
+    "MAJ2of3": 3.9693,
+    "ALL3": -1.7872
+   },
+   "pnl_cal": {
+    "SMA200": 2.1415,
+    "TSMOM20": 2.6443,
+    "DONCH55_20": 2.0753,
+    "MAJ2of3": 2.6848,
+    "ALL3": 1.3596
+   },
+   "frac_held": {
+    "SMA200": 0.9108,
+    "TSMOM20": 0.9926,
+    "DONCH55_20": 0.6159,
+    "MAJ2of3": 0.6338,
+    "ALL3": 0.4413
+   },
+   "diff_all3_minus_best_single_held": -4.4942,
+   "diff_t": -1.1266,
+   "diff_z": -2.8762,
+   "hit_diff_all3_minus_best": 0.0034
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "best_single": "TSMOM20",
+   "hit": {
+    "SMA200": 0.5117,
+    "TSMOM20": 0.5143,
+    "DONCH55_20": 0.5145,
+    "MAJ2of3": 0.5219,
+    "ALL3": 0.5125
+   },
+   "pnl_held": {
+    "SMA200": -0.4205,
+    "TSMOM20": 1.3765,
+    "DONCH55_20": 0.4698,
+    "MAJ2of3": 2.0926,
+    "ALL3": -7.7971
+   },
+   "pnl_cal": {
+    "SMA200": 2.1457,
+    "TSMOM20": 1.3508,
+    "DONCH55_20": 0.7976,
+    "MAJ2of3": 1.9761,
+    "ALL3": 0.1727
+   },
+   "frac_held": {
+    "SMA200": 0.8275,
+    "TSMOM20": 0.9862,
+    "DONCH55_20": 0.5934,
+    "MAJ2of3": 0.5996,
+    "ALL3": 0.3989
+   },
+   "diff_all3_minus_best_single_held": -9.1736,
+   "diff_t": -1.1829,
+   "diff_z": -2.2525,
+   "hit_diff_all3_minus_best": -0.0018
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "best_single": "DONCH55_20",
+   "hit": {
+    "SMA200": 0.5177,
+    "TSMOM20": 0.5106,
+    "DONCH55_20": 0.52,
+    "MAJ2of3": 0.5178,
+    "ALL3": 0.5187
+   },
+   "pnl_held": {
+    "SMA200": 2.0738,
+    "TSMOM20": 3.9044,
+    "DONCH55_20": 4.4564,
+    "MAJ2of3": 5.6583,
+    "ALL3": 3.6216
+   },
+   "pnl_cal": {
+    "SMA200": 2.1377,
+    "TSMOM20": 3.8085,
+    "DONCH55_20": 3.2253,
+    "MAJ2of3": 3.3226,
+    "ALL3": 2.4279
+   },
+   "frac_held": {
+    "SMA200": 0.9857,
+    "TSMOM20": 0.9983,
+    "DONCH55_20": 0.6361,
+    "MAJ2of3": 0.6646,
+    "ALL3": 0.4793
+   },
+   "diff_all3_minus_best_single_held": -0.8348,
+   "diff_t": -0.342,
+   "diff_z": -0.2942,
+   "hit_diff_all3_minus_best": -0.0013
+  }
+ },
+ "machine_verdict": "棄却: Loubaris と同じ非有意",
+ "multiple_comparisons": "判定は all15 前後半の差の t と z（4 本）。群別・的中率・暦日あたりは記述。"
+}
