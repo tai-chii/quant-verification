@@ -1,0 +1,115 @@
+{
+ "qid": "Q174",
+ "smoke": false,
+ "generated": "20261009_230051",
+ "question": "ボラの変化は1日逆張りの翌日リターンを予測するか",
+ "settings": {
+  "W_SHORT": 20,
+  "W_LONG": 60,
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 19,
+   "rho_mean": 0.0106,
+   "rho_t": 1.833,
+   "top_minus_rest_net": 6.1326,
+   "top_minus_rest_t": 2.4793,
+   "top_net_level": 2.8066,
+   "top_gross_level": 5.6756,
+   "rho_z": 2.5723,
+   "diff_z": 3.8137
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "rho_mean": 0.0232,
+   "rho_t": 2.5204,
+   "top_minus_rest_net": 9.13,
+   "top_minus_rest_t": 3.0712,
+   "top_net_level": 5.6147,
+   "top_gross_level": 8.2065,
+   "rho_z": 3.8743,
+   "diff_z": 4.6789
+  },
+  "all15_post": {
+   "n_years": 10,
+   "rho_mean": -0.0009,
+   "rho_t": -0.1655,
+   "top_minus_rest_net": 3.435,
+   "top_minus_rest_t": 0.9029,
+   "top_net_level": 0.2793,
+   "top_gross_level": 3.3978,
+   "rho_z": -0.1465,
+   "diff_z": 1.5304
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "rho_mean": 0.003,
+   "rho_t": 0.3919,
+   "top_minus_rest_net": 0.5803,
+   "top_minus_rest_t": 0.4184,
+   "top_net_level": 0.0522,
+   "top_gross_level": 0.9671,
+   "rho_z": 0.6224,
+   "diff_z": 0.7601
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "rho_mean": 0.0227,
+   "rho_t": 1.9457,
+   "top_minus_rest_net": 4.7309,
+   "top_minus_rest_t": 2.6906,
+   "top_net_level": 3.6276,
+   "top_gross_level": 4.5876,
+   "rho_z": 3.3584,
+   "diff_z": 3.2507
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "rho_mean": -0.0148,
+   "rho_t": -2.5615,
+   "top_minus_rest_net": -3.1552,
+   "top_minus_rest_t": -2.5222,
+   "top_net_level": -3.1656,
+   "top_gross_level": -2.2913,
+   "rho_z": -1.9876,
+   "diff_z": -3.2269
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "rho_mean": 0.0163,
+   "rho_t": 2.0065,
+   "top_minus_rest_net": 14.9867,
+   "top_minus_rest_t": 2.6442,
+   "top_net_level": 7.1219,
+   "top_gross_level": 13.0457,
+   "rho_z": 2.2152,
+   "diff_z": 3.5969
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "rho_mean": 0.0177,
+   "rho_t": 1.1567,
+   "top_minus_rest_net": 19.4535,
+   "top_minus_rest_t": 2.151,
+   "top_net_level": 10.3503,
+   "top_gross_level": 16.5415,
+   "rho_z": 1.4475,
+   "diff_z": 3.0621
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "rho_mean": 0.0151,
+   "rho_t": 1.8873,
+   "top_minus_rest_net": 10.9666,
+   "top_minus_rest_t": 1.5087,
+   "top_net_level": 4.2163,
+   "top_gross_level": 9.8995,
+   "rho_z": 1.8963,
+   "diff_z": 2.2988
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで (a) の z<2",
+ "multiple_comparisons": "判定は all15 の前後半 (a) z と (b) t の 4 本。群別は記述。"
+}
