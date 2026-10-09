@@ -51,4 +51,7 @@ for f in "${files[@]}"; do
 done
 
 # 前回プッシュに失敗して残ったコミットがあれば送る
-[ -n "$(git log origin/main..main --oneline 2>/dev/null)" ] && git push -q origin main && echo "push（残り）: ok"
+if [ -n "$(git log origin/main..main --oneline 2>/dev/null)" ]; then
+  git push -q origin main && echo "push（残り）: ok"
+fi
+exit 0
