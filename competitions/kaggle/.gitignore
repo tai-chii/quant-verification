@@ -1,0 +1,9 @@
+# Kaggle: コンペデータ・認証情報・提出物は Git に入れない（コードと軽量な要約のみ管理）
+kaggle.json
+**/data/
+**/input/
+*.parquet
+*.csv.zip
+**/submission*.csv
+.DS_Store
+__pycache__/
