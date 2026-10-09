@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.taichi.verification-lab-autopush</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>/Users/goyataichi/ワークスペース/検証/verification-lab/tools/mac_auto_push.sh</string>
+  </array>
+  <key>StartInterval</key>
+  <integer>600</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/goyataichi/Library/Logs/verification-lab-autopush.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/goyataichi/Library/Logs/verification-lab-autopush.log</string>
+</dict>
+</plist>
