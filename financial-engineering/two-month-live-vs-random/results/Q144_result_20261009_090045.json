@@ -1,0 +1,355 @@
+{
+ "queue_id": "Q144",
+ "script": "kensho_two_month_live_vs_random_q144.py",
+ "run_at": "20261009_090045",
+ "smoke": false,
+ "elapsed_sec": 5.2,
+ "settings": {
+  "LOOKBACK": 20,
+  "WINDOWS": [
+   [
+    42,
+    21
+   ],
+   [
+    126,
+    63
+   ],
+   [
+    252,
+    126
+   ]
+  ],
+  "MIN_CS": 8,
+  "SPLIT_YEAR": 2017,
+  "NULL_B": 500,
+  "SEED": 20261009,
+  "COST_RT": {
+   "EURUSD": 0.0002,
+   "GBPUSD": 0.0002,
+   "AUDUSD": 0.0002,
+   "USDCHF": 0.0002,
+   "USDCAD": 0.0002,
+   "USDJPY": 0.02,
+   "EURJPY": 0.02,
+   "GBPJPY": 0.02,
+   "XAUUSD": 0.6,
+   "XAGUSD": 0.04,
+   "WTI": 0.06,
+   "UKOIL": 0.06,
+   "US500": 1.0,
+   "USTECH": 3.0,
+   "BTCUSD": 40.0
+  },
+  "syms": [
+   "EURUSD",
+   "GBPUSD",
+   "AUDUSD",
+   "USDJPY",
+   "USDCHF",
+   "USDCAD",
+   "EURJPY",
+   "GBPJPY",
+   "XAUUSD",
+   "XAGUSD",
+   "WTI",
+   "UKOIL",
+   "US500",
+   "USTECH",
+   "BTCUSD"
+  ],
+  "missing_syms": [],
+  "n_missing": 0,
+  "data_dir": "/sessions/rcw-01wqzej5k6xlwzb5sgnt2mrv/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード",
+  "null_def": "同じ持ち替え回数 K の ±1 ランダム符号戦略（反転日は窓内で一様・相異なる）"
+ },
+ "data_span": {
+  "EURUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "GBPUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "AUDUSD": {
+   "start": "2008-01-02",
+   "end": "2026-06-30",
+   "n": 4822
+  },
+  "USDJPY": {
+   "start": "2008-02-01",
+   "end": "2026-06-30",
+   "n": 4801
+  },
+  "USDCHF": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "USDCAD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "EURJPY": {
+   "start": "2008-01-01",
+   "end": "2026-03-31",
+   "n": 4759
+  },
+  "GBPJPY": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "XAUUSD": {
+   "start": "2008-05-01",
+   "end": "2026-06-30",
+   "n": 4719
+  },
+  "XAGUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4806
+  },
+  "WTI": {
+   "start": "2011-09-23",
+   "end": "2026-06-30",
+   "n": 3787
+  },
+  "UKOIL": {
+   "start": "2010-12-02",
+   "end": "2026-06-30",
+   "n": 3946
+  },
+  "US500": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3746
+  },
+  "USTECH": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3725
+  },
+  "BTCUSD": {
+   "start": "2017-05-07",
+   "end": "2026-06-30",
+   "n": 3166
+  }
+ },
+ "n_cells_by_W": {
+  "W42": 3660,
+  "W126": 1203,
+  "W252": 596
+ },
+ "results": {
+  "W42": {
+   "全期間": {
+    "n_cells": 3660,
+    "a_share_pct_ge95_全15": 0.00819672131147541,
+    "a_share_pct_le05_全15": 0.05245901639344262,
+    "mean_pct_全15": 0.46123934426229507,
+    "a_share_pct_ge95_FX8": 0.006622516556291391,
+    "a_share_pct_le05_FX8": 0.056291390728476824,
+    "mean_pct_FX8": 0.4559895931882687,
+    "a_share_pct_ge95_トレンド7": 0.01034928848641656,
+    "a_share_pct_le05_トレンド7": 0.04721862871927555,
+    "mean_pct_トレンド7": 0.46841785252263907,
+    "b_rank_rho_mean": 0.42068213788746106,
+    "b_rank_rho_t": 20.223265771698536,
+    "b_n_pairs": 263,
+    "b_pct_rank_rho_mean": 0.3425185494490264,
+    "b_pct_rank_rho_t": 18.552839156996097,
+    "b_nonoverlap_rank_rho_mean": -0.013069119175989396,
+    "b_nonoverlap_rank_rho_t": -0.5450470302572982,
+    "b_nonoverlap_n_pairs": 262
+   },
+   "前半": {
+    "n_cells": 1373,
+    "a_share_pct_ge95_全15": 0.010196649672250545,
+    "a_share_pct_le05_全15": 0.04442825928623452,
+    "mean_pct_全15": 0.4684806991988346,
+    "a_share_pct_ge95_FX8": 0.006718924972004479,
+    "a_share_pct_le05_FX8": 0.048152295632698766,
+    "mean_pct_FX8": 0.46916685330347146,
+    "a_share_pct_ge95_トレンド7": 0.016666666666666666,
+    "a_share_pct_le05_トレンド7": 0.0375,
+    "mean_pct_トレンド7": 0.4672041666666667,
+    "b_rank_rho_mean": 0.390840220385675,
+    "b_rank_rho_t": 11.512233282347722,
+    "b_n_pairs": 110,
+    "b_pct_rank_rho_mean": 0.3608054123962315,
+    "b_pct_rank_rho_t": 12.217128042447845,
+    "b_nonoverlap_rank_rho_mean": -0.04042181060529684,
+    "b_nonoverlap_rank_rho_t": -1.041452421176751,
+    "b_nonoverlap_n_pairs": 109
+   },
+   "後半": {
+    "n_cells": 2287,
+    "a_share_pct_ge95_全15": 0.006996064713598601,
+    "a_share_pct_le05_全15": 0.057280279842588544,
+    "mean_pct_全15": 0.45689199825098376,
+    "a_share_pct_ge95_FX8": 0.006552006552006552,
+    "a_share_pct_le05_FX8": 0.062244062244062245,
+    "mean_pct_FX8": 0.44635217035217045,
+    "a_share_pct_ge95_トレンド7": 0.0075046904315197,
+    "a_share_pct_le05_トレンド7": 0.051594746716697934,
+    "mean_pct_トレンド7": 0.4689643527204503,
+    "b_rank_rho_mean": 0.44130096876807406,
+    "b_rank_rho_t": 16.81295289657931,
+    "b_n_pairs": 152,
+    "b_pct_rank_rho_mean": 0.32929686711084977,
+    "b_pct_rank_rho_t": 13.855208606348974,
+    "b_nonoverlap_rank_rho_mean": 0.003998981151299035,
+    "b_nonoverlap_rank_rho_t": 0.1302128551754629,
+    "b_nonoverlap_n_pairs": 151
+   }
+  },
+  "W126": {
+   "全期間": {
+    "n_cells": 1203,
+    "a_share_pct_ge95_全15": 0.017456359102244388,
+    "a_share_pct_le05_全15": 0.03740648379052369,
+    "mean_pct_全15": 0.5047182044887781,
+    "a_share_pct_ge95_FX8": 0.01293103448275862,
+    "a_share_pct_le05_FX8": 0.034482758620689655,
+    "mean_pct_FX8": 0.4847844827586206,
+    "a_share_pct_ge95_トレンド7": 0.023668639053254437,
+    "a_share_pct_le05_トレンド7": 0.04142011834319527,
+    "mean_pct_トレンド7": 0.5320828402366863,
+    "b_rank_rho_mean": 0.3751807301225906,
+    "b_rank_rho_t": 12.220907001947902,
+    "b_n_pairs": 86,
+    "b_pct_rank_rho_mean": 0.38165617704042903,
+    "b_pct_rank_rho_t": 13.622174531810016,
+    "b_nonoverlap_rank_rho_mean": -0.07033975828093474,
+    "b_nonoverlap_rank_rho_t": -2.024735811150655,
+    "b_nonoverlap_n_pairs": 85
+   },
+   "前半": {
+    "n_cells": 469,
+    "a_share_pct_ge95_全15": 0.0255863539445629,
+    "a_share_pct_le05_全15": 0.04904051172707889,
+    "mean_pct_全15": 0.5076588486140725,
+    "a_share_pct_ge95_FX8": 0.023026315789473683,
+    "a_share_pct_le05_FX8": 0.049342105263157895,
+    "mean_pct_FX8": 0.5052828947368421,
+    "a_share_pct_ge95_トレンド7": 0.030303030303030304,
+    "a_share_pct_le05_トレンド7": 0.048484848484848485,
+    "mean_pct_トレンド7": 0.5120363636363636,
+    "b_rank_rho_mean": 0.39114624114624114,
+    "b_rank_rho_t": 8.807592378611954,
+    "b_n_pairs": 37,
+    "b_pct_rank_rho_mean": 0.42460071141550965,
+    "b_pct_rank_rho_t": 9.688160555125268,
+    "b_nonoverlap_rank_rho_mean": -0.04095025345025344,
+    "b_nonoverlap_rank_rho_t": -0.7455622683513696,
+    "b_nonoverlap_n_pairs": 36
+   },
+   "後半": {
+    "n_cells": 734,
+    "a_share_pct_ge95_全15": 0.01226158038147139,
+    "a_share_pct_le05_全15": 0.02997275204359673,
+    "mean_pct_全15": 0.5028392370572207,
+    "a_share_pct_ge95_FX8": 0.00510204081632653,
+    "a_share_pct_le05_FX8": 0.02295918367346939,
+    "mean_pct_FX8": 0.46888775510204084,
+    "a_share_pct_ge95_トレンド7": 0.02046783625730994,
+    "a_share_pct_le05_トレンド7": 0.038011695906432746,
+    "mean_pct_トレンド7": 0.5417543859649122,
+    "b_rank_rho_mean": 0.36002174908424905,
+    "b_rank_rho_t": 8.320931470160046,
+    "b_n_pairs": 48,
+    "b_pct_rank_rho_mean": 0.34867459848497634,
+    "b_pct_rank_rho_t": 9.46869178143584,
+    "b_nonoverlap_rank_rho_mean": -0.10117488894084636,
+    "b_nonoverlap_rank_rho_t": -2.1845215784936274,
+    "b_nonoverlap_n_pairs": 47
+   }
+  },
+  "W252": {
+   "全期間": {
+    "n_cells": 596,
+    "a_share_pct_ge95_全15": 0.030201342281879196,
+    "a_share_pct_le05_全15": 0.028523489932885907,
+    "mean_pct_全15": 0.5188892617449665,
+    "a_share_pct_ge95_FX8": 0.03197674418604651,
+    "a_share_pct_le05_FX8": 0.0436046511627907,
+    "mean_pct_FX8": 0.493267441860465,
+    "a_share_pct_ge95_トレンド7": 0.027777777777777776,
+    "a_share_pct_le05_トレンド7": 0.007936507936507936,
+    "mean_pct_トレンド7": 0.5538650793650794,
+    "b_rank_rho_mean": 0.374218242075385,
+    "b_rank_rho_t": 7.629501821227969,
+    "b_n_pairs": 42,
+    "b_pct_rank_rho_mean": 0.38360289124721286,
+    "b_pct_rank_rho_t": 9.453009097144854,
+    "b_nonoverlap_rank_rho_mean": -0.004504641699763648,
+    "b_nonoverlap_rank_rho_t": -0.0851553282532405,
+    "b_nonoverlap_n_pairs": 41
+   },
+   "前半": {
+    "n_cells": 236,
+    "a_share_pct_ge95_全15": 0.038135593220338986,
+    "a_share_pct_le05_全15": 0.029661016949152543,
+    "mean_pct_全15": 0.5288644067796611,
+    "a_share_pct_ge95_FX8": 0.05263157894736842,
+    "a_share_pct_le05_FX8": 0.039473684210526314,
+    "mean_pct_FX8": 0.5291842105263158,
+    "a_share_pct_ge95_トレンド7": 0.011904761904761904,
+    "a_share_pct_le05_トレンド7": 0.011904761904761904,
+    "mean_pct_トレンド7": 0.5282857142857144,
+    "b_rank_rho_mean": 0.42827357827357826,
+    "b_rank_rho_t": 7.228076693129531,
+    "b_n_pairs": 18,
+    "b_pct_rank_rho_mean": 0.3844136613394001,
+    "b_pct_rank_rho_t": 5.804800413161528,
+    "b_nonoverlap_rank_rho_mean": 0.03524122935887642,
+    "b_nonoverlap_rank_rho_t": 0.4038721351717399,
+    "b_nonoverlap_n_pairs": 17
+   },
+   "後半": {
+    "n_cells": 360,
+    "a_share_pct_ge95_全15": 0.025,
+    "a_share_pct_le05_全15": 0.027777777777777776,
+    "mean_pct_全15": 0.5123500000000001,
+    "a_share_pct_ge95_FX8": 0.015625,
+    "a_share_pct_le05_FX8": 0.046875,
+    "mean_pct_FX8": 0.46483333333333327,
+    "a_share_pct_ge95_トレンド7": 0.03571428571428571,
+    "a_share_pct_le05_トレンド7": 0.005952380952380952,
+    "mean_pct_トレンド7": 0.5666547619047619,
+    "b_rank_rho_mean": 0.3201863354037267,
+    "b_rank_rho_t": 4.24702434095185,
+    "b_n_pairs": 23,
+    "b_pct_rank_rho_mean": 0.3819687878991446,
+    "b_pct_rank_rho_t": 7.031673550859377,
+    "b_nonoverlap_rank_rho_mean": -0.03522727272727273,
+    "b_nonoverlap_rank_rho_t": -0.49008273288055293,
+    "b_nonoverlap_n_pairs": 22
+   }
+  }
+ },
+ "judgement": {
+  "a_W42": 0.00819672131147541,
+  "b_W42_nonoverlap": -0.013069119175989396,
+  "b_W42_overlap_descriptive": 0.42068213788746106,
+  "verdict": "支持（2か月では実力と運を分けられず順位も入れ替わる）",
+  "a_by_W": {
+   "W42": 0.00819672131147541,
+   "W126": 0.017456359102244388,
+   "W252": 0.030201342281879196
+  },
+  "a_monotone_in_W": true,
+  "rule": "支持=(a)<10% かつ (b: 重なりのない窓対 w,w+2 の順位相関の平均)<0.3。棄却=(a)≥25%。間は未確定。重なりあり (b) は記述。W の単調性は記述",
+  "note": "事前固定の規則で機械的に付けた判定。解釈（確定／ノイズ／未確定）は実行者が記録する。"
+ },
+ "files": {
+  "windows_csv": "/sessions/rcw-01wqzej5k6xlwzb5sgnt2mrv/mnt/ワークスペース/検証/verification-lab/financial-engineering/two-month-live-vs-random/results/Q144_windows_20261009_090045.csv",
+  "pct_hist_png": "/sessions/rcw-01wqzej5k6xlwzb5sgnt2mrv/mnt/ワークスペース/検証/verification-lab/financial-engineering/two-month-live-vs-random/results/Q144_pct_hist_20261009_090045.png"
+ },
+ "multiple_comparisons": "窓3通り（W=42/126/252）× 期間3 × 群3（判定は W=42×全期間×全15 のみ）"
+}

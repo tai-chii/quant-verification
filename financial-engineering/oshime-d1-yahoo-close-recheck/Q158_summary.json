@@ -1,0 +1,134 @@
+{
+ "queue_id": "Q158",
+ "rows": [
+  {
+   "script": "oshime_fade_causal",
+   "headline": "RTH=1.5 fresh EV(R)【現在の結論の土台】",
+   "recorded": "エッジ≈0（先読みを除くと消える）",
+   "yahoo": "+0.030 (n=403)",
+   "duka": "+0.036 (n=554)",
+   "verdict": "残る",
+   "sign_y_minus_d": "−"
+  },
+  {
+   "script": "oshime_fade_realistic",
+   "headline": "1波1本 全期間 EV(R)",
+   "recorded": "+0.26R は ZigZag の先読みによる蜃気楼",
+   "yahoo": "+0.263 (n=706)",
+   "duka": "+0.236 (n=691)",
+   "verdict": "残る（蜃気楼の原因は ZigZag のまま）",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "oshime_fade_lag_d1",
+   "headline": "lag3 フレッシュ EV(R)",
+   "recorded": "確定ラグで fresh は消える",
+   "yahoo": "+0.079",
+   "duka": "+0.074",
+   "verdict": "残る",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "oshime_reverse_d1",
+   "headline": "プール EV(R)",
+   "recorded": "ZigZag 基準（蜃気楼側）",
+   "yahoo": "+0.077",
+   "duka": "+0.062",
+   "verdict": "残る",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "oshime_allweather",
+   "headline": "FX×ブレイクアウト EV(R)",
+   "recorded": "FX の順張りは負け",
+   "yahoo": "−0.234",
+   "duka": "−0.232",
+   "verdict": "残る",
+   "sign_y_minus_d": "−"
+  },
+  {
+   "script": "oshime_blend",
+   "headline": "50:50 シャープ",
+   "recorded": "ZigZag フェード依存（蜃気楼側）",
+   "yahoo": "1.09",
+   "duka": "0.82",
+   "verdict": "残る",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "oshime_ev_by_depth",
+   "headline": "50%戻しの EV 列",
+   "recorded": "浅い戻しの EV 爆発は先読み",
+   "yahoo": "表がほぼ同じ（例 35%: +0.81）",
+   "duka": "+0.80",
+   "verdict": "残る",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "oshime_exit_d1h1",
+   "headline": "50%ライン EV(R)・USDJPY",
+   "recorded": "押し目買いは全ラインマイナス",
+   "yahoo": "−0.086",
+   "duka": "−0.059",
+   "verdict": "残る",
+   "sign_y_minus_d": "−"
+  },
+  {
+   "script": "oshime_prob_mtf3",
+   "headline": "50%ライン EV(R)・USDJPY",
+   "recorded": "押し目買いは優位なし",
+   "yahoo": "−0.188",
+   "duka": "−0.037（80%で +0.071・n=14 の1セルのみ）",
+   "verdict": "残る",
+   "sign_y_minus_d": "−"
+  },
+  {
+   "script": "oshime_regime",
+   "headline": "振り分け EV vs 常時逆張り",
+   "recorded": "レジーム層は不要（素のフェードに負け）",
+   "yahoo": "+0.069 < +0.111",
+   "duka": "+0.085 < +0.092",
+   "verdict": "残る（差は縮小）",
+   "sign_y_minus_d": "−"
+  },
+  {
+   "script": "oshime_asymmetry",
+   "headline": "円の組の上げ足日数>下げ足・歪度負",
+   "recorded": "5/6 で歪度負・円の組は上げが遅い",
+   "yahoo": "5/6 負・20/14,17/13,20/14 日",
+   "duka": "5/6 負・21/14,19/14,20/15 日",
+   "verdict": "残る",
+   "sign_y_minus_d": "記述"
+  },
+  {
+   "script": "portfolio",
+   "headline": "USDJPY シャープ",
+   "recorded": "優位なし",
+   "yahoo": "+0.03",
+   "duka": "−0.13",
+   "verdict": "残る",
+   "sign_y_minus_d": "+"
+  },
+  {
+   "script": "portfolio_selective",
+   "headline": "OOS シャープ（5ペア）",
+   "recorded": "優位なし",
+   "yahoo": "+0.03/−0.17/−0.34/+0.40/−0.40",
+   "duka": "−0.13/−0.37/−0.28/+0.01/−0.47",
+   "verdict": "残る",
+   "sign_y_minus_d": "+（4/5）"
+  },
+  {
+   "script": "ensemble",
+   "headline": "—",
+   "recorded": "既定のデータは D1_yahoo でない",
+   "yahoo": "変化なし",
+   "duka": "変化なし",
+   "verdict": "対象外",
+   "sign_y_minus_d": "—"
+  }
+ ],
+ "sign_plus": 7,
+ "sign_minus": 5,
+ "sign_test_p": 0.7744140625
+}
