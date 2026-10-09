@@ -24,4 +24,13 @@ jobs:
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        run: bash competitions/kaggle/scripts/push_kernels.sh
+        run: |
+          # Secrets が未登録・空だと kaggle が「認証が必要」としか言わないので、先に切り分ける（値は表示しない）
+          [ -n "$KAGGLE_USERNAME" ] || { echo "::error::Secret KAGGLE_USERNAME が空（未登録か名前の誤り）"; exit 1; }
+          [ -n "$KAGGLE_KEY" ] || { echo "::error::Secret KAGGLE_KEY が空（未登録か名前の誤り）"; exit 1; }
+          echo "KAGGLE_USERNAME=$KAGGLE_USERNAME, KAGGLE_KEY の長さ=${#KAGGLE_KEY}"
+          # 新しい kaggle CLI でも確実に読まれるよう kaggle.json を作る
+          mkdir -p ~/.kaggle
+          printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+          bash competitions/kaggle/scripts/push_kernels.sh
