@@ -1,0 +1,268 @@
+{
+ "qid": "Q173",
+ "smoke": false,
+ "generated": "20261009_225354",
+ "question": "為替の夜間→日中の逆張りは2015年以降の主要8通貨でコスト後に残るか",
+ "settings": {
+  "night_start_utc": 21,
+  "day_start_utc": 7,
+  "start": 2015,
+  "split": 2021,
+  "B": 500
+ },
+ "missing": [],
+ "per_symbol": {
+  "EURUSD": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": -1.1019,
+    "A_net_t": -1.8655,
+    "A_gross_mean": 0.2585,
+    "B_net_mean": -2.077,
+    "B_net_t": -3.7222
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -1.1194,
+    "A_net_t": -1.2832,
+    "A_gross_mean": 0.2262,
+    "B_net_mean": -1.8568,
+    "B_net_t": -2.2216
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -1.0829,
+    "A_net_t": -1.3758,
+    "A_gross_mean": 0.2936,
+    "B_net_mean": -2.3174,
+    "B_net_t": -3.1858
+   }
+  },
+  "GBPUSD": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": 0.1149,
+    "A_net_t": 0.1779,
+    "A_gross_mean": 1.2727,
+    "B_net_mean": -1.8257,
+    "B_net_t": -2.7363
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": 0.7205,
+    "A_net_t": 0.748,
+    "A_gross_mean": 1.8593,
+    "B_net_mean": -2.3869,
+    "B_net_t": -2.3199
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -0.5465,
+    "A_net_t": -0.6456,
+    "A_gross_mean": 0.6321,
+    "B_net_mean": -1.2128,
+    "B_net_t": -1.4665
+   }
+  },
+  "AUDUSD": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": -2.0989,
+    "A_net_t": -3.0882,
+    "A_gross_mean": 0.058,
+    "B_net_mean": -0.8672,
+    "B_net_t": -1.2373
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -1.3102,
+    "A_net_t": -1.4321,
+    "A_gross_mean": 0.7741,
+    "B_net_mean": -2.0394,
+    "B_net_t": -2.0678
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -2.9602,
+    "A_net_t": -2.932,
+    "A_gross_mean": -0.7242,
+    "B_net_mean": 0.413,
+    "B_net_t": 0.4171
+   }
+  },
+  "USDJPY": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": -1.7331,
+    "A_net_t": -2.993,
+    "A_gross_mean": -0.4833,
+    "B_net_mean": -0.8576,
+    "B_net_t": -1.427
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -1.5422,
+    "A_net_t": -2.0131,
+    "A_gross_mean": -0.1715,
+    "B_net_mean": -1.2764,
+    "B_net_t": -1.5524
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -1.9416,
+    "A_net_t": -2.2163,
+    "A_gross_mean": -0.8238,
+    "B_net_mean": -0.4001,
+    "B_net_t": -0.455
+   }
+  },
+  "USDCHF": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": -0.1113,
+    "A_net_t": -0.1534,
+    "A_gross_mean": 1.5291,
+    "B_net_mean": -3.7808,
+    "B_net_t": -5.233
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -0.2624,
+    "A_net_t": -0.233,
+    "A_gross_mean": 1.2977,
+    "B_net_mean": -5.187,
+    "B_net_t": -4.5993
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": 0.0538,
+    "A_net_t": 0.0605,
+    "A_gross_mean": 1.7819,
+    "B_net_mean": -2.2449,
+    "B_net_t": -2.5855
+   }
+  },
+  "USDCAD": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": -0.6986,
+    "A_net_t": -1.4594,
+    "A_gross_mean": 0.4531,
+    "B_net_mean": -0.7429,
+    "B_net_t": -1.4224
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -0.6292,
+    "A_net_t": -0.8678,
+    "A_gross_mean": 0.5351,
+    "B_net_mean": -0.8787,
+    "B_net_t": -1.0775
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -0.7744,
+    "A_net_t": -1.2627,
+    "A_gross_mean": 0.3636,
+    "B_net_mean": -0.5944,
+    "B_net_t": -0.9393
+   }
+  },
+  "EURJPY": {
+   "all": {
+    "n": 4108,
+    "A_net_mean": -1.0024,
+    "A_net_t": -1.7178,
+    "A_gross_mean": 0.1195,
+    "B_net_mean": -0.6235,
+    "B_net_t": -1.0507
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": -0.3817,
+    "A_net_t": -0.4825,
+    "A_gross_mean": 0.8308,
+    "B_net_mean": -1.728,
+    "B_net_t": -2.1371
+   },
+   "post": {
+    "n": 1916,
+    "A_net_mean": -1.7125,
+    "A_net_t": -1.9864,
+    "A_gross_mean": -0.6941,
+    "B_net_mean": 0.6402,
+    "B_net_t": 0.7376
+   }
+  },
+  "GBPJPY": {
+   "all": {
+    "n": 4199,
+    "A_net_mean": 0.2938,
+    "A_net_t": 0.4198,
+    "A_gross_mean": 1.2424,
+    "B_net_mean": -0.7127,
+    "B_net_t": -0.9999
+   },
+   "pre": {
+    "n": 2192,
+    "A_net_mean": 0.9674,
+    "A_net_t": 0.8988,
+    "A_gross_mean": 1.9927,
+    "B_net_mean": -2.1036,
+    "B_net_t": -1.9194
+   },
+   "post": {
+    "n": 2007,
+    "A_net_mean": -0.4418,
+    "A_net_t": -0.5068,
+    "A_gross_mean": 0.4229,
+    "B_net_mean": 0.8064,
+    "B_net_t": 0.9146
+   }
+  }
+ },
+ "pooled": {
+  "all": {
+   "n_days": 4199,
+   "A_net_mean": -0.7894,
+   "A_net_t": -2.445,
+   "A_gross_mean": 0.5593,
+   "A_gross_t": 1.7331,
+   "B_net_mean": -1.4281,
+   "B_net_t": -4.235,
+   "ratio_A_over_B_net": 0.5528,
+   "null_z": 2.5678,
+   "null_pct": 0.996,
+   "n_pos_syms": 2
+  },
+  "pre": {
+   "n_days": 2192,
+   "A_net_mean": -0.4446,
+   "A_net_t": -0.9593,
+   "A_gross_mean": 0.918,
+   "A_gross_t": 1.9809,
+   "B_net_mean": -2.1821,
+   "B_net_t": -4.4153,
+   "ratio_A_over_B_net": 0.2038,
+   "null_z": 3.0437,
+   "null_pct": 0.996,
+   "n_pos_syms": 2
+  },
+  "post": {
+   "n_days": 2007,
+   "A_net_mean": -1.166,
+   "A_net_t": -2.6122,
+   "A_gross_mean": 0.1675,
+   "A_gross_t": 0.3757,
+   "B_net_mean": -0.6046,
+   "B_net_t": -1.3435,
+   "ratio_A_over_B_net": 1.9287,
+   "null_z": 0.3296,
+   "null_pct": 0.634,
+   "n_pos_syms": 1
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかでコスト後 t<2",
+ "note": "夏時間は固定で扱う。金利差は控除していない。A÷B の比は per_symbol の粗利から読む（記述）。",
+ "multiple_comparisons": "判定は合算の前後半 2 本（t と z）。通貨別は記述。"
+}
