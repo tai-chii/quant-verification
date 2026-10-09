@@ -26,7 +26,7 @@
 | [oshime-d1-yahoo-close-recheck](./oshime-d1-yahoo-close-recheck) | Q158 押し目・逆張りの D1 系14本を Dukascopy 日足に差し替えて再確認（2026-10-09 Opus） | — |
 | [pair-trading](./pair-trading) | ペアトレード（IEF/TLT, NVDA/AMD） | README の「主な検証」表を参照 |
 | [permutation-null-stability](./permutation-null-stability) | Q146 並べ替え帰無の z は何回で安定するか（B と seed のぶれ。検証基盤の既定 B を決めるため） | — |
-| [predictability-to-profit-conversion](./predictability-to-profit-conversion) | Q149 分散比で「予測できる」と出た組は、次の期間にコスト後で儲かるか（Alahmadi 2026 §3.4.1 の変換率） | — |
+| [predictability-to-profit-conversion](./predictability-to-profit-conversion) | Q149 分散比で「予測できる」と出た組は、次の期間にコスト後で儲かるか（Alahmadi 2026 §3.4.1 の変換率） | 前後半とも (b) の t<2 で事前の規則どおり「変換されない」。点推定も前後半とも負で、予測できる組は予測できない… |
 | [rebalance-frequency](./rebalance-frequency) | リバランス頻度とリスク尺度のどちらが成績差を支配するか（米国セクター ETF） | README の「主な検証」表を参照 |
 | [report-scoring](./report-scoring) | 検証ログの採点基準の事後検証 | README の「主な検証」表を参照 |
 | [seasonality](./seasonality) | 季節性（暖房株・気温相関など） | README の「主な検証」表を参照 |
@@ -37,6 +37,6 @@
 | [tsmom12m-ma200-cash-rule](./tsmom12m-ma200-cash-rule) | Q151 12か月リターン>0 かつ 200日線上で保有・外れたら現金の規則は、循環シフトの帰無より下落が浅いか（Korzan の規則を15銘柄で） | — |
 | [two-month-live-vs-random](./two-month-live-vs-random) | Q144 2か月の成績はランダム売買の分布のどこに入るか、順位は次の2か月で入れ替わるか（15銘柄・TSMOM20） | — |
 | [usdjpy-london-open-vs-naive-momentum](./usdjpy-london-open-vs-naive-momentum) | USDJPY の日中順張りは、ロンドン開始30分の時刻条件つきシグナルでのみ効くか | README の「主な検証」表を参照 |
-| [variance-ratio-setting-dependence](./variance-ratio-setting-dependence) | Q148 弱い形の効率性の検定（分散比）の結論は、設定（q・期間）でどれだけ動くか（Alahmadi・Basingab 2026 §3.5） | — |
+| [variance-ratio-setting-dependence](./variance-ratio-setting-dependence) | Q148 弱い形の効率性の検定（分散比）の結論は、設定（q・期間）でどれだけ動くか（Alahmadi・Basingab 2026 §3.5） | 1年の日足では分散比検定そのものがほとんど棄却しない（名目 5% 以下）。「1つの q で非効率と出ても他の q では… |
 | [vol-regime-trend-following](./vol-regime-trend-following) | Q142 高ボラ局面では順張りの的中率と純損益が下がるか（15銘柄・GARCH なしの実現ボラ） | — |
 | [wrc-spa-disagreement](./wrc-spa-disagreement) | Q154 WRC・SPA(consistent)・SPA(conservative) の判定は同じルール群でどれだけ割れるか | — |
