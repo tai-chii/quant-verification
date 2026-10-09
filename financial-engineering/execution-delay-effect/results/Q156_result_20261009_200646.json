@@ -1,0 +1,2031 @@
+{
+ "queue_id": "Q156",
+ "script": "kensho_execution_delay_effect_q156.py",
+ "run_at": "20261009_200646",
+ "smoke": false,
+ "settings": {
+  "LOOKBACK": 20,
+  "DON_ENTRY": 55,
+  "DON_EXIT": 20,
+  "DELAYS": [
+   0,
+   1,
+   2,
+   3,
+   5
+  ],
+  "D_REF": 1,
+  "VALID_FROM": 62,
+  "SPLIT_YEAR": 2017,
+  "NULL_B": 500,
+  "SEED": 20261009,
+  "COST_RT": {
+   "EURUSD": 0.0002,
+   "GBPUSD": 0.0002,
+   "AUDUSD": 0.0002,
+   "USDCHF": 0.0002,
+   "USDCAD": 0.0002,
+   "USDJPY": 0.02,
+   "EURJPY": 0.02,
+   "GBPJPY": 0.02,
+   "XAUUSD": 0.6,
+   "XAGUSD": 0.04,
+   "WTI": 0.06,
+   "UKOIL": 0.06,
+   "US500": 1.0,
+   "USTECH": 3.0,
+   "BTCUSD": 40.0
+  },
+  "syms": [
+   "EURUSD",
+   "GBPUSD",
+   "AUDUSD",
+   "USDJPY",
+   "USDCHF",
+   "USDCAD",
+   "EURJPY",
+   "GBPJPY",
+   "XAUUSD",
+   "XAGUSD",
+   "WTI",
+   "UKOIL",
+   "US500",
+   "USTECH",
+   "BTCUSD"
+  ],
+  "data_dir": "/Users/goyataichi/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード"
+ },
+ "data_span": {
+  "EURUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "GBPUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "AUDUSD": {
+   "start": "2008-01-02",
+   "end": "2026-06-30",
+   "n": 4822
+  },
+  "USDJPY": {
+   "start": "2008-02-01",
+   "end": "2026-06-30",
+   "n": 4801
+  },
+  "USDCHF": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "USDCAD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "EURJPY": {
+   "start": "2008-01-01",
+   "end": "2026-03-31",
+   "n": 4759
+  },
+  "GBPJPY": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "XAUUSD": {
+   "start": "2008-05-01",
+   "end": "2026-06-30",
+   "n": 4719
+  },
+  "XAGUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4806
+  },
+  "WTI": {
+   "start": "2011-09-23",
+   "end": "2026-06-30",
+   "n": 3787
+  },
+  "UKOIL": {
+   "start": "2010-12-02",
+   "end": "2026-06-30",
+   "n": 3946
+  },
+  "US500": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3746
+  },
+  "USTECH": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3725
+  },
+  "BTCUSD": {
+   "start": "2017-05-07",
+   "end": "2026-06-30",
+   "n": 3166
+  }
+ },
+ "missing": [],
+ "results": {
+  "全15|both|全期間": {
+   "n_cells": 30,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.4181371473976472,
+     "pnl_t": 2.2858674350621344,
+     "dd_mean": 6104.825094766125,
+     "diff_vs_d1_mean": 0.10587013235878882,
+     "diff_vs_d1_t": 0.4245953235668324,
+     "n_improve_vs_d1": 19,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": -942.2931518668141,
+     "null_z": 0.47361572698267,
+     "null_pct": 0.684,
+     "null_diff_mean": 0.002856457320328482,
+     "null_diff_p95": 0.34628936291986784,
+     "null_n_improve_mean": 15.156,
+     "null_n_improve_p95": 20.0
+    },
+    "1": {
+     "pnl_mean": 1.3122670150388585,
+     "pnl_t": 2.0560874368035154,
+     "dd_mean": 7047.118246632939
+    },
+    "2": {
+     "pnl_mean": 0.9075943335605089,
+     "pnl_t": 1.6333768042192607,
+     "dd_mean": 7209.8460653838565,
+     "diff_vs_d1_mean": -0.4046726814783496,
+     "diff_vs_d1_t": -2.3868552045351232,
+     "n_improve_vs_d1": 9,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": 162.72781875091732,
+     "null_z": -1.8754154835529828,
+     "null_pct": 0.028,
+     "null_diff_mean": 0.0051852118248165106,
+     "null_diff_p95": 0.361677234278044,
+     "null_n_improve_mean": 15.058,
+     "null_n_improve_p95": 20.0
+    },
+    "3": {
+     "pnl_mean": 0.8034394649500861,
+     "pnl_t": 1.5593926637687878,
+     "dd_mean": 7760.374424288006,
+     "diff_vs_d1_mean": -0.5088275500887722,
+     "diff_vs_d1_t": -1.9534304398278732,
+     "n_improve_vs_d1": 9,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": 713.2561776550664,
+     "null_z": -1.8808471859650169,
+     "null_pct": 0.022,
+     "null_diff_mean": 0.004602179969946667,
+     "null_diff_p95": 0.457864595668202,
+     "null_n_improve_mean": 14.894,
+     "null_n_improve_p95": 20.0
+    },
+    "5": {
+     "pnl_mean": 0.5816296034950963,
+     "pnl_t": 1.1514956400419158,
+     "dd_mean": 7734.1046007608775,
+     "diff_vs_d1_mean": -0.7306374115437623,
+     "diff_vs_d1_t": -1.8927692203045932,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": 686.9863541279373,
+     "null_z": -2.0085244668141318,
+     "null_pct": 0.036,
+     "null_diff_mean": -0.011081033754589147,
+     "null_diff_p95": 0.5523480722997208,
+     "null_n_improve_mean": 14.83,
+     "null_n_improve_p95": 20.0
+    }
+   }
+  },
+  "全15|both|前半": {
+   "n_cells": 30,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.0301607499970573,
+     "pnl_t": 1.0685116782546862,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.1664487210937081,
+     "diff_vs_d1_t": 0.7332777165542981,
+     "n_improve_vs_d1": 17,
+     "n_cells_for_improve": 28,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.863712028903349,
+     "pnl_t": 0.9442384132690531,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.39591607131625267,
+     "pnl_t": 0.4733933508747638,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.46779595758709647,
+     "diff_vs_d1_t": -1.8267506984424609,
+     "n_improve_vs_d1": 13,
+     "n_cells_for_improve": 28,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 0.24564630727261585,
+     "pnl_t": 0.2972120216395586,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.618065721630733,
+     "diff_vs_d1_t": -2.1148968329472697,
+     "n_improve_vs_d1": 11,
+     "n_cells_for_improve": 28,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.10613351393832549,
+     "pnl_t": 0.15713859701364927,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.7575785149650235,
+     "diff_vs_d1_t": -1.4060986743452748,
+     "n_improve_vs_d1": 13,
+     "n_cells_for_improve": 28,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "全15|both|後半": {
+   "n_cells": 30,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.7673159050581784,
+     "pnl_t": 2.127026504274081,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.0513494024973614,
+     "diff_vs_d1_t": 0.1164817807448159,
+     "n_improve_vs_d1": 13,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 1.715966502560817,
+     "pnl_t": 1.8719261865939874,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 1.3681047695803392,
+     "pnl_t": 1.8217951712667495,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.34786173298047746,
+     "diff_vs_d1_t": -1.4698487741099064,
+     "n_improve_vs_d1": 13,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 1.3054533068598093,
+     "pnl_t": 2.0560495773560947,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.41051319570100747,
+     "diff_vs_d1_t": -0.9487106575973031,
+     "n_improve_vs_d1": 16,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 1.0095760840961898,
+     "pnl_t": 1.3471743286908877,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.7063904184646272,
+     "diff_vs_d1_t": -1.2225322022851326,
+     "n_improve_vs_d1": 12,
+     "n_cells_for_improve": 30,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "全15|tsmom|全期間": {
+   "n_cells": 15,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.4965527459163745,
+     "pnl_t": 2.086386210391525,
+     "dd_mean": 6268.747458808153,
+     "diff_vs_d1_mean": 0.013007733561090506,
+     "diff_vs_d1_t": 0.030669610411636038,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": -1428.8879381862255
+    },
+    "1": {
+     "pnl_mean": 1.4835450123552838,
+     "pnl_t": 2.2104425240831485,
+     "dd_mean": 7697.635396994378
+    },
+    "2": {
+     "pnl_mean": 0.7014952280884836,
+     "pnl_t": 1.275662431381941,
+     "dd_mean": 8028.776282331672,
+     "diff_vs_d1_mean": -0.7820497842668005,
+     "diff_vs_d1_t": -2.349235636085034,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": 331.1408853372935
+    },
+    "3": {
+     "pnl_mean": 0.5242482448001059,
+     "pnl_t": 0.8934180325220274,
+     "dd_mean": 9191.628617720882,
+     "diff_vs_d1_mean": -0.9592967675551782,
+     "diff_vs_d1_t": -2.082740145058853,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": 1493.993220726504
+    },
+    "5": {
+     "pnl_mean": 0.12258793116669259,
+     "pnl_t": 0.1913861575526776,
+     "dd_mean": 9127.239994557409,
+     "diff_vs_d1_mean": -1.3609570811885916,
+     "diff_vs_d1_t": -2.0999868708921867,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": 1429.6045975630295
+    }
+   }
+  },
+  "全15|tsmom|前半": {
+   "n_cells": 15,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.210621042875161,
+     "pnl_t": 1.0498000460943688,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.007426995325318381,
+     "diff_vs_d1_t": -0.02070683994081848,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 1.2180480382004792,
+     "pnl_t": 1.1802162494110706,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.18163693642454984,
+     "pnl_t": 0.21220968415944164,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.0364111017759292,
+     "diff_vs_d1_t": -2.0249710509433325,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.04586268601992291,
+     "pnl_t": -0.045565090372476226,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.263910724220402,
+     "diff_vs_d1_t": -2.2644363199520314,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -0.3273094885036566,
+     "pnl_t": -0.38582659531790825,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.5453575267041357,
+     "diff_vs_d1_t": -1.66917240100118,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "全15|tsmom|後半": {
+   "n_cells": 15,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.753891278653467,
+     "pnl_t": 1.8742108139047602,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.03139898955885849,
+     "diff_vs_d1_t": 0.04120923859677478,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 1.7224922890946082,
+     "pnl_t": 1.8725031574740199,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 1.169367690586024,
+     "pnl_t": 1.6347729518133456,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.5531245985085846,
+     "diff_vs_d1_t": -1.2391288427389464,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 1.0373480825381318,
+     "pnl_t": 1.5706873389252833,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.6851442065564767,
+     "diff_vs_d1_t": -0.932972203826462,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.527495608870007,
+     "pnl_t": 0.5426720472163022,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.1949966802246017,
+     "diff_vs_d1_t": -1.2569550366258098,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "全15|donchian|全期間": {
+   "n_cells": 15,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.3397215488789198,
+     "pnl_t": 2.165121243756476,
+     "dd_mean": 5940.9027307240995,
+     "diff_vs_d1_mean": 0.19873253115648695,
+     "diff_vs_d1_t": 1.374297117773242,
+     "n_improve_vs_d1": 11,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": -455.69836554740266
+    },
+    "1": {
+     "pnl_mean": 1.1409890177224327,
+     "pnl_t": 1.7707323334214273,
+     "dd_mean": 6396.601096271503
+    },
+    "2": {
+     "pnl_mean": 1.113693439032534,
+     "pnl_t": 1.8083480716587554,
+     "dd_mean": 6390.915848436041,
+     "diff_vs_d1_mean": -0.027295578689898813,
+     "diff_vs_d1_t": -0.3338523298675939,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": -5.685247835458934
+    },
+    "3": {
+     "pnl_mean": 1.0826306851000664,
+     "pnl_t": 1.9556291801263306,
+     "dd_mean": 6329.12023085513,
+     "diff_vs_d1_mean": -0.058358332622366345,
+     "diff_vs_d1_t": -0.398283127348108,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": -67.48086541637116
+    },
+    "5": {
+     "pnl_mean": 1.0406712758234995,
+     "pnl_t": 1.922097956563031,
+     "dd_mean": 6340.969206964346,
+     "diff_vs_d1_mean": -0.100317741898933,
+     "diff_vs_d1_t": -0.4573347976333047,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": -55.631889307155355
+    }
+   }
+  },
+  "全15|donchian|前半": {
+   "n_cells": 15,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.8497004571189534,
+     "pnl_t": 1.0356773141080393,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.34032443751273456,
+     "diff_vs_d1_t": 1.7293289069161886,
+     "n_improve_vs_d1": 10,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.5093760196062189,
+     "pnl_t": 0.5906508318555418,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.6101952062079552,
+     "pnl_t": 0.7059368234926019,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.10081918660173632,
+     "diff_vs_d1_t": 1.0480598771240948,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 0.5371553005651547,
+     "pnl_t": 0.7334101079832792,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.02777928095893578,
+     "diff_vs_d1_t": 0.12640493680263318,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.5395765163803076,
+     "pnl_t": 0.7501254394166157,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.030200496774088852,
+     "diff_vs_d1_t": 0.09338344691801277,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "全15|donchian|後半": {
+   "n_cells": 15,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.780740531462889,
+     "pnl_t": 1.9082292033156925,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.07129981543586413,
+     "diff_vs_d1_t": 0.3373492482447068,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 1.709440716027025,
+     "pnl_t": 1.7949643116303322,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 1.566841848574655,
+     "pnl_t": 1.756836307909671,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.14259886745237038,
+     "diff_vs_d1_t": -1.1689995772094386,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 1.573558531181487,
+     "pnl_t": 1.9097443167544481,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.13588218484553827,
+     "diff_vs_d1_t": -0.6667197474525977,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 1.4916565593223723,
+     "pnl_t": 1.8469145173571875,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.2177841567046527,
+     "diff_vs_d1_t": -0.7031464917718406,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 15,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|both|全期間": {
+   "n_cells": 16,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.1295433974557021,
+     "pnl_t": 0.24736242418029958,
+     "dd_mean": 4230.03142480959,
+     "diff_vs_d1_mean": 0.11779395313673184,
+     "diff_vs_d1_t": 0.848694597603932,
+     "n_improve_vs_d1": 10,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": -652.2004761494277
+    },
+    "1": {
+     "pnl_mean": 0.011749444318970305,
+     "pnl_t": 0.023574825514091007,
+     "dd_mean": 4882.231900959017
+    },
+    "2": {
+     "pnl_mean": -0.10816212383823402,
+     "pnl_t": -0.21273695873235743,
+     "dd_mean": 4782.921941344786,
+     "diff_vs_d1_mean": -0.11991156815720436,
+     "diff_vs_d1_t": -1.1861925425345368,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": -99.30995961423159
+    },
+    "3": {
+     "pnl_mean": -0.11856621798550519,
+     "pnl_t": -0.2551807400795361,
+     "dd_mean": 4682.020304477518,
+     "diff_vs_d1_mean": -0.1303156623044755,
+     "diff_vs_d1_t": -1.0600735420459664,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": -200.21159648150015
+    },
+    "5": {
+     "pnl_mean": -0.1884181422757027,
+     "pnl_t": -0.39255621697449505,
+     "dd_mean": 5074.545507593721,
+     "diff_vs_d1_mean": -0.20016758659467304,
+     "diff_vs_d1_t": -0.8416192864397585,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": 192.31360663470286
+    }
+   }
+  },
+  "FX8|both|前半": {
+   "n_cells": 16,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.7849927767978537,
+     "pnl_t": 0.725232705766617,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.17061965311784458,
+     "diff_vs_d1_t": 0.6757825807492656,
+     "n_improve_vs_d1": 9,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.6143731236800092,
+     "pnl_t": 0.6046182715424695,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.5829281255168833,
+     "pnl_t": 0.5819974418949783,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.031444998163126084,
+     "diff_vs_d1_t": -0.24344848798683938,
+     "n_improve_vs_d1": 9,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 0.349661113107588,
+     "pnl_t": 0.37362984879033545,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.2647120105724212,
+     "diff_vs_d1_t": -1.2374434351003376,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.5578863259581949,
+     "pnl_t": 0.6187368415531052,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.056486797721814294,
+     "diff_vs_d1_t": -0.16103866205346598,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|both|後半": {
+   "n_cells": 16,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": -0.4603610439522344,
+     "pnl_t": -3.0166413672137042,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.07025082315373035,
+     "diff_vs_d1_t": 0.4771502830856621,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": -0.5306118671059648,
+     "pnl_t": -2.4003008704431723,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": -0.7301433482578396,
+     "pnl_t": -2.4474012567466277,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.19953148115187477,
+     "diff_vs_d1_t": -1.288006572107839,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.5399708159692891,
+     "pnl_t": -1.9326092117430858,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.00935894886332438,
+     "diff_vs_d1_t": -0.07098109096385377,
+     "n_improve_vs_d1": 10,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -0.8600921636862104,
+     "pnl_t": -2.4908762571226286,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.32948029658024586,
+     "diff_vs_d1_t": -0.981885786180849,
+     "n_improve_vs_d1": 7,
+     "n_cells_for_improve": 16,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|tsmom|全期間": {
+   "n_cells": 8,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.1853742366116837,
+     "pnl_t": 0.3075955660021705,
+     "dd_mean": 4454.091335471414,
+     "diff_vs_d1_mean": 0.20229394405572132,
+     "diff_vs_d1_t": 0.8748771831649695,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": -1094.880573928924
+    },
+    "1": {
+     "pnl_mean": -0.016919707444037726,
+     "pnl_t": -0.029431974501753385,
+     "dd_mean": 5548.971909400337
+    },
+    "2": {
+     "pnl_mean": -0.2825399310434193,
+     "pnl_t": -0.5012938313599671,
+     "dd_mean": 5607.361732421265,
+     "diff_vs_d1_mean": -0.26562022359938153,
+     "diff_vs_d1_t": -1.477165419403446,
+     "n_improve_vs_d1": 1,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": 58.38982302092768
+    },
+    "3": {
+     "pnl_mean": -0.35661036053161876,
+     "pnl_t": -0.6837971189940513,
+     "dd_mean": 5632.075925658855,
+     "diff_vs_d1_mean": -0.3396906530875812,
+     "diff_vs_d1_t": -1.3930377192592145,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": 83.10401625851881
+    },
+    "5": {
+     "pnl_mean": -0.4807607720180977,
+     "pnl_t": -0.8391968017765526,
+     "dd_mean": 6392.200676987954,
+     "diff_vs_d1_mean": -0.4638410645740601,
+     "diff_vs_d1_t": -1.1456653485675488,
+     "n_improve_vs_d1": 1,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": 843.2287675876173
+    }
+   }
+  },
+  "FX8|tsmom|前半": {
+   "n_cells": 8,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.9065392685969597,
+     "pnl_t": 0.7284408218247205,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.28365102691837446,
+     "diff_vs_d1_t": 0.6686535503335006,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.622888241678585,
+     "pnl_t": 0.5446646278367793,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.40447129969479484,
+     "pnl_t": 0.38037849925842826,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.21841694198379014,
+     "diff_vs_d1_t": -0.7664014931990693,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.05766587581723185,
+     "pnl_t": -0.05817887322150057,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.680554117495817,
+     "diff_vs_d1_t": -1.579202085744566,
+     "n_improve_vs_d1": 1,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.3439635103075015,
+     "pnl_t": 0.33608909943770704,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.27892473137108353,
+     "diff_vs_d1_t": -0.4559479166497844,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|tsmom|後半": {
+   "n_cells": 8,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": -0.46367429217506456,
+     "pnl_t": -2.254131373628652,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.12907256947933346,
+     "diff_vs_d1_t": 0.5361966080337557,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": -0.5927468616543982,
+     "pnl_t": -1.6329543935760773,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": -0.900850038707812,
+     "pnl_t": -1.9523191832362414,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.30810317705341383,
+     "diff_vs_d1_t": -1.2851965049028153,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.6256603967745671,
+     "pnl_t": -1.3029460083034874,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.032913535120169,
+     "diff_vs_d1_t": -0.1399525922296608,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -1.2230126261111374,
+     "pnl_t": -2.311368219926135,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.6302657644567388,
+     "diff_vs_d1_t": -1.119425055200069,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|donchian|全期間": {
+   "n_cells": 8,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.07371255829972041,
+     "pnl_t": 0.1567981127461453,
+     "dd_mean": 4005.9715141477677,
+     "diff_vs_d1_mean": 0.033293962217742334,
+     "diff_vs_d1_t": 0.48981040345359916,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": -209.5203783699315
+    },
+    "1": {
+     "pnl_mean": 0.040418596081978155,
+     "pnl_t": 0.08582455455653426,
+     "dd_mean": 4215.491892517699
+    },
+    "2": {
+     "pnl_mean": 0.06621568336695105,
+     "pnl_t": 0.1317574470172969,
+     "dd_mean": 3958.482150268308,
+     "diff_vs_d1_mean": 0.025797087284972892,
+     "diff_vs_d1_t": 0.32202736880128036,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": -257.00974224939085
+    },
+    "3": {
+     "pnl_mean": 0.11947792456060831,
+     "pnl_t": 0.25826071485157487,
+     "dd_mean": 3731.96468329618,
+     "diff_vs_d1_mean": 0.0790593284786301,
+     "diff_vs_d1_t": 0.8047699032624483,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": -483.5272092215191
+    },
+    "5": {
+     "pnl_mean": 0.10392448746669233,
+     "pnl_t": 0.2419051002864912,
+     "dd_mean": 3756.890338199488,
+     "diff_vs_d1_mean": 0.06350589138471409,
+     "diff_vs_d1_t": 0.4134806372374463,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": -458.6015543182116
+    }
+   }
+  },
+  "FX8|donchian|前半": {
+   "n_cells": 8,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 0.663446284998748,
+     "pnl_t": 0.6868537505102775,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.05758827931731463,
+     "diff_vs_d1_t": 0.5260771159974684,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.6058580056814332,
+     "pnl_t": 0.6241235691839073,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.7613849513389712,
+     "pnl_t": 0.7494417464399038,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.15552694565753797,
+     "diff_vs_d1_t": 1.1954100676756418,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 0.7569881020324077,
+     "pnl_t": 0.8095654450173664,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.15113009635097444,
+     "diff_vs_d1_t": 0.8451278001901065,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.7718091416088884,
+     "pnl_t": 0.9181432712563249,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.16595113592745495,
+     "diff_vs_d1_t": 0.634321805786108,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "FX8|donchian|後半": {
+   "n_cells": 8,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": -0.4570477957294042,
+     "pnl_t": -2.7643648162292322,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.011429076828127289,
+     "diff_vs_d1_t": 0.12892453446606597,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": -0.46847687255753145,
+     "pnl_t": -2.790229926830839,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": -0.559436657807867,
+     "pnl_t": -2.722565237329253,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.09095978525033567,
+     "diff_vs_d1_t": -1.0401864278137023,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.4542812351640112,
+     "pnl_t": -2.374491545343399,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.014195637393520222,
+     "diff_vs_d1_t": 0.14122842272192382,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -0.49717170126128407,
+     "pnl_t": -2.19560261840664,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.028694828703752666,
+     "diff_vs_d1_t": -0.15822400982943732,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 8,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|both|全期間": {
+   "n_cells": 14,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 2.9931153361538216,
+     "pnl_t": 2.669880949321744,
+     "dd_mean": 8247.446431859307,
+     "diff_vs_d1_mean": 0.18326193566678847,
+     "diff_vs_d1_t": 0.33002597122575794,
+     "n_improve_vs_d1": 9,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": -1273.82763840097
+    },
+    "1": {
+     "pnl_mean": 2.8098534004870332,
+     "pnl_t": 2.3290573591899646,
+     "dd_mean": 9521.27407026028
+    },
+    "2": {
+     "pnl_mean": 1.730921102559391,
+     "pnl_t": 1.4211325853996553,
+     "dd_mean": 9983.473635714225,
+     "diff_vs_d1_mean": -1.0789322979276417,
+     "diff_vs_d1_t": -2.3698853595251497,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": 462.1995654539446
+    },
+    "3": {
+     "pnl_mean": 1.7196335956005242,
+     "pnl_t": 1.5216843174080037,
+     "dd_mean": 11278.493418357137,
+     "diff_vs_d1_mean": -1.0902198048865095,
+     "diff_vs_d1_t": -1.860660825039603,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": 1757.2193480968567
+    },
+    "5": {
+     "pnl_mean": 0.8922609374572034,
+     "pnl_t": 0.6162016205564986,
+     "dd_mean": 10773.600707237625,
+     "diff_vs_d1_mean": -1.9175924630298296,
+     "diff_vs_d1_t": -1.76338019683423,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": 1252.326636977348
+    }
+   }
+  },
+  "トレンド7|both|前半": {
+   "n_cells": 14,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.5263185783103612,
+     "pnl_t": 1.4718570539965192,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.3538332209742394,
+     "diff_vs_d1_t": 0.5929984198346852,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 12,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 1.172485357336122,
+     "pnl_t": 1.3039377029338821,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": -0.5303916929726831,
+     "pnl_t": -0.43184895456761346,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.7028770503088049,
+     "diff_vs_d1_t": -2.0119362490946977,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 12,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.16356179510547383,
+     "pnl_t": -0.1124003072739254,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.3360471524415956,
+     "diff_vs_d1_t": -1.5238975717102472,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 12,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -1.6122711274209087,
+     "pnl_t": -0.6947781627029458,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -2.7847564847570307,
+     "diff_vs_d1_t": -1.3806166698363302,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 12,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|both|後半": {
+   "n_cells": 14,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 4.313232418212936,
+     "pnl_t": 2.3033081590631914,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.02974777889008271,
+     "diff_vs_d1_t": 0.03168626972505356,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 4.283484639322853,
+     "pnl_t": 2.0479871159545375,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 3.766102618538258,
+     "pnl_t": 2.0249786063313064,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.517382020784595,
+     "diff_vs_d1_t": -1.3800255161764685,
+     "n_improve_vs_d1": 8,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 3.414509447235922,
+     "pnl_t": 2.165983573610281,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.8689751920869313,
+     "diff_vs_d1_t": -1.0551900789480857,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 3.146339795847504,
+     "pnl_t": 2.0028999524274824,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.1371448434753488,
+     "diff_vs_d1_t": -1.086165538738002,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 14,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|tsmom|全期間": {
+   "n_cells": 7,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 3.108581449994052,
+     "pnl_t": 2.431364522965,
+     "dd_mean": 8342.640171193,
+     "diff_vs_d1_mean": -0.14688808103012774,
+     "diff_vs_d1_t": -0.15849860741519828,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": -1810.6106401945704
+    },
+    "1": {
+     "pnl_mean": 3.2554695310241795,
+     "pnl_t": 2.701130936738194,
+     "dd_mean": 10153.250811387568
+    },
+    "2": {
+     "pnl_mean": 1.229621503086742,
+     "pnl_t": 0.9779751781238867,
+     "dd_mean": 10796.107196514993,
+     "diff_vs_d1_mean": -2.025848027937438,
+     "diff_vs_d1_t": -2.35530355903702,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 642.8563851274259
+    },
+    "3": {
+     "pnl_mean": 1.3200097493496918,
+     "pnl_t": 1.1382845022584072,
+     "dd_mean": 13259.688837220341,
+     "diff_vs_d1_mean": -1.9354597816744878,
+     "diff_vs_d1_t": -1.9505759835851584,
+     "n_improve_vs_d1": 0,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 3106.438025832773
+    },
+    "5": {
+     "pnl_mean": -0.22176098862070956,
+     "pnl_t": -0.11621203982414982,
+     "dd_mean": 12252.999214636786,
+     "diff_vs_d1_mean": -3.477230519644889,
+     "diff_vs_d1_t": -1.8257784623002578,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 2099.7484032492152
+    }
+   }
+  },
+  "トレンド7|tsmom|前半": {
+   "n_cells": 7,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.797836471066407,
+     "pnl_t": 1.351776252334092,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.2209548833728432,
+     "diff_vs_d1_t": -0.21195817620054855,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 2.0187913544392497,
+     "pnl_t": 2.17748413315505,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": -1.3322777265712993,
+     "pnl_t": -1.0412438533808717,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -3.3510690810105492,
+     "diff_vs_d1_t": -2.164811161259712,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": -0.4776785310980334,
+     "pnl_t": -0.31796525180487567,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -2.4964698855372833,
+     "diff_vs_d1_t": -1.7830975726333835,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": -3.2771359191420064,
+     "pnl_t": -0.9855251216052012,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -5.295927273581257,
+     "diff_vs_d1_t": -1.4572113652489447,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|tsmom|後半": {
+   "n_cells": 7,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 4.288251931028933,
+     "pnl_t": 2.028238451249077,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.08022795892168393,
+     "diff_vs_d1_t": -0.05185968673633539,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 4.368479889950616,
+     "pnl_t": 2.049884099821832,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 3.5353308097789786,
+     "pnl_t": 1.9032362429233622,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.833149080171637,
+     "diff_vs_d1_t": -1.1127263118264963,
+     "n_improve_vs_d1": 5,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 2.9379292017526453,
+     "pnl_t": 1.791073542103387,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.4305506881979713,
+     "diff_vs_d1_t": -0.9840474415656794,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 2.528076448848457,
+     "pnl_t": 1.4093520934024657,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -1.8404034411021584,
+     "diff_vs_d1_t": -1.1439161560340916,
+     "n_improve_vs_d1": 4,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|donchian|全期間": {
+   "n_cells": 7,
+   "n_years": 19,
+   "by_d": {
+    "0": {
+     "pnl_mean": 2.8776492223135914,
+     "pnl_t": 2.3189023917712013,
+     "dd_mean": 8152.252692525619,
+     "diff_vs_d1_mean": 0.5134119523637045,
+     "diff_vs_d1_t": 1.429207045558583,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": -737.0446366073696
+    },
+    "1": {
+     "pnl_mean": 2.3642372699498866,
+     "pnl_t": 1.728977939546983,
+     "dd_mean": 8889.297329132989
+    },
+    "2": {
+     "pnl_mean": 2.232220702032041,
+     "pnl_t": 1.6558528290961212,
+     "dd_mean": 9170.840074913454,
+     "diff_vs_d1_mean": -0.13201656791784616,
+     "diff_vs_d1_t": -0.803108872108196,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 281.54274578046324
+    },
+    "3": {
+     "pnl_mean": 2.119257441851356,
+     "pnl_t": 1.5890287791357722,
+     "dd_mean": 9297.29799949393,
+     "diff_vs_d1_mean": -0.24497982809853044,
+     "diff_vs_d1_t": -0.7892069347635917,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 408.0006703609408
+    },
+    "5": {
+     "pnl_mean": 2.006282863535116,
+     "pnl_t": 1.528601885477147,
+     "dd_mean": 9294.202199838472,
+     "diff_vs_d1_mean": -0.35795440641477017,
+     "diff_vs_d1_t": -0.8011279289945199,
+     "n_improve_vs_d1": 1,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": 404.9048707054803
+    }
+   }
+  },
+  "トレンド7|donchian|前半": {
+   "n_cells": 7,
+   "n_years": 9,
+   "by_d": {
+    "0": {
+     "pnl_mean": 1.254800685554316,
+     "pnl_t": 1.1025148981164923,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.9286213253213218,
+     "diff_vs_d1_t": 1.9495180961558811,
+     "n_improve_vs_d1": 6,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 0.32617936023299404,
+     "pnl_t": 0.21853609855563322,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 0.271494340625933,
+     "pnl_t": 0.17712584517975585,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.05468501960706086,
+     "diff_vs_d1_t": -0.2441444918190477,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 0.1505549408870861,
+     "pnl_t": 0.08764602526780887,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.1756244193459078,
+     "diff_vs_d1_t": -0.3358853888884705,
+     "n_improve_vs_d1": 2,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 0.052593664300188775,
+     "pnl_t": 0.029395125222541136,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.27358569593280524,
+     "diff_vs_d1_t": -0.4360628761623041,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 6,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  },
+  "トレンド7|donchian|後半": {
+   "n_cells": 7,
+   "n_years": 10,
+   "by_d": {
+    "0": {
+     "pnl_mean": 4.338212905396939,
+     "pnl_t": 2.088381655272303,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": 0.13972351670184907,
+     "diff_vs_d1_t": 0.26591068353245434,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "1": {
+     "pnl_mean": 4.19848938869509,
+     "pnl_t": 1.9717581188130282,
+     "dd_mean": NaN
+    },
+    "2": {
+     "pnl_mean": 3.996874427297537,
+     "pnl_t": 1.928397477040484,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.20161496139755294,
+     "diff_vs_d1_t": -0.8135905260064723,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "3": {
+     "pnl_mean": 3.8910896927191985,
+     "pnl_t": 2.03331750427389,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.3073996959758908,
+     "diff_vs_d1_t": -0.8030606941663879,
+     "n_improve_vs_d1": 3,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    },
+    "5": {
+     "pnl_mean": 3.764603142846551,
+     "pnl_t": 2.0850669304722893,
+     "dd_mean": NaN,
+     "diff_vs_d1_mean": -0.43388624584853847,
+     "diff_vs_d1_t": -0.6523443594639398,
+     "n_improve_vs_d1": 1,
+     "n_cells_for_improve": 7,
+     "dd_diff_vs_d1": NaN
+    }
+   }
+  }
+ },
+ "cells": [
+  {
+   "sym": "EURUSD",
+   "rule": "tsmom",
+   "n": 4762,
+   "mean_d0": 0.11082068345601144,
+   "mean_d1": 0.5326615602143409,
+   "mean_d2": 0.20139459605077978,
+   "mean_d3": 0.03936111616405839,
+   "mean_d5": 0.10873788027979286,
+   "dd_d0": 5297.71889815219,
+   "dd_d1": 5154.169995117908,
+   "dd_d2": 5148.426485602766,
+   "dd_d3": 3193.1542916668345,
+   "dd_d5": 3263.429894555501
+  },
+  {
+   "sym": "EURUSD",
+   "rule": "donchian",
+   "n": 4762,
+   "mean_d0": 0.13886711520811795,
+   "mean_d1": 0.1248750039118778,
+   "mean_d2": -0.008524058300701383,
+   "mean_d3": 0.27904327509296595,
+   "mean_d5": 0.3634975721622768,
+   "dd_d0": 2461.0069205975396,
+   "dd_d1": 2822.8840732637163,
+   "dd_d2": 2401.97922554479,
+   "dd_d3": 2242.0621421379046,
+   "dd_d5": 2114.2333685701906
+  },
+  {
+   "sym": "GBPUSD",
+   "rule": "tsmom",
+   "n": 4762,
+   "mean_d0": -0.37643441279939666,
+   "mean_d1": -0.3538445769947737,
+   "mean_d2": -0.3080555552920024,
+   "mean_d3": -0.9982627693414882,
+   "mean_d5": 0.15696264555382322,
+   "dd_d0": 3987.964966262838,
+   "dd_d1": 5567.233126065001,
+   "dd_d2": 4619.762576207075,
+   "dd_d3": 5315.357734774324,
+   "dd_d5": 3040.784470145396
+  },
+  {
+   "sym": "GBPUSD",
+   "rule": "donchian",
+   "n": 4762,
+   "mean_d0": -0.31639897478578655,
+   "mean_d1": -0.6078637611056337,
+   "mean_d2": -0.25918637666133554,
+   "mean_d3": -0.17494927452387754,
+   "mean_d5": -0.03964589021227736,
+   "dd_d0": 3324.8032687609034,
+   "dd_d1": 4560.42045611238,
+   "dd_d2": 3086.6437360387254,
+   "dd_d3": 3013.0571830749645,
+   "dd_d5": 3291.4334038750367
+  },
+  {
+   "sym": "AUDUSD",
+   "rule": "tsmom",
+   "n": 4760,
+   "mean_d0": 0.807551585339988,
+   "mean_d1": 0.663400706029704,
+   "mean_d2": 0.6806436723333449,
+   "mean_d3": 1.0888640688987974,
+   "mean_d5": -0.8138330712613149,
+   "dd_d0": 3228.4676984273747,
+   "dd_d1": 4393.66102938341,
+   "dd_d2": 3498.9441623357507,
+   "dd_d3": 3667.5583198295117,
+   "dd_d5": 9060.264759020865
+  },
+  {
+   "sym": "AUDUSD",
+   "rule": "donchian",
+   "n": 4760,
+   "mean_d0": -0.136307689629501,
+   "mean_d1": -0.21291533261885592,
+   "mean_d2": -0.24760635550563925,
+   "mean_d3": -0.08747673633227383,
+   "mean_d5": -0.2738509964467534,
+   "dd_d0": 4696.576232851038,
+   "dd_d1": 5516.608093132076,
+   "dd_d2": 6005.808335304717,
+   "dd_d3": 4639.259282166617,
+   "dd_d5": 5273.852269396126
+  },
+  {
+   "sym": "USDJPY",
+   "rule": "tsmom",
+   "n": 4739,
+   "mean_d0": 0.3776476068982611,
+   "mean_d1": 0.23007284016442311,
+   "mean_d2": -0.5248356259210604,
+   "mean_d3": -0.6050466293945631,
+   "mean_d5": -0.7113157291422435,
+   "dd_d0": 3025.2977899279304,
+   "dd_d1": 3935.1345787132477,
+   "dd_d2": 5187.934927469755,
+   "dd_d3": 5411.014918400372,
+   "dd_d5": 5596.057751024629
+  },
+  {
+   "sym": "USDJPY",
+   "rule": "donchian",
+   "n": 4739,
+   "mean_d0": 0.6687091469280335,
+   "mean_d1": 0.624139106974093,
+   "mean_d2": 0.3962278373321703,
+   "mean_d3": 0.48324042098396136,
+   "mean_d5": 0.5292468576166957,
+   "dd_d0": 3331.290488941287,
+   "dd_d1": 4011.221199855528,
+   "dd_d2": 3617.1246904000895,
+   "dd_d3": 3396.1604397696915,
+   "dd_d5": 2714.6277742939874
+  },
+  {
+   "sym": "USDCHF",
+   "rule": "tsmom",
+   "n": 4762,
+   "mean_d0": -0.4095648950035721,
+   "mean_d1": -0.8540188852649957,
+   "mean_d2": -0.836744881310183,
+   "mean_d3": -1.071134589147033,
+   "mean_d5": -0.957356276578441,
+   "dd_d0": 5605.025184184536,
+   "dd_d1": 8890.958834715922,
+   "dd_d2": 6848.127536305608,
+   "dd_d3": 8426.159031907822,
+   "dd_d5": 8034.097784008509
+  },
+  {
+   "sym": "USDCHF",
+   "rule": "donchian",
+   "n": 4762,
+   "mean_d0": -0.5591962398112155,
+   "mean_d1": -0.3983900435208881,
+   "mean_d2": -0.3221412270277184,
+   "mean_d3": -0.44882953877682397,
+   "mean_d5": -0.31509458986767463,
+   "dd_d0": 6709.683154241007,
+   "dd_d1": 6221.073417273941,
+   "dd_d2": 5756.804745803826,
+   "dd_d3": 5759.058270032155,
+   "dd_d5": 5272.7840940694405
+  },
+  {
+   "sym": "USDCAD",
+   "rule": "tsmom",
+   "n": 4762,
+   "mean_d0": -0.8649987037434483,
+   "mean_d1": -0.39621269959191285,
+   "mean_d2": -0.37195985422332795,
+   "mean_d3": -0.6640051874212838,
+   "mean_d5": -0.3133108842384731,
+   "dd_d0": 6297.370171236298,
+   "dd_d1": 3658.763631028907,
+   "dd_d2": 4310.79169923216,
+   "dd_d3": 5541.581357711693,
+   "dd_d5": 3679.8110452309033
+  },
+  {
+   "sym": "USDCAD",
+   "rule": "donchian",
+   "n": 4762,
+   "mean_d0": -0.24626582141391715,
+   "mean_d1": -0.19910463560909972,
+   "mean_d2": -0.19086242815757412,
+   "mean_d3": -0.19953661561699002,
+   "mean_d5": -0.2711496235277541,
+   "dd_d0": 3377.2730143127574,
+   "dd_d1": 3055.8832038920636,
+   "dd_d2": 2679.583305383525,
+   "dd_d3": 2819.4083600961417,
+   "dd_d5": 2593.2633887346487
+  },
+  {
+   "sym": "EURJPY",
+   "rule": "tsmom",
+   "n": 4697,
+   "mean_d0": 0.465973209053778,
+   "mean_d1": 0.08496175066157084,
+   "mean_d2": -0.8602725157016909,
+   "mean_d3": 0.008743203008732232,
+   "mean_d5": -0.4416177690853209,
+   "dd_d0": 4354.210930965426,
+   "dd_d1": 6139.726260379802,
+   "dd_d2": 8102.135274063008,
+   "dd_d3": 5665.242673131832,
+   "dd_d5": 7462.2264340428155
+  },
+  {
+   "sym": "EURJPY",
+   "rule": "donchian",
+   "n": 4697,
+   "mean_d0": 0.20035128541450312,
+   "mean_d1": 0.4246181091222157,
+   "mean_d2": 0.3982203859953725,
+   "mean_d3": 0.4752255974776421,
+   "mean_d5": 0.08135131767324656,
+   "dd_d0": 3575.888530845661,
+   "dd_d1": 3044.50025008973,
+   "dd_d2": 3353.8060660968945,
+   "dd_d3": 3281.8931611344715,
+   "dd_d5": 3760.92079350121
+  },
+  {
+   "sym": "GBPJPY",
+   "rule": "tsmom",
+   "n": 4762,
+   "mean_d0": 0.7428327194197425,
+   "mean_d1": -0.4943041317512716,
+   "mean_d2": -0.4954371074143143,
+   "mean_d3": -0.823567906705112,
+   "mean_d5": -1.1828911590075604,
+   "dd_d0": 3836.6750446147107,
+   "dd_d1": 6652.1278197984975,
+   "dd_d2": 7142.771198153994,
+   "dd_d3": 7836.539077848456,
+   "dd_d5": 11000.933277875014
+  },
+  {
+   "sym": "GBPJPY",
+   "rule": "donchian",
+   "n": 4762,
+   "mean_d0": 0.31691586069249034,
+   "mean_d1": 0.07589520441262684,
+   "mean_d2": 0.3129883178090504,
+   "mean_d3": 0.19279182312223253,
+   "mean_d5": 0.2925266298136998,
+   "dd_d0": 4571.250502631948,
+   "dd_d1": 4491.344446522159,
+   "dd_d2": 4766.107097573899,
+   "dd_d3": 4704.818627957496,
+   "dd_d5": 5034.007613155261
+  },
+  {
+   "sym": "XAUUSD",
+   "rule": "tsmom",
+   "n": 4657,
+   "mean_d0": 1.485532629097797,
+   "mean_d1": 0.0015544357043575875,
+   "mean_d2": -0.6351781007731288,
+   "mean_d3": -0.9475107303446638,
+   "mean_d5": -0.7517510859136659,
+   "dd_d0": 3148.0396294567345,
+   "dd_d1": 8676.75168559044,
+   "dd_d2": 9272.407122719149,
+   "dd_d3": 10415.809932296437,
+   "dd_d5": 11222.42159029326
+  },
+  {
+   "sym": "XAUUSD",
+   "rule": "donchian",
+   "n": 4657,
+   "mean_d0": 1.1979209192529106,
+   "mean_d1": 0.7262199098342017,
+   "mean_d2": 0.3002382855031223,
+   "mean_d3": 0.2421712118216643,
+   "mean_d5": 0.2702011606456479,
+   "dd_d0": 4761.740660147926,
+   "dd_d1": 5432.5405744678255,
+   "dd_d2": 7197.311897229212,
+   "dd_d3": 8085.299653570906,
+   "dd_d5": 7160.263078086688
+  },
+  {
+   "sym": "XAGUSD",
+   "rule": "tsmom",
+   "n": 4744,
+   "mean_d0": -0.39996907691266476,
+   "mean_d1": -2.2315944141894852,
+   "mean_d2": -2.903914825211859,
+   "mean_d3": -1.2211573682731256,
+   "mean_d5": -4.361654652598844,
+   "dd_d0": 15211.110742033232,
+   "dd_d1": 22558.762937957792,
+   "dd_d2": 21006.189862728206,
+   "dd_d3": 20806.531928685905,
+   "dd_d5": 27023.055329193096
+  },
+  {
+   "sym": "XAGUSD",
+   "rule": "donchian",
+   "n": 4744,
+   "mean_d0": 1.6738217549544039,
+   "mean_d1": 1.2765247466182124,
+   "mean_d2": 1.1673602705684467,
+   "mean_d3": 0.8671882100484576,
+   "mean_d5": 0.8150579140193516,
+   "dd_d0": 11143.835459926793,
+   "dd_d1": 13854.022860203717,
+   "dd_d2": 13985.53531086395,
+   "dd_d3": 15443.309763002264,
+   "dd_d5": 17260.575386551598
+  },
+  {
+   "sym": "WTI",
+   "rule": "tsmom",
+   "n": 3725,
+   "mean_d0": 6.472036702079331,
+   "mean_d1": 8.32425802384157,
+   "mean_d2": 4.8470019665126225,
+   "mean_d3": 7.06624440697606,
+   "mean_d5": 2.337117675912442,
+   "dd_d0": 11035.107343442,
+   "dd_d1": 8082.234133946928,
+   "dd_d2": 10950.925163163341,
+   "dd_d3": 11484.942533961701,
+   "dd_d5": 12626.698436737628
+  },
+  {
+   "sym": "WTI",
+   "rule": "donchian",
+   "n": 3725,
+   "mean_d0": 2.2286960183635873,
+   "mean_d1": 1.572762154464535,
+   "mean_d2": 2.470596014123908,
+   "mean_d3": 2.7394313574455533,
+   "mean_d5": 1.238651587643197,
+   "dd_d0": 13811.669948946146,
+   "dd_d1": 12055.048946893132,
+   "dd_d2": 11988.329202635654,
+   "dd_d3": 10771.951365243522,
+   "dd_d5": 13235.517994401584
+  },
+  {
+   "sym": "UKOIL",
+   "rule": "tsmom",
+   "n": 3884,
+   "mean_d0": 2.6678991496397626,
+   "mean_d1": 3.6617633561115386,
+   "mean_d2": 4.257410600290407,
+   "mean_d3": 3.6504408459747006,
+   "mean_d5": 2.6142018400474822,
+   "dd_d0": 10729.685994845273,
+   "dd_d1": 8930.777236341592,
+   "dd_d2": 10336.439949134383,
+   "dd_d3": 10898.006631950646,
+   "dd_d5": 13445.127272486407
+  },
+  {
+   "sym": "UKOIL",
+   "rule": "donchian",
+   "n": 3884,
+   "mean_d0": 3.0114001324913593,
+   "mean_d1": 2.7351790692460036,
+   "mean_d2": 2.3727561692493335,
+   "mean_d3": 3.1086599126263605,
+   "mean_d5": 2.590584063052564,
+   "dd_d0": 7845.579533746923,
+   "dd_d1": 8791.849745848254,
+   "dd_d2": 8925.147711537451,
+   "dd_d3": 8201.409056115524,
+   "dd_d5": 8577.20454996521
+  },
+  {
+   "sym": "US500",
+   "rule": "tsmom",
+   "n": 3684,
+   "mean_d0": 0.6342949908127054,
+   "mean_d1": 0.5191175049210073,
+   "mean_d2": 1.3835939531077617,
+   "mean_d3": -0.8392737159958111,
+   "mean_d5": 0.6762745211683004,
+   "dd_d0": 4152.241569065858,
+   "dd_d1": 4212.654345984425,
+   "dd_d2": 3022.4527955345193,
+   "dd_d3": 6234.718972353887,
+   "dd_d5": 5133.5674129903855
+  },
+  {
+   "sym": "US500",
+   "rule": "donchian",
+   "n": 3684,
+   "mean_d0": 0.34552943065825353,
+   "mean_d1": 0.032822328557587786,
+   "mean_d2": -0.4392849380611869,
+   "mean_d3": -0.6931277984244195,
+   "mean_d5": 0.33563287767699146,
+   "dd_d0": 3508.235809670616,
+   "dd_d1": 4433.3098763107355,
+   "dd_d2": 5350.31769090577,
+   "dd_d3": 5468.125067011406,
+   "dd_d5": 3804.5597251753265
+  },
+  {
+   "sym": "USTECH",
+   "rule": "tsmom",
+   "n": 3663,
+   "mean_d0": 0.627623292066491,
+   "mean_d1": 1.1758307606221738,
+   "mean_d2": 2.677056387727933,
+   "mean_d3": 0.9579563360712715,
+   "mean_d5": 2.1476422829356503,
+   "dd_d0": 3606.133638245169,
+   "dd_d1": 4673.330842403471,
+   "dd_d2": 3469.9906085401417,
+   "dd_d3": 4985.811882552474,
+   "dd_d5": 3603.7851082465486
+  },
+  {
+   "sym": "USTECH",
+   "rule": "donchian",
+   "n": 3663,
+   "mean_d0": 1.3370298964987903,
+   "mean_d1": 1.3233877274470827,
+   "mean_d2": 0.9730667684151736,
+   "mean_d3": 0.24572111199513708,
+   "mean_d5": 1.126739123818878,
+   "dd_d0": 3815.7484902279557,
+   "dd_d1": 4636.246829636425,
+   "dd_d2": 4664.60379160574,
+   "dd_d3": 3522.434184451446,
+   "dd_d5": 3431.5040024849504
+  },
+  {
+   "sym": "BTCUSD",
+   "rule": "tsmom",
+   "n": 3104,
+   "mean_d0": 11.323317856466923,
+   "mean_d1": 11.279596139090046,
+   "mean_d2": 3.796218264466224,
+   "mean_d3": 2.6154512466887088,
+   "mean_d5": 9.554747175391961,
+   "dd_d0": 10516.162281262725,
+   "dd_d1": 13938.244497488335,
+   "dd_d2": 17514.344873785223,
+   "dd_d3": 27991.99997874134,
+   "dd_d5": 12716.339352510166
+  },
+  {
+   "sym": "BTCUSD",
+   "rule": "donchian",
+   "n": 3104,
+   "mean_d0": 9.309647926745372,
+   "mean_d1": 8.164894458546009,
+   "mean_d2": 7.828609406095391,
+   "mean_d3": 7.694614650013218,
+   "mean_d5": 7.912792930169391,
+   "dd_d0": 12178.95894501298,
+   "dd_d1": 13022.06247057084,
+   "dd_d2": 12084.634919616394,
+   "dd_d3": 13588.556907062446,
+   "dd_d5": 11589.790662203934
+  }
+ ],
+ "judgement": {
+  "by_d": {
+   "d2": {
+    "n_improve": 9,
+    "n_cells": 30,
+    "majority": false,
+    "t": -2.3868552045351232,
+    "t_ge2": false,
+    "null_pct": 0.028,
+    "within_null_95": true
+   },
+   "d3": {
+    "n_improve": 9,
+    "n_cells": 30,
+    "majority": false,
+    "t": -1.9534304398278732,
+    "t_ge2": false,
+    "null_pct": 0.022,
+    "within_null_95": true
+   }
+  },
+  "lookahead_d0": {
+   "diff_d0_vs_d1_mean": 0.10587013235878882,
+   "t": 0.4245953235668324,
+   "note": "d=0（同じ足の終値）が d=1 より t≥2 で良ければ先読みの大きさとして記述（判定に使わない）"
+  },
+  "verdict": "Korzan の遅れでの改善は運（帰無の範囲）",
+  "note": "事前固定の規則で機械的に付けた判定（全15・両規則・全期間）。解釈（確定／ノイズ／未確定、規則別・群別の読み）は実行者が記録する。"
+ },
+ "files": {
+  "by_year_csv": "/Users/goyataichi/ワークスペース/検証/verification-lab/financial-engineering/execution-delay-effect/results/Q156_by_year_20261009_200646.csv",
+  "cells_csv": "/Users/goyataichi/ワークスペース/検証/verification-lab/financial-engineering/execution-delay-effect/results/Q156_cells_20261009_200646.csv",
+  "png": "/Users/goyataichi/ワークスペース/検証/verification-lab/financial-engineering/execution-delay-effect/results/Q156_by_delay_20261009_200646.png"
+ },
+ "multiple_comparisons": "d 4 点（d=1 との差）× 群 3 × 規則 3 × 期間 3 = 108 本（判定は 全15・両規則・全期間 の d=2, d=3 の 2 本）",
+ "deviations_from_prereg": [
+  "d の定義: pos_t = s_{t−1−d}（d=0 = 合図と同じ足の終値で約定 = お手本 q136 の `daily_net_pnl_bp` と同じ）。登録の『d=1 既定』はお手本より 1 日遅い約定＝要確認",
+  "『d=2,3 で過半かつ t≥2』は d=2 と d=3 の両方で満たすこととして実装（片方だけは『部分的』）",
+  "最大下落は全期間 1 本（セル平均）で記述"
+ ]
+}
