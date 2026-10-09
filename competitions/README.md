@@ -4,7 +4,7 @@
 
 | ディレクトリ | 内容 |
 | :--- | :--- |
-| [kaggle](./kaggle) | Kaggleコンペ（Hull Tactical Market Prediction 等）の自作Notebook・実験スクリプト |
+| [kaggle](./kaggle) | Kaggleコンペ（Hull Tactical Market Prediction・Enveda CASMI 2026 — マススペクトルからの分子同定）の自作Notebook・実験スクリプト |
 | [numerai](./numerai) | Numerai トーナメントのモデル学習・アンサンブル・提出パイプライン |
 
 ## 注記

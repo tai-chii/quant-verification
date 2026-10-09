@@ -18,3 +18,10 @@ financial-engineering/report-scoring/scores_blind.json
 financial-engineering/ma-cross-eurusd/run_*.log
 financial-engineering/ma-cross-eurusd/results/
 financial-engineering/ma-cross-eurusd/results_usdjpy/
+
+# oshime-d1-yahoo-close-recheck: 元スクリプトの作業コピー（生データ CSV・取引明細を含む）と実行ログ。計画・要約・README のみ残す
+financial-engineering/oshime-d1-yahoo-close-recheck/work_*/
+financial-engineering/oshime-d1-yahoo-close-recheck/logs/
+# 各検証の実行ログ・試走（smoke）結果
+financial-engineering/*/results_run_*.log
+financial-engineering/*/results/smoke_*
