@@ -37,7 +37,7 @@
 | [oshime-d1-yahoo-close-recheck](./oshime-d1-yahoo-close-recheck) | Q158 押し目・逆張りの D1 系14本を Dukascopy 日足に差し替えて再確認（2026-10-09 Opus） | — |
 | [overnight-intraday-reversal-fx](./overnight-intraday-reversal-fx) | Q173 為替の夜間→日中の逆張りは2015年以降の主要8通貨でコスト後に残るか（DellaCorte 2015） | 棄却 |
 | [pair-trading](./pair-trading) | ペアトレード（IEF/TLT, NVDA/AMD） | README の「主な検証」表を参照 |
-| [parameter-plateau-selection](./parameter-plateau-selection) | Q188 周辺パラメータの平均で選ぶ（台地選択）と最良1点で選ぶより標本外が良いか（ブログZenn2026e-2） | —（未実行） |
+| [parameter-plateau-selection](./parameter-plateau-selection) | Q188 周辺パラメータの平均で選ぶ（台地選択）と最良1点で選ぶより標本外が良いか（ブログZenn2026e-2） | H0: 選び方では変わらない |
 | [pbo-cscv-tsmom](./pbo-cscv-tsmom) | Q171 順張りの参照日数 60 通りの CSCV で測った過剰適合の確率 PBO は約 0.88（Bailey 2017） | 支持（過剰適合） |
 | [pbo-tsmom-grid](./pbo-tsmom-grid) | Q171 順張りの参照日数60通りの CSCV で過剰適合の確率 PBO はいくつか（Bailey 2017） | —（未実行） |
 | [permutation-null-stability](./permutation-null-stability) | Q146 並べ替え帰無の z は何回で安定するか（B と seed のぶれ。検証基盤の既定 B を決めるため） | — |
@@ -59,9 +59,9 @@
 | [usdjpy-london-open-vs-naive-momentum](./usdjpy-london-open-vs-naive-momentum) | USDJPY の日中順張りは、ロンドン開始30分の時刻条件つきシグナルでのみ効くか | README の「主な検証」表を参照 |
 | [variance-ratio-setting-dependence](./variance-ratio-setting-dependence) | Q148 弱い形の効率性の検定（分散比）の結論は、設定（q・期間）でどれだけ動くか（Alahmadi・Basingab 2026 §3.5） | 1年の日足では分散比検定そのものがほとんど棄却しない（名目 5% 以下）。「1つの q で非効率と出ても他の q では… |
 | [vol-change-reversal](./vol-change-reversal) | Q174 ボラの変化は1日逆張りの翌日リターンを予測するか（DellaCorte 2015-3・15銘柄） | 棄却 |
-| [vol-forecast-loss-vs-model](./vol-forecast-loss-vs-model) | Q187 為替のボラ予測で損失関数の差はモデルの差の何倍に見えるか（Tokajuk 2026-1 の為替移植） | —（未実行） |
+| [vol-forecast-loss-vs-model](./vol-forecast-loss-vs-model) | Q187 為替のボラ予測で損失関数の差はモデルの差の何倍に見えるか（Tokajuk 2026-1 の為替移植） | 棄却（H0 支持: 為替では損失関数の差はモデルの差より小さい・Tokajuk の構図は為替で再現しない） |
 | [vol-regime-trend-following](./vol-regime-trend-following) | Q142 高ボラ局面では順張りの的中率と純損益が下がるか（15銘柄・GARCH なしの実現ボラ） | 未確定（事後発見の向きは4通り一致、大きさは半期では届かず・全期間は2/4 で ／z／≥2・主に XAUUSD と v… |
-| [weekly-vs-daily-tsmom](./weekly-vs-daily-tsmom) | Q186 週足の順張りは日足より強いか（Neely 2003-3・15銘柄・2008〜2026） | —（未実行） |
+| [weekly-vs-daily-tsmom](./weekly-vs-daily-tsmom) | Q186 週足の順張りは日足より強いか（Neely 2003-3・15銘柄・2008〜2026） | 棄却（前後半のどちらかで ／t／<2） |
 | [window-pnl-vs-vol](./window-pnl-vs-vol) | Q184 2か月窓の順張り成績はその窓の実現ボラとドリフトで説明できるか（Rashid 2026-1・Q144 の続き） | Rashid の「ボラに左右される」は向きが違う |
 | [wrc-spa-disagreement](./wrc-spa-disagreement) | Q154 WRC・SPA(consistent)・SPA(conservative) の判定は同じルール群でどれだけ割れるか | 確定（棄却） |
 | [xauusd-vol-regime-single](./xauusd-vol-regime-single) | Q161 XAUUSD 単銘柄・直前20〜60日の実現ボラが高い日に翌日の順張り損益が下がるか（ドリフト除去・前後半） | 未確定（6/6 で向き一致・／z／≥2 達成は 3/6 で窓40・60日に偏る・ドリフト除去は結論を変えない） |
