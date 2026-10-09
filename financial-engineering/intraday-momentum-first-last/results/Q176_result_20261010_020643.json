@@ -1,0 +1,282 @@
+{
+ "qid": "Q176",
+ "smoke": false,
+ "generated": "20261010_020643",
+ "question": "最初の1時間→最後の1時間の日中モメンタムは為替・株価指数・金で公表後に残るか",
+ "settings": {
+  "windows_utc": {
+   "fx": [
+    7,
+    20
+   ],
+   "gold": [
+    7,
+    20
+   ],
+   "index": [
+    14,
+    20
+   ]
+  },
+  "alt_windows": {
+   "index": [
+    13,
+    19
+   ]
+  },
+  "pub_year": 2018,
+  "B": 500
+ },
+ "missing": [],
+ "per_symbol": {
+  "EURUSD": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": 0.0754,
+    "gross_t": 0.6072,
+    "net_mean": -1.0409,
+    "net_t": -8.38
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": -0.1819,
+    "gross_t": -2.1604,
+    "net_mean": -1.4477,
+    "net_t": -17.0854
+   }
+  },
+  "GBPUSD": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": -0.0161,
+    "gross_t": -0.1346,
+    "net_mean": -0.9409,
+    "net_t": -7.8436
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.1185,
+    "gross_t": 1.0668,
+    "net_mean": -0.9791,
+    "net_t": -8.8006
+   }
+  },
+  "AUDUSD": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": 0.0889,
+    "gross_t": 0.3938,
+    "net_mean": -1.5618,
+    "net_t": -6.9337
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": -0.1029,
+    "gross_t": -0.8705,
+    "net_mean": -2.1545,
+    "net_t": -18.1489
+   }
+  },
+  "USDJPY": {
+   "pre": {
+    "n": 3622,
+    "gross_mean": -0.1536,
+    "gross_t": -0.9693,
+    "net_mean": -1.6083,
+    "net_t": -10.1072
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.0055,
+    "gross_t": 0.0464,
+    "net_mean": -1.1279,
+    "net_t": -9.3795
+   }
+  },
+  "USDCHF": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": -0.0501,
+    "gross_t": -0.3657,
+    "net_mean": -1.5023,
+    "net_t": -10.9472
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.0553,
+    "gross_t": 0.5464,
+    "net_mean": -1.4993,
+    "net_t": -14.742
+   }
+  },
+  "USDCAD": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": 0.1133,
+    "gross_t": 0.6345,
+    "net_mean": -1.1597,
+    "net_t": -6.4771
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.0824,
+    "gross_t": 0.776,
+    "net_mean": -0.9844,
+    "net_t": -9.2805
+   }
+  },
+  "EURJPY": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": 0.0514,
+    "gross_t": 0.262,
+    "net_mean": -1.0893,
+    "net_t": -5.55
+   },
+   "post": {
+    "n": 3012,
+    "gross_mean": -0.0466,
+    "gross_t": -0.4003,
+    "net_mean": -1.0654,
+    "net_t": -9.1061
+   }
+  },
+  "GBPJPY": {
+   "pre": {
+    "n": 3653,
+    "gross_mean": -0.0954,
+    "gross_t": -0.51,
+    "net_mean": -1.0454,
+    "net_t": -5.5734
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": -0.0254,
+    "gross_t": -0.1722,
+    "net_mean": -0.9037,
+    "net_t": -6.0923
+   }
+  },
+  "XAUUSD": {
+   "pre": {
+    "n": 3532,
+    "gross_mean": -0.1525,
+    "gross_t": -0.6567,
+    "net_mean": -3.6156,
+    "net_t": -15.4016
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.0173,
+    "gross_t": 0.077,
+    "net_mean": -2.2436,
+    "net_t": -9.8387
+   }
+  },
+  "US500": {
+   "pre": {
+    "n": 2314,
+    "gross_mean": 0.4391,
+    "gross_t": 1.683,
+    "net_mean": -3.0973,
+    "net_t": -11.6502
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": -0.0233,
+    "gross_t": -0.0661,
+    "net_mean": -1.8123,
+    "net_t": -5.1285
+   },
+   "alt_window_post": {
+    "gross_mean": -0.5533,
+    "gross_t": -0.8962
+   }
+  },
+  "USTECH": {
+   "pre": {
+    "n": 2314,
+    "gross_mean": 0.0321,
+    "gross_t": 0.1035,
+    "net_mean": -5.0967,
+    "net_t": -15.4819
+   },
+   "post": {
+    "n": 3103,
+    "gross_mean": 0.4397,
+    "gross_t": 1.0123,
+    "net_mean": -1.3332,
+    "net_t": -3.0675
+   },
+   "alt_window_post": {
+    "gross_mean": -0.8535,
+    "gross_t": -1.1916
+   }
+  }
+ },
+ "pooled": {
+  "fx8_pre": {
+   "n_syms": 8,
+   "n_days": 3653,
+   "gross_mean": 0.0016,
+   "gross_t": 0.0169,
+   "net_mean": -1.2433,
+   "net_t": -12.9981,
+   "null_z": 0.1264,
+   "null_pct": 0.546
+  },
+  "fx8_post": {
+   "n_syms": 8,
+   "n_days": 3103,
+   "gross_mean": -0.0122,
+   "gross_t": -0.2074,
+   "net_mean": -1.2713,
+   "net_t": -21.5221,
+   "null_z": -0.0668,
+   "null_pct": 0.508
+  },
+  "gold_pre": {
+   "n_syms": 1,
+   "n_days": 3532,
+   "gross_mean": -0.1525,
+   "gross_t": -0.6567,
+   "net_mean": -3.6156,
+   "net_t": -15.4016,
+   "null_z": -0.9472,
+   "null_pct": 0.178
+  },
+  "gold_post": {
+   "n_syms": 1,
+   "n_days": 3103,
+   "gross_mean": 0.0173,
+   "gross_t": 0.077,
+   "net_mean": -2.2436,
+   "net_t": -9.8387,
+   "null_z": 0.1691,
+   "null_pct": 0.562
+  },
+  "index2_pre": {
+   "n_syms": 2,
+   "n_days": 2314,
+   "gross_mean": 0.2356,
+   "gross_t": 0.9606,
+   "net_mean": -4.097,
+   "net_t": -15.8755,
+   "null_z": 1.3414,
+   "null_pct": 0.908
+  },
+  "index2_post": {
+   "n_syms": 2,
+   "n_days": 3103,
+   "gross_mean": 0.2082,
+   "gross_t": 0.5785,
+   "net_mean": -1.5727,
+   "net_t": -4.3643,
+   "null_z": 0.7103,
+   "null_pct": 0.766
+  }
+ },
+ "machine_verdict": "支持: 公表後は残らない",
+ "note": "夏時間は固定（近似）。指数の寄付の窓は 14:00 の足で近似し、13:00/19:00 を感度として併記。",
+ "multiple_comparisons": "判定は公表後の群 3 本の粗利 t と z。銘柄別・公表前・感度は記述。"
+}
