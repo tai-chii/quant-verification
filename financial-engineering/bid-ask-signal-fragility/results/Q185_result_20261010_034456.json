@@ -1,0 +1,197 @@
+{
+ "qid": "Q185",
+ "smoke": false,
+ "generated": "20261010_034456",
+ "question": "合図は bid か ask かで何割変わるか",
+ "settings": {
+  "rules": [
+   "SMA200",
+   "TSMOM20",
+   "DONCH55_20"
+  ]
+ },
+ "missing": [],
+ "xauusd": {
+  "D1": {
+   "spread_median_bp": 2.7075,
+   "bid_vs_ask": {
+    "SMA200": {
+     "disagree_rate": 0.0008,
+     "disagree_rate_1day_shift_self": 0.0226,
+     "pnl_diff_mean_bp": -0.0476,
+     "pnl_diff_t_year": -1.7643,
+     "n": 4986
+    },
+    "TSMOM20": {
+     "disagree_rate": 0.0006,
+     "disagree_rate_1day_shift_self": 0.0952,
+     "pnl_diff_mean_bp": -0.026,
+     "pnl_diff_t_year": -1.3126,
+     "n": 4986
+    },
+    "DONCH55_20": {
+     "disagree_rate": 0.0258,
+     "disagree_rate_1day_shift_self": 0.0206,
+     "pnl_diff_mean_bp": -0.0697,
+     "pnl_diff_t_year": -0.9309,
+     "n": 4986
+    },
+    "_pair": "bid vs ask"
+   },
+   "bid_vs_mid": {
+    "SMA200": {
+     "disagree_rate": 0.0004,
+     "disagree_rate_1day_shift_self": 0.0226,
+     "pnl_diff_mean_bp": -0.0365,
+     "pnl_diff_t_year": -1.5192,
+     "n": 4986
+    },
+    "TSMOM20": {
+     "disagree_rate": 0.0004,
+     "disagree_rate_1day_shift_self": 0.0952,
+     "pnl_diff_mean_bp": -0.0181,
+     "pnl_diff_t_year": -1.4444,
+     "n": 4986
+    },
+    "DONCH55_20": {
+     "disagree_rate": 0.0252,
+     "disagree_rate_1day_shift_self": 0.0206,
+     "pnl_diff_mean_bp": -0.077,
+     "pnl_diff_t_year": -1.0519,
+     "n": 4986
+    },
+    "_pair": "bid vs mid"
+   }
+  },
+  "H1": {
+   "spread_median_bp": 2.2229,
+   "bid_vs_ask": {
+    "SMA200": {
+     "disagree_rate": 0.0013,
+     "disagree_rate_1day_shift_self": 0.0314,
+     "pnl_diff_mean_bp": 0.0032,
+     "pnl_diff_t_year": 1.0735,
+     "n": 109085
+    },
+    "TSMOM20": {
+     "disagree_rate": 0.0045,
+     "disagree_rate_1day_shift_self": 0.1003,
+     "pnl_diff_mean_bp": -0.0017,
+     "pnl_diff_t_year": -0.1638,
+     "n": 109085
+    },
+    "DONCH55_20": {
+     "disagree_rate": 0.017,
+     "disagree_rate_1day_shift_self": 0.0213,
+     "pnl_diff_mean_bp": -0.0046,
+     "pnl_diff_t_year": -0.0754,
+     "n": 109085
+    },
+    "_pair": "bid vs ask"
+   },
+   "bid_vs_mid": {
+    "SMA200": {
+     "disagree_rate": 0.0006,
+     "disagree_rate_1day_shift_self": 0.0314,
+     "pnl_diff_mean_bp": -0.0086,
+     "pnl_diff_t_year": -3.0509,
+     "n": 109085
+    },
+    "TSMOM20": {
+     "disagree_rate": 0.0023,
+     "disagree_rate_1day_shift_self": 0.1003,
+     "pnl_diff_mean_bp": -0.0023,
+     "pnl_diff_t_year": -0.4009,
+     "n": 109085
+    },
+    "DONCH55_20": {
+     "disagree_rate": 0.0106,
+     "disagree_rate_1day_shift_self": 0.0211,
+     "pnl_diff_mean_bp": -0.0029,
+     "pnl_diff_t_year": 0.1243,
+     "n": 109085
+    },
+    "_pair": "bid vs mid"
+   }
+  }
+ },
+ "pseudo_15": {
+  "EURUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "GBPUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "AUDUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "USDJPY": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "USDCHF": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "USDCAD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "EURJPY": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "GBPJPY": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "XAUUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "XAGUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "WTI": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "UKOIL": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "US500": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "USTECH": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  },
+  "BTCUSD": {
+   "SMA200": 0.0,
+   "TSMOM20": 0.0,
+   "DONCH55_20": 0.0
+  }
+ },
+ "machine_verdict": "未確定",
+ "multiple_comparisons": "判定は XAUUSD D1 の bid vs ask 3 規則の不一致率と t。H1・擬似ずらしは記述。"
+}
