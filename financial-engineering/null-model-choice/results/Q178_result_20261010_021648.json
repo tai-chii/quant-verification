@@ -1,0 +1,48 @@
+{
+ "qid": "Q178",
+ "smoke": false,
+ "generated": "20261010_021648",
+ "question": "帰無モデルの選び方で移動平均ルールの判定は変わるか",
+ "settings": {
+  "RULES": [
+   50,
+   150,
+   200
+  ],
+  "LAMBDA": 0.94,
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "n_cells": 132,
+  "split_fraction": 0.053,
+  "reject_counts": {
+   "P": 6,
+   "A": 4,
+   "G": 0
+  },
+  "p_corr": {
+   "P_A": 0.9404,
+   "P_G": 0.8719,
+   "A_G": 0.8919
+  },
+  "split_by_rule": {
+   "50": 0.0909,
+   "150": 0.0682,
+   "200": 0.0
+  },
+  "split_by_group": {
+   "all15": 0.053,
+   "fx8": 0.0139,
+   "trend7": 0.1
+  },
+  "split_by_period": {
+   "all": 0.0444,
+   "pre": 0.0714,
+   "post": 0.0444
+  }
+ },
+ "machine_verdict": "支持: 変わらない（Q154 と整合）",
+ "note": "G は GARCH(1,1) の EWMA 近似（最尤推定なし）。",
+ "multiple_comparisons": "判定は割れる割合 1 本。"
+}
