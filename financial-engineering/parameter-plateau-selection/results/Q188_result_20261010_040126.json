@@ -1,0 +1,322 @@
+{
+ "qid": "Q188",
+ "smoke": false,
+ "generated": "20261010_040126",
+ "question": "周辺パラメータの平均で選ぶ（台地選択）と最良1点で選ぶより標本外が良いか",
+ "settings": {
+  "LS": [
+   5,
+   10,
+   15,
+   20,
+   25,
+   30,
+   35,
+   40,
+   45,
+   50,
+   55,
+   60,
+   65,
+   70,
+   75,
+   80,
+   85,
+   90,
+   95,
+   100,
+   105,
+   110,
+   115,
+   120,
+   125,
+   130,
+   135,
+   140,
+   145,
+   150,
+   155,
+   160,
+   165,
+   170,
+   175,
+   180,
+   185,
+   190,
+   195,
+   200,
+   205,
+   210,
+   215,
+   220,
+   225,
+   230,
+   235,
+   240,
+   245,
+   250,
+   255,
+   260,
+   265,
+   270,
+   275,
+   280,
+   285,
+   290,
+   295,
+   300
+  ],
+  "SEL_DAYS": 756,
+  "plateau_points": 5,
+  "TOPK": 5,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 14,
+   "n_cells": 187,
+   "pnl": {
+    "A": 0.894,
+    "B": 0.1111,
+    "C": 0.0414
+   },
+   "mdd": {
+    "A": -1814.9817,
+    "B": -1975.4594,
+    "C": -1597.8412
+   },
+   "diff_B_minus_A_pnl": -0.7828,
+   "diff_B_minus_A_t": -1.6025,
+   "diff_C_minus_A_pnl": -0.8526,
+   "diff_C_minus_A_t": -1.8762,
+   "diff_B_minus_A_mdd": -160.4777,
+   "diff_B_minus_A_mdd_t": -1.858,
+   "null_pnl_mean": 0.5989,
+   "z_pnl": {
+    "A": 0.7899,
+    "B": -1.3059,
+    "C": -1.4926
+   },
+   "L_agreement_rate_A_B": 0.1551
+  },
+  "all15_pre": {
+   "n_years": 4,
+   "n_cells": 42,
+   "pnl": {
+    "A": -0.2864,
+    "B": -0.5503,
+    "C": -0.2405
+   },
+   "mdd": {
+    "A": -1679.2376,
+    "B": -1757.8228,
+    "C": -1478.7368
+   },
+   "diff_B_minus_A_pnl": -0.2639,
+   "diff_B_minus_A_t": -0.2607,
+   "diff_C_minus_A_pnl": 0.0459,
+   "diff_C_minus_A_t": 0.0635,
+   "diff_B_minus_A_mdd": -78.5852,
+   "diff_B_minus_A_mdd_t": -0.347,
+   "null_pnl_mean": 0.6446,
+   "z_pnl": {
+    "A": -1.6827,
+    "B": -2.1597,
+    "C": -1.5997
+   },
+   "L_agreement_rate_A_B": 0.1667
+  },
+  "all15_post": {
+   "n_years": 10,
+   "n_cells": 145,
+   "pnl": {
+    "A": 1.3661,
+    "B": 0.3757,
+    "C": 0.1542
+   },
+   "mdd": {
+    "A": -1869.2793,
+    "B": -2062.514,
+    "C": -1645.4829
+   },
+   "diff_B_minus_A_pnl": -0.9904,
+   "diff_B_minus_A_t": -1.7262,
+   "diff_C_minus_A_pnl": -1.2119,
+   "diff_C_minus_A_t": -2.2216,
+   "diff_B_minus_A_mdd": -193.2347,
+   "diff_B_minus_A_mdd_t": -2.1837,
+   "null_pnl_mean": 0.5806,
+   "z_pnl": {
+    "A": 1.5926,
+    "B": -0.4155,
+    "C": -0.8647
+   },
+   "L_agreement_rate_A_B": 0.1517
+  },
+  "fx8_all": {
+   "n_years": 14,
+   "n_cells": 111,
+   "pnl": {
+    "A": -0.4108,
+    "B": -0.4056,
+    "C": -0.3033
+   },
+   "mdd": {
+    "A": -1066.9542,
+    "B": -1064.6377,
+    "C": -854.5754
+   },
+   "diff_B_minus_A_pnl": 0.0052,
+   "diff_B_minus_A_t": 0.0267,
+   "diff_C_minus_A_pnl": 0.1074,
+   "diff_C_minus_A_t": 0.7392,
+   "diff_B_minus_A_mdd": 2.3165,
+   "diff_B_minus_A_mdd_t": 0.0685,
+   "null_pnl_mean": -0.0416,
+   "z_pnl": {
+    "A": -1.7972,
+    "B": -1.7719,
+    "C": -1.2742
+   },
+   "L_agreement_rate_A_B": 0.1351
+  },
+  "fx8_pre": {
+   "n_years": 4,
+   "n_cells": 32,
+   "pnl": {
+    "A": 0.3433,
+    "B": 0.3807,
+    "C": 0.6039
+   },
+   "mdd": {
+    "A": -1190.1132,
+    "B": -1192.0926,
+    "C": -974.7589
+   },
+   "diff_B_minus_A_pnl": 0.0374,
+   "diff_B_minus_A_t": 0.0883,
+   "diff_C_minus_A_pnl": 0.2606,
+   "diff_C_minus_A_t": 1.1305,
+   "diff_B_minus_A_mdd": -1.9793,
+   "diff_B_minus_A_mdd_t": -0.0196,
+   "null_pnl_mean": 1.1086,
+   "z_pnl": {
+    "A": -1.9975,
+    "B": -1.8999,
+    "C": -1.3173
+   },
+   "L_agreement_rate_A_B": 0.1875
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "n_cells": 79,
+   "pnl": {
+    "A": -0.7124,
+    "B": -0.7201,
+    "C": -0.6662
+   },
+   "mdd": {
+    "A": -1017.6906,
+    "B": -1013.6558,
+    "C": -806.502
+   },
+   "diff_B_minus_A_pnl": -0.0077,
+   "diff_B_minus_A_t": -0.0335,
+   "diff_C_minus_A_pnl": 0.0462,
+   "diff_C_minus_A_t": 0.2498,
+   "diff_B_minus_A_mdd": 4.0348,
+   "diff_B_minus_A_mdd_t": 0.1308,
+   "null_pnl_mean": -0.5016,
+   "z_pnl": {
+    "A": -0.8674,
+    "B": -0.899,
+    "C": -0.6773
+   },
+   "L_agreement_rate_A_B": 0.1139
+  },
+  "trend7_all": {
+   "n_years": 14,
+   "n_cells": 76,
+   "pnl": {
+    "A": 2.3251,
+    "B": 0.5779,
+    "C": 0.332
+   },
+   "mdd": {
+    "A": -2920.1752,
+    "B": -3287.9849,
+    "C": -2670.5993
+   },
+   "diff_B_minus_A_pnl": -1.7472,
+   "diff_B_minus_A_t": -1.4743,
+   "diff_C_minus_A_pnl": -1.9931,
+   "diff_C_minus_A_t": -1.7982,
+   "diff_B_minus_A_mdd": -367.8096,
+   "diff_B_minus_A_mdd_t": -1.6796,
+   "null_pnl_mean": 1.2632,
+   "z_pnl": {
+    "A": 1.1685,
+    "B": -0.7541,
+    "C": -1.0247
+   },
+   "L_agreement_rate_A_B": 0.1842
+  },
+  "trend7_pre": {
+   "n_years": 4,
+   "n_cells": 10,
+   "pnl": {
+    "A": -1.365,
+    "B": -2.0409,
+    "C": -1.4836
+   },
+   "mdd": {
+    "A": -3023.1475,
+    "B": -3214.2648,
+    "C": -2716.5532
+   },
+   "diff_B_minus_A_pnl": -0.6759,
+   "diff_B_minus_A_t": -0.2373,
+   "diff_C_minus_A_pnl": -0.1186,
+   "diff_C_minus_A_t": -0.0459,
+   "diff_B_minus_A_mdd": -191.1173,
+   "diff_B_minus_A_mdd_t": -0.3209,
+   "null_pnl_mean": -0.071,
+   "z_pnl": {
+    "A": -0.6584,
+    "B": -1.0023,
+    "C": -0.7187
+   },
+   "L_agreement_rate_A_B": 0.1
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "n_cells": 66,
+   "pnl": {
+    "A": 3.8011,
+    "B": 1.6254,
+    "C": 1.0583
+   },
+   "mdd": {
+    "A": -2878.9863,
+    "B": -3317.4729,
+    "C": -2652.2178
+   },
+   "diff_B_minus_A_pnl": -2.1757,
+   "diff_B_minus_A_t": -1.6749,
+   "diff_C_minus_A_pnl": -2.7429,
+   "diff_C_minus_A_t": -2.3399,
+   "diff_B_minus_A_mdd": -438.4865,
+   "diff_B_minus_A_mdd_t": -2.0066,
+   "null_pnl_mean": 1.7969,
+   "z_pnl": {
+    "A": 1.8965,
+    "B": -0.1623,
+    "C": -0.6989
+   },
+   "L_agreement_rate_A_B": 0.197
+  }
+ },
+ "machine_verdict": "H0: 選び方では変わらない",
+ "multiple_comparisons": "判定は all15 前後半の (B−A) の t 2 本。C・最大下落・群別は記述。"
+}

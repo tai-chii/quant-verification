@@ -41,9 +41,9 @@
 | [pbo-cscv-tsmom](./pbo-cscv-tsmom) | Q171 順張りの参照日数 60 通りの CSCV で測った過剰適合の確率 PBO は約 0.88（Bailey 2017） | 支持（過剰適合） |
 | [pbo-tsmom-grid](./pbo-tsmom-grid) | Q171 順張りの参照日数60通りの CSCV で過剰適合の確率 PBO はいくつか（Bailey 2017） | —（未実行） |
 | [permutation-null-stability](./permutation-null-stability) | Q146 並べ替え帰無の z は何回で安定するか（B と seed のぶれ。検証基盤の既定 B を決めるため） | — |
-| [post-fix-conditional-sell](./post-fix-conditional-sell) | Q190 仲値後のドル円の売りは仲値前に上がった五十日だけ効くか（Bessho 2023-2・2008〜2026） | —（未実行） |
+| [post-fix-conditional-sell](./post-fix-conditional-sell) | Q190 仲値後のドル円の売りは仲値前に上がった五十日だけ効くか（Bessho 2023-2・2008〜2026） | 棄却 |
 | [predictability-to-profit-conversion](./predictability-to-profit-conversion) | Q149 分散比で「予測できる」と出た組は、次の期間にコスト後で儲かるか（Alahmadi 2026 §3.4.1 の変換率） | 前後半とも (b) の t<2 で事前の規則どおり「変換されない」。点推定も前後半とも負で、予測できる組は予測できない… |
-| [random-vs-chrono-split](./random-vs-chrono-split) | Q189 ランダム分割の交差検証は時系列分割より順張り選択の楽観をどれだけ膨らませるか（Roelofs 2019-2） | —（未実行） |
+| [random-vs-chrono-split](./random-vs-chrono-split) | Q189 ランダム分割の交差検証は時系列分割より順張り選択の楽観をどれだけ膨らませるか（Roelofs 2019-2） | 符号は仮説と逆（ランダム分割の方が時系列分割より楽観が小さい）だが、有意ではない |
 | [rebalance-frequency](./rebalance-frequency) | リバランス頻度とリスク尺度のどちらが成績差を支配するか（米国セクター ETF） | README の「主な検証」表を参照 |
 | [report-scoring](./report-scoring) | 検証ログの採点基準の事後検証 | README の「主な検証」表を参照 |
 | [reselection-frequency](./reselection-frequency) | Q177 順張りの参照日数を選び直す頻度（月・四半期・半年・年）で標本外成績は変わるか（Zarrabi 2017） | ノイズ |
