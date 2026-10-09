@@ -1,0 +1,199 @@
+{
+ "queue_id": "Q153",
+ "script": "kensho_m15_autocorr_by_hour_q153.py",
+ "run_at": "20261009_104314",
+ "smoke": false,
+ "settings": {
+  "SYMS": [
+   "USDJPY",
+   "EURUSD"
+  ],
+  "PIP": {
+   "USDJPY": 0.01,
+   "EURUSD": 0.0001
+  },
+  "COST_ONEWAY_PIPS": 1.0,
+  "PERIODS": {
+   "2021-23": [
+    2021,
+    2023
+   ],
+   "2024-26": [
+    2024,
+    2026
+   ]
+  },
+  "NW_LAGS": 4,
+  "ALPHA": 0.05,
+  "MIN_PAIRS": 200,
+  "NULL_B": 300,
+  "SEED": 20261009,
+  "data_dir": "/sessions/rcw-012wsbd1rlatdn2e8xefvgjn/mnt/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード"
+ },
+ "data_span": {
+  "USDJPY": {
+   "start": "2021-01-04 00:00:00",
+   "end": "2026-07-14 23:45:00",
+   "n": 115085,
+   "n_pairs": 113263
+  },
+  "EURUSD": {
+   "start": "2021-01-03 22:00:00",
+   "end": "2026-07-14 23:45:00",
+   "n": 124207,
+   "n_pairs": 123397
+  }
+ },
+ "missing": [],
+ "results": {
+  "USDJPY": {
+   "n_sig_holm_by_period": {
+    "2021-23": 0,
+    "2024-26": 0
+   },
+   "sig_hours_by_period": {
+    "2021-23": {},
+    "2024-26": {}
+   },
+   "n_hours_both_periods_same_sign": 0,
+   "hours_both_periods": {},
+   "trade_insample_set": {
+    "2021-23": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 911
+    },
+    "2024-26": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 775
+    }
+   },
+   "trade_both_set": {
+    "2021-23": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 911
+    },
+    "2024-26": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 775
+    }
+   }
+  },
+  "EURUSD": {
+   "n_sig_holm_by_period": {
+    "2021-23": 1,
+    "2024-26": 0
+   },
+   "sig_hours_by_period": {
+    "2021-23": {
+     "21": -1
+    },
+    "2024-26": {}
+   },
+   "n_hours_both_periods_same_sign": 0,
+   "hours_both_periods": {},
+   "trade_insample_set": {
+    "2021-23": {
+     "n_hours": 1,
+     "n_trade_bars": 2388,
+     "gross_bp_per_bar": 0.23651771737373403,
+     "net_bp_per_bar": -1.059256755744125,
+     "gross_total_bp": 564.8043090884769,
+     "net_total_bp": -2529.5051327169704,
+     "net_bp_per_year": -702.0212482870887,
+     "n_days": 908
+    },
+    "2024-26": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 783
+    }
+   },
+   "trade_both_set": {
+    "2021-23": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 908
+    },
+    "2024-26": {
+     "n_hours": 0,
+     "n_trade_bars": 0,
+     "gross_bp_per_bar": NaN,
+     "net_bp_per_bar": NaN,
+     "gross_total_bp": 0.0,
+     "net_total_bp": 0.0,
+     "net_bp_per_year": 0.0,
+     "n_days": 783
+    }
+   }
+  }
+ },
+ "null": {
+  "B": 300,
+  "n_sig_holm_mean": 0.01,
+  "share_draws_with_any_sig": 0.01,
+  "share_draws_with_any_both_period": 0.0,
+  "maxabs_t_p95": 3.2376453311768976,
+  "maxabs_t_p975": 3.350072484371986,
+  "obs_maxabs_t": 3.679463857091187,
+  "obs_maxabs_t_pct_in_null": 0.9933333333333333
+ },
+ "judgement": {
+  "by_symbol": {
+   "USDJPY": {
+    "n_hours_both": 0,
+    "hours_both": {},
+    "verdict": "棄却（Holm 後に両期間で同符号に残る時刻が 0）"
+   },
+   "EURUSD": {
+    "n_hours_both": 0,
+    "hours_both": {},
+    "verdict": "棄却（Holm 後に両期間で同符号に残る時刻が 0）"
+   }
+  },
+  "verdict": "USDJPY: 棄却（Holm 後に両期間で同符号に残る時刻が 0） / EURUSD: 棄却（Holm 後に両期間で同符号に残る時刻が 0）",
+  "note": "事前固定の規則で機械的に付けた判定。解釈（確定／ノイズ／未確定、H1 の結果との整合）は実行者が記録する。"
+ },
+ "files": {
+  "hours_csv": "/sessions/rcw-012wsbd1rlatdn2e8xefvgjn/mnt/ワークスペース/検証/verification-lab/financial-engineering/m15-autocorr-by-hour/results/Q153_hours_20261009_104314.csv",
+  "png": "/sessions/rcw-012wsbd1rlatdn2e8xefvgjn/mnt/ワークスペース/検証/verification-lab/financial-engineering/m15-autocorr-by-hour/results/Q153_rho_by_hour_20261009_104314.png"
+ },
+ "multiple_comparisons": "2通貨 × 24時 × 2期間 = 96 本を 1 つの族として Holm（α=0.05）。売買の集合は (i) 標本内・(ii) 両期間共通の 2 通り（判定は (ii)）",
+ "deviations_from_prereg": [
+  "15分足は値動きのない足（high==low）を除かない（直前の足を実際の直前の15分にするため）",
+  "Newey–West のラグは 4（=1時間）に固定（登録に数値なし）"
+ ]
+}
