@@ -33,7 +33,7 @@
 | [ma-cross-eurusd](./ma-cross-eurusd) | MAクロス 全パターン検証（EURUSD 4時間足） | — |
 | [ma200-timing-vs-exposure](./ma200-timing-vs-exposure) | 200日移動平均線ルールの下落防御は、タイミングの効果か市場露出が減るだけか（約100年・米株） | README の「主な検証」表を参照 |
 | [ml-core-eurusd-h1](./ml-core-eurusd-h1) | Q191 ML 自動売買の「核」（Model 0）は EURUSD の1時間足からコスト後に 0 と区別できる信号を取り出せるか | 棄却（段階1: 粗利でも t<2・コスト以前に信号なし） |
-| [null-model-choice](./null-model-choice) | Q178 帰無モデルの選び方（並べ替え・AR(1)・GARCH型）で移動平均ルールの判定は変わるか（Brock 1992） | —（未実行） |
+| [null-model-choice](./null-model-choice) | Q178 帰無モデルの選び方（並べ替え・AR(1)・GARCH型）で移動平均ルールの判定は変わるか（Brock 1992） | 確定（H1 支持: 帰無の選び方で判定はほぼ割れない） |
 | [oshime-d1-yahoo-close-recheck](./oshime-d1-yahoo-close-recheck) | Q158 押し目・逆張りの D1 系14本を Dukascopy 日足に差し替えて再確認（2026-10-09 Opus） | — |
 | [overnight-intraday-reversal-fx](./overnight-intraday-reversal-fx) | Q173 為替の夜間→日中の逆張りは2015年以降の主要8通貨でコスト後に残るか（DellaCorte 2015） | 棄却 |
 | [pair-trading](./pair-trading) | ペアトレード（IEF/TLT, NVDA/AMD） | README の「主な検証」表を参照 |
@@ -46,7 +46,7 @@
 | [random-vs-chrono-split](./random-vs-chrono-split) | Q189 ランダム分割の交差検証は時系列分割より順張り選択の楽観をどれだけ膨らませるか（Roelofs 2019-2） | —（未実行） |
 | [rebalance-frequency](./rebalance-frequency) | リバランス頻度とリスク尺度のどちらが成績差を支配するか（米国セクター ETF） | README の「主な検証」表を参照 |
 | [report-scoring](./report-scoring) | 検証ログの採点基準の事後検証 | README の「主な検証」表を参照 |
-| [reselection-frequency](./reselection-frequency) | Q177 順張りの参照日数を選び直す頻度（月・四半期・半年・年）で標本外成績は変わるか（Zarrabi 2017） | —（未実行） |
+| [reselection-frequency](./reselection-frequency) | Q177 順張りの参照日数を選び直す頻度（月・四半期・半年・年）で標本外成績は変わるか（Zarrabi 2017） | ノイズ |
 | [rsi-rules-fx](./rsi-rules-fx) | Q180 RSI の族は先進国通貨の日足で2016年以降も補正後に残るか（Coakley 2016-2） | —（未実行） |
 | [seasonality](./seasonality) | 季節性（暖房株・気温相関など） | README の「主な検証」表を参照 |
 | [selection-optimism-vs-J](./selection-optimism-vs-J) | Q139 候補数 J を増やすと選択の楽観はどれだけ増え、Alonso の下側限界はそれを覆うか | 単調性「支持」・限界「使える」 |
