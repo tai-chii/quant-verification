@@ -1,0 +1,628 @@
+{
+ "qid": "Q187",
+ "smoke": false,
+ "generated": "20261010_035749",
+ "question": "為替のボラ予測で損失関数の差はモデルの差の何倍に見えるか",
+ "settings": {
+  "LAMS": [
+   0.8,
+   0.85,
+   0.9,
+   0.92,
+   0.94,
+   0.96,
+   0.97,
+   0.98,
+   0.99
+  ],
+  "NS": [
+   5,
+   10,
+   20,
+   40,
+   60,
+   120
+  ],
+  "BGRID_step": 0.1,
+  "LOSSES": [
+   "MSE",
+   "QLIKE",
+   "MAE"
+  ],
+  "TRAIN_YEARS": 3
+ },
+ "missing": [],
+ "per_symbol": {
+  "EURUSD": {
+   "all": {
+    "ratio_mean": 0.5951,
+    "ratio_mean_aligned": 0.0357,
+    "D_loss_reduction": 0.9988,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0133,
+      "D_model": 0.0264,
+      "ratio": 0.5057
+     },
+     "QLIKE": {
+      "D_loss": 2.4125,
+      "D_model": 2.7448,
+      "ratio": 0.8789
+     },
+     "MAE": {
+      "D_loss": 0.0102,
+      "D_model": 0.0254,
+      "ratio": 0.4007
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.5727,
+    "ratio_mean_aligned": 0.0189,
+    "D_loss_reduction": 0.9992,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0165,
+      "D_model": 0.0391,
+      "ratio": 0.4213
+     },
+     "QLIKE": {
+      "D_loss": 1.9031,
+      "D_model": 2.2339,
+      "ratio": 0.8519
+     },
+     "MAE": {
+      "D_loss": 0.0141,
+      "D_model": 0.0316,
+      "ratio": 0.4449
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.6229,
+    "ratio_mean_aligned": 0.0625,
+    "D_loss_reduction": 0.9982,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0115,
+      "D_model": 0.0187,
+      "ratio": 0.6137
+     },
+     "QLIKE": {
+      "D_loss": 2.7187,
+      "D_model": 3.0513,
+      "ratio": 0.891
+     },
+     "MAE": {
+      "D_loss": 0.0079,
+      "D_model": 0.0217,
+      "ratio": 0.3639
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "GBPUSD": {
+   "all": {
+    "ratio_mean": 0.6586,
+    "ratio_mean_aligned": 0.1279,
+    "D_loss_reduction": 0.9731,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0112,
+      "D_model": 0.0325,
+      "ratio": 0.3431
+     },
+     "QLIKE": {
+      "D_loss": 0.3808,
+      "D_model": 0.4383,
+      "ratio": 0.8688
+     },
+     "MAE": {
+      "D_loss": 0.0264,
+      "D_model": 0.0346,
+      "ratio": 0.764
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.7024,
+    "ratio_mean_aligned": 0.1745,
+    "D_loss_reduction": 0.9699,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0127,
+      "D_model": 0.0361,
+      "ratio": 0.3515
+     },
+     "QLIKE": {
+      "D_loss": 0.2803,
+      "D_model": 0.302,
+      "ratio": 0.9281
+     },
+     "MAE": {
+      "D_loss": 0.0248,
+      "D_model": 0.03,
+      "ratio": 0.8275
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.681,
+    "ratio_mean_aligned": 0.1316,
+    "D_loss_reduction": 0.9721,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0144,
+      "D_model": 0.0314,
+      "ratio": 0.4591
+     },
+     "QLIKE": {
+      "D_loss": 0.4411,
+      "D_model": 0.52,
+      "ratio": 0.8481
+     },
+     "MAE": {
+      "D_loss": 0.0274,
+      "D_model": 0.0373,
+      "ratio": 0.7359
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "AUDUSD": {
+   "all": {
+    "ratio_mean": 0.6239,
+    "ratio_mean_aligned": 1.0467,
+    "D_loss_reduction": 0.9668,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0609,
+      "D_model": 0.0879,
+      "ratio": 0.6927
+     },
+     "QLIKE": {
+      "D_loss": 2.6399,
+      "D_model": 3.0135,
+      "ratio": 0.876
+     },
+     "MAE": {
+      "D_loss": 0.0145,
+      "D_model": 0.048,
+      "ratio": 0.3028
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.6059,
+    "ratio_mean_aligned": 1.7348,
+    "D_loss_reduction": 0.9601,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0772,
+      "D_model": 0.1126,
+      "ratio": 0.6856
+     },
+     "QLIKE": {
+      "D_loss": 2.5606,
+      "D_model": 3.0142,
+      "ratio": 0.8495
+     },
+     "MAE": {
+      "D_loss": 0.0124,
+      "D_model": 0.044,
+      "ratio": 0.2826
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.634,
+    "ratio_mean_aligned": 0.8006,
+    "D_loss_reduction": 0.9706,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0511,
+      "D_model": 0.0734,
+      "ratio": 0.6967
+     },
+     "QLIKE": {
+      "D_loss": 2.6875,
+      "D_model": 3.013,
+      "ratio": 0.8919
+     },
+     "MAE": {
+      "D_loss": 0.0158,
+      "D_model": 0.0504,
+      "ratio": 0.3134
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "USDJPY": {
+   "all": {
+    "ratio_mean": 0.5616,
+    "ratio_mean_aligned": 0.1734,
+    "D_loss_reduction": 0.9944,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.032,
+      "D_model": 0.0538,
+      "ratio": 0.5939
+     },
+     "QLIKE": {
+      "D_loss": 2.9346,
+      "D_model": 3.5793,
+      "ratio": 0.8199
+     },
+     "MAE": {
+      "D_loss": 0.0124,
+      "D_model": 0.0459,
+      "ratio": 0.2709
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.585,
+    "ratio_mean_aligned": 0.264,
+    "D_loss_reduction": 0.9913,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0385,
+      "D_model": 0.0631,
+      "ratio": 0.6092
+     },
+     "QLIKE": {
+      "D_loss": 3.0356,
+      "D_model": 3.6202,
+      "ratio": 0.8385
+     },
+     "MAE": {
+      "D_loss": 0.0154,
+      "D_model": 0.0501,
+      "ratio": 0.3074
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.5465,
+    "ratio_mean_aligned": 0.1476,
+    "D_loss_reduction": 0.9954,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0282,
+      "D_model": 0.0482,
+      "ratio": 0.5843
+     },
+     "QLIKE": {
+      "D_loss": 2.8771,
+      "D_model": 3.5547,
+      "ratio": 0.8094
+     },
+     "MAE": {
+      "D_loss": 0.0107,
+      "D_model": 0.0434,
+      "ratio": 0.2457
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "USDCHF": {
+   "all": {
+    "ratio_mean": 0.393,
+    "ratio_mean_aligned": 0.2613,
+    "D_loss_reduction": 0.9288,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.2341,
+      "D_model": 0.7116,
+      "ratio": 0.329
+     },
+     "QLIKE": {
+      "D_loss": 3.1123,
+      "D_model": 4.9445,
+      "ratio": 0.6294
+     },
+     "MAE": {
+      "D_loss": 0.0213,
+      "D_model": 0.0967,
+      "ratio": 0.2205
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.4713,
+    "ratio_mean_aligned": 0.2701,
+    "D_loss_reduction": 0.8823,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.6293,
+      "D_model": 1.9206,
+      "ratio": 0.3276
+     },
+     "QLIKE": {
+      "D_loss": 4.577,
+      "D_model": 5.9807,
+      "ratio": 0.7653
+     },
+     "MAE": {
+      "D_loss": 0.0612,
+      "D_model": 0.1906,
+      "ratio": 0.3208
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.2638,
+    "ratio_mean_aligned": 0.2759,
+    "D_loss_reduction": 0.9936,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0062,
+      "D_model": 0.0307,
+      "ratio": 0.2015
+     },
+     "QLIKE": {
+      "D_loss": 2.2428,
+      "D_model": 4.3227,
+      "ratio": 0.5188
+     },
+     "MAE": {
+      "D_loss": 0.0029,
+      "D_model": 0.0404,
+      "ratio": 0.071
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "USDCAD": {
+   "all": {
+    "ratio_mean": 0.655,
+    "ratio_mean_aligned": 0.4306,
+    "D_loss_reduction": 0.9957,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0122,
+      "D_model": 0.018,
+      "ratio": 0.6764
+     },
+     "QLIKE": {
+      "D_loss": 2.6428,
+      "D_model": 2.9262,
+      "ratio": 0.9032
+     },
+     "MAE": {
+      "D_loss": 0.0074,
+      "D_model": 0.0192,
+      "ratio": 0.3856
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.673,
+    "ratio_mean_aligned": 0.5427,
+    "D_loss_reduction": 0.9952,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0187,
+      "D_model": 0.0268,
+      "ratio": 0.6962
+     },
+     "QLIKE": {
+      "D_loss": 2.6203,
+      "D_model": 2.9008,
+      "ratio": 0.9033
+     },
+     "MAE": {
+      "D_loss": 0.0081,
+      "D_model": 0.0193,
+      "ratio": 0.4197
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.6398,
+    "ratio_mean_aligned": 0.4091,
+    "D_loss_reduction": 0.9954,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0083,
+      "D_model": 0.0128,
+      "ratio": 0.6514
+     },
+     "QLIKE": {
+      "D_loss": 2.6563,
+      "D_model": 2.9414,
+      "ratio": 0.9031
+     },
+     "MAE": {
+      "D_loss": 0.007,
+      "D_model": 0.0191,
+      "ratio": 0.3649
+     }
+    },
+    "n_test_years": 10
+   }
+  },
+  "EURJPY": {
+   "all": {
+    "ratio_mean": 0.5994,
+    "ratio_mean_aligned": 0.2168,
+    "D_loss_reduction": 0.9929,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.042,
+      "D_model": 0.0665,
+      "ratio": 0.6304
+     },
+     "QLIKE": {
+      "D_loss": 2.8483,
+      "D_model": 3.4127,
+      "ratio": 0.8346
+     },
+     "MAE": {
+      "D_loss": 0.0146,
+      "D_model": 0.0438,
+      "ratio": 0.3332
+     }
+    },
+    "n_test_years": 15
+   },
+   "pre": {
+    "ratio_mean": 0.6025,
+    "ratio_mean_aligned": 0.1704,
+    "D_loss_reduction": 0.9928,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0711,
+      "D_model": 0.1137,
+      "ratio": 0.626
+     },
+     "QLIKE": {
+      "D_loss": 2.9047,
+      "D_model": 3.4881,
+      "ratio": 0.8327
+     },
+     "MAE": {
+      "D_loss": 0.0199,
+      "D_model": 0.0571,
+      "ratio": 0.3488
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.5974,
+    "ratio_mean_aligned": 0.3447,
+    "D_loss_reduction": 0.9904,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0225,
+      "D_model": 0.0351,
+      "ratio": 0.64
+     },
+     "QLIKE": {
+      "D_loss": 2.8106,
+      "D_model": 3.3625,
+      "ratio": 0.8359
+     },
+     "MAE": {
+      "D_loss": 0.011,
+      "D_model": 0.0349,
+      "ratio": 0.3162
+     }
+    },
+    "n_test_years": 9
+   }
+  },
+  "GBPJPY": {
+   "all": {
+    "ratio_mean": 0.5729,
+    "ratio_mean_aligned": 0.3485,
+    "D_loss_reduction": 0.9697,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0515,
+      "D_model": 0.0777,
+      "ratio": 0.6632
+     },
+     "QLIKE": {
+      "D_loss": 2.386,
+      "D_model": 3.058,
+      "ratio": 0.7802
+     },
+     "MAE": {
+      "D_loss": 0.0166,
+      "D_model": 0.0602,
+      "ratio": 0.2753
+     }
+    },
+    "n_test_years": 16
+   },
+   "pre": {
+    "ratio_mean": 0.6113,
+    "ratio_mean_aligned": 0.236,
+    "D_loss_reduction": 0.9482,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0836,
+      "D_model": 0.1223,
+      "ratio": 0.6839
+     },
+     "QLIKE": {
+      "D_loss": 1.4572,
+      "D_model": 1.9331,
+      "ratio": 0.7538
+     },
+     "MAE": {
+      "D_loss": 0.0257,
+      "D_model": 0.0649,
+      "ratio": 0.3961
+     }
+    },
+    "n_test_years": 6
+   },
+   "post": {
+    "ratio_mean": 0.5436,
+    "ratio_mean_aligned": 0.4907,
+    "D_loss_reduction": 0.9692,
+    "by_eval": {
+     "MSE": {
+      "D_loss": 0.0375,
+      "D_model": 0.0609,
+      "ratio": 0.615
+     },
+     "QLIKE": {
+      "D_loss": 2.9432,
+      "D_model": 3.7329,
+      "ratio": 0.7885
+     },
+     "MAE": {
+      "D_loss": 0.013,
+      "D_model": 0.0573,
+      "ratio": 0.2272
+     }
+    },
+    "n_test_years": 10
+   }
+  }
+ },
+ "summary": {
+  "all": {
+   "ratio_mean": 0.5824,
+   "ratio_t": 19.5617,
+   "reduction_mean": 0.9775,
+   "n_syms": 8
+  },
+  "pre": {
+   "ratio_mean": 0.603,
+   "ratio_t": 24.6749,
+   "reduction_mean": 0.9674,
+   "n_syms": 8
+  },
+  "post": {
+   "ratio_mean": 0.5661,
+   "ratio_t": 12.2437,
+   "reduction_mean": 0.9856,
+   "n_syms": 8
+  }
+ },
+ "machine_verdict": "H0: 為替では損失関数の差は小さい",
+ "note": "目的変数は日次の二乗リターン（実現分散の代理）。HAR は切片なしの格子。帰無なし（比の記述）。",
+ "multiple_comparisons": "判定は 8 通貨平均の R̄ と減り方の 2 本。"
+}
