@@ -11,7 +11,7 @@
 | [data-source-signal-agreement](./data-source-signal-agreement) | Q137 データ提供元の違い（Dukascopy vs Yahoo）で順張りの合図は何割一致し、純損益はどれだけ変わるか | 「データ源は規則の定義の一部（Korzan と同じ）」→ 確定 |
 | [direction-accuracy-vs-base-rate](./direction-accuracy-vs-base-rate) | Q147 翌日の方向の的中率は「常に上」「前日の符号」の基準率を超えるか（HSAT の基準の置き方） | 確定 |
 | [dow-structure-direction-vs-time](./dow-structure-direction-vs-time) | Q104 ダウ型の構造確定の後の24時間: 向きの情報か、時刻と地合いか | 棄却（向きの情報なし） |
-| [embargo-length-effect](./embargo-length-effect) | Q155 検証とテストの間のエンバーゴ日数で順張りの標本外成績はどれだけ変わるか | — |
+| [embargo-length-effect](./embargo-length-effect) | Q155 検証とテストの間のエンバーゴ日数で順張りの標本外成績はどれだけ変わるか | e=0 に楽観の方向はあるが、事前登録の第一指標が有意に届かなかった |
 | [execution-delay-effect](./execution-delay-effect) | Q156 約定を1〜2営業日遅らせると順張りの成績はどう変わるか（Korzan 2026 表5 では遅れで改善した） | — |
 | [fundagent](./fundagent) | fundagent：ニュースから売買仮説を出し、その的中率を実測するシステム | — |
 | [fx-roundnumber-bounce](./fx-roundnumber-bounce) | 為替のキリ番は「跳ね返る場所」ではなく「抜けやすい場所」 | 支持 |
@@ -39,4 +39,4 @@
 | [usdjpy-london-open-vs-naive-momentum](./usdjpy-london-open-vs-naive-momentum) | USDJPY の日中順張りは、ロンドン開始30分の時刻条件つきシグナルでのみ効くか | README の「主な検証」表を参照 |
 | [variance-ratio-setting-dependence](./variance-ratio-setting-dependence) | Q148 弱い形の効率性の検定（分散比）の結論は、設定（q・期間）でどれだけ動くか（Alahmadi・Basingab 2026 §3.5） | 1年の日足では分散比検定そのものがほとんど棄却しない（名目 5% 以下）。「1つの q で非効率と出ても他の q では… |
 | [vol-regime-trend-following](./vol-regime-trend-following) | Q142 高ボラ局面では順張りの的中率と純損益が下がるか（15銘柄・GARCH なしの実現ボラ） | — |
-| [wrc-spa-disagreement](./wrc-spa-disagreement) | Q154 WRC・SPA(consistent)・SPA(conservative) の判定は同じルール群でどれだけ割れるか | — |
+| [wrc-spa-disagreement](./wrc-spa-disagreement) | Q154 WRC・SPA(consistent)・SPA(conservative) の判定は同じルール群でどれだけ割れるか | 確定（棄却） |

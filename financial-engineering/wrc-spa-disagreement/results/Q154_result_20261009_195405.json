@@ -1,0 +1,666 @@
+{
+ "queue_id": "Q154",
+ "script": "kensho_wrc_spa_disagreement_q154.py",
+ "run_at": "20261009_195405",
+ "smoke": false,
+ "settings": {
+  "LS": [
+   5,
+   10,
+   15,
+   20,
+   25,
+   30,
+   35,
+   40,
+   45,
+   50,
+   55,
+   60,
+   65,
+   70,
+   75,
+   80,
+   85,
+   90,
+   95,
+   100,
+   105,
+   110,
+   115,
+   120,
+   125,
+   130,
+   135,
+   140,
+   145,
+   150,
+   155,
+   160,
+   165,
+   170,
+   175,
+   180,
+   185,
+   190,
+   195,
+   200,
+   205,
+   210,
+   215,
+   220,
+   225,
+   230,
+   235,
+   240,
+   245,
+   250,
+   255,
+   260,
+   265,
+   270,
+   275,
+   280,
+   285,
+   290,
+   295,
+   300
+  ],
+  "SIDES": [
+   "long",
+   "short",
+   "both"
+  ],
+  "n_rules": 180,
+  "LMAX": 300,
+  "SPLIT_YEAR": 2017,
+  "BLOCK_LEN": 5,
+  "BOOT_B": 999,
+  "SIZE_REPS": 20,
+  "MU0_PERMS": 100,
+  "ALPHA": 0.05,
+  "POS_CONTROL_BP": 1.0,
+  "POS_CONTROL_RULE": [
+   "both",
+   20
+  ],
+  "SEED": 20261009,
+  "COST_RT": {
+   "EURUSD": 0.0002,
+   "GBPUSD": 0.0002,
+   "AUDUSD": 0.0002,
+   "USDCHF": 0.0002,
+   "USDCAD": 0.0002,
+   "USDJPY": 0.02,
+   "EURJPY": 0.02,
+   "GBPJPY": 0.02,
+   "XAUUSD": 0.6,
+   "XAGUSD": 0.04,
+   "WTI": 0.06,
+   "UKOIL": 0.06,
+   "US500": 1.0,
+   "USTECH": 3.0,
+   "BTCUSD": 40.0
+  },
+  "syms": [
+   "EURUSD",
+   "GBPUSD",
+   "AUDUSD",
+   "USDJPY",
+   "USDCHF",
+   "USDCAD",
+   "EURJPY",
+   "GBPJPY",
+   "XAUUSD",
+   "XAGUSD",
+   "WTI",
+   "UKOIL",
+   "US500",
+   "USTECH",
+   "BTCUSD"
+  ],
+  "data_dir": "/mnt/user-data/uploads/ワークスペース/検証/学問/金融工学/作業/FX/システムトレード"
+ },
+ "data_span": {
+  "EURUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "GBPUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "AUDUSD": {
+   "start": "2008-01-02",
+   "end": "2026-06-30",
+   "n": 4822
+  },
+  "USDJPY": {
+   "start": "2008-02-01",
+   "end": "2026-06-30",
+   "n": 4801
+  },
+  "USDCHF": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "USDCAD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "EURJPY": {
+   "start": "2008-01-01",
+   "end": "2026-03-31",
+   "n": 4759
+  },
+  "GBPJPY": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4824
+  },
+  "XAUUSD": {
+   "start": "2008-05-01",
+   "end": "2026-06-30",
+   "n": 4719
+  },
+  "XAGUSD": {
+   "start": "2008-01-01",
+   "end": "2026-06-30",
+   "n": 4806
+  },
+  "WTI": {
+   "start": "2011-09-23",
+   "end": "2026-06-30",
+   "n": 3787
+  },
+  "UKOIL": {
+   "start": "2010-12-02",
+   "end": "2026-06-30",
+   "n": 3946
+  },
+  "US500": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3746
+  },
+  "USTECH": {
+   "start": "2011-09-19",
+   "end": "2026-06-30",
+   "n": 3725
+  },
+  "BTCUSD": {
+   "start": "2017-05-07",
+   "end": "2026-06-30",
+   "n": 3166
+  }
+ },
+ "missing": [],
+ "a": {
+  "n_cells": 29,
+  "share_disagree": 0.13793103448275862,
+  "n_disagree": 4,
+  "reject_rate_by_test": {
+   "p_wrc": 0.0,
+   "p_spa_consistent": 0.13793103448275862,
+   "p_spa_conservative": 0.13793103448275862,
+   "p_spa_lower": 0.13793103448275862
+  },
+  "p_spearman_between_tests": {
+   "p_wrc": {
+    "p_wrc": 1.0,
+    "p_spa_consistent": 0.967,
+    "p_spa_conservative": 0.967
+   },
+   "p_spa_consistent": {
+    "p_wrc": 0.967,
+    "p_spa_consistent": 1.0,
+    "p_spa_conservative": 1.0
+   },
+   "p_spa_conservative": {
+    "p_wrc": 0.967,
+    "p_spa_consistent": 1.0,
+    "p_spa_conservative": 1.0
+   }
+  },
+  "cells": [
+   {
+    "sym": "EURUSD",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.6846846846846847,
+    "p_spa_consistent": 0.7787787787787788,
+    "p_spa_conservative": 0.7797797797797797,
+    "p_spa_lower": 0.6596596596596597,
+    "disagree": false,
+    "best_rule": "both_L30",
+    "best_dbar_bp": 1.7071356460560079,
+    "n_rules_positive": 73
+   },
+   {
+    "sym": "EURUSD",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.7987987987987988,
+    "p_spa_consistent": 0.8048048048048048,
+    "p_spa_conservative": 0.8048048048048048,
+    "p_spa_lower": 0.6886886886886887,
+    "disagree": false,
+    "best_rule": "both_L105",
+    "best_dbar_bp": 0.8401613078663612,
+    "n_rules_positive": 79
+   },
+   {
+    "sym": "GBPUSD",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.7727727727727728,
+    "p_spa_consistent": 0.8598598598598599,
+    "p_spa_conservative": 0.8618618618618619,
+    "p_spa_lower": 0.6766766766766766,
+    "disagree": false,
+    "best_rule": "both_L135",
+    "best_dbar_bp": 1.403972051617214,
+    "n_rules_positive": 46
+   },
+   {
+    "sym": "GBPUSD",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.933933933933934,
+    "p_spa_consistent": 0.9079079079079079,
+    "p_spa_conservative": 0.9109109109109109,
+    "p_spa_lower": 0.8358358358358359,
+    "disagree": false,
+    "best_rule": "both_L60",
+    "best_dbar_bp": 0.6169155371363885,
+    "n_rules_positive": 32
+   },
+   {
+    "sym": "AUDUSD",
+    "period": "前半",
+    "n_days": 2045,
+    "p_wrc": 0.7287287287287287,
+    "p_spa_consistent": 0.7927927927927928,
+    "p_spa_conservative": 0.7927927927927928,
+    "p_spa_lower": 0.7237237237237237,
+    "disagree": false,
+    "best_rule": "both_L40",
+    "best_dbar_bp": 2.0024615986465624,
+    "n_rules_positive": 80
+   },
+   {
+    "sym": "AUDUSD",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.958958958958959,
+    "p_spa_consistent": 0.968968968968969,
+    "p_spa_conservative": 0.970970970970971,
+    "p_spa_lower": 0.8838838838838838,
+    "disagree": false,
+    "best_rule": "both_L150",
+    "best_dbar_bp": 0.5339348339649178,
+    "n_rules_positive": 21
+   },
+   {
+    "sym": "USDJPY",
+    "period": "前半",
+    "n_days": 2024,
+    "p_wrc": 0.17717717717717718,
+    "p_spa_consistent": 0.2042042042042042,
+    "p_spa_conservative": 0.2042042042042042,
+    "p_spa_lower": 0.19019019019019018,
+    "disagree": false,
+    "best_rule": "both_L270",
+    "best_dbar_bp": 2.9925326988671848,
+    "n_rules_positive": 163
+   },
+   {
+    "sym": "USDJPY",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.6956956956956957,
+    "p_spa_consistent": 0.5835835835835835,
+    "p_spa_conservative": 0.5865865865865866,
+    "p_spa_lower": 0.3993993993993994,
+    "disagree": false,
+    "best_rule": "long_L60",
+    "best_dbar_bp": 1.3632950908774262,
+    "n_rules_positive": 80
+   },
+   {
+    "sym": "USDCHF",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.978978978978979,
+    "p_spa_consistent": 0.9769769769769769,
+    "p_spa_conservative": 0.9769769769769769,
+    "p_spa_lower": 0.8948948948948949,
+    "disagree": false,
+    "best_rule": "short_L50",
+    "best_dbar_bp": 0.14629745689159177,
+    "n_rules_positive": 3
+   },
+   {
+    "sym": "USDCHF",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.908908908908909,
+    "p_spa_consistent": 0.8948948948948949,
+    "p_spa_conservative": 0.8978978978978979,
+    "p_spa_lower": 0.6806806806806807,
+    "disagree": false,
+    "best_rule": "short_L210",
+    "best_dbar_bp": 0.6647215312199654,
+    "n_rules_positive": 27
+   },
+   {
+    "sym": "USDCAD",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.918918918918919,
+    "p_spa_consistent": 0.9229229229229229,
+    "p_spa_conservative": 0.9229229229229229,
+    "p_spa_lower": 0.8298298298298298,
+    "disagree": false,
+    "best_rule": "both_L70",
+    "best_dbar_bp": 0.8709826400128805,
+    "n_rules_positive": 56
+   },
+   {
+    "sym": "USDCAD",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.984984984984985,
+    "p_spa_consistent": 0.980980980980981,
+    "p_spa_conservative": 0.9819819819819819,
+    "p_spa_lower": 0.8568568568568569,
+    "disagree": false,
+    "best_rule": "both_L35",
+    "best_dbar_bp": 0.3206081146875245,
+    "n_rules_positive": 9
+   },
+   {
+    "sym": "EURJPY",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.4214214214214214,
+    "p_spa_consistent": 0.5695695695695696,
+    "p_spa_conservative": 0.5695695695695696,
+    "p_spa_lower": 0.5605605605605606,
+    "disagree": false,
+    "best_rule": "both_L60",
+    "best_dbar_bp": 2.801425953430274,
+    "n_rules_positive": 140
+   },
+   {
+    "sym": "EURJPY",
+    "period": "後半",
+    "n_days": 2411,
+    "p_wrc": 0.46346346346346345,
+    "p_spa_consistent": 0.34934934934934936,
+    "p_spa_conservative": 0.35935935935935936,
+    "p_spa_lower": 0.2132132132132132,
+    "disagree": false,
+    "best_rule": "long_L180",
+    "best_dbar_bp": 1.7235501420430244,
+    "n_rules_positive": 91
+   },
+   {
+    "sym": "GBPJPY",
+    "period": "前半",
+    "n_days": 2047,
+    "p_wrc": 0.37237237237237236,
+    "p_spa_consistent": 0.4994994994994995,
+    "p_spa_conservative": 0.4994994994994995,
+    "p_spa_lower": 0.4804804804804805,
+    "disagree": false,
+    "best_rule": "both_L75",
+    "best_dbar_bp": 3.0739874202547735,
+    "n_rules_positive": 153
+   },
+   {
+    "sym": "GBPJPY",
+    "period": "後半",
+    "n_days": 2476,
+    "p_wrc": 0.7587587587587588,
+    "p_spa_consistent": 0.6946946946946947,
+    "p_spa_conservative": 0.7057057057057057,
+    "p_spa_lower": 0.5135135135135135,
+    "disagree": false,
+    "best_rule": "long_L215",
+    "best_dbar_bp": 1.4333603516617184,
+    "n_rules_positive": 77
+   },
+   {
+    "sym": "XAUUSD",
+    "period": "前半",
+    "n_days": 1954,
+    "p_wrc": 0.24424424424424424,
+    "p_spa_consistent": 0.3233233233233233,
+    "p_spa_conservative": 0.3233233233233233,
+    "p_spa_lower": 0.3213213213213213,
+    "disagree": false,
+    "best_rule": "both_L140",
+    "best_dbar_bp": 4.527580566946085,
+    "n_rules_positive": 171
+   },
+   {
+    "sym": "XAUUSD",
+    "period": "後半",
+    "n_days": 2464,
+    "p_wrc": 0.057057057057057055,
+    "p_spa_consistent": 0.042042042042042045,
+    "p_spa_conservative": 0.04504504504504504,
+    "p_spa_lower": 0.01901901901901902,
+    "disagree": true,
+    "best_rule": "long_L115",
+    "best_dbar_bp": 5.292551799095928,
+    "n_rules_positive": 119
+   },
+   {
+    "sym": "XAGUSD",
+    "period": "前半",
+    "n_days": 2041,
+    "p_wrc": 0.5595595595595596,
+    "p_spa_consistent": 0.6776776776776777,
+    "p_spa_conservative": 0.6776776776776777,
+    "p_spa_lower": 0.6336336336336337,
+    "disagree": false,
+    "best_rule": "both_L245",
+    "best_dbar_bp": 6.03257767678293,
+    "n_rules_positive": 141
+   },
+   {
+    "sym": "XAGUSD",
+    "period": "後半",
+    "n_days": 2464,
+    "p_wrc": 0.36736736736736736,
+    "p_spa_consistent": 0.27927927927927926,
+    "p_spa_conservative": 0.2802802802802803,
+    "p_spa_lower": 0.17717717717717718,
+    "disagree": false,
+    "best_rule": "long_L35",
+    "best_dbar_bp": 6.675420416057899,
+    "n_rules_positive": 105
+   },
+   {
+    "sym": "WTI",
+    "period": "前半",
+    "n_days": 1023,
+    "p_wrc": 0.38738738738738737,
+    "p_spa_consistent": 0.5265265265265265,
+    "p_spa_conservative": 0.5265265265265265,
+    "p_spa_lower": 0.47847847847847846,
+    "disagree": false,
+    "best_rule": "both_L45",
+    "best_dbar_bp": 10.7814259306063,
+    "n_rules_positive": 120
+   },
+   {
+    "sym": "WTI",
+    "period": "後半",
+    "n_days": 2463,
+    "p_wrc": 0.3963963963963964,
+    "p_spa_consistent": 0.28128128128128127,
+    "p_spa_conservative": 0.28128128128128127,
+    "p_spa_lower": 0.23523523523523523,
+    "disagree": false,
+    "best_rule": "both_L20",
+    "best_dbar_bp": 8.378427334488196,
+    "n_rules_positive": 68
+   },
+   {
+    "sym": "UKOIL",
+    "period": "前半",
+    "n_days": 1195,
+    "p_wrc": 0.5525525525525525,
+    "p_spa_consistent": 0.7247247247247247,
+    "p_spa_conservative": 0.7267267267267268,
+    "p_spa_lower": 0.5865865865865866,
+    "disagree": false,
+    "best_rule": "both_L10",
+    "best_dbar_bp": 7.716190612488225,
+    "n_rules_positive": 88
+   },
+   {
+    "sym": "UKOIL",
+    "period": "後半",
+    "n_days": 2450,
+    "p_wrc": 0.6596596596596597,
+    "p_spa_consistent": 0.5305305305305306,
+    "p_spa_conservative": 0.5305305305305306,
+    "p_spa_lower": 0.4694694694694695,
+    "disagree": false,
+    "best_rule": "both_L35",
+    "best_dbar_bp": 5.280565321095791,
+    "n_rules_positive": 79
+   },
+   {
+    "sym": "US500",
+    "period": "前半",
+    "n_days": 982,
+    "p_wrc": 0.5255255255255256,
+    "p_spa_consistent": 0.36236236236236236,
+    "p_spa_conservative": 0.3783783783783784,
+    "p_spa_lower": 0.22322322322322322,
+    "disagree": false,
+    "best_rule": "long_L135",
+    "best_dbar_bp": 3.6494494143735885,
+    "n_rules_positive": 82
+   },
+   {
+    "sym": "US500",
+    "period": "後半",
+    "n_days": 2463,
+    "p_wrc": 0.15215215215215216,
+    "p_spa_consistent": 0.031031031031031032,
+    "p_spa_conservative": 0.031031031031031032,
+    "p_spa_lower": 0.02002002002002002,
+    "disagree": true,
+    "best_rule": "long_L210",
+    "best_dbar_bp": 4.641813146661418,
+    "n_rules_positive": 112
+   },
+   {
+    "sym": "USTECH",
+    "period": "前半",
+    "n_days": 961,
+    "p_wrc": 0.2552552552552553,
+    "p_spa_consistent": 0.17517517517517517,
+    "p_spa_conservative": 0.18518518518518517,
+    "p_spa_lower": 0.09009009009009009,
+    "disagree": false,
+    "best_rule": "long_L120",
+    "best_dbar_bp": 6.005783980095165,
+    "n_rules_positive": 105
+   },
+   {
+    "sym": "USTECH",
+    "period": "後半",
+    "n_days": 2463,
+    "p_wrc": 0.05805805805805806,
+    "p_spa_consistent": 0.009009009009009009,
+    "p_spa_conservative": 0.009009009009009009,
+    "p_spa_lower": 0.004004004004004004,
+    "disagree": true,
+    "best_rule": "long_L210",
+    "best_dbar_bp": 6.923041048797168,
+    "n_rules_positive": 117
+   },
+   {
+    "sym": "BTCUSD",
+    "period": "後半",
+    "n_days": 2865,
+    "p_wrc": 0.06606606606606606,
+    "p_spa_consistent": 0.03203203203203203,
+    "p_spa_conservative": 0.03203203203203203,
+    "p_spa_lower": 0.024024024024024024,
+    "disagree": true,
+    "best_rule": "both_L40",
+    "best_dbar_bp": 16.577228270608124,
+    "n_rules_positive": 125
+   }
+  ]
+ },
+ "b": {
+  "n_null_datasets": 580,
+  "size_rate_centered": {
+   "p_wrc": 0.034482758620689655,
+   "p_spa_consistent": 0.03103448275862069,
+   "p_spa_conservative": 0.03103448275862069
+  },
+  "size_rate_raw_uncentered": {
+   "p_wrc": 0.04655172413793104,
+   "p_spa_consistent": 0.06724137931034482,
+   "p_spa_conservative": 0.05862068965517241
+  },
+  "spa_lower_reference": {
+   "raw": 0.08620689655172414,
+   "centered": 0.032758620689655175,
+   "positive_control": 0.041379310344827586
+  },
+  "null_disagree_share_centered": 0.020689655172413793
+ },
+ "c": {
+  "power_rate_positive_control": {
+   "p_wrc": 0.04482758620689655,
+   "p_spa_consistent": 0.039655172413793106,
+   "p_spa_conservative": 0.039655172413793106
+  },
+  "positive_control_bp": 1.0,
+  "rule": "both_L20"
+ },
+ "judgement": {
+  "a_share_disagree": 0.13793103448275862,
+  "a_verdict": "判定が割れるセルは 30% 未満",
+  "size_rates_centered": {
+   "p_wrc": 0.034482758620689655,
+   "p_spa_consistent": 0.03103448275862069,
+   "p_spa_conservative": 0.03103448275862069
+  },
+  "inflated_tests": [],
+  "b_verdict": "名目 5% の 2 倍を超える検定なし",
+  "verdict": "(a) 判定が割れるセルは 30% 未満 / (b) 名目 5% の 2 倍を超える検定なし",
+  "note": "事前固定の規則で機械的に付けた判定。解釈（確定／ノイズ／未確定、(c) の検出力の読み）は実行者が記録する。"
+ },
+ "timing_sec": {
+  "observed_cells": 7.8,
+  "total": 213.7
+ },
+ "files": {
+  "cells_csv": "/mnt/user-data/uploads/ワークスペース/検証/verification-lab/financial-engineering/wrc-spa-disagreement/results/Q154_cells_20261009_195405.csv",
+  "null_csv": "/mnt/user-data/uploads/ワークスペース/検証/verification-lab/financial-engineering/wrc-spa-disagreement/results/Q154_null_20261009_195405.csv",
+  "png": "/mnt/user-data/uploads/ワークスペース/検証/verification-lab/financial-engineering/wrc-spa-disagreement/results/Q154_pvalues_20261009_195405.png"
+ },
+ "multiple_comparisons": "観測セル 29 × 3 検定 = 87 本の p（(a) は割れの割合を記述するだけで、個々の p を有意と数えない）。帰無 580 データ × 3 変種 × 3 検定",
+ "deviations_from_prereg": [
+  "Hansen 2005 の中心化・閾値は記憶による自前実装（原典未読）。参考に SPA lower も出す（判定に使わない）",
+  "サイズ・検出力の反復は 1 セルあたり SIZE_REPS=20（計算量のため）。`--size-reps` で調整",
+  "循環ブロックの最後のブロックは切り詰めず nb×5 本で平均（近似）",
+  "各期間は全ルールが定義される t>300 の日だけ使う"
+ ]
+}
