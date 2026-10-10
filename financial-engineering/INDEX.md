@@ -8,7 +8,7 @@
 | :--- | :--- | :--- |
 | [52week-high-vs-momentum](./52week-high-vs-momentum) | Q214 52 週高値への近さは 15 銘柄の翌月リターンを 12 か月モメンタムより予測するか（George・Hwang 2004 の型） | 未実行 |
 | [asian-range-breakout](./asian-range-breakout) | Q220 アジア時間（0〜7 UTC）のレンジを欧州時間に抜けたら終値まで続くか（FX8 H1・ブレイクアウト） | 未実行 |
-| [atr-stop-loss-tsmom](./atr-stop-loss-tsmom) | Q204 ATR 倍の損切りは 15 銘柄の日足順張りの純損益と最大下落を改善するか（Kaminski・Lo 2014 の型） | 未実行 |
+| [atr-stop-loss-tsmom](./atr-stop-loss-tsmom) | Q204 ATR 倍の損切りは 15 銘柄の日足順張りの純損益と最大下落を改善するか（Kaminski・Lo 2014 の型） | 未確定（純損益の改善なし）／最大下落は確実に改善（記述） |
 | [bad-period-weighted-selection](./bad-period-weighted-selection) | Q141 悪い時期を重くする目的関数で選んだ順張りは、標本外の最大下落が小さいか（TradeGrad の CPRO の型） | 棄却（確定） |
 | [bbc-cv-optimism](./bbc-cv-optimism) | Q172 BBC-CV のブートストラップ補正は時系列の順張り選択の楽観を取り除くか（Tsamardinos 2018） | —（未実行） |
 | [bbc-cv-tsmom-optimism](./bbc-cv-tsmom-optimism) | Q172 BBC-CV のブートストラップ補正は時系列の順張り選択の楽観を取り除くか（Tsamardinos 2018） | 確定 |
