@@ -47,13 +47,28 @@ train copies, so on Kaggle's visible run most molecules have exact cosine >= 0.9
 analog channel changes little; the real effect is only measurable on the hidden rerun
 test, i.e. the Public LB.)
 
-Requires: numpy, pandas, pyarrow, rdkit (all in the Kaggle default image). CPU only.
-Attach the Dataset taichiii/coconut-2-0-lite-inchikey14-smiles-exact-mass (same as exp_004).
+Requires: numpy, pandas, pyarrow (Kaggle image) + rdkit installed offline from the attached wheel
+Dataset taichiii/rdkit-wheel-cp313 (the Kaggle image has no rdkit; found 2026-10-10 on the first run).
+Also attach taichiii/coconut-2-0-lite-inchikey14-smiles-exact-mass (same as exp_004). CPU only.
 """
 import os
+import sys
+import glob
+import subprocess
 import time
 import numpy as np
 import pandas as pd
+
+# The Kaggle image (Python 3.13) has no rdkit and scoring runs offline, so install it
+# from the attached wheel Dataset taichiii/rdkit-wheel-cp313 (deps numpy/Pillow are in the image).
+RDKIT_WHEEL_DIR = '/kaggle/input/datasets/taichiii/rdkit-wheel-cp313'
+try:
+    import rdkit  # noqa: F401
+except ModuleNotFoundError:
+    wheels = glob.glob(os.path.join(RDKIT_WHEEL_DIR, '*.whl')) or glob.glob('/kaggle/input/**/rdkit-*.whl', recursive=True)
+    if not wheels:
+        raise SystemExit('rdkit wheel not found under /kaggle/input -- attach Dataset taichiii/rdkit-wheel-cp313')
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--no-index', '--no-deps', '-q', wheels[0]])
 from rdkit import Chem, RDLogger
 from rdkit.Chem import DataStructs, rdFingerprintGenerator
 
