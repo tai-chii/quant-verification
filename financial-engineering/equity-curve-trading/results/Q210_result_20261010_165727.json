@@ -1,0 +1,208 @@
+{
+ "qid": "Q210",
+ "smoke": false,
+ "generated": "20261010_165727",
+ "question": "エクイティカーブ・トレーディングは順張りの標本外成績を上げるか",
+ "settings": {
+  "L": 60,
+  "W_LOOK": 20,
+  "HI": 1.5,
+  "LO": 0.5,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 19,
+   "sharpe_ect": -0.0507,
+   "sharpe_fix": 0.0636,
+   "sharpe_diff": -0.1143,
+   "sharpe_diff_t": -3.3448,
+   "bp_diff": 0.1474,
+   "bp_diff_t": 0.4909,
+   "sharpe_diff_z": 0.3033
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "sharpe_ect": -0.007,
+   "sharpe_fix": 0.065,
+   "sharpe_diff": -0.0719,
+   "sharpe_diff_t": -1.7332,
+   "bp_diff": 0.2147,
+   "bp_diff_t": 0.6109,
+   "sharpe_diff_z": 1.1485
+  },
+  "all15_post": {
+   "n_years": 10,
+   "sharpe_ect": -0.09,
+   "sharpe_fix": 0.0623,
+   "sharpe_diff": -0.1523,
+   "sharpe_diff_t": -2.9233,
+   "bp_diff": 0.0869,
+   "bp_diff_t": 0.1762,
+   "sharpe_diff_z": -0.7253
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "sharpe_ect": -0.1294,
+   "sharpe_fix": 0.0052,
+   "sharpe_diff": -0.1346,
+   "sharpe_diff_t": -3.5029,
+   "bp_diff": -0.1758,
+   "bp_diff_t": -0.8837,
+   "sharpe_diff_z": -1.2107
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "sharpe_ect": 0.0641,
+   "sharpe_fix": 0.1651,
+   "sharpe_diff": -0.101,
+   "sharpe_diff_t": -1.7048,
+   "bp_diff": 0.0993,
+   "bp_diff_t": 0.2646,
+   "sharpe_diff_z": -0.2132
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "sharpe_ect": -0.3036,
+   "sharpe_fix": -0.1387,
+   "sharpe_diff": -0.1649,
+   "sharpe_diff_t": -3.2399,
+   "bp_diff": -0.4234,
+   "bp_diff_t": -2.7583,
+   "sharpe_diff_z": -1.4132
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "sharpe_ect": 0.0145,
+   "sharpe_fix": 0.0902,
+   "sharpe_diff": -0.0757,
+   "sharpe_diff_t": -1.6897,
+   "bp_diff": 0.4641,
+   "bp_diff_t": 0.7659,
+   "sharpe_diff_z": 2.1439
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "sharpe_ect": -0.1405,
+   "sharpe_fix": -0.1341,
+   "sharpe_diff": -0.0065,
+   "sharpe_diff_t": -0.1198,
+   "bp_diff": 0.2353,
+   "bp_diff_t": 0.3296,
+   "sharpe_diff_z": 2.1856
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "sharpe_ect": 0.154,
+   "sharpe_fix": 0.2921,
+   "sharpe_diff": -0.138,
+   "sharpe_diff_t": -2.0843,
+   "bp_diff": 0.6701,
+   "bp_diff_t": 0.6776,
+   "sharpe_diff_z": 0.6783
+  }
+ },
+ "pause_variant": {
+  "all15_all": {
+   "n_years": 19,
+   "sharpe_pause": -0.0848,
+   "sharpe_fix": 0.0636,
+   "sharpe_diff": -0.1484,
+   "sharpe_diff_t": -2.5654,
+   "bp_diff": -0.4248,
+   "bp_diff_t": -0.8432
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "sharpe_pause": -0.0155,
+   "sharpe_fix": 0.065,
+   "sharpe_diff": -0.0805,
+   "sharpe_diff_t": -1.1697,
+   "bp_diff": 0.0635,
+   "bp_diff_t": 0.2099
+  },
+  "all15_post": {
+   "n_years": 10,
+   "sharpe_pause": -0.1472,
+   "sharpe_fix": 0.0623,
+   "sharpe_diff": -0.2095,
+   "sharpe_diff_t": -2.335,
+   "bp_diff": -0.8643,
+   "bp_diff_t": -0.9398
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "sharpe_pause": -0.1729,
+   "sharpe_fix": 0.0052,
+   "sharpe_diff": -0.178,
+   "sharpe_diff_t": -2.7991,
+   "bp_diff": -0.318,
+   "bp_diff_t": -1.4892
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "sharpe_pause": 0.0268,
+   "sharpe_fix": 0.1651,
+   "sharpe_diff": -0.1382,
+   "sharpe_diff_t": -1.4044,
+   "bp_diff": -0.3815,
+   "bp_diff_t": -0.9314
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "sharpe_pause": -0.3526,
+   "sharpe_fix": -0.1387,
+   "sharpe_diff": -0.2139,
+   "sharpe_diff_t": -2.4993,
+   "bp_diff": -0.2609,
+   "bp_diff_t": -1.3324
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "sharpe_pause": 0.0022,
+   "sharpe_fix": 0.0902,
+   "sharpe_diff": -0.088,
+   "sharpe_diff_t": -1.1597,
+   "bp_diff": -0.3255,
+   "bp_diff_t": -0.3115
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "sharpe_pause": -0.0926,
+   "sharpe_fix": -0.1341,
+   "sharpe_diff": 0.0414,
+   "sharpe_diff_t": 0.4953,
+   "bp_diff": 1.0394,
+   "bp_diff_t": 1.4513
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "sharpe_pause": 0.0876,
+   "sharpe_fix": 0.2921,
+   "sharpe_diff": -0.2044,
+   "sharpe_diff_t": -1.7869,
+   "bp_diff": -1.5538,
+   "bp_diff_t": -0.8446
+  }
+ },
+ "pnl_block_autocorr": {
+  "all": {
+   "n_years": 19,
+   "mean": -0.0883,
+   "t": -3.1644
+  },
+  "pre": {
+   "n_years": 9,
+   "mean": -0.0681,
+   "t": -1.3618
+  },
+  "post": {
+   "n_years": 10,
+   "mean": -0.1064,
+   "t": -3.5926
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで t<2",
+ "multiple_comparisons": "判定は all15 前後半のシャープの差の t と z の 4 本。休む変種・自己相関・群別は記述。"
+}
