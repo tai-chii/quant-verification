@@ -1,0 +1,16 @@
+{
+  "id": "taichiii/enveda-casmi-2026-exp008-exact-evidence",
+  "title": "enveda-casmi-2026-exp008-exact-evidence",
+  "code_file": "kaggle_inference_exp008_exact_evidence.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "taichiii/coconut-2-0-lite-inchikey14-smiles-exact-mass",
+    "taichiii/rdkit-wheel-cp313"
+  ],
+  "competition_sources": ["enveda-CASMI26-molecule-id-mass-spectra"],
+  "kernel_sources": []
+}
