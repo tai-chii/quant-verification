@@ -1,0 +1,64 @@
+{
+ "qid": "Q218",
+ "smoke": false,
+ "generated": "20261010_180618",
+ "question": "横断モメンタムは時系列モメンタムとコスト後にどれだけ違うか",
+ "settings": {
+  "LB": 252,
+  "H": 21,
+  "VOL_N": 60,
+  "TOP": 5,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all": {
+   "n_years": 18,
+   "TS_bp": -0.1792,
+   "TS_t": -0.147,
+   "XS_bp": 1.1893,
+   "XS_t": 1.5253,
+   "TSprime_bp": -0.2756,
+   "XS_minus_TS_bp": 1.3685,
+   "XS_minus_TS_t": 1.2513,
+   "XS_minus_TSprime_bp": 1.465,
+   "XS_minus_TSprime_t": 1.5637,
+   "mean_net_long": 0.147,
+   "TS_z": -0.8748,
+   "XS_z": 1.3504
+  },
+  "pre": {
+   "n_years": 8,
+   "TS_bp": 1.0471,
+   "TS_t": 0.8037,
+   "XS_bp": 1.2791,
+   "XS_t": 0.8589,
+   "TSprime_bp": 1.6055,
+   "XS_minus_TS_bp": 0.2321,
+   "XS_minus_TS_t": 0.254,
+   "XS_minus_TSprime_bp": -0.3264,
+   "XS_minus_TSprime_t": -0.3651,
+   "mean_net_long": -0.0203,
+   "TS_z": 0.9702,
+   "XS_z": 1.5374
+  },
+  "post": {
+   "n_years": 10,
+   "TS_bp": -1.1601,
+   "TS_t": -0.5989,
+   "XS_bp": 1.1175,
+   "XS_t": 1.3493,
+   "TSprime_bp": -1.7806,
+   "XS_minus_TS_bp": 2.2776,
+   "XS_minus_TS_t": 1.2461,
+   "XS_minus_TSprime_bp": 2.898,
+   "XS_minus_TSprime_t": 2.0628,
+   "mean_net_long": 0.2514,
+   "TS_z": -1.232,
+   "XS_z": 0.6625
+  }
+ },
+ "timing_note": "タイミングの寄与: |XS−TS'| の t が |XS−TS| の t より 小さくない",
+ "machine_verdict": "ノイズ: 前後半で揃った差はない",
+ "multiple_comparisons": "判定は前後半の XS−TS の t の 2 本（両側）。z・TS'・ネット・ロングは記述。"
+}
