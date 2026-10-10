@@ -1,0 +1,72 @@
+{
+ "qid": "Q212",
+ "smoke": false,
+ "generated": "20261010_172317",
+ "question": "暗号資産の週末はリターン・ボラ・順張りの損益が平日と違うか",
+ "settings": {
+  "L": 24,
+  "split": 2022,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all": {
+   "n_years": 10,
+   "ret_diff_bp": 18.4513,
+   "ret_diff_t": 1.6668,
+   "mom_diff_bp": -6.2624,
+   "mom_diff_t": -1.2839,
+   "sd_ratio": 1.4734,
+   "ret_diff_z": 11.215,
+   "mom_diff_z": -4.0852
+  },
+  "pre": {
+   "n_years": 5,
+   "ret_diff_bp": 35.399,
+   "ret_diff_t": 1.7604,
+   "mom_diff_bp": -13.2737,
+   "mom_diff_t": -1.4956,
+   "sd_ratio": 1.8726,
+   "ret_diff_z": 10.8191,
+   "mom_diff_z": -4.3593
+  },
+  "post": {
+   "n_years": 5,
+   "ret_diff_bp": 1.5037,
+   "ret_diff_t": 0.8055,
+   "mom_diff_bp": 0.7488,
+   "mom_diff_t": 0.3888,
+   "sd_ratio": 1.0743,
+   "ret_diff_z": 4.866,
+   "mom_diff_z": 2.3078
+  }
+ },
+ "btc_only": {
+  "all": {
+   "n_years": 10,
+   "ret_diff_bp": 11.157,
+   "ret_diff_t": 1.6641,
+   "mom_diff_bp": 6.3603,
+   "mom_diff_t": 0.7113,
+   "sd_ratio": 1.4802
+  },
+  "pre": {
+   "n_years": 5,
+   "ret_diff_bp": 22.2624,
+   "ret_diff_t": 1.8777,
+   "mom_diff_bp": 12.9551,
+   "mom_diff_t": 0.7047,
+   "sd_ratio": 2.3125
+  },
+  "post": {
+   "n_years": 5,
+   "ret_diff_bp": 0.0516,
+   "ret_diff_t": 0.3043,
+   "mom_diff_bp": -0.2346,
+   "mom_diff_t": -0.7086,
+   "sd_ratio": 0.6479
+  }
+ },
+ "machine_verdict": "H1a 支持: 週末のリターンに差あり／H1b 棄却",
+ "multiple_comparisons": "判定は前後半 × (H1a, H1b) の 4 本。sd 比・BTC 単独は記述。"
+}
