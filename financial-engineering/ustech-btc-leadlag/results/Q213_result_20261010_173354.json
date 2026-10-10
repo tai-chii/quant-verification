@@ -1,0 +1,59 @@
+{
+ "qid": "Q213",
+ "smoke": false,
+ "generated": "20261010_173354",
+ "question": "USTECH の直前 1 時間のリターンは BTC の次の 1 時間を予測するか",
+ "settings": {
+  "start": "2020-01-01",
+  "split": 2023,
+  "block": 24,
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "all": {
+   "n_hours": 36568,
+   "ic_mean": -0.0059,
+   "ic_t": -0.8365,
+   "ic_same_time": 0.3332,
+   "ic_reverse_mean": 0.0167,
+   "ic_reverse_t": 5.2251,
+   "ic_cash_hours": -0.0158,
+   "ic_off_hours": 0.0014,
+   "trade_gross_bp_per_hour": 0.3942,
+   "trade_gross_t": 1.3668,
+   "trade_net_bp_per_hour_30bp_rt": -29.6058,
+   "ic_z": -1.1464
+  },
+  "pre": {
+   "n_hours": 16911,
+   "ic_mean": 0.0034,
+   "ic_t": 0.2375,
+   "ic_same_time": 0.2978,
+   "ic_reverse_mean": 0.0215,
+   "ic_reverse_t": 3.2186,
+   "ic_cash_hours": -0.0048,
+   "ic_off_hours": 0.0099,
+   "trade_gross_bp_per_hour": 0.6648,
+   "trade_gross_t": 0.9855,
+   "trade_net_bp_per_hour_30bp_rt": -29.3352,
+   "ic_z": 0.3966
+  },
+  "post": {
+   "n_hours": 19657,
+   "ic_mean": -0.013,
+   "ic_t": -2.2858,
+   "ic_same_time": 0.3598,
+   "ic_reverse_mean": 0.0131,
+   "ic_reverse_t": 6.9197,
+   "ic_cash_hours": -0.0268,
+   "ic_off_hours": -0.0065,
+   "trade_gross_bp_per_hour": 0.1913,
+   "trade_gross_t": 1.0753,
+   "trade_net_bp_per_hour_30bp_rt": -29.8087,
+   "ic_z": -1.7508
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで IC の z<2",
+ "multiple_comparisons": "判定は前後半の IC の z の 2 本。同時刻・逆方向・時間帯・売買は記述。"
+}
