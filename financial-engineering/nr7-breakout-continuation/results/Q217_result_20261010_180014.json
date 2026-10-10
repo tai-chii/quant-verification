@@ -1,0 +1,76 @@
+{
+ "qid": "Q217",
+ "smoke": false,
+ "generated": "20261010_180014",
+ "question": "NR7 の翌日は最初の 2 時間の向きに続くか",
+ "settings": {
+  "NR": [
+   7,
+   4
+  ],
+  "B": 500
+ },
+ "missing": [],
+ "summary_nr7": {
+  "all": {
+   "n_years": 19,
+   "nr_next_bp": 0.5785,
+   "nr_next_t": 0.5252,
+   "other_bp": -1.3553,
+   "diff_bp": 1.9339,
+   "diff_t": 2.1046,
+   "diff_z": 2.0334
+  },
+  "pre": {
+   "n_years": 9,
+   "nr_next_bp": 0.7868,
+   "nr_next_t": 0.432,
+   "other_bp": -0.8701,
+   "diff_bp": 1.6569,
+   "diff_t": 1.0247,
+   "diff_z": 1.1091
+  },
+  "post": {
+   "n_years": 10,
+   "nr_next_bp": 0.3911,
+   "nr_next_t": 0.2802,
+   "other_bp": -1.792,
+   "diff_bp": 2.1831,
+   "diff_t": 2.0795,
+   "diff_z": 1.9144
+  }
+ },
+ "nr4_reference": {
+  "all": {
+   "n_years": 19,
+   "nr_next_bp": -0.7531,
+   "nr_next_t": -0.8192,
+   "other_bp": -1.1533,
+   "diff_bp": 0.4002,
+   "diff_t": 0.4729
+  },
+  "pre": {
+   "n_years": 9,
+   "nr_next_bp": -1.1602,
+   "nr_next_t": -1.1165,
+   "other_bp": -0.4023,
+   "diff_bp": -0.7579,
+   "diff_t": -0.7041
+  },
+  "post": {
+   "n_years": 10,
+   "nr_next_bp": -0.3866,
+   "nr_next_t": -0.2541,
+   "other_bp": -1.8292,
+   "diff_bp": 1.4425,
+   "diff_t": 1.1627
+  }
+ },
+ "vol_expansion": {
+  "nr7_next_range_ratio": 0.9607,
+  "other_next_range_ratio": 1.0242,
+  "n_nr7_days": 6468
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで差の z<2",
+ "multiple_comparisons": "判定は NR7 の前後半の t と z の 4 本。NR4・ボラ拡大は記述。"
+}
