@@ -9,7 +9,7 @@ the right COCONUT structure higher than mass-closeness does.
 
 Also checks that exp_006's vectorised cosine reproduces exp_005's scalar cosine exactly.
 
-Usage: python3 smoke_test_exp006.py <train.parquet> <coconut_lite.csv> <notebooks_dir> [row_groups=3] [n_hold=60] [seed=0]
+Usage: python3 smoke_test_exp006.py <train.parquet> <coconut_lite.csv> <notebooks_dir> [row_groups=3] [n_hold=60] [seed=0] [exp_file=kaggle_inference_exp006_analog_propagation.py]
 """
 import sys
 import time
@@ -31,7 +31,8 @@ def main():
     n_rg = int(sys.argv[4]) if len(sys.argv) > 4 else 3
     n_hold = int(sys.argv[5]) if len(sys.argv) > 5 else 60
     seed = int(sys.argv[6]) if len(sys.argv) > 6 else 0
-    e6 = load('e6', f'{nb_dir}/kaggle_inference_exp006_analog_propagation.py')
+    exp_file = sys.argv[7] if len(sys.argv) > 7 else 'kaggle_inference_exp006_analog_propagation.py'
+    e6 = load('e6', f'{nb_dir}/{exp_file}')
     e5 = load('e5', f'{nb_dir}/kaggle_inference_exp005_coconut_lowconf.py')
     metric = load('metric', f'{nb_dir}/casmi_metric.py')
 
@@ -84,7 +85,8 @@ def main():
         g = g[g.adduct == adduct]
         spectra = [(float(r.precursor_mz), np.asarray(r.ms2_mzs, float),
                     np.asarray(r.ms2_normalized_intensities, float)) for _, r in g.iterrows()]
-        exact, coco, evidence, base, new = e6.rank_molecule(spectra, adduct, tidx, cc)
+        out = e6.rank_molecule(spectra, adduct, tidx, cc)
+        exact, coco, evidence, base, new = out[:5]
         n_ev += bool(evidence)
         n_changed += [x[1] for x in new] != [x[0] for x in base]
         n_coco_top1 += bool(new) and new[0][3] == 'coconut'
