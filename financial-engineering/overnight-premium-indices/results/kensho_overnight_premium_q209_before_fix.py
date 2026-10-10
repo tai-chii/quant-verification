@@ -35,11 +35,6 @@ H0: 差は 0 と区別できない。XAUUSD は記述（COMEX の時間が違う
 
 【委託の確かめ方】設計・コードは Fable。実行と解釈は後で Opus。実行者は JSON のパス・差の t と z・Lou 2019 表 1 の夜間・日中の値を返す。
 
-【事前登録からの変更点（2026-10-10 Opus・実装の修正のみ。判定規則・窓・帰無は不変）】
-1. 夜間が 10 暦日を超える空白をまたぐ行を除く（指数は 2011-09-22→2012-01-18 の 118 日の抜けがあり、その 1 夜が +1379bp になっていた）。
-2. 有効日が 100 日未満の年を除く（2011 年は 3 日しかないのに 1 年分の重みを持っていた）。→ 指数の前半は 2012〜2016 の 5 年。
-修正前のスクリプトと結果: results/kensho_overnight_premium_q209_before_fix.py・results/Q209_result_20261010_074040.json（判定に使わない）。
-
 【実装】自己完結。実行: python3 kensho_overnight_premium_q209.py（B=300、1 分以内）／--B 30／--smoke
 """
 
@@ -362,7 +357,6 @@ QID = "Q209"
 DEFAULT_B = 300
 IDX = ["US500", "USTECH"]; EXTRA = ["XAUUSD"]
 DAY_START, DAY_LEN = 14, 6
-MAX_GAP_DAYS, MIN_DAYS_YEAR = 10, 100
 
 
 def split_day_night(h1, start, length):
@@ -376,11 +370,7 @@ def split_day_night(h1, start, length):
     d = pd.DataFrame({"o": o, "c": c}).dropna()
     d["day"] = np.log(d["c"] / d["o"]) * 1e4
     d["night"] = np.log(d["o"] / d["c"].shift(1)) * 1e4
-    gap = d.index.to_series().diff().dt.days
-    d.loc[gap > MAX_GAP_DAYS, "night"] = np.nan  # 修正1: データの抜けをまたぐ夜間を除く
     d = d.dropna(); d["year"] = d.index.year
-    nyear = d.groupby("year")["day"].transform("size")
-    d = d[nyear >= MIN_DAYS_YEAR]  # 修正2: 日数の少ない年を除く
     # 翌暦日が 1 日以上離れる（週末）夜間も含める（週末のリターンも夜間に帰属。記述に n を残す）
     return d
 

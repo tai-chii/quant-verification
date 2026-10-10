@@ -1,0 +1,146 @@
+{
+ "qid": "Q209",
+ "smoke": false,
+ "generated": "20261010_074128",
+ "question": "株価指数・金の夜間リターンは日中より高いか",
+ "settings": {
+  "day_window_utc": [
+   14,
+   20
+  ],
+  "B": 300
+ },
+ "missing": [],
+ "index_average": {
+  "all": {
+   "n_years": 15,
+   "diff_bp": 2.668,
+   "diff_t": 2.9857,
+   "diff_z": -0.3354
+  },
+  "pre": {
+   "n_years": 5,
+   "diff_bp": 3.0738,
+   "diff_t": 4.5078,
+   "diff_z": -0.4587
+  },
+  "post": {
+   "n_years": 10,
+   "diff_bp": 2.4651,
+   "diff_t": 1.8655,
+   "diff_z": -0.112
+  }
+ },
+ "per_symbol": {
+  "US500": {
+   "n_days": 3577,
+   "all": {
+    "n_years": 15,
+    "night_bp": 3.3845,
+    "day_bp": 1.5994,
+    "diff_bp": 1.785,
+    "diff_t": 2.1813,
+    "night_only_net_bp": 0.3912,
+    "night_only_net_t": 0.52,
+    "day_only_net_bp": -1.3938,
+    "day_only_net_t": -1.5694
+   },
+   "pre": {
+    "n_years": 5,
+    "night_bp": 2.8898,
+    "day_bp": 1.6448,
+    "diff_bp": 1.2451,
+    "diff_t": 1.5866,
+    "night_only_net_bp": -0.1034,
+    "night_only_net_t": -0.09,
+    "day_only_net_bp": -1.3485,
+    "day_only_net_t": -1.4688
+   },
+   "post": {
+    "n_years": 10,
+    "night_bp": 3.6318,
+    "day_bp": 1.5767,
+    "diff_bp": 2.055,
+    "diff_t": 1.7359,
+    "night_only_net_bp": 0.6385,
+    "night_only_net_t": 0.6364,
+    "day_only_net_bp": -1.4165,
+    "day_only_net_t": -1.1017
+   }
+  },
+  "USTECH": {
+   "n_days": 3566,
+   "all": {
+    "n_years": 15,
+    "night_bp": 5.451,
+    "day_bp": 1.9,
+    "diff_bp": 3.551,
+    "diff_t": 3.1984,
+    "night_only_net_bp": 2.4843,
+    "night_only_net_t": 2.0261,
+    "day_only_net_bp": -1.0667,
+    "day_only_net_t": -0.8634
+   },
+   "pre": {
+    "n_years": 5,
+    "night_bp": 5.4013,
+    "day_bp": 0.4988,
+    "diff_bp": 4.9025,
+    "diff_t": 7.6005,
+    "night_only_net_bp": 2.4346,
+    "night_only_net_t": 1.8753,
+    "day_only_net_bp": -2.4679,
+    "day_only_net_t": -3.0122
+   },
+   "post": {
+    "n_years": 10,
+    "night_bp": 5.4759,
+    "day_bp": 2.6007,
+    "diff_bp": 2.8752,
+    "diff_t": 1.7724,
+    "night_only_net_bp": 2.5091,
+    "night_only_net_t": 1.4175,
+    "day_only_net_bp": -0.3661,
+    "day_only_net_t": -0.2031
+   }
+  },
+  "XAUUSD": {
+   "n_days": 4601,
+   "all": {
+    "n_years": 19,
+    "night_bp": 3.2492,
+    "day_bp": -0.183,
+    "diff_bp": 3.4322,
+    "diff_t": 2.2978,
+    "night_only_net_bp": -0.3292,
+    "night_only_net_t": -0.2721,
+    "day_only_net_bp": -3.7614,
+    "day_only_net_t": -3.8013
+   },
+   "pre": {
+    "n_years": 9,
+    "night_bp": 1.1904,
+    "day_bp": 0.0971,
+    "diff_bp": 1.0932,
+    "diff_t": 0.6093,
+    "night_only_net_bp": -2.388,
+    "night_only_net_t": -1.3273,
+    "day_only_net_bp": -3.4812,
+    "day_only_net_t": -3.3554
+   },
+   "post": {
+    "n_years": 10,
+    "night_bp": 5.1021,
+    "day_bp": -0.4352,
+    "diff_bp": 5.5373,
+    "diff_t": 2.5108,
+    "night_only_net_bp": 1.5237,
+    "night_only_net_t": 1.0349,
+    "day_only_net_bp": -4.0135,
+    "day_only_net_t": -2.3797
+   }
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで差の t<2",
+ "multiple_comparisons": "判定は 2 指数平均の前後半の t と z の 4 本。銘柄別・XAUUSD・純損益は記述。"
+}
