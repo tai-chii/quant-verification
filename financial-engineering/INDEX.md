@@ -7,7 +7,7 @@
 | ディレクトリ | 問い | 判定 |
 | :--- | :--- | :--- |
 | [52week-high-vs-momentum](./52week-high-vs-momentum) | Q214 52 週高値への近さは 15 銘柄の翌月リターンを 12 か月モメンタムより予測するか（George・Hwang 2004 の型） | 棄却側の確定 |
-| [asian-range-breakout](./asian-range-breakout) | Q220 アジア時間（0〜7 UTC）のレンジを欧州時間に抜けたら終値まで続くか（FX8 H1・ブレイクアウト） | 未実行 |
+| [asian-range-breakout](./asian-range-breakout) | Q220 アジア時間（0〜7 UTC）のレンジを欧州時間に抜けたら終値まで続くか（FX8 H1・ブレイクアウト） | 棄却 |
 | [atr-stop-loss-tsmom](./atr-stop-loss-tsmom) | Q204 ATR 倍の損切りは 15 銘柄の日足順張りの純損益と最大下落を改善するか（Kaminski・Lo 2014 の型） | 未確定（純損益の改善なし）／最大下落は確実に改善（記述） |
 | [bad-period-weighted-selection](./bad-period-weighted-selection) | Q141 悪い時期を重くする目的関数で選んだ順張りは、標本外の最大下落が小さいか（TradeGrad の CPRO の型） | 棄却（確定） |
 | [bbc-cv-optimism](./bbc-cv-optimism) | Q172 BBC-CV のブートストラップ補正は時系列の順張り選択の楽観を取り除くか（Tsamardinos 2018） | —（未実行） |
@@ -66,7 +66,7 @@
 | [rsi-rules-fx](./rsi-rules-fx) | Q180 RSI の族は先進国通貨の日足で2016年以降も補正後に残るか（Coakley 2016-2） | 棄却（確定） |
 | [seasonality](./seasonality) | 季節性（暖房株・気温相関など） | README の「主な検証」表を参照 |
 | [selection-optimism-vs-J](./selection-optimism-vs-J) | Q139 候補数 J を増やすと選択の楽観はどれだけ増え、Alonso の下側限界はそれを覆うか | 単調性「支持」・限界「使える」 |
-| [signal-confirmation-filter](./signal-confirmation-filter) | Q221 合図の確認フィルタ（k 日連続同符号で入る）は 15 銘柄の順張りのホイップソーを減らし純損益を上げるか | 未実行 |
+| [signal-confirmation-filter](./signal-confirmation-filter) | Q221 合図の確認フィルタ（k 日連続同符号で入る）は 15 銘柄の順張りのホイップソーを減らし純損益を上げるか | 未確定 |
 | [signal-direction-compression](./signal-direction-compression) | Q145 戦略の日次ポジションを平均の向きに圧縮したとき、向きが離れたペアは履歴の相関も低いか（Nunes 2026 を 12 戦略 × 15銘柄で） | — |
 | [trend-persistence-vs-tf-pnl](./trend-persistence-vs-tf-pnl) | Q136 トレンドの持続時間が長い期間ほど、順張りはコスト後に儲かるか | H1・H2 とも棄却 |
 | [trend-pnl-half-life](./trend-pnl-half-life) | Q143 順張りの純損益の減衰は指数か、それとも最初から0か（Feng 2026 の半減期を FX8・トレンド7 で） | — |
