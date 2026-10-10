@@ -1,0 +1,191 @@
+{
+ "qid": "Q205",
+ "smoke": false,
+ "generated": "20261010_160540",
+ "question": "ボラ・ターゲティングは順張りの年ごとのシャープを上げるか",
+ "settings": {
+  "L": 60,
+  "VOL_N": 60,
+  "TARGET": 0.1,
+  "CAP": 4.0,
+  "B": 300
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 19,
+   "sharpe_vt": 0.1536,
+   "sharpe_fix": 0.0636,
+   "sharpe_diff": 0.09,
+   "sharpe_diff_t": 4.6545,
+   "bp_diff": -0.417,
+   "bp_diff_t": -0.7796,
+   "sharpe_diff_z": 10.1349
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "sharpe_vt": 0.1613,
+   "sharpe_fix": 0.065,
+   "sharpe_diff": 0.0964,
+   "sharpe_diff_t": 4.3811,
+   "bp_diff": 0.4413,
+   "bp_diff_t": 2.0282,
+   "sharpe_diff_z": 6.3669
+  },
+  "all15_post": {
+   "n_years": 10,
+   "sharpe_vt": 0.1465,
+   "sharpe_fix": 0.0623,
+   "sharpe_diff": 0.0842,
+   "sharpe_diff_t": 2.6306,
+   "bp_diff": -1.1895,
+   "bp_diff_t": -1.2474,
+   "sharpe_diff_z": 8.157
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "sharpe_vt": 0.0899,
+   "sharpe_fix": 0.0052,
+   "sharpe_diff": 0.0847,
+   "sharpe_diff_t": 4.1028,
+   "bp_diff": 0.1242,
+   "bp_diff_t": 0.7092,
+   "sharpe_diff_z": 8.2106
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "sharpe_vt": 0.2646,
+   "sharpe_fix": 0.1651,
+   "sharpe_diff": 0.0995,
+   "sharpe_diff_t": 6.7091,
+   "bp_diff": 0.1602,
+   "bp_diff_t": 0.4613,
+   "sharpe_diff_z": 5.5786
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "sharpe_vt": -0.0674,
+   "sharpe_fix": -0.1387,
+   "sharpe_diff": 0.0713,
+   "sharpe_diff_t": 1.9053,
+   "bp_diff": 0.0919,
+   "bp_diff_t": 0.6518,
+   "sharpe_diff_z": 5.3717
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "sharpe_vt": 0.1942,
+   "sharpe_fix": 0.0902,
+   "sharpe_diff": 0.104,
+   "sharpe_diff_t": 3.4176,
+   "bp_diff": -0.6786,
+   "bp_diff_t": -0.5502,
+   "sharpe_diff_z": 5.8529
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "sharpe_vt": -0.0245,
+   "sharpe_fix": -0.1341,
+   "sharpe_diff": 0.1096,
+   "sharpe_diff_t": 2.2086,
+   "bp_diff": 1.5162,
+   "bp_diff_t": 1.4768,
+   "sharpe_diff_z": 3.2426
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "sharpe_vt": 0.3911,
+   "sharpe_fix": 0.2921,
+   "sharpe_diff": 0.099,
+   "sharpe_diff_t": 2.5191,
+   "bp_diff": -2.654,
+   "bp_diff_t": -1.3233,
+   "sharpe_diff_z": 6.5567
+  }
+ },
+ "buy_and_hold_reference": {
+  "all15_all": {
+   "n_years": 19,
+   "sharpe_bh_vt": 0.1996,
+   "sharpe_bh_fix": 0.1994,
+   "sharpe_diff": 0.0003,
+   "sharpe_diff_t": 0.0026,
+   "bp_diff": -0.79,
+   "bp_diff_t": -0.6703
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "sharpe_bh_vt": -0.0186,
+   "sharpe_bh_fix": -0.0895,
+   "sharpe_diff": 0.0709,
+   "sharpe_diff_t": 0.3164,
+   "bp_diff": 1.2171,
+   "bp_diff_t": 0.581
+  },
+  "all15_post": {
+   "n_years": 10,
+   "sharpe_bh_vt": 0.3961,
+   "sharpe_bh_fix": 0.4594,
+   "sharpe_diff": -0.0633,
+   "sharpe_diff_t": -1.9124,
+   "bp_diff": -2.5964,
+   "bp_diff_t": -2.5935
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "sharpe_bh_vt": 0.0622,
+   "sharpe_bh_fix": 0.0952,
+   "sharpe_diff": -0.033,
+   "sharpe_diff_t": -1.7334,
+   "bp_diff": 0.0561,
+   "bp_diff_t": 0.3173
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "sharpe_bh_vt": -0.0564,
+   "sharpe_bh_fix": -0.0304,
+   "sharpe_diff": -0.026,
+   "sharpe_diff_t": -0.8766,
+   "bp_diff": 0.1553,
+   "bp_diff_t": 0.497
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "sharpe_bh_vt": 0.1689,
+   "sharpe_bh_fix": 0.2082,
+   "sharpe_diff": -0.0393,
+   "sharpe_diff_t": -1.525,
+   "bp_diff": -0.0332,
+   "bp_diff_t": -0.1686
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "sharpe_bh_vt": 0.483,
+   "sharpe_bh_fix": 0.4233,
+   "sharpe_diff": 0.0597,
+   "sharpe_diff_t": 0.2293,
+   "bp_diff": -2.2233,
+   "bp_diff_t": -0.8079
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "sharpe_bh_vt": 0.2911,
+   "sharpe_bh_fix": 0.0643,
+   "sharpe_diff": 0.2268,
+   "sharpe_diff_t": 0.4058,
+   "bp_diff": 1.446,
+   "bp_diff_t": 0.2774
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "sharpe_bh_vt": 0.6557,
+   "sharpe_bh_fix": 0.7464,
+   "sharpe_diff": -0.0907,
+   "sharpe_diff_t": -1.887,
+   "bp_diff": -5.5257,
+   "bp_diff_t": -2.6103
+  }
+ },
+ "machine_verdict": "支持: ボラ・ターゲティングは順張りのシャープを上げる",
+ "multiple_comparisons": "判定は all15 前後半のシャープの差の t と z の 4 本。群別・買い持ちは記述。"
+}

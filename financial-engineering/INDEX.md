@@ -22,7 +22,7 @@
 | [crypto-weekend-effect](./crypto-weekend-effect) | Q212 暗号資産の週末（土日）はリターン・ボラ・順張りの損益が平日と違うか（11 通貨 H1） | 未実行 |
 | [daily-cutoff-hour-dependence](./daily-cutoff-hour-dependence) | Q211 日足の区切り時刻（0・8・13・17・21 UTC）で順張りの純損益はどれだけ変わるか（帰無: 区切りをランダムに選ぶ） | 未実行 |
 | [data-source-signal-agreement](./data-source-signal-agreement) | Q137 データ提供元の違い（Dukascopy vs Yahoo）で順張りの合図は何割一致し、純損益はどれだけ変わるか | 「データ源は規則の定義の一部（Korzan と同じ）」→ 確定 |
-| [day-of-week-15](./day-of-week-15) | Q206 曜日効果は 15 銘柄の日足で 2017 年以降も残るか（曜日ラベル並べ替え・Holm） | 未実行 |
+| [day-of-week-15](./day-of-week-15) | Q206 曜日効果は 15 銘柄の日足で 2017 年以降も残るか（曜日ラベル並べ替え・Holm） | 棄却（Q206・2026-10-10・15銘柄 D1 2008-02〜2026-07・B=500・SPLIT_YEAR… |
 | [direction-accuracy-vs-base-rate](./direction-accuracy-vs-base-rate) | Q147 翌日の方向の的中率は「常に上」「前日の符号」の基準率を超えるか（HSAT の基準の置き方） | 確定 |
 | [dollar-factor-momentum](./dollar-factor-momentum) | Q208 ドル因子（6 通貨の対ドル等加重）の順張りは個別ペアの順張りの平均より強いか（Verdelhan 2018 の型） | 未実行 |
 | [dow-structure-direction-vs-time](./dow-structure-direction-vs-time) | Q104 ダウ型の構造確定の後の24時間: 向きの情報か、時刻と地合いか | 棄却（向きの情報なし） |
@@ -79,7 +79,7 @@
 | [vol-change-reversal](./vol-change-reversal) | Q174 ボラの変化は1日逆張りの翌日リターンを予測するか（DellaCorte 2015-3・15銘柄） | 棄却 |
 | [vol-forecast-loss-vs-model](./vol-forecast-loss-vs-model) | Q187 為替のボラ予測で損失関数の差はモデルの差の何倍に見えるか（Tokajuk 2026-1 の為替移植） | 棄却（H0 支持: 為替では損失関数の差はモデルの差より小さい・Tokajuk の構図は為替で再現しない） |
 | [vol-regime-trend-following](./vol-regime-trend-following) | Q142 高ボラ局面では順張りの的中率と純損益が下がるか（15銘柄・GARCH なしの実現ボラ） | 未確定（事後発見の向きは4通り一致、大きさは半期では届かず・全期間は2/4 で ／z／≥2・主に XAUUSD と v… |
-| [vol-targeting-tsmom](./vol-targeting-tsmom) | Q205 ボラ・ターゲティング（σ60 で規模調整）は 15 銘柄の日足順張りの年ごとのシャープを上げるか（Harvey ほか 2018 の追試） | 未実行 |
+| [vol-targeting-tsmom](./vol-targeting-tsmom) | Q205 ボラ・ターゲティング（σ60 で規模調整）は 15 銘柄の日足順張りの年ごとのシャープを上げるか（Harvey ほか 2018 の追試） | 支持（確定・事前登録どおり） |
 | [volume-return-interaction](./volume-return-interaction) | Q216 出来高（ティック数）が多い日のリターンは翌日に続きやすく、少ない日は反転しやすいか（Campbell・Grossman・Wang 1993 の型・15 銘柄） | 未実行 |
 | [weekly-vs-daily-tsmom](./weekly-vs-daily-tsmom) | Q186 週足の順張りは日足より強いか（Neely 2003-3・15銘柄・2008〜2026） | 棄却（前後半のどちらかで ／t／<2） |
 | [window-pnl-vs-vol](./window-pnl-vs-vol) | Q184 2か月窓の順張り成績はその窓の実現ボラとドリフトで説明できるか（Rashid 2026-1・Q144 の続き） | Rashid の「ボラに左右される」は向きが違う |
