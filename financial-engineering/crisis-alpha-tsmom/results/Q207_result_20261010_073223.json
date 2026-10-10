@@ -1,0 +1,86 @@
+{
+ "qid": "Q207",
+ "smoke": false,
+ "generated": "20261010_073223",
+ "question": "US500 の最悪 1 割の月に順張りは正の損益か・束の相関は上がるか",
+ "settings": {
+  "L": [
+   252,
+   120,
+   60
+  ],
+  "q_crisis": 0.1,
+  "B": 1000,
+  "threshold_us500": -0.0442
+ },
+ "missing": [],
+ "n_months": 177,
+ "summary": {
+  "L252": {
+   "crisis_mean_bp": 95.9778,
+   "crisis_t": 0.5826,
+   "n_crisis": 18,
+   "rest_mean_bp": 87.8128,
+   "diff_bp": 8.165,
+   "diff_z": 0.066
+  },
+  "L120": {
+   "crisis_mean_bp": 294.3152,
+   "crisis_t": 1.3547,
+   "n_crisis": 18,
+   "rest_mean_bp": 36.1776,
+   "diff_bp": 258.1376,
+   "diff_z": 1.7324
+  },
+  "L60": {
+   "crisis_mean_bp": 444.4629,
+   "crisis_t": 2.1395,
+   "n_crisis": 18,
+   "rest_mean_bp": 39.2712,
+   "diff_bp": 405.1916,
+   "diff_z": 2.448
+  },
+  "corr": {
+   "crisis": 0.1175,
+   "rest": 0.1173,
+   "diff": 0.0001,
+   "diff_z": 0.0364
+  }
+ },
+ "smile_L252": {
+  "q1": {
+   "us500_mean": -0.0491,
+   "L252_mean_bp": 60.8527
+  },
+  "q2": {
+   "us500_mean": -0.0034,
+   "L252_mean_bp": -41.3893
+  },
+  "q3": {
+   "us500_mean": 0.0149,
+   "L252_mean_bp": 61.8904
+  },
+  "q4": {
+   "us500_mean": 0.03,
+   "L252_mean_bp": 310.4352
+  },
+  "q5": {
+   "us500_mean": 0.066,
+   "L252_mean_bp": 53.2325
+  }
+ },
+ "halves_L252": {
+  "pre": {
+   "n_crisis": 3,
+   "crisis_mean_bp": 68.8962,
+   "rest_mean_bp": 15.6147
+  },
+  "post": {
+   "n_crisis": 15,
+   "crisis_mean_bp": 101.3941,
+   "rest_mean_bp": 131.5692
+  }
+ },
+ "machine_verdict": "未確定",
+ "multiple_comparisons": "判定は L=252 の全期間 3 本（平均>0・t・z）。L=120/60・相関・スマイル・前後半は記述。"
+}

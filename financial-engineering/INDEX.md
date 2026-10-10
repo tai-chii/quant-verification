@@ -16,7 +16,7 @@
 | [breakeven-cost-vs-spread](./breakeven-cost-vs-spread) | Q140 順張りの損益分岐コストは実測スプレッドの何倍か（XAUUSD の Ask データで容量・コスト曲線） | TSMOM20・ドンチャン55/20 とも未確定 |
 | [cluster-t-shrinkage](./cluster-t-shrinkage) | Q175 15銘柄を束ねた t は日でクラスタさせると素朴な t から何割下がるか（GarciaArano 2026-3） | 支持（確定） |
 | [cpro-exact-selection](./cpro-exact-selection) | Q168 CPRO 本式（Yang 2026 TradeGrad の正格な実装）で順張りの参照日数を選んでも、翌年の最大下落は A と区別がつかない | 棄却（確定） |
-| [crisis-alpha-tsmom](./crisis-alpha-tsmom) | Q207 危機アルファ：US500 の最悪 1 割の月に 15 銘柄の順張りは正の損益か、束の相関はその月に上がるか（Hurst・Ooi・Pedersen 2017 の型） | 未実行 |
+| [crisis-alpha-tsmom](./crisis-alpha-tsmom) | Q207 危機アルファ：US500 の最悪 1 割の月に 15 銘柄の順張りは正の損益か、束の相関はその月に上がるか（Hurst・Ooi・Pedersen 2017 の型） | 手元の形（TSMOM252・値幅調整なし・暦月の US500 下位1割）では危機アルファは見えない。棄却条件（危機月の… |
 | [cross-sectional-vs-ts-momentum](./cross-sectional-vs-ts-momentum) | Q218 横断モメンタム（15 銘柄の上位 5 買い・下位 5 売り）は時系列モメンタムとコスト後にどれだけ違うか（Moskowitz ほか 2012 の型） | 未実行 |
 | [crypto-h1-reversal-vol](./crypto-h1-reversal-vol) | Q183 暗号資産の1時間足の逆張りの見返りは直前のボラで予測できるか（Farag 2024-1・11通貨） | ボラは1時間逆張りの粗利を予測する（Farag 2024-1 の H1 版）。ただし後半で係数が3〜4倍小さくなり、保… |
 | [crypto-weekend-effect](./crypto-weekend-effect) | Q212 暗号資産の週末（土日）はリターン・ボラ・順張りの損益が平日と違うか（11 通貨 H1） | 未実行 |

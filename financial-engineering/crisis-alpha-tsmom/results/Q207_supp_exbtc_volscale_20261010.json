@@ -1,0 +1,72 @@
+{
+ "base15": {
+  "n_months": 177,
+  "n_crisis": 18,
+  "crisis_mean": 95.9778,
+  "crisis_t": 0.5826,
+  "rest_mean": 87.8128,
+  "diff_z": 0.066,
+  "unit": "bp"
+ },
+ "exBTC14": {
+  "n_months": 177,
+  "n_crisis": 18,
+  "crisis_mean": 87.2767,
+  "crisis_t": 1.4491,
+  "rest_mean": 7.8582,
+  "diff_z": 1.4396,
+  "unit": "bp"
+ },
+ "volscaled15": {
+  "n_months": 175,
+  "n_crisis": 18,
+  "crisis_mean": 69.4661,
+  "crisis_t": 0.839,
+  "rest_mean": 54.279,
+  "diff_z": 0.1852,
+  "unit": "銘柄ごとの日次損益/過去60日σ×100 の等加重平均の月次合計"
+ },
+ "volscaled_exBTC14": {
+  "n_months": 175,
+  "n_crisis": 18,
+  "crisis_mean": 74.0765,
+  "crisis_t": 0.9864,
+  "rest_mean": 26.8613,
+  "diff_z": 0.8026,
+  "unit": "銘柄ごとの日次損益/過去60日σ×100 の等加重平均の月次合計"
+ },
+ "crisis_contrib_bp_per_sym_mean": {
+  "USTECH": -745.5,
+  "BTCUSD": -293.7,
+  "US500": -235.4,
+  "XAUUSD": -204.6,
+  "XAGUSD": -14.9,
+  "USDCHF": 5.2,
+  "EURUSD": 18.1,
+  "EURJPY": 78.1,
+  "USDJPY": 94.6,
+  "USDCAD": 107.9,
+  "GBPJPY": 116.8,
+  "GBPUSD": 131.4,
+  "AUDUSD": 238.5,
+  "UKOIL": 718.3,
+  "WTI": 798.4
+ },
+ "2019-05_by_sym_bp": {
+  "BTCUSD": -4355.8,
+  "USTECH": -916.1,
+  "US500": -599.1,
+  "XAUUSD": -256.1,
+  "USDCHF": -182.9,
+  "USDJPY": 3.1,
+  "EURUSD": 42.4,
+  "USDCAD": 94.2,
+  "AUDUSD": 164.0,
+  "XAGUSD": 261.7,
+  "GBPUSD": 318.0,
+  "EURJPY": 330.3,
+  "GBPJPY": 604.2,
+  "UKOIL": 1434.9,
+  "WTI": 1706.8
+ }
+}
