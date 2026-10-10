@@ -1,0 +1,136 @@
+{
+ "qid": "Q222",
+ "smoke": false,
+ "generated": "20261010_183914",
+ "question": "Parkinson のレンジボラは終値ボラより翌日の実現ボラをよく予測するか",
+ "settings": {
+  "min_train_years": 3,
+  "har_lags": [
+   1,
+   5,
+   22
+  ]
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 16,
+   "qlike_CC": 0.3702,
+   "qlike_PK": 0.3373,
+   "qlike_RV": 0.3271,
+   "qlike_BOTH": 0.3688,
+   "diff_PK_minus_CC": -0.0329,
+   "diff_PK_minus_CC_t": -3.2532,
+   "diff_PK_minus_RV": 0.0102,
+   "diff_PK_minus_RV_t": 1.4858,
+   "diff_BOTH_minus_PK": 0.0314,
+   "diff_BOTH_minus_PK_t": 1.6377
+  },
+  "all15_pre": {
+   "n_years": 6,
+   "qlike_CC": 0.4026,
+   "qlike_PK": 0.3576,
+   "qlike_RV": 0.3461,
+   "qlike_BOTH": 0.3742,
+   "diff_PK_minus_CC": -0.045,
+   "diff_PK_minus_CC_t": -2.0815,
+   "diff_PK_minus_RV": 0.0115,
+   "diff_PK_minus_RV_t": 1.2244,
+   "diff_BOTH_minus_PK": 0.0167,
+   "diff_BOTH_minus_PK_t": 1.692
+  },
+  "all15_post": {
+   "n_years": 10,
+   "qlike_CC": 0.3507,
+   "qlike_PK": 0.3252,
+   "qlike_RV": 0.3157,
+   "qlike_BOTH": 0.3655,
+   "diff_PK_minus_CC": -0.0256,
+   "diff_PK_minus_CC_t": -2.5525,
+   "diff_PK_minus_RV": 0.0095,
+   "diff_PK_minus_RV_t": 0.9623,
+   "diff_BOTH_minus_PK": 0.0403,
+   "diff_BOTH_minus_PK_t": 1.3233
+  },
+  "fx8_all": {
+   "n_years": 16,
+   "qlike_CC": 0.3686,
+   "qlike_PK": 0.3372,
+   "qlike_RV": 0.3308,
+   "qlike_BOTH": 0.3856,
+   "diff_PK_minus_CC": -0.0313,
+   "diff_PK_minus_CC_t": -2.2976,
+   "diff_PK_minus_RV": 0.0064,
+   "diff_PK_minus_RV_t": 0.9331,
+   "diff_BOTH_minus_PK": 0.0483,
+   "diff_BOTH_minus_PK_t": 1.4744
+  },
+  "fx8_pre": {
+   "n_years": 6,
+   "qlike_CC": 0.4218,
+   "qlike_PK": 0.384,
+   "qlike_RV": 0.3637,
+   "qlike_BOTH": 0.406,
+   "diff_PK_minus_CC": -0.0378,
+   "diff_PK_minus_CC_t": -0.9958,
+   "diff_PK_minus_RV": 0.0203,
+   "diff_PK_minus_RV_t": 1.1604,
+   "diff_BOTH_minus_PK": 0.022,
+   "diff_BOTH_minus_PK_t": 1.3205
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "qlike_CC": 0.3366,
+   "qlike_PK": 0.3092,
+   "qlike_RV": 0.3111,
+   "qlike_BOTH": 0.3733,
+   "diff_PK_minus_CC": -0.0274,
+   "diff_PK_minus_CC_t": -8.5608,
+   "diff_PK_minus_RV": -0.0019,
+   "diff_PK_minus_RV_t": -0.8204,
+   "diff_BOTH_minus_PK": 0.0641,
+   "diff_BOTH_minus_PK_t": 1.2342
+  },
+  "trend7_all": {
+   "n_years": 16,
+   "qlike_CC": 0.3798,
+   "qlike_PK": 0.3435,
+   "qlike_RV": 0.3312,
+   "qlike_BOTH": 0.3535,
+   "diff_PK_minus_CC": -0.0363,
+   "diff_PK_minus_CC_t": -2.4462,
+   "diff_PK_minus_RV": 0.0123,
+   "diff_PK_minus_RV_t": 0.8847,
+   "diff_BOTH_minus_PK": 0.01,
+   "diff_BOTH_minus_PK_t": 1.0993
+  },
+  "trend7_pre": {
+   "n_years": 6,
+   "qlike_CC": 0.4022,
+   "qlike_PK": 0.3457,
+   "qlike_RV": 0.35,
+   "qlike_BOTH": 0.3512,
+   "diff_PK_minus_CC": -0.0565,
+   "diff_PK_minus_CC_t": -5.2237,
+   "diff_PK_minus_RV": -0.0042,
+   "diff_PK_minus_RV_t": -0.6033,
+   "diff_BOTH_minus_PK": 0.0055,
+   "diff_BOTH_minus_PK_t": 0.5423
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "qlike_CC": 0.3663,
+   "qlike_PK": 0.3421,
+   "qlike_RV": 0.3199,
+   "qlike_BOTH": 0.3548,
+   "diff_PK_minus_CC": -0.0242,
+   "diff_PK_minus_CC_t": -1.0767,
+   "diff_PK_minus_RV": 0.0223,
+   "diff_PK_minus_RV_t": 1.0254,
+   "diff_BOTH_minus_PK": 0.0127,
+   "diff_BOTH_minus_PK_t": 0.9351
+  }
+ },
+ "machine_verdict": "支持: Parkinson のレンジは終値より翌日の実現ボラをよく予測する",
+ "multiple_comparisons": "判定は all15 前後半の PK−CC の t の 2 本。RV・BOTH・群別は記述。"
+}
