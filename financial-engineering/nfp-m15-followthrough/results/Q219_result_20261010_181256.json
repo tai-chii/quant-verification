@@ -1,0 +1,107 @@
+{
+ "qid": "Q219",
+ "smoke": false,
+ "generated": "20261010_181256",
+ "question": "NFP 直後 15 分の向きは次の 1〜4 時間に続くか反転するか",
+ "settings": {
+  "horizons_bars": {
+   "1h": 4,
+   "4h": 16
+  },
+  "split": 2024,
+  "B": 1000
+ },
+ "missing": [],
+ "n_events": 100,
+ "summary": {
+  "1h": {
+   "n_nfp": 100,
+   "nfp_mean_bp": -2.6088,
+   "nfp_t": -1.295,
+   "control_mean_bp": -1.6534,
+   "diff_bp": -0.9555,
+   "diff_z": -0.513
+  },
+  "4h": {
+   "n_nfp": 100,
+   "nfp_mean_bp": 1.6226,
+   "nfp_t": 0.4388,
+   "control_mean_bp": -3.2745,
+   "diff_bp": 4.897,
+   "diff_z": 1.259
+  }
+ },
+ "reaction_size": {
+  "nfp_abs_bar_bp": 25.4153,
+  "control_abs_bar_bp": 7.359
+ },
+ "by_pair_and_period": {
+  "EURUSD": {
+   "1h": {
+    "n_nfp": 55,
+    "nfp_mean_bp": -2.9418,
+    "nfp_t": -1.2533,
+    "control_mean_bp": -1.3772,
+    "diff_bp": -1.5646
+   },
+   "4h": {
+    "n_nfp": 55,
+    "nfp_mean_bp": 0.6714,
+    "nfp_t": 0.1474,
+    "control_mean_bp": -4.0515,
+    "diff_bp": 4.7229
+   }
+  },
+  "USDJPY": {
+   "1h": {
+    "n_nfp": 45,
+    "nfp_mean_bp": -2.2019,
+    "nfp_t": -0.6391,
+    "control_mean_bp": -1.9972,
+    "diff_bp": -0.2046
+   },
+   "4h": {
+    "n_nfp": 45,
+    "nfp_mean_bp": 2.7852,
+    "nfp_t": 0.4588,
+    "control_mean_bp": -2.307,
+    "diff_bp": 5.0922
+   }
+  },
+  "pre": {
+   "1h": {
+    "n_nfp": 49,
+    "nfp_mean_bp": -3.6894,
+    "nfp_t": -1.5603,
+    "control_mean_bp": -0.4168,
+    "diff_bp": -3.2726
+   },
+   "4h": {
+    "n_nfp": 49,
+    "nfp_mean_bp": 0.4286,
+    "nfp_t": 0.0667,
+    "control_mean_bp": 0.7032,
+    "diff_bp": -0.2747
+   }
+  },
+  "post": {
+   "1h": {
+    "n_nfp": 51,
+    "nfp_mean_bp": -1.5706,
+    "nfp_t": -0.4823,
+    "control_mean_bp": -3.0532,
+    "diff_bp": 1.4826
+   },
+   "4h": {
+    "n_nfp": 51,
+    "nfp_mean_bp": 2.7697,
+    "nfp_t": 0.6581,
+    "control_mean_bp": -7.7775,
+    "diff_bp": 10.5473
+   }
+  }
+ },
+ "machine_verdict": "棄却: 継続とも反転とも区別できない",
+ "notes": "第 1 金曜の暦の例外（祝日ずれ）は未補正。n は小さい。",
+ "multiple_comparisons": "判定は +1h・+4h の t と z の 4 本。通貨別・前後半は記述。"
+}
