@@ -47,7 +47,7 @@
 | [nfp-m15-followthrough](./nfp-m15-followthrough) | Q219 米雇用統計（NFP）の直後 15 分の向きは次の 1〜4 時間に続くか反転するか（EURUSD・USDJPY M15・2021 年以降） | 未実行 |
 | [nr7-breakout-continuation](./nr7-breakout-continuation) | Q217 NR7（直前 7 日で最小レンジ）の翌日は最初の 2 時間の向きに続くか（FX8＋金・H1 から日足） | 未実行 |
 | [null-model-choice](./null-model-choice) | Q178 帰無モデルの選び方（並べ替え・AR(1)・GARCH型）で移動平均ルールの判定は変わるか（Brock 1992） | 確定（H1 支持: 帰無の選び方で判定はほぼ割れない） |
-| [one-month-reversal](./one-month-reversal) | Q215 1 か月の短期反転（直前 21 日の逆）は 15 銘柄の日足でコスト後に残るか（Jegadeesh 1990 の型・12-1 モメンタムと対比） | 未実行 |
+| [one-month-reversal](./one-month-reversal) | Q215 1 か月の短期反転（直前 21 日の逆）は 15 銘柄の日足でコスト後に残るか（Jegadeesh 1990 の型・12-1 モメンタムと対比） | 棄却（粗利でも負・事前固定 z≥2 を通らず） |
 | [oshime-d1-yahoo-close-recheck](./oshime-d1-yahoo-close-recheck) | Q158 押し目・逆張りの D1 系14本を Dukascopy 日足に差し替えて再確認（2026-10-09 Opus） | — |
 | [overnight-intraday-reversal-fx](./overnight-intraday-reversal-fx) | Q173 為替の夜間→日中の逆張りは2015年以降の主要8通貨でコスト後に残るか（DellaCorte 2015） | 棄却 |
 | [overnight-premium-indices](./overnight-premium-indices) | Q209 株価指数・金の夜間（現物取引時間外）リターンは日中より高いか（夜間プレミアム・H1・2017 年以降） | 棄却。夜間が日中より稼ぐように見える差は「夜間が 18 時間・日中が 6 時間」という長さの差で説明でき、14〜20 … |

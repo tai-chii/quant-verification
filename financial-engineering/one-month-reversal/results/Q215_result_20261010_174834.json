@@ -1,0 +1,115 @@
+{
+ "qid": "Q215",
+ "smoke": false,
+ "generated": "20261010_174834",
+ "question": "1 か月の短期反転は 15 銘柄の日足でコスト後に残るか",
+ "settings": {
+  "H": 21,
+  "LB_MOM": 252,
+  "B": 500
+ },
+ "missing": [],
+ "summary": {
+  "all15_all": {
+   "n_years": 19,
+   "rev_bp": -1.3112,
+   "rev_t": -2.0825,
+   "rev_z": -1.2596,
+   "rev_gross_bp": -1.1821,
+   "mom121_bp": 0.3813,
+   "mom121_t": 0.5269,
+   "both_bp": -0.4082,
+   "both_t": -0.8136
+  },
+  "all15_pre": {
+   "n_years": 9,
+   "rev_bp": -1.3943,
+   "rev_t": -2.3417,
+   "rev_z": -0.8522,
+   "rev_gross_bp": -1.263,
+   "mom121_bp": 1.0675,
+   "mom121_t": 0.9831,
+   "both_bp": -0.0182,
+   "both_t": -0.0399
+  },
+  "all15_post": {
+   "n_years": 10,
+   "rev_bp": -1.2364,
+   "rev_t": -1.1187,
+   "rev_z": -0.9206,
+   "rev_gross_bp": -1.1093,
+   "mom121_bp": -0.2363,
+   "mom121_t": -0.2416,
+   "both_bp": -0.7592,
+   "both_t": -0.8701
+  },
+  "fx8_all": {
+   "n_years": 19,
+   "rev_bp": 0.4338,
+   "rev_t": 1.0675,
+   "rev_z": 0.8794,
+   "rev_gross_bp": 0.4812,
+   "mom121_bp": 0.0708,
+   "mom121_t": 0.1925,
+   "both_bp": 0.1755,
+   "both_t": 0.6378
+  },
+  "fx8_pre": {
+   "n_years": 9,
+   "rev_bp": -0.0202,
+   "rev_t": -0.0332,
+   "rev_z": 0.0578,
+   "rev_gross_bp": 0.0279,
+   "mom121_bp": -0.0257,
+   "mom121_t": -0.0353,
+   "both_bp": -0.1859,
+   "both_t": -0.4118
+  },
+  "fx8_post": {
+   "n_years": 10,
+   "rev_bp": 0.8424,
+   "rev_t": 1.5543,
+   "rev_z": 2.5788,
+   "rev_gross_bp": 0.8891,
+   "mom121_bp": 0.1577,
+   "mom121_t": 0.5301,
+   "both_bp": 0.5008,
+   "both_t": 1.5837
+  },
+  "trend7_all": {
+   "n_years": 19,
+   "rev_bp": -5.4155,
+   "rev_t": -2.2194,
+   "rev_z": -1.8265,
+   "rev_gross_bp": -5.0896,
+   "mom121_bp": 1.4768,
+   "mom121_t": 0.8919,
+   "both_bp": -0.9208,
+   "both_t": -0.8647
+  },
+  "trend7_pre": {
+   "n_years": 9,
+   "rev_bp": -7.4211,
+   "rev_t": -1.6215,
+   "rev_z": -1.3212,
+   "rev_gross_bp": -6.9785,
+   "mom121_bp": 3.8532,
+   "mom121_t": 1.6597,
+   "both_bp": 0.4847,
+   "both_t": 0.6401
+  },
+  "trend7_post": {
+   "n_years": 10,
+   "rev_bp": -3.6105,
+   "rev_t": -1.598,
+   "rev_z": -1.53,
+   "rev_gross_bp": -3.3896,
+   "mom121_bp": -0.6619,
+   "mom121_t": -0.295,
+   "both_bp": -2.1857,
+   "both_t": -1.1726
+  }
+ },
+ "machine_verdict": "棄却: 前後半のどちらかで z<2",
+ "multiple_comparisons": "判定は all15 前後半の反転の t と z の 4 本。12-1・合成・群別は記述。"
+}
